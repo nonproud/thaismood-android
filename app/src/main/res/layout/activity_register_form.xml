@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PartUI.register_form"
-    android:background="#DAF7A6">
+    android:background="#FFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,36 +17,13 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/Widget.AppCompat.EditText"
-                    android:ems="12"
-                    android:hint="ชื่อ"
-                    />
-            </LinearLayout>
-
-            <EditText
-                android:id="@+id/lastname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="12"
-                android:background="#FFFFFF"
-                android:hint="นามสกุล"
-                />
             <EditText
                 android:id="@+id/email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="12"
-                android:background="#FFFFFF"
+                android:layout_marginBottom="5dp"
                 android:hint="อีเมล"
                 />
             <EditText
@@ -54,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="12"
-                android:background="#FFFFFF"
+                android:layout_marginBottom="5dp"
                 android:hint="ยืนยันอีเมล"
                 />
             <EditText
@@ -62,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="12"
-                android:background="#FFFFFF"
+                android:layout_marginBottom="5dp"
                 android:password="true"
                 android:hint="รหัสผ่าน"
                 />
@@ -71,8 +48,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="12"
+                android:layout_marginBottom="5dp"
                 android:password="true"
-                android:background="#FFFFFF"
                 android:hint="ยืนยันรหัสผ่าน"
                 />
             <Button
