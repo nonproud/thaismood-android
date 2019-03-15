@@ -3,15 +3,14 @@ package com.example.thaismoodandroid.MainUI;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.os.Handler;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.thaismoodandroid.Database.LogonDatabase;
 import com.example.thaismoodandroid.R;
-import com.ligl.android.widget.iosdialog.IOSDialog;
 
 public class MainActivity extends Activity {
 
@@ -28,6 +27,7 @@ public class MainActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         adjustFontScale(getResources().getConfiguration());
+
         setContentView(R.layout.activity_main);
 
 

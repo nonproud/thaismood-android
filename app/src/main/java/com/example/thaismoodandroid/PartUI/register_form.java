@@ -20,14 +20,12 @@ import java.util.Map;
 
 public class register_form extends AppCompatActivity {
 
-    private EditText name;
-    private EditText lname;
     private EditText email;
     private EditText email_confirm;
     private EditText password;
     private EditText password_confirm;
     private Button submit_button;
-    private final String url = "http://192.168.2.33:4553/member";
+    private final String url = "https://thaismood.nn-space.me/member";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +39,6 @@ public class register_form extends AppCompatActivity {
         int height = dm.heightPixels;
         getWindow().setLayout((int) (width*.8), (int) (height*.5));
 
-        name = (EditText) findViewById(R.id.name);
-        lname = (EditText) findViewById(R.id.lastname);
         email = (EditText) findViewById(R.id.email);
         email_confirm = (EditText) findViewById(R.id.email_confirm);
         password = (EditText) findViewById(R.id.password);
@@ -52,8 +48,6 @@ public class register_form extends AppCompatActivity {
         submit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String str_name = name.getText().toString();
-                final String str_lname = lname.getText().toString();
                 final String email_1 = email.getText().toString();
                 String email_2 = email_confirm.getText().toString();
                 final String pass1 = password.getText().toString();
@@ -75,8 +69,6 @@ public class register_form extends AppCompatActivity {
                         }){
                             protected Map<String, String> getParams() {
                                 Map<String, String> MyData = new HashMap<String, String>();
-                                MyData.put("name", str_name);
-                                MyData.put("lastname", str_lname);
                                 MyData.put("email", email_1);
                                 MyData.put("password", pass1);
                                 return MyData;

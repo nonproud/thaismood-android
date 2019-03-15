@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PartUI.register_form"
-    android:background="#FFFFF">
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,6 +17,11 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/thaismood_logo_demo"
+                android:layout_marginBottom="50dp"/>
 
             <EditText
                 android:id="@+id/email"
