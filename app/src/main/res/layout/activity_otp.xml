@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainUI.Otp"
+    android:background="@color/backgroud_color">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:background="@drawable/edittext1"
+            android:hint="XXXX"
+            android:layout_centerInParent="true"
+            android:ellipsize="start"
+            android:layout_gravity="center_horizontal"
+            android:inputType="number"
+            android:singleLine="true"
+            android:maxLength="4"
+            android:ems="12"/>
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

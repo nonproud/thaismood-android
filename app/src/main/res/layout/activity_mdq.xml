@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QMDQ">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_weight="80"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:fontFamily="@font/thsarabunnew_bold"
+                android:text="แบบประเมินโรคอารมณ์แปรปรวนสองขั่ว (Bipolar)"
+                android:textSize="25dp"
+                android:layout_marginBottom="20dp"/>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/thsarabunnew_bold"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/mdq_1"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/thsarabunnew_bold"
+                        android:text="@string/mdq_1_1"/>
+                    <RadioGroup
+                        android:id="@+id/mdq_1_1_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="0"
+                            android:text="ไม่ใช่"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="1"
+                            android:text="ใช่"/>
+
+                    </RadioGroup>
+
+                    <!--No.2-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/thsarabunnew_bold"
+                        android:text="@string/mdq_1_2"/>
+                    <RadioGroup
+                        android:id="@+id/mdq_1_2_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="0"
+                            android:text="ไม่ใช่"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="1"
+                            android:text="ใช่"/>
+
+                    </RadioGroup>
+
+                    <!--No3-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/thsarabunnew_bold"
+                        android:text="@string/mdq_1_3"/>
+                    <RadioGroup
+                        android:id="@+id/mdq_1_3_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="0"
+                            android:text="ไม่ใช่"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="1"
+                            android:text="ใช่"/>
+
+                    </RadioGroup>
+
+                    <!--No4-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/thsarabunnew_bold"
+                        android:text="@string/mdq_1_4"/>
+                    <RadioGroup
+                        android:id="@+id/mdq_1_4_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="0"
+                            android:text="ไม่ใช่"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="1"
+                            android:text="ใช่"/>
+
+                    </RadioGroup>
+
+                    <!--No5-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/thsarabunnew_bold"
+                        android:text="@string/mdq_1_5"/>
+                    <RadioGroup
+                        android:id="@+id/mdq_1_5_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="0"
+                            android:text="ไม่ใช่"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="1"
+                            android:text="ใช่"/>
+
+                    </RadioGroup>
+
+                    <!--No6-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/thsarabunnew_bold"
+                        android:text="@string/mdq_1_6"/>
+                    <RadioGroup
+                        android:id="@+id/mdq_1_6_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="0"
+                            android:text="ไม่ใช่"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="1"
+                            android:text="ใช่"/>
+
+                    </RadioGroup>
+
+                    <!--No7-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/thsarabunnew_bold"
+                        android:text="@string/mdq_1_7"/>
+                    <RadioGroup
+                        android:id="@+id/mdq_1_7_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="0"
+                            android:text="ไม่ใช่"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="1"
+                            android:text="ใช่"/>
+
+                    </RadioGroup>
+
+                    <!--No.8-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/thsarabunnew_bold"
+                        android:text="@string/mdq_1_8"/>
+                    <RadioGroup
+                        android:id="@+id/mdq_1_8_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="0"
+                            android:text="ไม่ใช่"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="1"
+                            android:text="ใช่"/>
+
+                    </RadioGroup>
+
+                    <!--NO.9-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/thsarabunnew_bold"
+                        android:text="@string/mdq_1_9"/>
+                    <RadioGroup
+                        android:id="@+id/mdq_1_9_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="0"
+                            android:text="ไม่ใช่"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="1"
+                            android:text="ใช่"/>
+
+                    </RadioGroup>
+
+                    <!--No. 10-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/thsarabunnew_bold"
+                        android:text="@string/mdq_1_10"/>
+                    <RadioGroup
+                        android:id="@+id/mdq_1_10_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="0"
+                            android:text="ไม่ใช่"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="1"
+                            android:text="ใช่"/>
+
+                    </RadioGroup>
+
+                    <!--No. 11-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/thsarabunnew_bold"
+                        android:text="@string/mdq_1_11"/>
+                    <RadioGroup
+                        android:id="@+id/mdq_1_11_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="0"
+                            android:text="ไม่ใช่"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="1"
+                            android:text="ใช่"/>
+
+                    </RadioGroup>
+
+                    <!--No.12-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/thsarabunnew_bold"
+                        android:text="@string/mdq_1_12"/>
+                    <RadioGroup
+                        android:id="@+id/mdq_1_12_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="0"
+                            android:text="ไม่ใช่"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="1"
+                            android:text="ใช่"/>
+
+                    </RadioGroup>
+
+                    <!--No.13-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/thsarabunnew_bold"
+                        android:text="@string/mdq_1_13"/>
+                    <RadioGroup
+                        android:id="@+id/mdq_1_13_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="0"
+                            android:text="ไม่ใช่"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="1"
+                            android:text="ใช่"/>
+
+                    </RadioGroup>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/thsarabunnew_bold"
+                        android:text="@string/mdq_2"/>
+                    <RadioGroup
+                        android:id="@+id/mdq_2_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="0"
+                            android:text="ไม่ใช่"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="1"
+                            android:text="ใช่"/>
+
+                    </RadioGroup>
+
+                    <!--No.2-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/thsarabunnew_bold"
+                        android:text="@string/mdq_3"/>
+                    <RadioGroup
+                        android:id="@+id/mdq_3_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="0"
+                            android:text="ไม่ก่อปัญหา"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="1"
+                            android:text="ก่อปัญหาเล็กน้อย"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="0"
+                            android:text="ก่อปัญหาปานกลาง"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:tag="1"
+                            android:text="ก่อปัญหารุนแรง"/>
+
+                    </RadioGroup>
+                </LinearLayout>
+            </ScrollView>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:background="#055560">
+
+                <Button
+                    android:id="@+id/q_mdq_nextbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:background="#055560"
+                    android:fontFamily="@font/thsarabunnew_bold"
+                    android:text="ถัดไป"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25dp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

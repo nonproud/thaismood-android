@@ -52,6 +52,19 @@ public class LogonDatabase extends SQLiteOpenHelper {
         return false;
     }
 
+    public String getUserID(){
+        String query_logon_tabel = String.format("SELECT * FROM %s", LogonModel.TABLE_NAME);
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor result = db.rawQuery(query_logon_tabel, null);
+        if(result.getCount() > 0){
+            return result.getString(1);
+        }
+
+        return null;
+    }
+
     public boolean insertLogonResgist(String id, String email){
         String query_user_id = String.format("INSERT INTO %s (%s, %s) values('%s', '%s')",LogonModel.TABLE_NAME,
                 LogonModel.column.ID, LogonModel.column.EMAIL, id, email);

@@ -3,6 +3,7 @@ package com.example.thaismoodandroid.MainUI;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -38,8 +39,8 @@ public class SignInOn extends AppCompatActivity {
 
     private Button loginBtn, registBtn;
     private String regist_respones_message = null, login_respones_message = null;
-    private final String url_register = "https://thaismood.nn-space.me/member/";
-    private final String url_login = "https://thaismood.nn-space.me/member/login/";
+    private final String url_register = getResources().getString(R.string.member_url);
+    private final String url_login = getResources().getString(R.string.member_login_url);
     private ConstraintLayout login_form, regist_form;
     private final LogonDatabase db = new LogonDatabase(this);
 
@@ -209,7 +210,9 @@ public class SignInOn extends AppCompatActivity {
 //                Toast.makeText(SignInOn.this, response.toString(), Toast.LENGTH_LONG).show();
                 db.insertLogonResgist(response.toString(), email);
                 registFadeout();
-
+                Intent intent = new Intent(SignInOn.this, Otp.class);
+                startActivity(intent);
+                finish();
             }
         }, new Response.ErrorListener() {
             @Override
