@@ -40,11 +40,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/thsarabunnew_bold"
+                    android:textSize="@dimen/evaluation_q_size"
                     android:text="ใน 2 สัปดาห์ที่ผ่านมา รวมวันนี้ ..."/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/thsarabunnew_bold"
+                    android:textSize="@dimen/evaluation_q_size"
                     android:text="@string/q_2q_1"/>
                 <RadioGroup
                     android:id="@+id/q_2q_1_answer"
@@ -56,6 +58,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:tag="0"
                         android:text="ไม่มี"/>
                     <RadioButton
@@ -63,6 +66,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:tag="1"
                         android:text="มี"/>
 
@@ -71,6 +75,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/thsarabunnew_bold"
+                    android:textSize="@dimen/evaluation_q_size"
                     android:text="@string/q_2q_2"/>
                 <RadioGroup
                     android:id="@+id/q_2q_2_answer"
@@ -81,6 +86,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:tag="0"
                         android:text="ไม่มี"/>
                     <RadioButton
@@ -88,6 +94,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:tag="1"
                         android:text="มี"/>
                 </RadioGroup>
@@ -100,28 +107,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="10"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:background="@color/confirm_color">
 
-            <LinearLayout
+            <Button
+                android:id="@+id/q_2q_nextbtn"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:background="#055560">
-
-                <Button
-                    android:id="@+id/q_2q_nextbtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
-                    android:background="#055560"
-                    android:fontFamily="@font/thsarabunnew_bold"
-                    android:text="ถัดไป"
-                    android:textColor="#FFFFFF"
-                    android:textSize="25dp" />
-
-            </LinearLayout>
-
+                android:layout_height="fill_parent"
+                android:background="#055560"
+                android:fontFamily="@font/thsarabunnew_bold"
+                android:text="ถัดไป"
+                android:textColor="#FFFFFF"
+                android:textSize="25dp" />
 
         </LinearLayout>
     </LinearLayout>

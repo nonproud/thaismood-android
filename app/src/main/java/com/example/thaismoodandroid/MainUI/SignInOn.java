@@ -1,7 +1,7 @@
 package com.example.thaismoodandroid.MainUI;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -12,11 +12,10 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -39,9 +38,10 @@ public class SignInOn extends AppCompatActivity {
 
     private Button loginBtn, registBtn;
     private String regist_respones_message = null, login_respones_message = null;
-    private final String url_register = getResources().getString(R.string.member_url);
-    private final String url_login = getResources().getString(R.string.member_login_url);
+    private String url_register;
+    private String url_login;
     private ConstraintLayout login_form, regist_form;
+    private Dialog registDialog, loginDialog;
     private final LogonDatabase db = new LogonDatabase(this);
 
     @Override
@@ -52,6 +52,8 @@ public class SignInOn extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         adjustFontScale(getResources().getConfiguration());
         setContentView(R.layout.activity_sign_in_on);
+        url_register = getResources().getString(R.string.member_url);
+        url_login = getResources().getString(R.string.member_login_url);
 
         loginBtn = (Button) findViewById(R.id.loginBtn);
         registBtn = (Button) findViewById(R.id.registBtn);
@@ -59,51 +61,59 @@ public class SignInOn extends AppCompatActivity {
         registBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                regist_form = (ConstraintLayout) findViewById(R.id.register_form);
-                ImageView exit = (ImageView) findViewById(R.id.register_exit);
-                exit.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        registFadeout();
-                    }
-                });
-                Button regist_submit = (Button) findViewById(R.id.register_submit_btn);
+                registDialog = new Dialog(SignInOn.this);
+                registDialog.setContentView(R.layout.dialog_register);
+                EditText emailtx = registDialog.findViewById(R.id.register_email);
+                EditText email_confirmtx = registDialog.findViewById(R.id.register_email_confirm);
+                EditText passwdtx = registDialog.findViewById(R.id.register_password);
+                EditText passwdcmtx = registDialog.findViewById(R.id.register_password_confirm);
+                Button regist_submit = registDialog.findViewById(R.id.register_submit_btn);
+
                 regist_submit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        String email = ((EditText) findViewById(R.id.register_email)).getText().toString();
-                        String password = ((EditText) findViewById(R.id.register_password)).getText().toString();
+                        EditText emailtx = registDialog.findViewById(R.id.register_email);
+                        EditText passwdtx = registDialog.findViewById(R.id.register_password);
+                        String email = emailtx.getText().toString();
+                        String password = passwdtx.getText().toString();
                         sendRegistRequest(email, password);
                     }
                 });
-                registFadein();
+                TextView close = registDialog.findViewById(R.id.regist_dialog_close);
+                close.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        registDialog.dismiss();
+                    }
+                });
+                registDialog.show();
             }
         });
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                login_form = (ConstraintLayout) findViewById(R.id.login_form);
-                ImageView exit = (ImageView) findViewById(R.id.login_exit);
-                exit.setOnClickListener(new View.OnClickListener() {
+                loginDialog = new Dialog(SignInOn.this);
+                loginDialog.setContentView(R.layout.dialog_login);
+                Button login_submit = loginDialog.findViewById(R.id.login_submit_btn);
+                login_submit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        loginFadeout();
-                    }
-                });
-                Button loginSubmit = (Button) findViewById(R.id.login_submit_btn);
-                EditText a = (EditText) findViewById(R.id.login_email);
-                String text = a.getText().toString();
-
-                loginSubmit.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        String email = ((EditText) findViewById(R.id.login_email)).getText().toString();
-                        String password = ((EditText) findViewById(R.id.login_password)).getText().toString();
+                        EditText emailtx = loginDialog.findViewById(R.id.login_email);
+                        EditText passwdtx = loginDialog.findViewById(R.id.login_password);
+                        String email = emailtx.getText().toString();
+                        String password = passwdtx.getText().toString();
                         sendLoginRequest(email, password);
                     }
                 });
-                loginFadein();
+                TextView close = loginDialog.findViewById(R.id.login_dialog_close);
+                close.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        loginDialog.dismiss();
+                    }
+                });
+                loginDialog.show();
             }
         });
     }
@@ -115,38 +125,6 @@ public class SignInOn extends AppCompatActivity {
         wm.getDefaultDisplay().getMetrics(metrics);
         metrics.scaledDensity = configuration.fontScale * metrics.density;
         getBaseContext().getResources().updateConfiguration(configuration, metrics);
-    }
-
-    private void registFadein() {
-        @SuppressLint("ResourceType") Animation animation = AnimationUtils.loadAnimation(this, R.transition.fade);
-        regist_form.startAnimation(animation);
-        regist_form.setVisibility(View.VISIBLE);
-        loginBtn.setClickable(false);
-        registBtn.setClickable(false);
-    }
-
-    private void registFadeout() {
-        @SuppressLint("ResourceType") Animation animation = AnimationUtils.loadAnimation(this, R.transition.fadex);
-        regist_form.setAnimation(animation);
-        regist_form.setVisibility(View.GONE);
-        loginBtn.setClickable(true);
-        registBtn.setClickable(true);
-    }
-
-    private void loginFadein() {
-        @SuppressLint("ResourceType") Animation animation = AnimationUtils.loadAnimation(this, R.transition.fade);
-        login_form.startAnimation(animation);
-        login_form.setVisibility(View.VISIBLE);
-        loginBtn.setClickable(false);
-        registBtn.setClickable(false);
-    }
-
-    private void loginFadeout() {
-        @SuppressLint("ResourceType") Animation animation = AnimationUtils.loadAnimation(this, R.transition.fadex);
-        login_form.setAnimation(animation);
-        login_form.setVisibility(View.GONE);
-        loginBtn.setClickable(true);
-        registBtn.setClickable(true);
     }
 
     private void sendLoginRequest(final String email, final String password) {
@@ -202,21 +180,22 @@ public class SignInOn extends AppCompatActivity {
     }
 
     private void sendRegistRequest(final String email, final String password) {
-        String a;
         RequestQueue MyRequestQueue = Volley.newRequestQueue(SignInOn.this);
         StringRequest myStringRequest = new StringRequest(Request.Method.POST, url_register, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 //                Toast.makeText(SignInOn.this, response.toString(), Toast.LENGTH_LONG).show();
                 db.insertLogonResgist(response.toString(), email);
-                registFadeout();
+                registDialog.dismiss();
                 Intent intent = new Intent(SignInOn.this, Otp.class);
+                intent.putExtra("email", email);
                 startActivity(intent);
                 finish();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Toast.makeText(SignInOn.this, error.toString(), Toast.LENGTH_LONG).show();
                 AlertDialog.Builder builder = new AlertDialog.Builder(SignInOn.this);
                 builder.setTitle("Error!");
                 builder.setMessage(error.getMessage()).create();
@@ -239,10 +218,5 @@ public class SignInOn extends AppCompatActivity {
         };
         MyRequestQueue.add(myStringRequest);
     }
-
-    private void showLoadingDialog() {
-
-    }
-
 
 }

@@ -46,6 +46,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:text="@string/q_9q_1"/>
                     <RadioGroup
                         android:id="@+id/q_9q_1_answer"
@@ -57,6 +58,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="0"
                             android:text="ไม่มีเลย"/>
                         <RadioButton
@@ -64,6 +66,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="1"
                             android:text="เป็นบางวัน 1 ถึง 7 วัน"/>
                         <RadioButton
@@ -71,6 +74,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="2"
                             android:text="เป็นบ่อย มากกว่า 7 วัน"/>
                         <RadioButton
@@ -78,6 +82,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="3"
                             android:text="เป็นทุกวัน"/>
 
@@ -88,6 +93,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:text="@string/q_9q_2"/>
                     <RadioGroup
                         android:id="@+id/q_9q_2_answer"
@@ -99,6 +105,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="0"
                             android:text="ไม่มีเลย"/>
                         <RadioButton
@@ -106,6 +113,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="1"
                             android:text="เป็นบางวัน 1 ถึง 7 วัน"/>
                         <RadioButton
@@ -113,6 +121,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="2"
                             android:text="เป็นบ่อย มากกว่า 7 วัน"/>
                         <RadioButton
@@ -120,6 +129,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="3"
                             android:text="เป็นทุกวัน"/>
                     </RadioGroup>
@@ -129,6 +139,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:text="@string/q_9q_3"/>
                     <RadioGroup
                         android:id="@+id/q_9q_3_answer"
@@ -140,6 +151,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="0"
                             android:text="ไม่มีเลย"/>
                         <RadioButton
@@ -147,6 +159,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="1"
                             android:text="เป็นบางวัน 1 ถึง 7 วัน"/>
                         <RadioButton
@@ -154,6 +167,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="2"
                             android:text="เป็นบ่อย มากกว่า 7 วัน"/>
                         <RadioButton
@@ -161,6 +175,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="3"
                             android:text="เป็นทุกวัน"/>
                     </RadioGroup>
@@ -170,6 +185,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:text="@string/q_9q_4"/>
                     <RadioGroup
                         android:id="@+id/q_9q_4_answer"
@@ -181,6 +197,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="0"
                             android:text="ไม่มีเลย"/>
                         <RadioButton
@@ -188,6 +205,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="1"
                             android:text="เป็นบางวัน 1 ถึง 7 วัน"/>
                         <RadioButton
@@ -195,6 +213,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="2"
                             android:text="เป็นบ่อย มากกว่า 7 วัน"/>
                         <RadioButton
@@ -202,6 +221,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="3"
                             android:text="เป็นทุกวัน"/>
 
@@ -212,6 +232,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:text="@string/q_9q_5"/>
                     <RadioGroup
                         android:id="@+id/q_9q_5_answer"
@@ -223,6 +244,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="0"
                             android:text="ไม่มีเลย"/>
                         <RadioButton
@@ -230,6 +252,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="1"
                             android:text="เป็นบางวัน 1 ถึง 7 วัน"/>
                         <RadioButton
@@ -237,6 +260,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="2"
                             android:text="เป็นบ่อย มากกว่า 7 วัน"/>
                         <RadioButton
@@ -244,6 +268,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="3"
                             android:text="เป็นทุกวัน"/>
                     </RadioGroup>
@@ -253,6 +278,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:text="@string/q_9q_6"/>
                     <RadioGroup
                         android:id="@+id/q_9q_6_answer"
@@ -264,6 +290,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="0"
                             android:text="ไม่มีเลย"/>
                         <RadioButton
@@ -271,6 +298,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="1"
                             android:text="เป็นบางวัน 1 ถึง 7 วัน"/>
                         <RadioButton
@@ -278,6 +306,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="2"
                             android:text="เป็นบ่อย มากกว่า 7 วัน"/>
                         <RadioButton
@@ -285,6 +314,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="3"
                             android:text="เป็นทุกวัน"/>
 
@@ -295,6 +325,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:text="@string/q_9q_7"/>
                     <RadioGroup
                         android:id="@+id/q_9q_7_answer"
@@ -306,6 +337,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="0"
                             android:text="ไม่มีเลย"/>
                         <RadioButton
@@ -313,6 +345,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="1"
                             android:text="เป็นบางวัน 1 ถึง 7 วัน"/>
                         <RadioButton
@@ -320,6 +353,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="2"
                             android:text="เป็นบ่อย มากกว่า 7 วัน"/>
                         <RadioButton
@@ -327,6 +361,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="3"
                             android:text="เป็นทุกวัน"/>
                     </RadioGroup>
@@ -336,6 +371,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:text="@string/q_9q_8"/>
                     <RadioGroup
                         android:id="@+id/q_9q_8_answer"
@@ -347,6 +383,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="0"
                             android:text="ไม่มีเลย"/>
                         <RadioButton
@@ -354,6 +391,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="1"
                             android:text="เป็นบางวัน 1 ถึง 7 วัน"/>
                         <RadioButton
@@ -361,6 +399,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="2"
                             android:text="เป็นบ่อย มากกว่า 7 วัน"/>
                         <RadioButton
@@ -368,6 +407,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="3"
                             android:text="เป็นทุกวัน"/>
                     </RadioGroup>
@@ -377,6 +417,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:text="@string/q_9q_9"/>
                     <RadioGroup
                         android:id="@+id/q_9q_9_answer"
@@ -388,6 +429,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="0"
                             android:text="ไม่มีเลย"/>
                         <RadioButton
@@ -395,6 +437,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="1"
                             android:text="เป็นบางวัน 1 ถึง 7 วัน"/>
                         <RadioButton
@@ -402,6 +445,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="2"
                             android:text="เป็นบ่อย มากกว่า 7 วัน"/>
                         <RadioButton
@@ -409,6 +453,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="3"
                             android:text="เป็นทุกวัน"/>
                     </RadioGroup>

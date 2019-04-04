@@ -19,4 +19,5 @@
         android:fontStyle="italic"
         android:fontWeight="400"
         android:font="@font/thsarabunnew_italic" />
+
 </font-family>

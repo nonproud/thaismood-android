@@ -47,6 +47,22 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:background="#E1E1E1">
+
+                <Button
+                    android:id="@+id/loginBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:background="#E1E1E1"
+                    android:fontFamily="@font/thsarabunnew_bold"
+                    android:text="ลงชื่อเข้าใช้"
+                    android:textSize="25dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="10"
                 android:background="#055560">
 
@@ -61,184 +77,7 @@
                     android:textSize="25dp" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="5"
-                android:background="#E1E1E1">
-
-                <Button
-                    android:id="@+id/loginBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
-                    android:background="#E1E1E1"
-                    android:fontFamily="@font/thsarabunnew_bold"
-                    android:text="ลงชื่อเข้าใช้"
-                    android:textSize="25dp" />
-            </LinearLayout>
-
         </LinearLayout>
     </LinearLayout>
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/register_form"
-        android:layout_width="320dp"
-        android:layout_height="540dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="#FFFFFF"
-        android:foregroundGravity="center"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/register_exit"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="right"
-                android:src="@drawable/ic_error"
-                />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginBottom="20dp"
-                    android:src="@drawable/thaismood_logo_demo" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ลงชื่อเข้าใช้"/>
-
-                <EditText
-                    android:id="@+id/register_email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:ems="12"
-                    android:hint="อีเมล" />
-
-                <EditText
-                    android:id="@+id/register_email_confirm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:ems="12"
-                    android:hint="ยืนยันอีเมล" />
-
-                <EditText
-                    android:id="@+id/register_password"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:ems="12"
-                    android:hint="รหัสผ่าน"
-                    android:password="true" />
-
-                <EditText
-                    android:id="@+id/register_password_confirm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:ems="12"
-                    android:hint="ยืนยันรหัสผ่าน"
-                    android:password="true" />
-
-                <Button
-                    android:id="@+id/register_submit_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ลงทะเบียน" />
-            </LinearLayout>
-        </LinearLayout>
-
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/login_form"
-        android:layout_width="320dp"
-        android:layout_height="450dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="#FFFFFF"
-        android:foregroundGravity="center"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/login_exit"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="right"
-                android:src="@drawable/ic_error"
-                />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginBottom="20dp"
-                    android:src="@drawable/thaismood_logo_demo" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ลงชื่อเข้าใช้"/>
-
-                <EditText
-                    android:id="@+id/login_email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:ems="12"
-                    android:hint="อีเมล" />
-
-                <EditText
-                    android:id="@+id/login_password"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:ems="12"
-                    android:hint="รหัสผ่าน"
-                    android:password="true" />
-
-                <Button
-                    android:id="@+id/login_submit_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ลงทะเบียน" />
-            </LinearLayout>
-        </LinearLayout>
-
-    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

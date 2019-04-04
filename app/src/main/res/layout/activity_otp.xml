@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainUI.Otp"
-    android:background="@color/backgroud_color">
+    android:background="@color/colorPrimary"
+    tools:context=".MainUI.Otp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,19 +13,62 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <EditText
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:background="@drawable/edittext1"
-            android:hint="XXXX"
-            android:layout_centerInParent="true"
-            android:ellipsize="start"
-            android:layout_gravity="center_horizontal"
-            android:inputType="number"
-            android:singleLine="true"
-            android:maxLength="4"
-            android:ems="12"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/thsarabunnew"
+                android:textColor="#FFFFFFFF"
+                android:textSize="20dp"
+                android:text="เกือบเสร็จแล้ว.. เราได้ส่งรหัสยืนยันอีเมลให้คุณแล้ว"/>
+            <TextView
+                android:id="@+id/otp_email_txv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/thsarabunnew"
+                android:textColor="#FFFFFFFF"
+                android:textSize="20dp"
+                android:text="ที่ example@example.com"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/thsarabunnew"
+                android:textColor="#FFFFFFFF"
+                android:textSize="20dp"
+                android:text="กรุณากรอกรหัสยืนยันที่ได้รับทางอีเมลเพื่อเปิดใช้งาน"/>
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/otp_input"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/otp_box_border"
+                android:inputType="number"
+                android:singleLine="true"
+                android:ems="10"
+                android:maxLength="4"
+                android:hint="รหัสยืนยัน"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/otp_submit"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@color/confirm_color"
+            android:textColor="#FFFFFF"
+            android:text="ยืนยัน"/>
 
     </LinearLayout>
 

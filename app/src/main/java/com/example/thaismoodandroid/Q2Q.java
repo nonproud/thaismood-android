@@ -2,6 +2,7 @@ package com.example.thaismoodandroid;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -43,19 +44,32 @@ public class Q2Q extends AppCompatActivity implements Evaluation {
         submitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean canContinue;
+                try{
+                    for(RadioGroup x: answerList){
+                        score += Integer.parseInt(((RadioButton)findViewById(x.getCheckedRadioButtonId())).getTag().toString());
+                    }
+                    canContinue = true;
+                }catch (NullPointerException ex){
+                    canContinue = false;
+                    ShowDialog.evaluationNotComplete(Q2Q.this);
 
-                for(RadioGroup x: answerList){
-                    score += Integer.parseInt(((RadioButton)findViewById(x.getCheckedRadioButtonId())).getTag().toString());
                 }
 
-                EvaluationResult rs = getResult();
-                save2QToServer();
+                if(canContinue){
+                    EvaluationResult rs = getResult();
+//                  save2QToServer();
 
 
-                if(rs.isPositive()){
-
-                }else{
-
+                    if(rs.isPositive()){
+                        Intent intent = new Intent(Q2Q.this, Q9Q.class);
+                        startActivity(intent);
+                        finish();
+                    }else{
+                        Intent intent = new Intent(Q2Q.this, QMDQ.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
 
             }

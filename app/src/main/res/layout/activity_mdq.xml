@@ -48,6 +48,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:layout_marginBottom="10dp"
                         android:text="@string/mdq_1"/>
 
@@ -55,6 +56,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:text="@string/mdq_1_1"/>
                     <RadioGroup
                         android:id="@+id/mdq_1_1_answer"
@@ -65,12 +67,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="0"
                             android:text="ไม่ใช่"/>
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="1"
                             android:text="ใช่"/>
 
@@ -81,6 +85,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:text="@string/mdq_1_2"/>
                     <RadioGroup
                         android:id="@+id/mdq_1_2_answer"
@@ -91,12 +96,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="0"
                             android:text="ไม่ใช่"/>
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="1"
                             android:text="ใช่"/>
 
@@ -107,6 +114,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:text="@string/mdq_1_3"/>
                     <RadioGroup
                         android:id="@+id/mdq_1_3_answer"
@@ -117,12 +125,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="0"
                             android:text="ไม่ใช่"/>
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="1"
                             android:text="ใช่"/>
 
@@ -133,6 +143,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:text="@string/mdq_1_4"/>
                     <RadioGroup
                         android:id="@+id/mdq_1_4_answer"
@@ -143,12 +154,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="0"
                             android:text="ไม่ใช่"/>
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="1"
                             android:text="ใช่"/>
 
@@ -159,6 +172,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:text="@string/mdq_1_5"/>
                     <RadioGroup
                         android:id="@+id/mdq_1_5_answer"
@@ -169,12 +183,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="0"
                             android:text="ไม่ใช่"/>
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="1"
                             android:text="ใช่"/>
 
@@ -185,6 +201,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:text="@string/mdq_1_6"/>
                     <RadioGroup
                         android:id="@+id/mdq_1_6_answer"
@@ -195,12 +212,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="0"
                             android:text="ไม่ใช่"/>
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="1"
                             android:text="ใช่"/>
 
@@ -211,6 +230,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:text="@string/mdq_1_7"/>
                     <RadioGroup
                         android:id="@+id/mdq_1_7_answer"
@@ -221,12 +241,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="0"
                             android:text="ไม่ใช่"/>
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="1"
                             android:text="ใช่"/>
 
@@ -237,6 +259,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:text="@string/mdq_1_8"/>
                     <RadioGroup
                         android:id="@+id/mdq_1_8_answer"
@@ -247,12 +270,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="0"
                             android:text="ไม่ใช่"/>
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="1"
                             android:text="ใช่"/>
 
@@ -263,6 +288,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:text="@string/mdq_1_9"/>
                     <RadioGroup
                         android:id="@+id/mdq_1_9_answer"
@@ -273,12 +299,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="0"
                             android:text="ไม่ใช่"/>
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="1"
                             android:text="ใช่"/>
 
@@ -289,6 +317,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:text="@string/mdq_1_10"/>
                     <RadioGroup
                         android:id="@+id/mdq_1_10_answer"
@@ -299,12 +328,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="0"
                             android:text="ไม่ใช่"/>
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="1"
                             android:text="ใช่"/>
 
@@ -315,11 +346,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:text="@string/mdq_1_11"/>
                     <RadioGroup
                         android:id="@+id/mdq_1_11_answer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:layout_marginBottom="10dp">
                         <RadioButton
                             android:layout_width="wrap_content"
@@ -331,6 +364,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="1"
                             android:text="ใช่"/>
 
@@ -341,6 +375,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:text="@string/mdq_1_12"/>
                     <RadioGroup
                         android:id="@+id/mdq_1_12_answer"
@@ -351,12 +386,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="0"
                             android:text="ไม่ใช่"/>
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="1"
                             android:text="ใช่"/>
 
@@ -367,6 +404,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:text="@string/mdq_1_13"/>
                     <RadioGroup
                         android:id="@+id/mdq_1_13_answer"
@@ -377,12 +415,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="0"
                             android:text="ไม่ใช่"/>
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="1"
                             android:text="ใช่"/>
 
@@ -392,6 +432,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:text="@string/mdq_2"/>
                     <RadioGroup
                         android:id="@+id/mdq_2_answer"
@@ -402,12 +443,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="0"
                             android:text="ไม่ใช่"/>
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="1"
                             android:text="ใช่"/>
 
@@ -418,6 +461,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="@dimen/evaluation_q_size"
                         android:text="@string/mdq_3"/>
                     <RadioGroup
                         android:id="@+id/mdq_3_answer"
@@ -428,24 +472,28 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="0"
                             android:text="ไม่ก่อปัญหา"/>
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="1"
                             android:text="ก่อปัญหาเล็กน้อย"/>
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="0"
                             android:text="ก่อปัญหาปานกลาง"/>
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="@dimen/evaluation_q_size"
                             android:tag="1"
                             android:text="ก่อปัญหารุนแรง"/>
 

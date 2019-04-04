@@ -6,4 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".MainmenuTest">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/_2qbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2Q"
+            />
+        <Button
+            android:id="@+id/_9qbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9Q"/>
+        <Button
+            android:id="@+id/_8qbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="8Q"/>
+        <Button
+            android:id="@+id/_mdbbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MDQ"/>
+        <Button
+            android:id="@+id/sign_in_onbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign IN/ON"/>
+        <Button
+            android:id="@+id/mainbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MAIN"/>
+        <Button
+            android:id="@+id/otpbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OTP"/>
+        <Button
+            android:id="@+id/register_activity_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="register"/>
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

@@ -10,6 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.thaismoodandroid.Database.LogonDatabase;
+import com.example.thaismoodandroid.MainmenuTest;
 import com.example.thaismoodandroid.R;
 
 public class MainActivity extends Activity {
@@ -35,13 +36,16 @@ public class MainActivity extends Activity {
 
         runnable = new Runnable() {
             public void run() {
-                if(!db.isLogon()){
-                    Intent intent = new Intent(MainActivity.this, SignInOn.class);
+//                if(!db.isLogon()){
+//                    Intent intent = new Intent(MainActivity.this, SignInOn.class);
+//                    startActivity(intent);
+//                    finish();
+//                }else{
+//                    finish();
+//                }
+                Intent intent = new Intent(MainActivity.this, MainmenuTest.class);
                     startActivity(intent);
                     finish();
-                }else{
-                    finish();
-                }
             }
         };
 
