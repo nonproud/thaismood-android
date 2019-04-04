@@ -1,11 +1,20 @@
 <resources>
-    <string name="member_url">https://thaismood.nnspace.me/member</string>
-    <string name="member_profile_url">https://thaismood.nnspace.me/member/profile</string>
-    <string name="member_login_url">https://thaismood.nnspace.me/member/login</string>
-    <string name="evaluation_url">https://thaismood.nnspace.me/evaluation</string>
-    <string name="emotion_url">https://thaismood.nnspace.me/emotion</string>
-    <string name="activity_url">https://thaismood.nnspace.me/activity</string>
+
+    <!--url section-->
+    <string name="member_url">https://thaismood.nn-space.me/member</string>
+    <string name="member_login_url">https://thaismood.nn-space.me/member/login</string>
+    <string name="member_otp_verify_url">https://thaismood.nn-space.me/member/otp</string>
+    <string name="member_check_email_duplicate">https://thaismood.nn-space.me/member/email</string>
+    <string name="member_profile_url">https://thaismood.nn-space.me/member/profile</string>
+
+    <string name="evaluation_url">https://thaismood.nn-space.me/evaluation</string>
+    <string name="emotion_url">https://thaismood.nn-space.me/emotion</string>
+    <string name="activity_url">https://thaismood.nn-space.me/activity</string>
+    <!--End of url section-->
+
+
     <string name="app_name">Thai\'s Mood</string>
+    <string name="q_error">กรุณาตอบแบบประเมินให้ครบทุกคำถาม</string>
     <string name="q_2q_1">1. ท่านรู้สึก หดหู่ เศร้า หรือ ท้อแท้สิ้นหวัง หรือไม่</string>
     <string name="q_2q_2">2. เบื่อ ทาอะไรก็ไม่เพลิดเพลิน หรือไม่</string>
     <string name="q_9q_1">1. เบื่อ ไม่สนใจอยากทำอะไร</string>
@@ -42,6 +51,23 @@
     <string name="mdq_1_13">....คุณใช้จ่ายเงินจนทำให้ตัวเอง หรือ ครอบครัวของคุณเดือดร้อน?</string>
     <string name="mdq_2">2. เหตุการณ์ต่างๆ เหล่านี้ส่วนใหญ่เกิดขึ้นในช่วงระยะเวลาใกล้เคียงกันใช่หรือไม่ กรุณาเลือกวงเพียงหนึ่งคำตอบเท่านั้น</string>
     <string name="mdq_3">3. เหตุการณ์ต่างๆ เหล่านี้ส่งผลกระทบต่อคุณในขณะนั้นมากเพียงใด-เช่น มีผลให้คุณทำงานไม่ได้, มีปัญหาในครอบครัว, ด้านการเงิน, หรือ ด้านกฎหมาย ทำให้คุณเข้าไปมีส่วนในการโต้เถียง หรือ ทะเลาะวิวาท? กรุณาเลือกวงเพียงหนึ่งคำตอบเท่านั้น</string>
+    <string name="menu_home">หน้าแรก</string>
+    <string name="menu_add">เพิ่ม</string>
+    <string name="menu_profile">ข้อมูลลส่วนตัว</string>
+    <string name="menu_summary">ข้อมูลสรุป</string>
 
+    <string name="title_oneitem">รายการ</string>
+    <string name="title_graph">กราฟอารมณ์</string>
+    <string name="title_add">เพิ่ม</string>
+    <string name="title_profile">ข้อมูลผู้ใช้</string>
+    <string name="title_setting">ตั้งค่า</string>
 
+    <array name="register_patient_disorder">
+        <item>โรคซึมเศร้า</item>
+        <item>โรคอารมณ์แปรปรวนสองขั้ว (Bipolar)</item>
+        <item>อื่นๆ</item>
+    </array>
+
+    <string name="otp_success">เจ๋งเลย! รหัสยืนยันของคุณถูกต้อง เริ่มต้นกรอกข้อมูลผู้ใช้กันเลย</string>
+    <string name="otp_fail">รหัสยืนยันไม่ถูกต้อง</string>
 </resources>

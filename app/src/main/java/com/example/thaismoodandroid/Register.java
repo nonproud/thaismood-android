@@ -3,11 +3,11 @@ package com.example.thaismoodandroid;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Dashboard extends AppCompatActivity {
+public class Register extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
+        setContentView(R.layout.activity_register);
     }
 }

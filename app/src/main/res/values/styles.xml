@@ -13,4 +13,11 @@
         <item name="android:minWidth">0dp</item>
     </style>
 
+
+
+    <dimen name="evaluation_q_size">20dp</dimen>
+    <dimen name="edittext_h">40dp</dimen>
+    <dimen name="edittext_margin_top">10dp</dimen>
+    <dimen name="edittext_padding_left">10dp</dimen>
+
 </resources>

@@ -4,4 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="backgroud_color">#900C3F</color>
+    <color name="bottom_nav_item_color">#900C3F</color>
+    <color name="transparent">#80000000</color>
+    <color name="confirm_color">#055560</color>
 </resources>
