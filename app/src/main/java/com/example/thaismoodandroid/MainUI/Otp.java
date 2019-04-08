@@ -24,7 +24,7 @@ import java.util.Map;
 
 public class Otp extends AppCompatActivity {
 
-    private String urlOTPVerify = getString(R.string.member_otp_verify_url);
+    private String urlOTPVerify;
     private EditText otpInput;
     private String email;
     private final LogonDatabase db = new LogonDatabase(Otp.this);
@@ -33,6 +33,9 @@ public class Otp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp);
+
+        urlOTPVerify  = getString(R.string.member_otp_verify_url);
+
         Intent intent = getIntent();
         email = intent.getStringExtra("email");
         TextView emailTextview = findViewById(R.id.otp_email_txv);
@@ -61,8 +64,12 @@ public class Otp extends AppCompatActivity {
         StringRequest myStringRequest = new StringRequest(Request.Method.POST, urlOTPVerify, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
                 if(response.toString().equals("1")){
                     ShowDialog.showDialog(Otp.this, "สำเร็จ! คุณได้ยืนยันอีเมลแล้ว");
+                    Intent intent = new Intent(Otp.this, Register.class);
+                    startActivity(intent);
+                    finish();
                 }else{
                     ShowDialog.showDialog(Otp.this, "ผิดพลาด! รหัสยืนยันไม่ถูกต้อง");
                 }

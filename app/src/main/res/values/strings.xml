@@ -12,6 +12,11 @@
     <string name="activity_url">https://thaismood.nn-space.me/activity</string>
     <!--End of url section-->
 
+    <!--Sign in on Activity-->
+    <string name="regist_email_waring_string">อีเมลนี้ ถูกใช้แล้ว ถ้าหากลืมรหัสผ่านกรุณากดลืมรหัสผ่าน</string>
+    <string name="regist_comfirm_email_waring_string">อีเมลที่ระบุไม่ตรงกัน</string>
+    <string name="regist_confirm_password_warnging_string">รหัสผ่านไม่ตรงกัน</string>
+    <!--End of Sign in on Activity-->
 
     <string name="app_name">Thai\'s Mood</string>
     <string name="q_error">กรุณาตอบแบบประเมินให้ครบทุกคำถาม</string>

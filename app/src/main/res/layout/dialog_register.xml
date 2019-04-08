@@ -16,12 +16,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
-            android:layout_marginRight="10dp">
+            android:background="@color/colorPrimaryDark">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="100dp"
+                android:fontFamily="@font/thsarabunnew_bold"
+                android:textColor="#FFFF"
+                android:textSize="30dp"
+                android:text="ลงชื่อเข้าใช้"/>
 
             <TextView
                 android:id="@+id/regist_dialog_close"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="#FFFF"
                 android:text="X"
                 android:textSize="25dp"
                 android:textStyle="bold"
@@ -36,24 +47,25 @@
             android:layout_marginBottom="20dp"
             android:src="@drawable/thaismood_logo_demo" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ลงทะเบียน"
-            android:textSize="30dp"
-            android:fontFamily="@font/thsarabunnew_bold"
-            android:textStyle="bold"
-            android:gravity="end" />
         <EditText
             android:id="@+id/register_email"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/edittext_h"
             android:background="@drawable/edittext1"
             android:paddingLeft="@dimen/edittext_padding_left"
-
             android:ems="12"
             android:singleLine="true"
             android:hint="อีเมล" />
+
+        <TextView
+            android:id="@+id/regist_email_waring"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/thsarabunnew_bold"
+            android:textColor="@color/ios_red"
+            android:textSize="@dimen/regist_waring_size"
+            android:visibility="gone"
+            android:text="@string/regist_email_waring_string"/>
 
         <EditText
             android:id="@+id/register_email_confirm"
@@ -67,6 +79,16 @@
             android:singleLine="true"
             android:hint="ยืนยันอีเมล" />
 
+        <TextView
+            android:id="@+id/regist_confirm_email_waring"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/thsarabunnew_bold"
+            android:textColor="@color/ios_red"
+            android:textSize="@dimen/regist_waring_size"
+            android:visibility="gone"
+            android:text="@string/regist_comfirm_email_waring_string"/>
+
         <EditText
             android:id="@+id/register_password"
             android:layout_width="wrap_content"
@@ -74,7 +96,6 @@
             android:background="@drawable/edittext1"
             android:paddingLeft="@dimen/edittext_padding_left"
             android:layout_marginTop="@dimen/edittext_margin_top"
-
             android:ems="12"
             android:singleLine="true"
             android:hint="รหัสผ่าน"
@@ -87,32 +108,32 @@
             android:background="@drawable/edittext1"
             android:paddingLeft="@dimen/edittext_padding_left"
             android:layout_marginTop="@dimen/edittext_margin_top"
-
             android:ems="12"
             android:singleLine="true"
+            android:imeOptions="actionDone"
             android:hint="ยืนยันรหัสผ่าน"
             android:password="true" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/regist_confirm_password_waring"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2sp"
-            android:layout_weight="10"
-            android:gravity="center"
-            android:orientation="vertical">
-            <Button
-                android:id="@+id/register_submit_btn"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/confirm_color"
-                android:textColor="#ffffff"
-                android:layout_marginTop="@dimen/edittext_margin_top"
-
-                android:text="ลงทะเบียน" />
-
-        </LinearLayout>
+            android:fontFamily="@font/thsarabunnew_bold"
+            android:textColor="@color/ios_red"
+            android:textSize="@dimen/regist_waring_size"
+            android:visibility="gone"
+            android:nextFocusDown="@id/register_submit_btn"
+            android:text="@string/regist_confirm_password_warnging_string"/>
+        <Button
+            android:id="@+id/register_submit_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/edittext_padding_left"
+            android:paddingLeft="@dimen/edittext_padding_left"
+            android:layout_marginBottom="@dimen/edittext_margin_top"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="#ffffff"
+            android:layout_marginTop="@dimen/edittext_margin_top"
+            android:text="ลงทะเบียน" />
 
 
 

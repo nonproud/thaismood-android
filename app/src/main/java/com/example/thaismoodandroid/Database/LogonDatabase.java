@@ -53,7 +53,7 @@ public class LogonDatabase extends SQLiteOpenHelper {
     }
 
     public String getUserID(){
-        String query_logon_tabel = String.format("SELECT * FROM %s", LogonModel.TABLE_NAME);
+        String query_logon_tabel = String.format("SELECT * FROM %s WHERE 1", LogonModel.TABLE_NAME);
 
         SQLiteDatabase db = this.getWritableDatabase();
 
