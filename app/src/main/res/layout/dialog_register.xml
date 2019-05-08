@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="350dp"
     android:layout_height="wrap_content"
     android:background="@color/transparent">
@@ -25,7 +26,7 @@
                 android:fontFamily="@font/thsarabunnew_bold"
                 android:textColor="#FFFF"
                 android:textSize="30dp"
-                android:text="ลงชื่อเข้าใช้"/>
+                android:text="@string/dialog_regist_header"/>
 
             <TextView
                 android:id="@+id/regist_dialog_close"
@@ -45,17 +46,49 @@
             android:layout_height="100dp"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="20dp"
-            android:src="@drawable/thaismood_logo_demo" />
+            android:src="@drawable/thaismood_logo" />
 
-        <EditText
-            android:id="@+id/register_email"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/regist_username_text_input"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/edittext_h"
-            android:background="@drawable/edittext1"
-            android:paddingLeft="@dimen/edittext_padding_left"
-            android:ems="12"
-            android:singleLine="true"
-            android:hint="อีเมล" />
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/register_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/edittext_padding_left"
+                android:ems="12"
+                android:singleLine="true"
+                android:hint="@string/regist_username_hint" />
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/regist_username_waring"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/thsarabunnew_bold"
+            android:textColor="@color/ios_red"
+            android:textSize="@dimen/regist_waring_size"
+            android:visibility="gone"
+            android:text="@string/regist_username_waring_string"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/regist_email_text_input"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/register_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/edittext_padding_left"
+                android:ems="12"
+                android:singleLine="true"
+                android:hint="@string/regist_email_hint" />
+        </android.support.design.widget.TextInputLayout>
 
         <TextView
             android:id="@+id/regist_email_waring"
@@ -67,52 +100,43 @@
             android:visibility="gone"
             android:text="@string/regist_email_waring_string"/>
 
-        <EditText
-            android:id="@+id/register_email_confirm"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/regist_password_text_input"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/edittext_h"
-            android:background="@drawable/edittext1"
-            android:paddingLeft="@dimen/edittext_padding_left"
-            android:layout_marginTop="@dimen/edittext_margin_top"
-            android:layout_marginBottom="5dp"
-            android:ems="12"
-            android:singleLine="true"
-            android:hint="ยืนยันอีเมล" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/regist_confirm_email_waring"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/thsarabunnew_bold"
-            android:textColor="@color/ios_red"
-            android:textSize="@dimen/regist_waring_size"
-            android:visibility="gone"
-            android:text="@string/regist_comfirm_email_waring_string"/>
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/register_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/edittext_padding_left"
+                android:layout_marginTop="@dimen/edittext_margin_top"
+                android:ems="12"
+                android:singleLine="true"
+                android:hint="@string/regist_password_hint"
+                android:password="true" />
+        </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:id="@+id/register_password"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/regist_confirm_password_text_input"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/edittext_h"
-            android:background="@drawable/edittext1"
-            android:paddingLeft="@dimen/edittext_padding_left"
-            android:layout_marginTop="@dimen/edittext_margin_top"
-            android:ems="12"
-            android:singleLine="true"
-            android:hint="รหัสผ่าน"
-            android:password="true" />
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/register_password_confirm"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/edittext_h"
-            android:background="@drawable/edittext1"
-            android:paddingLeft="@dimen/edittext_padding_left"
-            android:layout_marginTop="@dimen/edittext_margin_top"
-            android:ems="12"
-            android:singleLine="true"
-            android:imeOptions="actionDone"
-            android:hint="ยืนยันรหัสผ่าน"
-            android:password="true" />
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/register_password_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/edittext_padding_left"
+                android:layout_marginTop="@dimen/edittext_margin_top"
+                android:ems="12"
+                android:singleLine="true"
+                android:imeOptions="actionDone"
+                android:hint="@string/regist_confirm_password_warnging_string"
+                android:password="true" />
+        </android.support.design.widget.TextInputLayout>
+
         <TextView
             android:id="@+id/regist_confirm_password_waring"
             android:layout_width="wrap_content"

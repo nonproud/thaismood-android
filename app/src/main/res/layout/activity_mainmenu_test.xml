@@ -13,26 +13,11 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/_2qbtn"
+            android:id="@+id/evaluation_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2Q"
+            android:text="Evaluation"
             />
-        <Button
-            android:id="@+id/_9qbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="9Q"/>
-        <Button
-            android:id="@+id/_8qbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="8Q"/>
-        <Button
-            android:id="@+id/_mdbbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="MDQ"/>
         <Button
             android:id="@+id/sign_in_onbtn"
             android:layout_width="wrap_content"

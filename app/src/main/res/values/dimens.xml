@@ -6,4 +6,24 @@
     <!--Sign in on Activity-->
     <dimen name="regist_waring_size">15dp</dimen>
     <!--End of Sign in on Activity-->
+
+    <!--Fragment Header-->
+    <dimen name="fragment_header_height">60dp</dimen>
+    <dimen name="fragment_header_text_size">20dp</dimen>
+    <dimen name="fragment_header_left_matgin">10dp</dimen>
+    <!--End of Fragment Header-->
+
+    <!--Mood List Box-->
+    <dimen name="mood_box_stork">5dp</dimen>
+    <!--End of Mood List Box-->
+
+    <!--Fragment Question-->
+    <dimen name="question_text_size">20dp</dimen>
+    <!--End ofFragment Question-->
+
+    <!--Add Activity-->
+    <dimen name="add_mood_emo_small_diment">60dp</dimen>
+    <dimen name="add_mood_emo_large_diment">100dp</dimen>
+    <dimen name="add_mood_emo_margin">5dp</dimen>
+    <!--End of Add Activity-->
 </resources>

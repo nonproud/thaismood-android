@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="bottom"
+    tools:context=".AddMoodFragment"
+    android:id="@+id/add_mood_transition">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_weight="1">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_mood_header"
+            android:textSize="@dimen/fragment_header_text_size"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="50dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <LinearLayout
+                android:id="@+id/add_mood_emo_violet_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/add_mood_emo_margin"
+                android:layout_marginLeft="@dimen/add_mood_emo_margin"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/add_mood_emo_violet_icon"
+                    android:layout_width="@dimen/add_mood_emo_small_diment"
+                    android:layout_height="@dimen/add_mood_emo_small_diment"
+                    android:src="@drawable/emo_violet_blank"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_mood_text_violet"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/add_mood_emo_grey_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/add_mood_emo_margin"
+                android:layout_marginLeft="@dimen/add_mood_emo_margin"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/add_mood_emo_grey_icon"
+                    android:layout_width="@dimen/add_mood_emo_small_diment"
+                    android:layout_height="@dimen/add_mood_emo_small_diment"
+                    android:src="@drawable/emo_grey_blank"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_mood_text_grey"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/add_mood_emo_green_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/add_mood_emo_margin"
+                android:layout_marginLeft="@dimen/add_mood_emo_margin"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/add_mood_emo_green_icon"
+                    android:layout_width="@dimen/add_mood_emo_small_diment"
+                    android:layout_height="@dimen/add_mood_emo_small_diment"
+                    android:src="@drawable/emo_green_blank"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_mood_text_green"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/add_mood_emo_yellow_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/add_mood_emo_margin"
+                android:layout_marginLeft="@dimen/add_mood_emo_margin"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/add_mood_emo_yellow_icon"
+                    android:layout_width="@dimen/add_mood_emo_small_diment"
+                    android:layout_height="@dimen/add_mood_emo_small_diment"
+                    android:src="@drawable/emo_yellow_blank"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_mood_text_yellow"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/add_mood_emo_red_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/add_mood_emo_red_icon"
+                    android:layout_width="@dimen/add_mood_emo_small_diment"
+                    android:layout_height="@dimen/add_mood_emo_small_diment"
+                    android:layout_marginRight="@dimen/add_mood_emo_margin"
+                    android:layout_marginLeft="@dimen/add_mood_emo_margin"
+                    android:src="@drawable/emo_red_blank"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_mood_text_red"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/add_mood_description_emo_section"
+            android:layout_width="300dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:background="@drawable/mood_box_violet">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="30dp"
+                android:text="@string/add_mood_description_header"/>
+            <TextView
+                android:id="@+id/add_mood_description_emo_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/confirm_color">
+
+        <Button
+            android:id="@+id/add_mood_next_btn"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/colorPrimaryDark"
+            android:fontFamily="@font/thsarabunnew_bold"
+            android:text="ถัดไป"
+            android:textColor="#FFFFFF"
+            android:textSize="25dp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -13,15 +13,43 @@
     <!--End of url section-->
 
     <!--Sign in on Activity-->
+    <string name="dialog_regist_header">ลงทะเบียน</string>
+    <string name="regist_email_hint">อีเมล</string>
+    <string name="regist_username_hint">ชื่อผู้ใช้</string>
+    <string name="regist_password_hint">รหัสผ่าน</string>
+    <string name="regist_comfirm_password_hint">ยืนยันรหัสผ่าน</string>
     <string name="regist_email_waring_string">อีเมลนี้ ถูกใช้แล้ว ถ้าหากลืมรหัสผ่านกรุณากดลืมรหัสผ่าน</string>
-    <string name="regist_comfirm_email_waring_string">อีเมลที่ระบุไม่ตรงกัน</string>
+    <string name="regist_username_waring_string">ชื่อผู้ใช้งานนี้ถูกใช้แล้ว</string>
     <string name="regist_confirm_password_warnging_string">รหัสผ่านไม่ตรงกัน</string>
+    <string name="dialog_login_header">ลงทะเบียน</string>
     <!--End of Sign in on Activity-->
+
 
     <string name="app_name">Thai\'s Mood</string>
     <string name="q_error">กรุณาตอบแบบประเมินให้ครบทุกคำถาม</string>
-    <string name="q_2q_1">1. ท่านรู้สึก หดหู่ เศร้า หรือ ท้อแท้สิ้นหวัง หรือไม่</string>
-    <string name="q_2q_2">2. เบื่อ ทาอะไรก็ไม่เพลิดเพลิน หรือไม่</string>
+
+    <!--IEvaluation Section-->
+    <!--2Q Question -->
+    <string name="q_2q_header">แบบคัดกรองโรคซึมเศร้า 2 คำถาม (2Q)</string>
+    <string name="q_2q_intro">ในช่วง 2 สัปดาห์ที่ผ่านมา รวมถึงวันนี้</string>
+    <string name="q_2q_1">ท่านรู้สึก หดหู่ เศร้า หรือ ท้อแท้สิ้นหวัง หรือไม่</string>
+    <string name="q_2q_2">เบื่อ ทาอะไรก็ไม่เพลิดเพลิน หรือไม่</string>
+    <string name="q_2q_ans_1">มี</string>
+    <string name="q_2q_ans_2">ไม่มี</string>
+    <array name="q_2q_question">
+        <item>ท่านรู้สึก หดหู่ เศร้า หรือ ท้อแท้สิ้นหวัง หรือไม่</item>
+        <item>ท่านรู้สึก เบื่อ ทาอะไรก็ไม่เพลิดเพลิน หรือไม่</item>
+    </array>
+    <array name="q_2q_result">
+        <item>ท่านไม่มีมีความเสี่ยงเป็นโรคซึมเศร้า</item>
+        <item>โปรดทำแบบประเมินความผิดปกติทางอารมณ์</item>
+        <item>ท่านมีความเสี่ยงเป็นโรคซึมเศร้า</item>
+        <item>โปรดทำแบบประเมินโรคซึ่มเศ้รา 9 คำถาม</item>
+    </array>
+    <!--End of 2Q Question -->
+
+    <!--9Q Question -->
+    <string name="q_9q_header">แบบประเมินโรคซึมเศร้า 9 คำถาม (9Q)</string>
     <string name="q_9q_1">1. เบื่อ ไม่สนใจอยากทำอะไร</string>
     <string name="q_9q_2">2. ไม่สบายใจ ซึมเศร้า ท้อแท้</string>
     <string name="q_9q_3">3. หลับยากหรือหลับๆตื่นๆหรือหลับมากไป</string>
@@ -31,6 +59,34 @@
     <string name="q_9q_7">7. สมาธิไม่ดี เวลาทำอะไร เช่น ดูโทรทัศน์ ฟังวิทยุ หรือทำงานที่ต้องใช้ความตั้งใจ</string>
     <string name="q_9q_8">8. พูดช้า ทำอะไรช้าลงจนคนอื่นสังเกตเห็นได้ หรือกระสับกระส่ายไม่สามารถอยู่นิ่งได้เหมือนที่เคยเป็น</string>
     <string name="q_9q_9">9. คิดทำร้ายตนเอง หรือคิดว่าถ้าตายไปคงจะดี</string>
+    <string name="q_9q_ans_1">ไม่มีเลย</string>
+    <string name="q_9q_ans_2">เป็นบางวัน (1-7 วัน)</string>
+    <string name="q_9q_ans_3">เป็นบ่อย (มากกว่า 7 วัน)</string>
+    <string name="q_9q_ans_4">เป็นทุกวัน</string>
+    <array name="q_9q_question">
+        <item>เบื่อ ไม่สนใจอยากทำอะไร</item>
+        <item>ไม่สบายใจ ซึมเศร้า ท้อแท้</item>
+        <item>หลับยากหรือหลับๆตื่นๆหรือหลับมากไป</item>
+        <item>เหนื่อยง่ายหรือไม่ค่อยมีแรง</item>
+        <item>เบื่ออาหารหรือกินมากเกินไป</item>
+        <item>รู้สึกไม่ดีกับตัวเอง คิดว่าตัวเองล้มเหลวหรือครอบครัวผิดหวัง</item>
+        <item>สมาธิไม่ดี เวลาทำอะไร เช่น ดูโทรทัศน์ ฟังวิทยุ หรือทำงานที่ต้องใช้ความตั้งใจ</item>
+        <item>พูดช้า ทำอะไรช้าลงจนคนอื่นสังเกตเห็นได้ หรือกระสับกระส่ายไม่สามารถอยู่นิ่งได้เหมือนที่เคยเป็น</item>
+        <item>คิดทำร้ายตนเอง หรือคิดว่าถ้าตายไปคงจะดี</item>
+    </array>
+
+    <array name="q_9q_result">
+        <item>ไม่มีอาการของโรคซึมเศร้าหรือมีอาการของโรคซึมเศร้าระดับน้อยมาก</item>
+        <item>โปรดทำแบบประเมินความผิดปกติทางอารมณ์</item>
+        <item>มีอาการของโรคซึมเศร้า ระดับน้อย</item>
+        <item>มีอาการของโรคซึมเศร้า ระดับปานกลาง</item>
+        <item>มีอาการของโรคซึมเศร้า ระดับรุนแรง</item>
+        <item>โปรดทำแบบประเมินการฆ่าตัวตาย 8 คำถาม</item>
+    </array>
+    <!--End of 9Q Question -->
+
+    <!--8Q Question-->
+    <string name="q_8q_header">แบบประเมินการฆ่าตัวตาย 8 คำถาม (8Q)</string>
     <string name="q_8q_1">1. คิดอยากตาย หรือ คิดว่าตายไปจะดีกว่า</string>
     <string name="q_8q_2">2. อยากทาร้ายตัวเอง หรือ ทาให้ตัวเองบาดเจ็บ</string>
     <string name="q_8q_3">3. คิดเกี่ยวกับการฆ่าตัวตาย</string>
@@ -40,6 +96,34 @@
     <string name="q_8q_6">6. ได้ทาให้ตนเองบาดเจ็บแต่ไม่ตั้งใจที่จะทาให้เสียชีวิต</string>
     <string name="q_8q_7">7. ได้พยายามฆ่าตัวตายโดยคาดหวัง/ตั้งใจที่จะให้ตาย</string>
     <string name="q_8q_8">8. ท่านเคยพยายามฆ่าตัวตาย</string>
+    <string name="q_8q_ans_1">ไม่มี</string>
+    <string name="q_8q_ans_2">มี</string>
+    <string name="q_8q_ans_1_ex">ได้</string>
+    <string name="q_8q_ans_2_ex">ไม่ได้</string>
+
+    <array name="q_8q_question">
+        <item>คิดอยากตาย หรือ คิดว่าตายไปจะดีกว่า</item>
+        <item>อยากทาร้ายตัวเอง หรือ ทาให้ตัวเองบาดเจ็บ</item>
+        <item>คิดเกี่ยวกับการฆ่าตัวตาย</item>
+        <item>มีแผนการที่จะฆ่าตัวตาย</item>
+        <item>ตายโดยตั้งใจว่าจะให้ตายจริง ๆ</item>
+        <item>ได้ทาให้ตนเองบาดเจ็บแต่ไม่ตั้งใจที่จะทาให้เสียชีวิต</item>
+        <item>ได้พยายามฆ่าตัวตายโดยคาดหวัง/ตั้งใจที่จะให้ตาย</item>
+        <item>ท่านเคยพยายามฆ่าตัวตาย</item>
+        <item>ท่านสามารถควบคุมความอยากฆ่าตัวตายที่ท่านคิดอยู่นั้นได้หรือไม่ หรือ บอกได้ไหมว่าคงจะไม่ทาตามความคิดนั้นในขณะนี้</item>
+    </array>
+
+    <array name="q_8q_result">
+        <item>ไม่มีแนวโน้มฆ่าตัวตายในปัจจุบัน</item>
+        <item>มีแนวโน้มที่จะฆ่าตัวตายในปัจจุบัน ระดับน้อย</item>
+        <item>มีแนวโน้มที่จะฆ่าตัวตายในปัจจุบัน ระดับปานกลาง</item>
+        <item>มีแนวโน้มที่จะฆ่าตัวตายในปัจจุบัน ระดับรุนแรง</item>
+        <item>โปรดทำแบบประเมินความผิดปกติทางอารมณ์</item>
+    </array>
+    <!--End of 8Q Question-->
+
+    <!--MDQ Question-->
+    <string name="q_mdq_header">แบบทดสอบความผิดปกติทางอารมณ์ (MDQ)</string>
     <string name="mdq_1">1. เคยมีช่วงระยะเวลาใดเวลาหนึ่งในชีวิตที่ผ่านมาที่คุณรู้สึกไม่เป็นตัวของตัวเองตามปกติ และ....</string>
     <string name="mdq_1_1">....คุณรู้สึกอารมณ์ดีมากๆ หรือ กระตือรือร้นมากๆ จนผู้อื่นคิดว่าคุณไม่ปกติ หรือคุณทำอะไรมากเกินไปจนทำให้ตัว คุณเองเดือดร้อน?</string>
     <string name="mdq_1_2">....คุณหงุดหงิดง่ายจนคุณพูดเสียงดังใส่คนอื่น หรือ ก่อเหตุทะเลาะวิวาท หรือ ชกต่อยกัน?</string>
@@ -56,6 +140,50 @@
     <string name="mdq_1_13">....คุณใช้จ่ายเงินจนทำให้ตัวเอง หรือ ครอบครัวของคุณเดือดร้อน?</string>
     <string name="mdq_2">2. เหตุการณ์ต่างๆ เหล่านี้ส่วนใหญ่เกิดขึ้นในช่วงระยะเวลาใกล้เคียงกันใช่หรือไม่ กรุณาเลือกวงเพียงหนึ่งคำตอบเท่านั้น</string>
     <string name="mdq_3">3. เหตุการณ์ต่างๆ เหล่านี้ส่งผลกระทบต่อคุณในขณะนั้นมากเพียงใด-เช่น มีผลให้คุณทำงานไม่ได้, มีปัญหาในครอบครัว, ด้านการเงิน, หรือ ด้านกฎหมาย ทำให้คุณเข้าไปมีส่วนในการโต้เถียง หรือ ทะเลาะวิวาท? กรุณาเลือกวงเพียงหนึ่งคำตอบเท่านั้น</string>
+
+    <string name="q_mdq_ans_1">ใช่</string>
+    <string name="q_mdq_ans_2">ไม่ใช่</string>
+    <string name="q_mdq_ans_3">ไม่ก่อปัญหา</string>
+    <string name="q_mdq_ans_4">ก่อปัญหาเล็กน้อย</string>
+    <string name="q_mdq_ans_5">ก่อปัญหาปานกลาง</string>
+    <string name="q_mdq_ans_6">ก่อปัญหารุนแรง</string>
+
+    <array name="q_mdq_question">
+        <item>เคยมีช่วงระยะเวลาใดเวลาหนึ่งในชีวิตที่ผ่านมาที่คุณรู้สึกไม่เป็นตัวของตัวเองตามปกติ และ</item>
+        <item>คุณรู้สึกอารมณ์ดีมากๆ หรือ กระตือรือร้นมากๆ จนผู้อื่นคิดว่าคุณไม่ปกติ หรือคุณทำอะไรมากเกินไปจนทำให้ตัว คุณเองเดือดร้อน</item>
+        <item>คุณหงุดหงิดง่ายจนคุณพูดเสียงดังใส่คนอื่น หรือ ก่อเหตุทะเลาะวิวาท หรือ ชกต่อยกัน</item>
+        <item>คุณรู้สึกมั่นใจในตนเองมากกว่าปกติ</item>
+        <item>คุณนอนน้อยลงกว่าปกติมาก และ รู้สึกเหมือนไม่ได้อดนอน</item>
+        <item>คุณพูดมากขึ้น หรือพูดเร็วมากกว่าปกติ</item>
+        <item>คุณมีความคิดพลุ่งพล่าน หรือ คุณไม่สามารถสงบจิตใจได้</item>
+        <item>คุณวอกแวกกับสิ่งต่าง ๆ รอบตัวคุณได้ง่าย จนคุณไม่มีสมาธิ หรือไม่สามารถจดจ่อในเรื่องใดเรื่องหนึ่ง</item>
+        <item>คุณมีเรี่ยวแรงมากกว่าปกติ</item>
+        <item>คุณกระฉับกระเฉงมากขึ้น หรือทำสิ่งต่างๆ มากกว่าปกติ</item>
+        <item>คุณชอบเข้าสังคม หรือ พบปะผู้คนมากกว่าปกติ เช่น คุณโทรศัพท์หาเพื่อนกลางดึก</item>
+        <item>คุณมีความสนใจในเรื่องทางเพศมากกว่าปกติ</item>
+        <item>คุณทำสิ่งต่างๆ ที่ผิดวิสัยของคุณ หรือ ทำสิ่งที่ผู้อื่นอาจคิดว่ามันมากเกินควร หรือมีความเสี่ยง</item>
+        <item>คุณใช้จ่ายเงินจนทำให้ตัวเอง หรือ ครอบครัวของคุณเดือดร้อน</item>
+        <item>เหตุการณ์ต่างๆ เหล่านี้ส่วนใหญ่เกิดขึ้นในช่วงระยะเวลาใกล้เคียงกันใช่หรือไม่ กรุณาเลือกวงเพียงหนึ่งคำตอบเท่านั้น</item>
+        <item>เหตุการณ์ต่างๆ เหล่านี้ส่งผลกระทบต่อคุณในขณะนั้นมากเพียงใด-เช่น มีผลให้คุณทำงานไม่ได้, มีปัญหาในครอบครัว, ด้านการเงิน, หรือ ด้านกฎหมาย ทำให้คุณเข้าไปมีส่วนในการโต้เถียง หรือ ทะเลาะวิวาท? กรุณาเลือกวงเพียงหนึ่งคำตอบเท่านั้น</item>
+    </array>
+    <array name="q_mdq_result">
+        <item>มีความเสี่ยงเป็นโรคอารมณ์แปรปรวนสองขั้ว (Bipolar)</item>
+        <item>ไม่มีความเสี่ยงเป็นโรคอารมณ์แปรปรวนสองขั้ว (Bipolar)</item>
+    </array>
+    <!--MDQ Question-->
+    <!--End of IEvaluation Section-->
+
+    <!--Evaluation Result Fregment Section-->
+    <string name="result_2q_band">2Q</string>
+    <string name="result_9q_band">9Q</string>
+    <string name="result_8q_band">8Q</string>
+    <string name="result_mdq_band">MDQ</string>
+    <string name="result_2q_header">ผลการแปลผลแบบตัดกรองโรคซึ่มเศ้รา 2 คำถาม (2Q)</string>
+    <string name="result_9q_header">ผลการแปลผลแบบประเมินโรคซึ่มเศ้รา 9 คำถาม (9Q)</string>
+    <string name="result_8q_header">ผลการแปลผลแบบประเมินการฆ่าตัวตาย 8 คำถาม (8Q)</string>
+    <string name="result_mdq_header">ผลการแปลผลแบบประเมินความผิดปกติทางอารมณ์ (MDQ)</string>
+    <!--End of Evaluation Result Fregment Section-->
+
     <string name="menu_home">หน้าแรก</string>
     <string name="menu_add">เพิ่ม</string>
     <string name="menu_profile">ข้อมูลลส่วนตัว</string>
@@ -64,8 +192,8 @@
     <string name="title_oneitem">รายการ</string>
     <string name="title_graph">กราฟอารมณ์</string>
     <string name="title_add">เพิ่ม</string>
-    <string name="title_profile">ข้อมูลผู้ใช้</string>
-    <string name="title_setting">ตั้งค่า</string>
+    <string name="title_profile">ข้อมูลที่เป็นประโยชน์</string>
+    <string name="title_setting">อื่นๆ</string>
 
     <array name="register_patient_disorder">
         <item>โรคซึมเศร้า</item>
@@ -75,4 +203,76 @@
 
     <string name="otp_success">เจ๋งเลย! รหัสยืนยันของคุณถูกต้อง เริ่มต้นกรอกข้อมูลผู้ใช้กันเลย</string>
     <string name="otp_fail">รหัสยืนยันไม่ถูกต้อง</string>
+
+    <!--Register Fragment-->
+    <string name="register_ask_type_header">เลือกประเภทผู้ใช้</string>
+    <string name="register_ask_type_general_lable">ผู้ใช้ทั่วไป</string>
+    <string name="register_ask_type_patient_lable">ผู้ป่วย</string>
+    <string name="register_ask_type_is_still_treat_header">ยังรับการรักษาอยู่ไหม</string>
+    <string name="register_ask_type_is_still_treat_yes">ยังคงรักษาอยู่</string>
+    <string name="register_ask_type_is_still_treat_no">ไม่ได้รักษาแล้ว</string>
+    <string name="register_ask_sex_header">กรุณาเลือกเพศของคุณ</string>
+    <string name="register_ask_sex_male">ชาย</string>
+    <string name="register_ask_sex_female">หญิง</string>
+    <string name="register_ask_sex_pregnant_header">คุณกำลังตั้งครรภ์ไหม</string>
+    <string name="register_ask_sex_no_pregnant">ไม่ได้ตั้งครรภ์</string>
+    <string name="register_ask_sex_pregnant">ตั้งครรภ์</string>
+    <string name="register_form_ask_disorder">โรคที่เป็น</string>
+    <string name="register_form_ask_disease">ท่านมีโรคประจำตัวดังต่อไปนี้หรือไม่</string>
+    <string name="register_form_ask_disease_1">เบาหวาน ความดัน ไขมัน</string>
+    <string name="register_form_ask_disease_2">ไทรอยด์(ความผิดปกติของต่อมไทรอยด์)</string>
+    <string name="register_form_ask_disease_3">โรคหลอดเลือดสมอง</string>
+    <string name="register_form_ask_disease_4">โรคหลอดเลือดหัวใจ</string>
+    <string name="register_form_ask_disease_5">ลมชัก</string>
+    <string name="register_form_ask_disease_6">อื่นๆ</string>
+    <!--End of Register Fragment-->
+
+    <!--Add Record Activity-->
+        <!--Add Mood Fragment-->
+    <string name="add_mood_header">วันนี้คุณรู้สึกอย่างไร</string>
+    <string name="add_mood_instruction">อารมณ</string>
+    <string name="add_mood_text_red">โกรธ</string>
+    <string name="add_mood_text_yellow">สนุกสนาน</string>
+    <string name="add_mood_text_green">ปกติ</string>
+    <string name="add_mood_text_grey">เครียด</string>
+    <string name="add_mood_text_violet">เศร้า</string>
+    <string name="add_mood_description_header">อารมณ์ในกลุ่มนี้</string>
+    <string name="add_mood_red_description">โกรธ หงุดหงิด</string>
+    <string name="add_mood_yellow_description">คึกคัก สนุกสนาน</string>
+    <string name="add_mood_green_description">ปกติ ไม่เศร้า ไม่เบื่อ ไม่หงุดหงิด</string>
+    <string name="add_mood_grey_description">เครียด กังวล</string>
+    <string name="add_mood_violet_description">เศร้า เบื่อ เซ็ง หดหู่ โดดเดี่ยว เหงา รู้สึกผิด</string>
+        <!-- End of Add Mood Fragment-->
+        <!--Add Mood Level Fragment-->
+    <string name="add_mood_level_mood_label">วันนี้คุณรู้สึก ..</string>
+    <string name="add_mood_level_seek_scale_instruction">เลือกระดับความรูสึก</string>
+    <string name="add_mood_level_note_hint">บันทึกย่อ</string>
+        <!--Add Mood Level Fragment-->
+
+    <!--End of Add Record Activity-->
+
+    <!--Fragment Header-->
+    <string name="header_fragment_list">รายการที่บันทึก</string>
+        <!--Graph fragment-->
+        <string name="fragment_graph_week_header">มุมมองหนึ่งอาทิตย์</string>
+        <string name="fragment_graph_month_header">มุมมองหนึ่งเดือน</string>
+        <string name="fragment_graph_year_header">มุมมองหนึ่งปี</string>
+        <!--End of Graph fragment-->
+    <string name="header_fragment_more">ตัวเลือกอื่นๆ</string>
+    <!--End of Fragment Header-->
+
+    <!--More Option Fragment-->
+    <string name="fragement_more_option_header">ตัวเลืออื่นๆ</string>
+    <string name="fragement_more_option_account_my_account">บัญชีผู้ใช้</string>
+    <string name="fragement_more_option_account_my_account_key">my_account_setting</string>
+    <string name="fragement_more_option_account_my_account_summary">ดูและแก้ไข ข้อมูลบัญชีผู้ใช้</string>
+
+    <string name="fragement_more_option_notification">การแจ้งเตือน</string>
+    <string name="fragement_more_option_notification_key">notification_setting</string>
+    <string name="fragement_more_option_notification_summary">ตั้งค่าการแจ้งเตือน</string>
+
+    <string name="fragement_more_option_notification_catagory_header">การแจ้งเตือน</string>
+    <!--End of More Option Fragment-->
+
+
 </resources>

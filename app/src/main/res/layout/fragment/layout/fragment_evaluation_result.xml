@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    tools:context=".EvaluationResultFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="50">
+
+        <TextView
+            android:id="@+id/evaluation_band_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/circle"
+            android:gravity="center"
+            android:fontFamily="@font/thsarabunnew"
+            android:text="@string/result_2q_band"
+            android:textSize="60dp"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/evaluation_header_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:ems="14"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:text="@string/result_2q_header"/>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/evaluation_result_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:backgroundTintMode="screen"
+                android:background="@drawable/q_2q_result_box"
+                android:ems="15"
+                android:text="มีอาการหีแตดรุนแรง"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/evaluation_todo_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:ems="14"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:text="this is what to do text view"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/confirm_color">
+
+        <Button
+            android:id="@+id/evaluation_result_next_btn"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/colorPrimaryDark"
+            android:fontFamily="@font/thsarabunnew_bold"
+            android:text="ถัดไป"
+            android:textColor="#FFFFFF"
+            android:textSize="25dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
