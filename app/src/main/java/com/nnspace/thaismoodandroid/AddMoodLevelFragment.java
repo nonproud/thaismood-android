@@ -54,6 +54,7 @@ public class AddMoodLevelFragment extends Fragment {
                 moodEmo.setImageDrawable(getResources().getDrawable(R.drawable.emo_green_fill));
                 moodLevel.setVisibility(View.GONE);
                 textdes.setText(getResources().getString(R.string.add_mood_text_green));
+                moodLevelValue = 0;
                 seekbarSection.setVisibility(View.GONE);
                 break;
             case 4:
@@ -92,8 +93,16 @@ public class AddMoodLevelFragment extends Fragment {
                 EditText notetx = getView().findViewById(R.id.add_mood_level_note);
                 String note = notetx.getText().toString();
                 EmotionDB db = new EmotionDB(getActivity());
-                db.insertMood(selectedMood, moodLevelValue, note);
-                getActivity().finish();
+                if(db.insertMood(selectedMood, moodLevelValue, note)){
+                    getActivity().finish();
+                }else{
+                    try {
+                        throw new Exception("ERROR");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
             }
         });
 

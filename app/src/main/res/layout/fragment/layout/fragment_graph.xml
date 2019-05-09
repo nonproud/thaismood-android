@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/fragment_header_height"
             android:layout_gravity="center"
-            android:background="@color/colorAccent"
+            android:background="@drawable/layout_shadow"
             android:gravity="center">
 
             <TextView
@@ -24,7 +24,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
-                android:textColor="@color/white"
                 android:textSize="@dimen/fragment_header_text_size"
                 android:text="มุมมองหนึ่งอาทิตย์" />
 
@@ -38,7 +37,7 @@
                     android:layout_width="41dp"
                     android:layout_height="41dp"
                     android:layout_marginRight="3dp"
-                    android:background="@color/white"
+                    android:background="@color/colorPrimaryDark"
                     android:gravity="center">
                     <ImageView
                         android:layout_width="40dp"
@@ -76,7 +75,6 @@
             android:id="@+id/graph_fragment_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
         </FrameLayout>
     </LinearLayout>
 

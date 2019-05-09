@@ -10,15 +10,14 @@
         android:layout_height="@dimen/fragment_header_height"
         android:gravity="center_vertical"
         android:orientation="vertical"
-        android:background="@color/colorAccent">
+        android:background="@drawable/layout_shadow">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/fragment_header_left_matgin"
-            android:textColor="@color/white"
             android:textSize="20dp"
-            android:text=""/>
+            android:text="อื่นๆ"/>
 
     </LinearLayout>
 

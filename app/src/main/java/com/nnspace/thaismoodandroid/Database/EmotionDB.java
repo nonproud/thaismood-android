@@ -10,8 +10,6 @@ import com.nnspace.thaismoodandroid.DatabaseModel.EmotionModel;
 import com.nnspace.thaismoodandroid.MoodObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import static android.content.ContentValues.TAG;
 
@@ -24,15 +22,16 @@ public class EmotionDB extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_EMOTION_TABLE = String.format("CREATE TABLE %s (" +
+                        "%s int PRIMARY KEY, " +
                         "%s int NOT NULL, " +
                         "%s int NOT NULL, " +
-                        "%s int NOT NULL, " +
-                        "%s DATETIME NOT NULL, " +
-                        "PRIMARY KEY (%s)" +
+                        "%s VARCHAR(1000), " +
+                        "%s DATE NOT NULL " +
                         ");", EmotionModel.TABLE_NAME,
                 EmotionModel.column.ID,
                 EmotionModel.column.EMOTION,
                 EmotionModel.column.LEVEL,
+                EmotionModel.column.NOTE,
                 EmotionModel.column.DATE,
                 EmotionModel.column.ID
         );
@@ -48,7 +47,7 @@ public class EmotionDB extends SQLiteOpenHelper {
     }
 
     public boolean insertMood(int mood, int level, String note){
-        String query_insert_mood = String.format("INSERT INTO %s (%s, %s, %s, %s) values('%s', '%s', '%s', CONVERT(VARCHAR(10), getdate(), 103));",
+        String query_insert_mood = String.format("INSERT INTO %s (%s, %s, %s, %s) values(%d, %d, '%s', date('now'));",
                 EmotionModel.TABLE_NAME,
                 EmotionModel.column.EMOTION,
                 EmotionModel.column.LEVEL,
@@ -59,6 +58,7 @@ public class EmotionDB extends SQLiteOpenHelper {
         try{
             db.execSQL(query_insert_mood);
         }catch (Exception err){
+            err.printStackTrace();
             return false;
         }
         return true;
@@ -85,18 +85,19 @@ public class EmotionDB extends SQLiteOpenHelper {
         Cursor result = db.rawQuery(query_get_mood, null);
         ArrayList<MoodObject> obj = new ArrayList<>();
 
-        while (!result.isAfterLast()){
-            MoodObject mood = new MoodObject()
-        }
         if(result.moveToFirst()){
-            data = new HashMap<String, String>();
-            data.put("status", result.getString(0));
-            data.put("user_id", result.getString(1));
-            data.put("email", result.getString(2));
-            data.put("token", result.getString(3));
+            do{
+                int id = result.getInt(0);
+                int mood = result.getInt(1);
+                int level = result.getInt(2);
+                String note = result.getString(3);
+                String date = result.getString(4);
+                MoodObject moodObj = new MoodObject(id, mood, level, note, date);
+                obj.add(moodObj);
+            }while (result.moveToNext());
         }
-
-        return data;
-
+        result.close();
+        db.close();
+        return obj;
     }
 }
