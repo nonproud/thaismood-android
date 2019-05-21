@@ -1,14 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GraphMonth">
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#eeeeee"
+    tools:context=".HomeActivity.Graph.GraphMonth">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="30dp"
+        android:gravity="center">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/graph_month_left_btn"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:tint="@color/colorPrimaryDark"
+            android:src="@drawable/ic_left"/>
+
+        <TextView
+            android:id="@+id/graph_month_date_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:fontFamily="@font/thsarabunnew_bold"
+            android:textSize="25dp"
+            android:text="พฤษภาคม 2562"/>
+
+        <ImageView
+            android:id="@+id/graph_month_right_btn"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:tint="@color/colorPrimaryDark"
+            android:src="@drawable/ic_right"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/graph_month_chart1"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_margin="20dp"
+                    />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20dp"
+                    android:fontFamily="@font/thsarabunnew_bold"
+                    android:text="สัดส่วนอารมณ์ในอาทิตย์นี้"/>
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/graph_month_chart2"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    />
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

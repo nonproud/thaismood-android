@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/list_view_menu_record"
+        android:title="@string/list_view_menu_record_title" />
+
+    <item
+        android:id="@+id/list_view_menu_mood"
+        android:title="@string/list_view_menu_mood_title" />
+
+    <item
+        android:id="@+id/list_view_menu_sleep_time"
+        android:title="@string/list_view_menu_sleep_title" />
+    <item
+        android:id="@+id/list_view_menu_record_activity"
+        android:title="@string/list_view_menu_activity_title" />
+
+    <item
+        android:id="@+id/list_view_menu_record_exercise"
+        android:title="@string/list_view_menu_excercise_title" />
+
+</menu>

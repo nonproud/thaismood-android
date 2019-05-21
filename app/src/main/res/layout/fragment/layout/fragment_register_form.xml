@@ -1,424 +1,450 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.Register_form"
-    android:background="@color/colorPrimary">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="bottom"
+    android:background="@color/white"
+    tools:context=".RegisterActivity.Register_form">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="top|center"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
         android:orientation="vertical">
 
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="30dp"
-            android:layout_weight="80"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/thsarabunnew_bold"
+            android:textSize="30dp"
+            android:text="ลงทะเบียนผู้ใช้"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/thsarabunnew_bold"
-                android:layout_marginTop="30dp"
-                android:textSize="40dp"
-                android:textColor="@color/white"
-                android:text="ข้อมูลสมาชิก"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:orientation="vertical">
 
-            <ScrollView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:orientation="vertical"
-                android:background="@drawable/box_border">
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/register_lastname_text_input"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/register_lastname_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/edittext_margin_top"
+                        android:paddingLeft="@dimen/edittext_padding_left"
+                        android:singleLine="true"
+                        android:ems="20"
+                        android:hint="ชื่อผู้ใช้" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/register_dob_text_input"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/register_dob"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/edittext_margin_top"
+                        android:paddingLeft="@dimen/edittext_padding_left"
+                        android:drawableRight="@drawable/calendar"
+                        android:singleLine="true"
+                        android:editable="false"
+                        android:ems="20"
+                        android:inputType="date"
+                        android:hint="วัน/เดือน/ปี (พ.ศ.) เกิด" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/register_period_input"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/register_period"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/edittext_margin_top"
+                        android:paddingLeft="@dimen/edittext_padding_left"
+                        android:singleLine="true"
+                        android:ems="10"
+                        android:inputType="date"
+                        android:hint="วันที่เริ่มเป็นประจำเดือน" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
                 <LinearLayout
+                    android:id="@+id/register_disease_sectio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:orientation="vertical">
 
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/register_name_text_input"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="7dp">
-
-                        <android.support.design.widget.TextInputEditText
-                            android:id="@+id/register_name_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/edittext_margin_top"
-                            android:paddingLeft="@dimen/edittext_padding_left"
-                            android:singleLine="true"
-                            android:ems="20"
-                            android:hint="ชื่อ" />
-                    </android.support.design.widget.TextInputLayout>
-
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/register_lastname_text_input"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="7dp">
-
-                        <android.support.design.widget.TextInputEditText
-                            android:id="@+id/register_lastname_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/edittext_margin_top"
-                            android:paddingLeft="@dimen/edittext_padding_left"
-                            android:singleLine="true"
-                            android:ems="20"
-                            android:hint="นามสกุล" />
-                    </android.support.design.widget.TextInputLayout>
-
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/register_dob_text_input"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="7dp">
-
-                        <android.support.design.widget.TextInputEditText
-                            android:id="@+id/register_dob"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/edittext_margin_top"
-                            android:paddingLeft="@dimen/edittext_padding_left"
-                            android:singleLine="true"
-                            android:ems="20"
-                            android:inputType="date"
-                            android:hint="วัน/เดือน/ปี (พ.ศ.) เกิด" />
-                    </android.support.design.widget.TextInputLayout>
-
-                    <LinearLayout
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="left">
+                        android:textSize="20dp"
+                        android:text="@string/register_form_ask_disease"/>
 
-                        <LinearLayout
-                            android:id="@+id/register_period_section"
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="20dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/box_border">
+
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:visibility="visible">
+                            android:layout_alignParentLeft="true"
+                            android:gravity="left"
+                            android:text="@string/register_form_ask_disease_1"
+                            android:textSize="20dp" />
 
-                            <android.support.design.widget.TextInputLayout
-                                android:id="@+id/register_period_input"
+                        <com.rm.rmswitch.RMSwitch
+                            android:id="@+id/switch_d1"
+                            android:layout_width="56dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentRight="true"
+                            android:gravity="right"
+                            app:checked="false"
+                            app:enabled="true"
+                            app:switchDesign="android"
+                            app:forceAspectRatio="true"
+                            app:switchBkgCheckedColor="@color/mood_green"
+                            app:switchBkgNotCheckedColor="@color/mood_red"
+                            app:switchToggleCheckedColor="#32bea6"
+                            app:switchToggleCheckedImage="@drawable/correct"
+                            app:switchToggleNotCheckedColor="#e04f5f"
+                            app:switchToggleNotCheckedImage="@drawable/wrong"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="20dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/box_border">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="left"
+                                android:text="@string/register_form_ask_disease_2"
+                                android:textSize="20dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="left"
+                                android:text="@string/register_form_ask_disease_2_2"
+                                android:textSize="15dp" />
+                        </LinearLayout>
+
+                        <com.rm.rmswitch.RMSwitch
+                            android:id="@+id/switch_d2"
+                            android:layout_width="56dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentRight="true"
+                            android:gravity="right"
+                            app:checked="false"
+                            app:enabled="true"
+                            app:switchDesign="android"
+                            app:forceAspectRatio="true"
+                            app:switchBkgCheckedColor="@color/mood_green"
+                            app:switchBkgNotCheckedColor="@color/mood_red"
+                            app:switchToggleCheckedColor="#32bea6"
+                            app:switchToggleCheckedImage="@drawable/correct"
+                            app:switchToggleNotCheckedColor="#e04f5f"
+                            app:switchToggleNotCheckedImage="@drawable/wrong"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="20dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/box_border">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:gravity="left"
+                            android:text="@string/register_form_ask_disease_3"
+                            android:textSize="20dp" />
+
+                        <com.rm.rmswitch.RMSwitch
+                            android:id="@+id/switch_d3"
+                            android:layout_width="56dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentRight="true"
+                            android:gravity="right"
+                            app:checked="false"
+                            app:enabled="true"
+                            app:switchDesign="android"
+                            app:forceAspectRatio="true"
+                            app:switchBkgCheckedColor="@color/mood_green"
+                            app:switchBkgNotCheckedColor="@color/mood_red"
+                            app:switchToggleCheckedColor="#32bea6"
+                            app:switchToggleCheckedImage="@drawable/correct"
+                            app:switchToggleNotCheckedColor="#e04f5f"
+                            app:switchToggleNotCheckedImage="@drawable/wrong"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="20dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/box_border">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:gravity="left"
+                            android:text="@string/register_form_ask_disease_4"
+                            android:textSize="20dp" />
+
+                        <com.rm.rmswitch.RMSwitch
+                            android:id="@+id/switch_d4"
+                            android:layout_width="56dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentRight="true"
+                            android:gravity="right"
+                            app:checked="false"
+                            app:enabled="true"
+                            app:switchDesign="android"
+                            app:forceAspectRatio="true"
+                            app:switchBkgCheckedColor="@color/mood_green"
+                            app:switchBkgNotCheckedColor="@color/mood_red"
+                            app:switchToggleCheckedColor="#32bea6"
+                            app:switchToggleCheckedImage="@drawable/correct"
+                            app:switchToggleNotCheckedColor="#e04f5f"
+                            app:switchToggleNotCheckedImage="@drawable/wrong"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="20dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/box_border">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:gravity="left"
+                            android:text="@string/register_form_ask_disease_5"
+                            android:textSize="20dp" />
+
+                        <com.rm.rmswitch.RMSwitch
+                            android:id="@+id/switch_d5"
+                            android:layout_width="56dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentRight="true"
+                            android:gravity="right"
+                            app:checked="false"
+                            app:enabled="true"
+                            app:switchDesign="android"
+                            app:forceAspectRatio="true"
+                            app:switchBkgCheckedColor="@color/mood_green"
+                            app:switchBkgNotCheckedColor="@color/mood_red"
+                            app:switchToggleCheckedColor="#32bea6"
+                            app:switchToggleCheckedImage="@drawable/correct"
+                            app:switchToggleNotCheckedColor="#e04f5f"
+                            app:switchToggleNotCheckedImage="@drawable/wrong"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="20dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/box_border">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:gravity="left"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/register_form_ask_disease_6"
+                                android:textSize="20dp" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/register_disease_other_input"
                                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
+                                android:layout_marginTop="5dp"
+                                android:layout_height="wrap_content"
+                                android:visibility="gone">
 
-                                <android.support.design.widget.TextInputEditText
-                                    android:id="@+id/register_period"
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/register_disease_others_text"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/edittext_margin_top"
                                     android:paddingLeft="@dimen/edittext_padding_left"
                                     android:singleLine="true"
-                                    android:ems="10"
-                                    android:inputType="date"
-                                    android:hint="วันที่เริ่มเป็นประจำเดือน" />
-                            </android.support.design.widget.TextInputLayout>
+                                    android:ems="14"
+                                    android:hint="ระบุ" />
+                            </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
 
 
-
-                        <LinearLayout
-                            android:id="@+id/register_patient_section"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:visibility="visible"
-                            android:layout_marginTop="@dimen/edittext_margin_top">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginRight="20dp"
-                                    android:text="@string/register_form_ask_disorder"/>
-                                <Spinner
-                                    android:id="@+id/register_patient_disorder"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:entries="@array/register_patient_disorder">
-
-                                </Spinner>
-
-                            </LinearLayout>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/edittext_margin_top"
-                                android:text="@string/register_form_ask_disease"/>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/box_border"
-                                android:orientation="vertical"
-                                android:layout_marginTop="@dimen/edittext_margin_top">
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="20dp"
-                                    android:maxEms="10"
-                                    android:text="@string/register_form_ask_disease_1"/>
-
-                                <RadioGroup
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:layout_marginLeft="25dp">
-                                    <RadioButton
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:tag="Y"
-                                        android:text="มี"/>
-                                    <RadioButton
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:tag="N"
-                                        android:text="ไม่มี"/>
-
-                                </RadioGroup>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="20dp"
-                                    android:text="@string/register_form_ask_disease_2"/>
-
-                                <RadioGroup
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:layout_marginLeft="25dp">
-                                    <RadioButton
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:tag="Y"
-                                        android:text="มี"/>
-                                    <RadioButton
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:tag="N"
-                                        android:text="ไม่มี"/>
-
-                                </RadioGroup>
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="20dp"
-                                    android:maxEms="10"
-                                    android:text="@string/register_form_ask_disease_3"/>
-
-                                <RadioGroup
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:layout_marginLeft="25dp">
-                                    <RadioButton
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:tag="Y"
-                                        android:text="มี"/>
-                                    <RadioButton
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:tag="N"
-                                        android:text="ไม่มี"/>
-
-                                </RadioGroup>
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="20dp"
-                                    android:maxEms="10"
-                                    android:text="@string/register_form_ask_disease_4"/>
-
-                                <RadioGroup
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:layout_marginLeft="25dp">
-                                    <RadioButton
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:tag="Y"
-                                        android:text="มี"/>
-                                    <RadioButton
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:tag="N"
-                                        android:text="ไม่มี"/>
-
-                                </RadioGroup>
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="20dp"
-                                    android:maxEms="10"
-                                    android:text="@string/register_form_ask_disease_5"/>
-
-                                <RadioGroup
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:layout_marginLeft="25dp">
-                                    <RadioButton
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:tag="Y"
-                                        android:text="มี"/>
-                                    <RadioButton
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:tag="N"
-                                        android:text="ไม่มี"/>
-
-                                </RadioGroup>
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="20dp"
-                                    android:maxEms="10"
-                                    android:text="@string/register_form_ask_disease_6"/>
-
-                                <RadioGroup
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:layout_marginLeft="25dp">
-                                    <RadioButton
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:tag="Y"
-                                        android:text="มี"/>
-                                    <RadioButton
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:tag="N"
-                                        android:text="ไม่มี"/>
-
-                                </RadioGroup>
-                            </LinearLayout>
-                            <LinearLayout
-                                android:id="@+id/register_still_treat_section"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:visibility="visible">
-                            </LinearLayout>
-
-                        </LinearLayout>
+                        <com.rm.rmswitch.RMSwitch
+                            android:id="@+id/switch_d6"
+                            android:layout_width="56dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentRight="true"
+                            android:gravity="right"
+                            app:checked="false"
+                            app:enabled="true"
+                            app:switchDesign="android"
+                            app:forceAspectRatio="true"
+                            app:switchBkgCheckedColor="@color/mood_green"
+                            app:switchBkgNotCheckedColor="@color/mood_red"
+                            app:switchToggleCheckedColor="#32bea6"
+                            app:switchToggleCheckedImage="@drawable/correct"
+                            app:switchToggleNotCheckedColor="#e04f5f"
+                            app:switchToggleNotCheckedImage="@drawable/wrong"/>
 
 
 
-                        <RadioGroup
-                            android:id="@+id/register_allergic_radio_group"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="@dimen/edittext_margin_top">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="แพ้ยาหรือไม่:"/>
-                            <RadioButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:tag="Y"
-                                android:text="ใช้"/>
-                            <RadioButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:tag="N"
-                                android:text="ไม่ใช้"/>
-                        </RadioGroup>
+                    </RelativeLayout>
 
-                        <RadioGroup
-                            android:id="@+id/register_acdict_radio_group"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="@dimen/edittext_margin_top">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="ใช้สารเสพติด:"/>
-                            <RadioButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:tag="Y"
-                                android:text="ใช้"/>
-                            <RadioButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:tag="N"
-                                android:text="ไม่ใช้"/>
-                        </RadioGroup>
-
-                        <RadioGroup
-                            android:id="@+id/register_caffeine_radio_group"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="@dimen/edittext_margin_top">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="ใช้คาเฟอีน:"/>
-                            <RadioButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:tag="Y"
-                                android:text="ใช้"/>
-                            <RadioButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:tag="N"
-                                android:text="ไม่ใช้"/>
-                        </RadioGroup>
-
-
-                    </LinearLayout>
                 </LinearLayout>
-            </ScrollView>
-        </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:padding="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/box_border">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:gravity="left"
+                        android:text="@string/register_form_ask_caffeien"
+                        android:textSize="20dp" />
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/confirm_color">
+                    <com.rm.rmswitch.RMSwitch
+                        android:id="@+id/switch_caffeine"
+                        android:layout_width="56dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:gravity="right"
+                        app:checked="false"
+                        app:enabled="true"
+                        app:switchDesign="android"
+                        app:forceAspectRatio="true"
+                        app:switchBkgCheckedColor="@color/mood_green"
+                        app:switchBkgNotCheckedColor="@color/mood_red"
+                        app:switchToggleCheckedColor="#32bea6"
+                        app:switchToggleCheckedImage="@drawable/correct"
+                        app:switchToggleNotCheckedColor="#e04f5f"
+                        app:switchToggleNotCheckedImage="@drawable/wrong"/>
 
-            <Button
-                android:id="@+id/register_submit_btn"
-                android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:background="@color/confirm_color"
-                android:fontFamily="@font/thsarabunnew_bold"
-                android:text="บันทึกข้อมูล"
-                android:textColor="@color/white"
-                android:textSize="25dp" />
-        </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:padding="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/box_border">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:gravity="left"
+                        android:text="@string/register_form_ask_drug_addict"
+                        android:textSize="20dp" />
+
+
+                    <com.rm.rmswitch.RMSwitch
+                        android:id="@+id/switch_drug_addict"
+                        android:layout_width="56dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:gravity="right"
+                        app:checked="false"
+                        app:enabled="true"
+                        app:switchDesign="android"
+                        app:forceAspectRatio="true"
+                        app:switchBkgCheckedColor="@color/mood_green"
+                        app:switchBkgNotCheckedColor="@color/mood_red"
+                        app:switchToggleCheckedColor="#32bea6"
+                        app:switchToggleCheckedImage="@drawable/correct"
+                        app:switchToggleNotCheckedColor="#e04f5f"
+                        app:switchToggleNotCheckedImage="@drawable/wrong"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
 
     </LinearLayout>
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/confirm_color">
+
+        <Button
+            android:id="@+id/register_submit_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:fontFamily="@font/thsarabunnew_bold"
+            android:text="บันทึกข้อมูล"
+            android:textColor="@color/white"
+            android:textSize="25dp" />
+    </LinearLayout>
+
+</LinearLayout>

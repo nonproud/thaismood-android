@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="bottom"
     android:orientation="vertical"
-    tools:context=".EvaluationResultFragment">
+    tools:context=".EvaluationActivity.EvaluationResultFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,13 +34,16 @@
             android:layout_marginRight="10dp"
             android:ems="14"
             android:gravity="center"
-            android:textSize="20dp"
+            android:fontFamily="@font/thsarabunnew_bold"
+            android:textSize="25dp"
             android:text="@string/result_2q_header"/>
 
         <LinearLayout
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
             android:gravity="center">
 
             <TextView
@@ -50,10 +53,12 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:gravity="center"
+                android:fontFamily="@font/thsarabunnew_bold"
                 android:backgroundTintMode="screen"
+                android:textSize="30dp"
                 android:background="@drawable/q_2q_result_box"
                 android:ems="15"
-                android:text="มีอาการหีแตดรุนแรง"/>
+                android:text="ผลลัพธ์"/>
 
         </LinearLayout>
 
@@ -66,7 +71,8 @@
             android:layout_marginRight="10dp"
             android:ems="14"
             android:gravity="center"
-            android:textSize="20dp"
+            android:fontFamily="@font/thsarabunnew"
+            android:textSize="30dp"
             android:text="this is what to do text view"/>
     </LinearLayout>
 

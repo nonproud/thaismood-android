@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#03a9f4</color>
-    <color name="colorPrimaryDark">#007ac1</color>
-    <color name="colorPrimaryLight">#67daff</color>
+    <color name="colorPrimary">#64b5f6</color>
+    <color name="colorPrimaryDark">#2286c3</color>
+    <color name="colorPrimaryLight">#9be7ff</color>
     <color name="colorAccent">#D81B60</color>
     <color name="backgroud_color">#900C3F</color>
     <color name="bottom_nav_item_color">#900C3F</color>
@@ -12,11 +12,11 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
 
-    <color name="mood_red">#FF5733</color>
-    <color name="mood_yellow">#FFC300</color>
-    <color name="mood_green">#66FF33</color>
-    <color name="mood_violet">#B30086</color>
-    <color name="mood_grey">#C0C0C0</color>
+    <color name="mood_red">#ffb3ba</color>
+    <color name="mood_yellow">#ffffba</color>
+    <color name="mood_green">#baffc9</color>
+    <color name="mood_grey">#c0d8e3</color>
+    <color name="mood_violet">#e4baf7</color>
 
     <color name="q_2q_theme">#b71c1c</color>
     <color name="q_2q_theme_dark">#7f0000</color>

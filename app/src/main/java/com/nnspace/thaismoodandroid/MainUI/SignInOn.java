@@ -6,8 +6,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
@@ -21,7 +21,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.nnspace.thaismoodandroid.Database.LogonDatabase;
-import com.nnspace.thaismoodandroid.Home;
+import com.nnspace.thaismoodandroid.HomeActivity.Home2;
 import com.nnspace.thaismoodandroid.R;
 import com.nnspace.thaismoodandroid.SentRequestToServer.SignOnSentRequestToServer;
 
@@ -215,7 +215,7 @@ public class SignInOn extends AppCompatActivity {
                                 intent.putExtra("email", email);
                                 startActivity(intent);
                             }else{
-                                Intent intent = new Intent(SignInOn.this, Home.class);
+                                Intent intent = new Intent(SignInOn.this, Home2.class);
                                 startActivity(intent);
                             }
 

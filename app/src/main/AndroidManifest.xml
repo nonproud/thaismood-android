@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.nnspace.thaismoodandroid">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -10,15 +12,19 @@
         android:icon="@drawable/thaismood_logo"
         android:label="@string/app_name"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Evaluation"></activity>
+        <activity android:name=".HomeActivity.Diary.WriteNoteActivity"></activity>
+        <activity
+            android:name=".HomeActivity.Home2"
+            android:label="@string/title_activity_home2"
+            android:theme="@style/NoActionBar" />
 
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@xml/more_option" />
 
-        <activity android:name=".AddNewRecord" />
-        <activity android:name=".Register" />
-        <activity android:name=".Home" />
+        <activity android:name=".EvaluationActivity.Evaluation" />
+        <activity android:name=".HomeActivity.Add.AddNewRecord" />
+        <activity android:name=".RegisterActivity.Register" />
         <activity android:name=".MainmenuTest" />
         <activity android:name=".MainUI.Otp" />
         <activity android:name=".MainUI.SignInOn" />

@@ -50,6 +50,7 @@
 
     <!--9Q Question -->
     <string name="q_9q_header">แบบประเมินโรคซึมเศร้า 9 คำถาม (9Q)</string>
+    <string name="q_9q_intro">ในช่วง 2 สัปดาห์ที่ผ่านมารวมทั้งวันนี้ ท่านมีอาการเหล่านี้ บ่อยแค่ไหน</string>
     <string name="q_9q_1">1. เบื่อ ไม่สนใจอยากทำอะไร</string>
     <string name="q_9q_2">2. ไม่สบายใจ ซึมเศร้า ท้อแท้</string>
     <string name="q_9q_3">3. หลับยากหรือหลับๆตื่นๆหรือหลับมากไป</string>
@@ -189,11 +190,34 @@
     <string name="menu_profile">ข้อมูลลส่วนตัว</string>
     <string name="menu_summary">ข้อมูลสรุป</string>
 
+    <!--Home section-->
+
+    <!--HEADER-->
+    <string name="header_oneitem">รายการที่บันทึก</string>
+    <string name="header_graph">กราฟอารมณ์</string>
+    <string name="header_add">เพิ่ม</string>
+    <string name="header_profile">ข้อมูล</string>
+    <string name="header_diary">ไดอารี</string>
+    <!-- END OF HEADER-->
+
+    <!--BOTTOM NAV MENU-->
     <string name="title_oneitem">รายการ</string>
     <string name="title_graph">กราฟอารมณ์</string>
-    <string name="title_add">เพิ่ม</string>
-    <string name="title_profile">ข้อมูลที่เป็นประโยชน์</string>
-    <string name="title_setting">อื่นๆ</string>
+    <string name="title_home">โฮม</string>
+    <string name="title_blank"></string>
+    <string name="title_help">ช่วยเหลือ</string>
+    <string name="title_diary">ไดอารี่</string>
+    <!-- END OF BOTTOM NAV MENU-->
+
+    <!--LIST VIEW MENU-->
+    <string name="list_view_menu_record_title"></string>
+    <string name="list_view_menu_mood_title"></string>
+    <string name="list_view_menu_sleep_title"></string>
+    <string name="list_view_menu_activity_title"></string>
+    <string name="list_view_menu_excercise_title"></string>
+    <!-- END OFLIST VIEW MENU-->
+
+    <!--End ofHome section-->
 
     <array name="register_patient_disorder">
         <item>โรคซึมเศร้า</item>
@@ -220,11 +244,14 @@
     <string name="register_form_ask_disorder">โรคที่เป็น</string>
     <string name="register_form_ask_disease">ท่านมีโรคประจำตัวดังต่อไปนี้หรือไม่</string>
     <string name="register_form_ask_disease_1">เบาหวาน ความดัน ไขมัน</string>
-    <string name="register_form_ask_disease_2">ไทรอยด์(ความผิดปกติของต่อมไทรอยด์)</string>
+    <string name="register_form_ask_disease_2">ไทรอยด์</string>
+    <string name="register_form_ask_disease_2_2">(ความผิดปกติของต่อมไทรอยด์)</string>
     <string name="register_form_ask_disease_3">โรคหลอดเลือดสมอง</string>
     <string name="register_form_ask_disease_4">โรคหลอดเลือดหัวใจ</string>
     <string name="register_form_ask_disease_5">ลมชัก</string>
     <string name="register_form_ask_disease_6">อื่นๆ</string>
+    <string name="register_form_ask_caffeien">ท่านใช้คาเฟอีนหรือไม่</string>
+    <string name="register_form_ask_drug_addict">ท่านใช้สารเสพติดหรือไม่</string>
     <!--End of Register Fragment-->
 
     <!--Add Record Activity-->
@@ -246,7 +273,7 @@
         <!--Add Mood Level Fragment-->
     <string name="add_mood_level_mood_label">วันนี้คุณรู้สึก ..</string>
     <string name="add_mood_level_seek_scale_instruction">เลือกระดับความรูสึก</string>
-    <string name="add_mood_level_note_hint">บันทึกย่อ</string>
+    <string name="add_mood_level_note_hint">2000 ตัวอักษร</string>
         <!--Add Mood Level Fragment-->
 
     <!--End of Add Record Activity-->
@@ -258,7 +285,7 @@
         <string name="fragment_graph_month_header">มุมมองหนึ่งเดือน</string>
         <string name="fragment_graph_year_header">มุมมองหนึ่งปี</string>
         <!--End of Graph fragment-->
-    <string name="header_fragment_more">ตัวเลือกอื่นๆ</string>
+    <string name="header_fragment_diary">ไดอารี่</string>
     <!--End of Fragment Header-->
 
     <!--More Option Fragment-->
@@ -273,6 +300,12 @@
 
     <string name="fragement_more_option_notification_catagory_header">การแจ้งเตือน</string>
     <!--End of More Option Fragment-->
+
+    <string name="menu_profiles">ดูโปรไฟล์</string>
+    <string name="menu_evaluation">ประวัติการทำแบบประเมิน</string>
+    <string name="menu_tools">ตั้งค่า</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
 
 
 </resources>

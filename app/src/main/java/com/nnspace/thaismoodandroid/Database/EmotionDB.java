@@ -21,21 +21,18 @@ public class EmotionDB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_EMOTION_TABLE = String.format("CREATE TABLE %s (" +
+        String CREATE_TABLE = String.format("CREATE TABLE %s (" +
                         "%s int PRIMARY KEY, " +
                         "%s int NOT NULL, " +
                         "%s int NOT NULL, " +
-                        "%s VARCHAR(1000), " +
                         "%s DATE NOT NULL " +
                         ");", EmotionModel.TABLE_NAME,
                 EmotionModel.column.ID,
                 EmotionModel.column.EMOTION,
                 EmotionModel.column.LEVEL,
-                EmotionModel.column.NOTE,
-                EmotionModel.column.DATE,
-                EmotionModel.column.ID
+                EmotionModel.column.DATE
         );
-        db.execSQL(CREATE_EMOTION_TABLE);
+        db.execSQL(CREATE_TABLE);
     }
 
     @Override
@@ -46,14 +43,12 @@ public class EmotionDB extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertMood(int mood, int level, String note){
-        String query_insert_mood = String.format("INSERT INTO %s (%s, %s, %s, %s) values(%d, %d, '%s', date('now'));",
-                EmotionModel.TABLE_NAME,
-                EmotionModel.column.EMOTION,
-                EmotionModel.column.LEVEL,
-                EmotionModel.column.NOTE,
-                EmotionModel.column.DATE,
-                mood, level, note);
+    public boolean insertMood(int mood, int level, String date){
+
+        String query_insert_mood = "INSERT INTO " + EmotionModel.TABLE_NAME + " (" + EmotionModel.column.EMOTION +
+                ", " + EmotionModel.column.LEVEL +
+                ", " + EmotionModel.column.DATE + ") values(" + mood + ", " + level + ", '" + date + "');";
+
         SQLiteDatabase db = this.getWritableDatabase();
         try{
             db.execSQL(query_insert_mood);
@@ -77,12 +72,37 @@ public class EmotionDB extends SQLiteOpenHelper {
         return true;
     }
 
-    public ArrayList<MoodObject> getMood(){
-        String query_get_mood = String.format("SELECT * FROM %s WHERE 1;",
-                EmotionModel.TABLE_NAME);
+    public ArrayList<MoodObject> getAllMood(){
+        String query_get_mood = String.format("SELECT * FROM %s WHERE 1 ORDER BY %s DESC;",
+                EmotionModel.TABLE_NAME, EmotionModel.column.DATE);
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor result = db.rawQuery(query_get_mood, null);
+        ArrayList<MoodObject> obj = new ArrayList<>();
+
+        if(result.moveToFirst()){
+            do{
+                int id = result.getInt(0);
+                int mood = result.getInt(1);
+                int level = result.getInt(2);
+                String note = result.getString(3);
+                String date = result.getString(4);
+                MoodObject moodObj = new MoodObject(id, mood, level, note, date);
+                obj.add(moodObj);
+            }while (result.moveToNext());
+        }
+        result.close();
+        db.close();
+        return obj;
+    }
+
+    public ArrayList<MoodObject> getMoodWeek(String fromDate, String toDate){
+
+        String queryString = String.format("select * from %s where date >= '%s' and date <= '%s' ORDER BY %s ASC;",
+            EmotionModel.TABLE_NAME, fromDate, toDate, EmotionModel.column.DATE);
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor result = db.rawQuery(queryString, null);
         ArrayList<MoodObject> obj = new ArrayList<>();
 
         if(result.moveToFirst()){

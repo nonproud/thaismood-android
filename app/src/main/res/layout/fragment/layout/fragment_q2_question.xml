@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Q2QuestionFragment"
+    tools:context=".EvaluationActivity.Q2QuestionFragment"
     android:gravity="bottom"
     android:orientation="vertical">
 
@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
         android:background="@color/q_2q_theme">
 
@@ -20,21 +20,26 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:textColor="@color/white"
+            android:fontFamily="@font/thsarabunnew_bold"
             android:text="@string/q_2q_header"
-            android:textSize="@dimen/fragment_header_text_size" />
+            android:textSize="30dp" />
 
         <TextView
             android:id="@+id/q_2q_indicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/thsarabunnew_bold"
             android:textColor="@color/white"
             android:text="ข้อที่ 1 จาก 2 ข้อ"
             android:textSize="@dimen/fragment_header_text_size" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:gravity="center"
             android:background="@drawable/box_border_2q"
             android:orientation="vertical"
@@ -47,19 +52,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
+                android:fontFamily="@font/thsarabunnew"
                 android:text="@string/q_2q_intro"
                 android:gravity="center_vertical"
-                android:textSize="@dimen/question_text_size" />
+                android:textSize="30dp" />
 
             <TextView
                 android:id="@+id/q_2q_question_tx"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginBottom="20dp"
-                android:gravity="center_vertical"
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/thsarabunnew_bold"
                 android:text="This is Question"
                 android:ems="15"
-                android:textSize="@dimen/question_text_size" />
+                android:textSize="30dp" />
 
             <Button
                 android:id="@+id/q_2q_choice_1"

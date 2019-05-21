@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Register">
+    android:gravity="bottom"
+    android:orientation="vertical"
+    tools:context=".RegisterActivity.Register">
     <FrameLayout
         android:id="@+id/register_fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_weight="1">
     </FrameLayout>
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/register_activity_prev_btn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_border_unselected"
+            android:fontFamily="@font/thsarabunnew_bold"
+            android:text="ย้อนกลับ"
+            android:textColor="#FFFFFF"
+            android:textSize="25dp" />
+
+        <Button
+            android:id="@+id/register_activity_next_btn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_border_unselected"
+            android:fontFamily="@font/thsarabunnew_bold"
+            android:text="ถัดไป"
+            android:textColor="#FFFFFF"
+            android:textSize="25dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

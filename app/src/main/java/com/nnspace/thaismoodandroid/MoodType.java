@@ -54,5 +54,4 @@ public enum MoodType {
         return l1;
     }
 
-
 }

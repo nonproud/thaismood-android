@@ -3,9 +3,11 @@ package com.nnspace.thaismoodandroid.Database;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.nnspace.thaismoodandroid.DatabaseModel.EvaluationModel;
-import com.nnspace.thaismoodandroid.DatabaseModel.LogonModel;
+
+import static android.content.ContentValues.TAG;
 
 public class EvaluationDB  extends SQLiteOpenHelper {
 
@@ -15,21 +17,28 @@ public class EvaluationDB  extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_EVALUATION_CHECK_TABLE = String.format("CREATE TABLE %s (" +
-                        "%s int NOT NULL DEFAULT 0," +
-                        "%s varchar(20) NOT NULL DEFAULT ''," +
-                        "%s varchar(50) NOT NULL DEFAULT ''," +
-                        "%s varchar(300) NOT NULL DEFAULT ''" +
+        String CREATE_TABLE = String.format("CREATE TABLE %s (" +
+                        "%s int NOT NULL DEFAULT ''," +
+                        "%s int NOT NULL DEFAULT ''," +
+                        "%s int NOT NULL DEFAULT ''" +
+                        "%s int NOT NULL DEFAULT ''" +
+                        "%s date NOT NULL" +
                         ");", EvaluationModel.TABLE_NAME,
-                LogonModel.column.STATUS,
-                LogonModel.column.ID,
-                LogonModel.column.EMAIL,
-                LogonModel.column.TOKEN
+                EvaluationModel.column._2q,
+                EvaluationModel.column._9q,
+                EvaluationModel.column._8q,
+                EvaluationModel.column.mdq,
+                EvaluationModel.column.date
         );
+
+        db.execSQL(CREATE_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        String DROP_FRIEND_TABLE = "DROP TABLE IF EXISTS " + EvaluationModel.TABLE_NAME;
+        db.execSQL(DROP_FRIEND_TABLE);
+        Log.i(TAG, "Upgrade Database from " + oldVersion + " to " + newVersion);
+        onCreate(db);
     }
 }

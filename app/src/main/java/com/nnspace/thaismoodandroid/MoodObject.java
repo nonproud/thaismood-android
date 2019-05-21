@@ -33,7 +33,7 @@ public class MoodObject {
                 break;
         }
         this.level = level;
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         try {
             this.dateCreated = dateFormat.parse(date);
         } catch (ParseException e) {

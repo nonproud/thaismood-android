@@ -8,21 +8,20 @@
 
     <item
         android:id="@+id/navigation_graph"
-        android:icon="@drawable/graph"
+        android:icon="@drawable/ic_line_graph"
         android:title="@string/title_graph" />
 
     <item
         android:id="@+id/navigation_add"
-        android:icon="@drawable/plus"
-        android:title="@string/title_add" />
+        android:title="@string/title_home" />
     <item
         android:id="@+id/navigation_profile"
-        android:icon="@drawable/profile"
-        android:title="@string/title_profile" />
+        android:icon="@drawable/ic_help"
+        android:title="@string/title_help" />
 
     <item
         android:id="@+id/navigation_setting"
-        android:icon="@drawable/ic_settings"
-        android:title="@string/title_setting" />
+        android:icon="@drawable/ic_diary"
+        android:title="@string/title_diary" />
 
 </menu>

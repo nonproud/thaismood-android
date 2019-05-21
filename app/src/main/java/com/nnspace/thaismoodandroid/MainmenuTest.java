@@ -2,12 +2,15 @@ package com.nnspace.thaismoodandroid;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.nnspace.thaismoodandroid.EvaluationActivity.Evaluation;
+import com.nnspace.thaismoodandroid.HomeActivity.Home2;
 import com.nnspace.thaismoodandroid.MainUI.Otp;
 import com.nnspace.thaismoodandroid.MainUI.SignInOn;
+import com.nnspace.thaismoodandroid.RegisterActivity.Register;
 
 public class MainmenuTest extends AppCompatActivity {
 
@@ -20,6 +23,7 @@ public class MainmenuTest extends AppCompatActivity {
         Button main = (Button) findViewById(R.id.mainbtn);
         Button otp = (Button) findViewById(R.id.otpbtn);
         Button register = (Button) findViewById(R.id.register_activity_btn);
+        Button main2 = (Button) findViewById(R.id.main2_activity_btn);
 
         evaluation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,14 +41,6 @@ public class MainmenuTest extends AppCompatActivity {
             }
         });
 
-        main.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainmenuTest.this, Home.class);
-                startActivity(intent);
-            }
-        });
-
         otp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,6 +52,14 @@ public class MainmenuTest extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainmenuTest.this, Register.class);
+                startActivity(intent);
+            }
+        });
+
+        main2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainmenuTest.this, Home2.class);
                 startActivity(intent);
             }
         });

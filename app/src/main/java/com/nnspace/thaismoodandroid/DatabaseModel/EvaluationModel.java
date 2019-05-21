@@ -8,10 +8,9 @@ public class EvaluationModel {
 
     public class column{
         public static final String TABLE_NAME = "evaluation";
-        public static final String ID = "id";
-        public static final String _2q = "_2q";
-        public static final String _9q = "_9q";
-        public static final String _8q = "_8q";
+        public static final String _2q = "2q";
+        public static final String _9q = "9q";
+        public static final String _8q = "8q";
         public static final String mdq = "mdq";
         public static final String date = "date";
 
