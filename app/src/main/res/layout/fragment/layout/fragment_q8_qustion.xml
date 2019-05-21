@@ -92,7 +92,7 @@
             android:enabled="false"
             android:layout_marginRight="5dp"
             android:fontFamily="@font/thsarabunnew_bold"
-            android:text="ย้อนลับ"
+            android:text="ย้อนกลับ"
             android:textColor="@color/white"
             android:textSize="25dp" />
 

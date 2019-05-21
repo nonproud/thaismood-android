@@ -58,7 +58,7 @@ public class Q9QuetionFragment extends Fragment implements IEvaluation {
                 c4.setTextColor(getResources().getColor(R.color.black));
                 currentPoint[countNo] = Integer.parseInt(c1.getTag().toString());
                 nextBtn.setEnabled(true);
-                nextBtn.setBackgroundColor(getResources().getColor(R.color.q_9q_theme_drak));
+                nextBtn.setBackgroundColor(getResources().getColor(R.color.q_9q_theme_dark));
             }
         });
 
@@ -75,7 +75,7 @@ public class Q9QuetionFragment extends Fragment implements IEvaluation {
                 c4.setTextColor(getResources().getColor(R.color.black));
                 currentPoint[countNo] = Integer.parseInt(c2.getTag().toString());
                 nextBtn.setEnabled(true);
-                nextBtn.setBackgroundColor(getResources().getColor(R.color.q_9q_theme_drak));
+                nextBtn.setBackgroundColor(getResources().getColor(R.color.q_9q_theme_dark));
             }
         });
 
@@ -92,7 +92,7 @@ public class Q9QuetionFragment extends Fragment implements IEvaluation {
                 c4.setTextColor(getResources().getColor(R.color.black));
                 currentPoint[countNo] = Integer.parseInt(c3.getTag().toString());
                 nextBtn.setEnabled(true);
-                nextBtn.setBackgroundColor(getResources().getColor(R.color.q_9q_theme_drak));
+                nextBtn.setBackgroundColor(getResources().getColor(R.color.q_9q_theme_dark));
             }
         });
 
@@ -109,7 +109,7 @@ public class Q9QuetionFragment extends Fragment implements IEvaluation {
                 c4.setTextColor(getResources().getColor(R.color.white));
                 currentPoint[countNo] = Integer.parseInt(c4.getTag().toString());
                 nextBtn.setEnabled(true);
-                nextBtn.setBackgroundColor(getResources().getColor(R.color.q_9q_theme_drak));
+                nextBtn.setBackgroundColor(getResources().getColor(R.color.q_9q_theme_dark));
             }
         });
 
@@ -123,9 +123,9 @@ public class Q9QuetionFragment extends Fragment implements IEvaluation {
                     nextQuestion();
                     if(currentPoint[countNo] != null){
                         nextBtn.setEnabled(true);
-                        nextBtn.setBackgroundColor(getResources().getColor(R.color.q_9q_theme_drak));
+                        nextBtn.setBackgroundColor(getResources().getColor(R.color.q_9q_theme_dark));
                         prevBtn.setEnabled(true);
-                        prevBtn.setBackgroundColor(getResources().getColor(R.color.q_9q_theme_drak));
+                        prevBtn.setBackgroundColor(getResources().getColor(R.color.q_9q_theme_dark));
                         if(currentPoint[countNo] == 0){
                             c1.setBackground(getResources().getDrawable(R.drawable.q_9q_choice_selected));
                             c1.setTextColor(getResources().getColor(R.color.white));

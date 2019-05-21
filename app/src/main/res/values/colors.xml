@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#2286c3</color>
     <color name="colorPrimaryLight">#9be7ff</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="backgroud_color">#900C3F</color>
+    <color name="background_color">#900C3F</color>
     <color name="bottom_nav_item_color">#900C3F</color>
     <color name="transparent">#80000000</color>
     <color name="confirm_color">#055560</color>
@@ -18,17 +18,20 @@
     <color name="mood_grey">#c0d8e3</color>
     <color name="mood_violet">#e4baf7</color>
 
-    <color name="q_2q_theme">#b71c1c</color>
-    <color name="q_2q_theme_dark">#7f0000</color>
-    <color name="q_2q_theme_light">#f05545</color>
-    <color name="q_9q_theme">#ff3d00</color>
-    <color name="q_9q_theme_drak">#c30000</color>
-    <color name="q_9q_theme_light">#ff7539</color>
-    <color name="q_8q_theme">#c2185b</color>
-    <color name="q_8q_theme_dark">#8c0032</color>
-    <color name="q_8q_theme_light">#fa5788</color>
-    <color name="q_mdq_theme">#424242</color>
-    <color name="q_mdq_theme_dark">#1b1b1b</color>
-    <color name="q_mdq_theme_light">#6d6d6d</color>
+    <color name="q_2q_theme">#008eab</color>
+    <color name="q_2q_theme_dark">#005b7c</color>
+    <color name="q_2q_theme_light">#01bcc6</color>
+
+    <color name="q_9q_theme">#124f67</color>
+    <color name="q_9q_theme_dark">#011c37</color>
+    <color name="q_9q_theme_light">#5b8991</color>
+    
+    <color name="q_8q_theme">#586776</color>
+    <color name="q_8q_theme_dark">#063a52</color>
+    <color name="q_8q_theme_light">#b8c6c3</color>
+    
+    <color name="q_mdq_theme">#476663</color>
+    <color name="q_mdq_theme_dark">#1c3c40</color>
+    <color name="q_mdq_theme_light">#eacb86</color>
 
 </resources>
