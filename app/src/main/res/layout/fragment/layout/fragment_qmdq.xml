@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    tools:context=".EvaluationActivity.QMDQFragment"
     android:gravity="bottom"
-    tools:context=".EvaluationActivity.QMDQFragment">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="50"
+        android:layout_weight="1"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:background="@color/q_mdq_theme">
@@ -19,9 +19,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
-            android:textColor="@color/white"
             android:text="@string/q_mdq_header"
+            android:textColor="@color/white"
             android:textSize="@dimen/fragment_header_text_size" />
+
 
         <TextView
             android:id="@+id/q_mdq_indicator"
@@ -31,7 +32,6 @@
             android:text="ข้อที่ 1 จาก 15 ข้อ"
             android:textSize="@dimen/fragment_header_text_size" />
 
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,6 +40,7 @@
             android:orientation="vertical"
             android:background="@drawable/box_border"
             android:padding="20dp">
+
             <TextView
                 android:id="@+id/q_mdq_intro_tx"
                 android:layout_width="wrap_content"
@@ -80,10 +81,10 @@
                     android:id="@+id/q_mdq_choice_2"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/q_mdq_choice_unselected"
                     android:layout_marginTop="20dp"
-                    android:text="@string/q_mdq_ans_2"
-                    android:tag="0"/>
+                    android:background="@drawable/q_mdq_choice_unselected"
+                    android:tag="0"
+                    android:text="@string/q_mdq_ans_2" />
 
             </LinearLayout>
 
