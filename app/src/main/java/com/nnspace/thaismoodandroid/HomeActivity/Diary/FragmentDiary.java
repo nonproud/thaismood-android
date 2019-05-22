@@ -5,24 +5,22 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
-import com.nnspace.thaismoodandroid.HomeActivity.Diary.NoteListView.DiaryObject;
-import com.nnspace.thaismoodandroid.HomeActivity.Diary.NoteListView.RecycleAdapter;
 import com.nnspace.thaismoodandroid.R;
 
 import java.util.ArrayList;
 
 public class FragmentDiary extends Fragment {
 
-    private RecyclerView recyclerView;
     private ThaisMoodDB db;
+    private ArrayList<DiaryObject> diaryList;
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,6 +33,8 @@ public class FragmentDiary extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        diaryList = new ArrayList<>();
+
         FloatingActionButton pencil = getView().findViewById(R.id.diary_fragment_pencil_fab);
         pencil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,13 +46,12 @@ public class FragmentDiary extends Fragment {
             }
         });
 
-        recyclerView = getView().findViewById(R.id.recyclerView);
+        ListView listView = getView().findViewById(R.id.diary_list_view);
         db = new ThaisMoodDB(getActivity());
-        RecycleAdapter adapter = new RecycleAdapter();
-        ArrayList<DiaryObject> list = new ArrayList<>();
-        list = db.getAllNote();
-        adapter.setItemList(list);
-        recyclerView.setAdapter(adapter);
+        diaryList = db.getAllNote();
+
+        DiaryListAdapter adapter = new DiaryListAdapter(getActivity(), diaryList);
+        listView.setAdapter(adapter);
 
     }
 }

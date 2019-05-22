@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
+import com.nnspace.thaismoodandroid.MainmenuTest;
 import com.nnspace.thaismoodandroid.MyThaiCalender;
 import com.nnspace.thaismoodandroid.R;
 
@@ -68,8 +69,13 @@ public class WriteNoteActivity extends AppCompatActivity {
                 String myStory = story.getText().toString();
                 String myDate = getDateString();
                 ThaisMoodDB db = new ThaisMoodDB(WriteNoteActivity.this);
-                db.insertNote(myTitle, myStory, myDate);
-                finish();
+                if(db.insertNote(myTitle, myStory, myDate)){
+                    finish();
+                }else{
+                    startActivity(new Intent(WriteNoteActivity.this, MainmenuTest.class));
+
+                }
+
 
             }
         });

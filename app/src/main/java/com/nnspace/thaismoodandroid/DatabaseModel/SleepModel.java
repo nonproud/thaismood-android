@@ -13,7 +13,7 @@ public class SleepModel {
     public static final String DATE = "date";
 
     public static final String CREATE_TABLE_STRING = String.format("CREATE TABLE %s (" +
-                    "%s int PRIMARY KEY, " +
+                    "%s INTEGER PRIMARY KEY, " +
                     "%s date NOT NULL, " +
                     "%s date NOT NULL, " +
                     "%s date NOT NULL, " +

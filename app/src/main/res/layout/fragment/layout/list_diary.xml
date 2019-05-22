@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/diary_item_title"
             android:layout_width="match_parent"
@@ -21,7 +22,7 @@
             android:text="ชื่อเรื่อง" />
 
         <TextView
-            android:id="@+id/diary_item_story"
+            android:id="@+id/diary_ab_item_story"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginLeft="20dp"

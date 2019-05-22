@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.nnspace.thaismoodandroid.DatabaseModel.ActivityModel;
 import com.nnspace.thaismoodandroid.DatabaseModel.EmotionModel;
@@ -13,7 +14,7 @@ import com.nnspace.thaismoodandroid.DatabaseModel.LogonModel;
 import com.nnspace.thaismoodandroid.DatabaseModel.NoteModel;
 import com.nnspace.thaismoodandroid.DatabaseModel.ProfileModel;
 import com.nnspace.thaismoodandroid.DatabaseModel.SleepModel;
-import com.nnspace.thaismoodandroid.HomeActivity.Diary.NoteListView.DiaryObject;
+import com.nnspace.thaismoodandroid.HomeActivity.Diary.DiaryObject;
 import com.nnspace.thaismoodandroid.MoodObject;
 
 import java.util.ArrayList;
@@ -53,6 +54,7 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
         db.execSQL(DROP_FRIEND_TABLE + NoteModel.TABLE_NAME);
         db.execSQL(DROP_FRIEND_TABLE + ProfileModel.TABLE_NAME);
         db.execSQL(DROP_FRIEND_TABLE + SleepModel.TABLE_NAME);
+        Log.d("sql", "OnUpgade was called.");
         onCreate(db);
     }
 
@@ -219,19 +221,21 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
         return obj;
     }
 
-    public boolean insertNote(String title, String note, String date){
+    public boolean insertNote(String title, String story, String date){
 
         String query_insert = "INSERT INTO " + NoteModel.TABLE_NAME + " (" + NoteModel.NOTE +
                 ", " + NoteModel.TITLE + ", " + NoteModel.DATE + ") " +
-                "values('" + title + "', '" + note + "', '" + date + "');";
+                "values('" + title + "', '" + story + "', '" + date + "');";
 
         SQLiteDatabase db = this.getWritableDatabase();
         try{
             db.execSQL(query_insert);
         }catch (Exception err){
             err.printStackTrace();
+            Log.d("sql", query_insert + " :FAILED" );
             return false;
         }
+        Log.d("sql", query_insert + " :SUCCESSFULLY" );
         return true;
     }
 
@@ -248,9 +252,9 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
             do{
                 int id = result.getInt(0);
                 String title = result.getString(1);
-                String note = result.getString(2);
+                String story = result.getString(2);
                 String date = result.getString(3);
-                DiaryObject diaryObject = new DiaryObject(id, title, note, date);
+                DiaryObject diaryObject = new DiaryObject(id, title, story, date);
                 obj.add(diaryObject);
             }while (result.moveToNext());
         }
