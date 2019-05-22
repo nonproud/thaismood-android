@@ -148,6 +148,7 @@
     <string name="q_mdq_ans_4">ก่อปัญหาเล็กน้อย</string>
     <string name="q_mdq_ans_5">ก่อปัญหาปานกลาง</string>
     <string name="q_mdq_ans_6">ก่อปัญหารุนแรง</string>
+    <string name="q_mdq_ans_7">ใช่</string>
 
     <array name="q_mdq_question">
         <item>เคยมีช่วงระยะเวลาใดเวลาหนึ่งในชีวิตที่ผ่านมาที่คุณรู้สึกไม่เป็นตัวของตัวเองตามปกติ และ</item>
