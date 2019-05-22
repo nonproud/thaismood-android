@@ -63,7 +63,7 @@ public class FragmentList extends Fragment {
         ArrayList<MoodObject> moodList = db.getAllMood();
         RecordListAdapter adapter = new RecordListAdapter(getActivity(), moodList);
         listView.setAdapter(adapter);
-        type.setText("Amount: " + moodList.size());
+        type.setText("จำนวน: " + moodList.size());
 
     }
 

@@ -16,7 +16,9 @@
             android:id="@+id/graph_tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary" />
+            android:background="@color/color_graphTab"
+            app:tabTextColor="@color/white"
+            />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"

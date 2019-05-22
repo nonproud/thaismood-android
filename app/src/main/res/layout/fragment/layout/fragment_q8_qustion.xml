@@ -90,8 +90,9 @@
 
         <Button
             android:id="@+id/q_8q_prev_btn"
-            android:layout_width="200dp"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:background="@drawable/button_border_unselected"
             android:enabled="false"
             android:layout_marginRight="5dp"
@@ -102,8 +103,9 @@
 
         <Button
             android:id="@+id/q_8q_next_btn"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:background="@drawable/button_border_unselected"
             android:enabled="false"
             android:fontFamily="@font/thsarabunnew_bold"

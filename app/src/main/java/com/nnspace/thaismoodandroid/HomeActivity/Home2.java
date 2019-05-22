@@ -42,6 +42,7 @@ public class Home2 extends AppCompatActivity
         setContentView(R.layout.activity_home2);
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.header_graph);
+        toolbar.setBackgroundColor(getResources().getColor(R.color.color_graph));
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -152,20 +153,24 @@ public class Home2 extends AppCompatActivity
                 switch (position){
                     case 0:
                         toolbar.setTitle(R.string.header_fragment_list);
+                        toolbar.setBackgroundColor(getResources().getColor(R.color.color_list));
                         fragment = new FragmentList();
                         break;
                     case 1:
                         toolbar.setTitle(R.string.header_graph);
+                        toolbar.setBackgroundColor(getResources().getColor(R.color.color_graph));
                         fragment = new FragmentGraph();
                         break;
                     case 2:
                         return false;
                     case 3:
                         toolbar.setTitle(R.string.header_help);
+                        toolbar.setBackgroundColor(getResources().getColor(R.color.color_help));
                         fragment = new FragmentEmergencyData();
                         break;
                     case 4:
                         toolbar.setTitle(R.string.header_diary);
+                        toolbar.setBackgroundColor(getResources().getColor(R.color.color_diary));
                         fragment = new FragmentDiary();
                         break;
                 }

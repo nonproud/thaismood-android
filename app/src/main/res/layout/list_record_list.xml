@@ -63,6 +63,7 @@
                         android:id="@+id/list_record_list_level_of_mood_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
                         android:textSize="15dp"
                         android:text="Level"/>
                 </LinearLayout>
@@ -84,7 +85,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:textSize="15dp"
-                        android:text="ยังไม่ได้บันทึก"/>
+                        android:text="-"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -111,7 +112,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:textSize="15dp"
-                        android:text="ยังไม่ได้บันทึก"/>
+                        android:text="-"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -131,7 +132,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:textSize="15dp"
-                        android:text="ยังไม่ได้บันทึก"/>
+                        android:text="-"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -141,6 +142,7 @@
             android:id="@+id/list_record_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:gravity="right"
             android:text="วันที่"/>
 

@@ -35,8 +35,10 @@
     <color name="q_mdq_theme_light">#eacb86</color>
 
     <!--Botton nav menu color-->
-    <color name="color_list">#FFA3B0</color>
-    <color name="color_graph">#7471F7</color>
-    <color name="color_help">#64B5F6</color>
-    <color name="color_diary">#FFD75D</color>
+    <color name="color_list">#30043d</color>
+    <color name="color_graph">#8e1f51</color>
+    <color name="color_help">#e54059</color>
+    <color name="color_diary">#de837f</color>
+    <color name="color_plus_new">#fdb36a</color>
+    <color name="color_graphTab">#9e4d71</color>
 </resources>

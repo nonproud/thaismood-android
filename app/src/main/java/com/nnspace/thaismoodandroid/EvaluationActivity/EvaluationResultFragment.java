@@ -1,5 +1,6 @@
 package com.nnspace.thaismoodandroid.EvaluationActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.nnspace.thaismoodandroid.HomeActivity.Home2;
 import com.nnspace.thaismoodandroid.R;
 
 public class EvaluationResultFragment extends Fragment {
@@ -53,6 +55,7 @@ public class EvaluationResultFragment extends Fragment {
                         nextFragment = new QMDQFragment();
                         break;
                     default:
+                        startActivity(new Intent(getActivity(), Home2.class));
                         getActivity().finish();
                 }
 
