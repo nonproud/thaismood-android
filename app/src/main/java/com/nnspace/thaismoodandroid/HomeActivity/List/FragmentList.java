@@ -2,10 +2,6 @@ package com.nnspace.thaismoodandroid.HomeActivity.List;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,7 +11,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.nnspace.thaismoodandroid.Database.EmotionDB;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+
+import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
 import com.nnspace.thaismoodandroid.MoodObject;
 import com.nnspace.thaismoodandroid.R;
 import com.nnspace.thaismoodandroid.SwipeDetector;
@@ -58,7 +59,7 @@ public class FragmentList extends Fragment {
         });
 
         TextView type = getView().findViewById(R.id.list_type);
-        EmotionDB db = new EmotionDB(getActivity());
+        ThaisMoodDB db = new ThaisMoodDB(getActivity());
         ArrayList<MoodObject> moodList = db.getAllMood();
         RecordListAdapter adapter = new RecordListAdapter(getActivity(), moodList);
         listView.setAdapter(adapter);

@@ -76,14 +76,15 @@
                         android:id="@+id/list_record_list_activity_icon"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/ic_year"/>
+                        android:src="@drawable/ic_add_activity"/>
 
                     <TextView
                         android:id="@+id/list_record_list_activity_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
                         android:textSize="15dp"
-                        android:text="Activity"/>
+                        android:text="ยังไม่ได้บันทึก"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -108,8 +109,9 @@
                         android:id="@+id/list_record_list_sleep_time_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
                         android:textSize="15dp"
-                        android:text="Sleep Time"/>
+                        android:text="ยังไม่ได้บันทึก"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -118,17 +120,18 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:id="@+id/list_record_list_excercise_icon"
+                        android:id="@+id/list_record_list_exercise_icon"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/excercise"/>
+                        android:src="@drawable/ic_add_excercise"/>
 
                     <TextView
-                        android:id="@+id/list_record_list_excercise_title"
+                        android:id="@+id/list_record_list_exercise_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
                         android:textSize="15dp"
-                        android:text="Excercise"/>
+                        android:text="ยังไม่ได้บันทึก"/>
                 </LinearLayout>
             </LinearLayout>
 

@@ -41,6 +41,7 @@ public class Home2 extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home2);
         toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.header_graph);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -63,20 +64,8 @@ public class Home2 extends AppCompatActivity
         ImageView rlIcon3 = new ImageView(this );
         ImageView rlIcon4 = new ImageView(this);
         ImageView rlIcon5 = new ImageView(this);
-        rlIcon1.getLayoutParams().width = 40;
-        rlIcon2.getLayoutParams().width = 40;
-        rlIcon3.getLayoutParams().width = 40;
-        rlIcon4.getLayoutParams().width = 40;
-        rlIcon5.getLayoutParams().width = 40;
-
-        rlIcon1.getLayoutParams().height = 40;
-        rlIcon2.getLayoutParams().height = 40;
-        rlIcon3.getLayoutParams().height = 40;
-        rlIcon4.getLayoutParams().height = 40;
-        rlIcon5.getLayoutParams().height = 40;
 
         SubActionButton.Builder rLSubBuilder = new SubActionButton.Builder(this);
-
 
         SubActionButton addMoodSub = rLSubBuilder.setContentView(rlIcon1).build();
         SubActionButton addSleepSub = rLSubBuilder.setContentView(rlIcon2).build();
@@ -95,13 +84,15 @@ public class Home2 extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Home2.this, WriteNoteActivity.class);
+                intent.putExtra("isCustom", false);
+                intent.putExtra("isHasStory", false);
                 startActivity(intent);
             }
         });
 
-        rlIcon1.setImageDrawable(getResources().getDrawable(R.drawable.ic_add_mood));
         rlIcon2.setImageDrawable(getResources().getDrawable(R.drawable.ic_add_sleep));
         rlIcon3.setImageDrawable(getResources().getDrawable(R.drawable.ic_add_activity));
+        rlIcon1.setImageDrawable(getResources().getDrawable(R.drawable.ic_add_mood));
         rlIcon4.setImageDrawable(getResources().getDrawable(R.drawable.ic_add_excercise));
         rlIcon5.setImageDrawable(getResources().getDrawable(R.drawable.ic_pencil));
 
@@ -111,11 +102,11 @@ public class Home2 extends AppCompatActivity
                 .setStartAngle(0)
                 .setEndAngle(-180)
                 .setAnimationHandler(new SlideInAnimationHandler())
-                .addSubActionView(addMoodSub)
-                .addSubActionView(addSleepSub)
                 .addSubActionView(addActivitySub)
-                .addSubActionView(addExerciseSub)
+                .addSubActionView(addSleepSub)
+                .addSubActionView(addMoodSub)
                 .addSubActionView(addNoteSub)
+                .addSubActionView(addExerciseSub)
                 .attachTo(add)
                 .build();
 
@@ -124,11 +115,11 @@ public class Home2 extends AppCompatActivity
 
     private void setUpBottomNav() {
 
-        AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.title_oneitem, R.drawable.list, R.color.mood_red);
-        AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.title_graph, R.drawable.graph, R.color.mood_yellow);
+        AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.title_oneitem, R.drawable.list, R.color.color_list);
+        AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.title_graph, R.drawable.graph, R.color.color_graph);
         AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.title_blank, R.drawable.ic_home, R.color.mood_green);
-        AHBottomNavigationItem item4 = new AHBottomNavigationItem(R.string.title_help, R.drawable.ic_help, R.color.mood_grey);
-        AHBottomNavigationItem item5 = new AHBottomNavigationItem(R.string.title_diary, R.drawable.ic_diary, R.color.mood_violet);
+        AHBottomNavigationItem item4 = new AHBottomNavigationItem(R.string.title_help, R.drawable.ic_help, R.color.color_help);
+        AHBottomNavigationItem item5 = new AHBottomNavigationItem(R.string.title_diary, R.drawable.ic_diary, R.color.color_diary);
 
         navigation.addItem(item1);
         navigation.addItem(item2);
@@ -160,17 +151,21 @@ public class Home2 extends AppCompatActivity
                 Fragment fragment = null;
                 switch (position){
                     case 0:
+                        toolbar.setTitle(R.string.header_fragment_list);
                         fragment = new FragmentList();
                         break;
                     case 1:
+                        toolbar.setTitle(R.string.header_graph);
                         fragment = new FragmentGraph();
                         break;
                     case 2:
                         return false;
                     case 3:
+                        toolbar.setTitle(R.string.header_help);
                         fragment = new FragmentEmergencyData();
                         break;
                     case 4:
+                        toolbar.setTitle(R.string.header_diary);
                         fragment = new FragmentDiary();
                         break;
                 }
@@ -208,8 +203,16 @@ public class Home2 extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id){
+            case R.id.action_mood:
+                return true;
+            case R.id.action_activity:
+                return true;
+            case R.id.action_exercise:
+                return true;
+            case R.id.action_summary:
+                return true;
+
         }
 
         return super.onOptionsItemSelected(item);
