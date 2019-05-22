@@ -18,7 +18,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="100dp"
             android:textColor="@color/white"
             android:fontFamily="@font/thsarabunnew_bold"
             android:text="@string/q_8q_header"
@@ -38,30 +38,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:gravity="center"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="top|center_horizontal"
             android:background="@drawable/box_border_8q"
             android:padding="20dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/q_8q_question_tx"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:gravity="center"
+                android:fontFamily="@font/thsarabunnew"
+                android:gravity="center_horizontal"
                 android:text="This is Question"
-                android:textSize="@dimen/question_text_size" />
+                android:textSize="25dp" />
 
             <Button
                 android:id="@+id/q_8q_choice_1"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/q_8q_choice_unselected"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="20dp"
+
                 android:text="@string/q_8q_ans_1"
                 android:tag="0"/>
 
@@ -71,6 +74,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/q_8q_choice_unselected"
                 android:layout_marginTop="20dp"
+
                 android:text="@string/q_8q_ans_2"
                 android:tag="1"/>
 

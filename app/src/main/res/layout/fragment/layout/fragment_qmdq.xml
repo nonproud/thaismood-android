@@ -12,13 +12,14 @@
         android:layout_height="582dp"
         android:layout_weight="1"
         android:background="@color/q_mdq_theme"
-        android:gravity="center_horizontal"
+        android:gravity="top|center_horizontal"
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
             android:text="@string/q_mdq_header"
             android:textColor="@color/white"
             android:textSize="@dimen/fragment_header_text_size" />
@@ -33,11 +34,14 @@
             android:textSize="@dimen/fragment_header_text_size" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginTop="30dp"
-            android:background="@drawable/box_border"
-            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/box_border_mdq"
+            android:gravity="top|center_horizontal"
             android:orientation="vertical"
             android:padding="20dp">
 
@@ -45,21 +49,32 @@
                 android:id="@+id/q_mdq_intro_tx"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:text="This is Question"
-                android:textSize="@dimen/question_text_size" />
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/q_mdq_question_tx"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
                 android:text="This is Question"
-                android:textSize="@dimen/question_text_size" />
+                android:textSize="18dp" />
+            <TextView
+                android:id="@+id/q_mdq_question_15_tx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:layout_marginBottom="5dp"
+                android:text="This is Question"
+                android:textSize="18dp" />
 
             <LinearLayout
                 android:id="@+id/q_mdq_part_1_2_section"
@@ -92,7 +107,7 @@
                 android:id="@+id/q_mdq_part_3_section"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:visibility="gone">

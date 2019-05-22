@@ -67,8 +67,7 @@ public class MainActivity extends Activity {
         time = delay_time - (System.currentTimeMillis() - time);
     }
 
-    public void adjustFontScale(Configuration configuration)
-    {
+    public void adjustFontScale(Configuration configuration) {
         configuration.fontScale = (float) 1.0;
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);

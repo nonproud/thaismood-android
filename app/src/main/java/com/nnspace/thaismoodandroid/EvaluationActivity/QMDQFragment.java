@@ -1,25 +1,31 @@
 package com.nnspace.thaismoodandroid.EvaluationActivity;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.nnspace.thaismoodandroid.R;
 
+import static android.content.Context.WINDOW_SERVICE;
+
 public class QMDQFragment extends Fragment implements IEvaluation {
 
     private String[] question;
     private Button nextBtn, prevBtn, c1, c2, c1_3, c2_3,c3_3, c4_3;
-    private TextView questionIntrotx, questiontx, indicator;
+    private TextView questionIntrotx, questiontx, indicator, question15tx;
     private static int countNo, part1Point, part2Point, part3Point;
     private Integer[] currentPoint;
     private LinearLayout part12, part3;
@@ -34,6 +40,9 @@ public class QMDQFragment extends Fragment implements IEvaluation {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        adjustFontScale(getActivity().getResources().getConfiguration());
+
         countNo = 0;
         part1Point = 0; part2Point = 0; part3Point = 0;
         currentPoint = new Integer[15];
@@ -42,8 +51,8 @@ public class QMDQFragment extends Fragment implements IEvaluation {
         prevBtn = getView().findViewById(R.id.q_mdq_prev_btn);
         questiontx = getView().findViewById(R.id.q_mdq_question_tx);
         questionIntrotx = getView().findViewById(R.id.q_mdq_intro_tx);
-        questiontx.setText(question[1]);
-        questionIntrotx.setText(question[0]);
+        questiontx.setText(question[0]);
+        questionIntrotx.setText(getView().getResources().getString(R.string.mdq_1));
         c1 = getView().findViewById(R.id.q_mdq_choice_1);
         c2 = getView().findViewById(R.id.q_mdq_choice_2);
         c1_3 = getView().findViewById(R.id.q_mdq_part_3_choice_1);
@@ -53,6 +62,7 @@ public class QMDQFragment extends Fragment implements IEvaluation {
         indicator = getView().findViewById(R.id.q_mdq_indicator);
         part12 = getView().findViewById(R.id.q_mdq_part_1_2_section);
         part3 = getView().findViewById(R.id.q_mdq_part_3_section);
+        question15tx = getView().findViewById(R.id.q_mdq_question_15_tx);
 
         c1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,6 +171,9 @@ public class QMDQFragment extends Fragment implements IEvaluation {
                     }else if(countNo == 13) {
                         part12.setVisibility(View.GONE);
                         part3.setVisibility(View.VISIBLE);
+                        question15tx.setVisibility(View.VISIBLE);
+                        question15tx.setText(question[14]);
+                        questiontx.setVisibility(View.GONE);
                     }
                         countNo++;
                     nextQuestion();
@@ -258,5 +271,14 @@ public class QMDQFragment extends Fragment implements IEvaluation {
         c1.setTextColor(getResources().getColor(R.color.black));
         c2.setBackground(getResources().getDrawable(R.drawable.q_mdq_choice_unselected));
         c2.setTextColor(getResources().getColor(R.color.black));
+    }
+
+    public void adjustFontScale(Configuration configuration) {
+        configuration.fontScale = (float) 1.0;
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        WindowManager wm = (WindowManager) getActivity().getSystemService(WINDOW_SERVICE);
+        wm.getDefaultDisplay().getMetrics(metrics);
+        metrics.scaledDensity = configuration.fontScale * metrics.density;
+        getActivity().getBaseContext().getResources().updateConfiguration(configuration, metrics);
     }
 }

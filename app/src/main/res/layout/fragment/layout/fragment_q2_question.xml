@@ -9,9 +9,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="582dp"
         android:layout_weight="1"
-        android:gravity="center_horizontal"
+        android:gravity="top|center_horizontal"
         android:orientation="vertical"
         android:background="@color/q_2q_theme">
 
@@ -32,34 +32,32 @@
             android:fontFamily="@font/thsarabunnew_bold"
             android:textColor="@color/white"
             android:text="ข้อที่ 1 จาก 2 ข้อ"
-            android:textSize="@dimen/fragment_header_text_size" />
+            android:textSize="25dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="30dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
             android:gravity="center"
             android:background="@drawable/box_border_2q"
             android:orientation="vertical"
-            android:paddingBottom="20dp"
-            android:paddingTop="20dp"
-            android:paddingLeft="9dp"
-            android:paddingRight="10dp">
+            >
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:fontFamily="@font/thsarabunnew"
                 android:text="@string/q_2q_intro"
-                android:gravity="center_vertical"
-                android:textSize="30dp" />
+                android:gravity="center_horizontal"
+                android:textSize="28dp" />
 
             <TextView
                 android:id="@+id/q_2q_question_tx"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -68,7 +66,7 @@
                 android:fontFamily="@font/thsarabunnew_bold"
                 android:text="This is Question"
                 android:ems="15"
-                android:textSize="30dp" />
+                android:textSize="25dp" />
 
             <Button
                 android:id="@+id/q_2q_choice_1"
