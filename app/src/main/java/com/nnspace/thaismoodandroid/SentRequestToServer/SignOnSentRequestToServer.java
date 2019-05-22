@@ -14,7 +14,7 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nnspace.thaismoodandroid.Database.LogonDatabase;
+import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
 import com.nnspace.thaismoodandroid.JWTUtils;
 
 import java.io.IOException;
@@ -31,7 +31,7 @@ public  class SignOnSentRequestToServer {
     private static final String getUrl_confirm_username = "https://thaismood.nn-space.me/member/email";
 
     public static  Map<String, Object> sendLoginRequest(final Context context, final String email, final String password) {
-        final LogonDatabase db = new LogonDatabase(context);
+        final ThaisMoodDB db = new ThaisMoodDB(context);
         RequestQueue MyRequestQueue = Volley.newRequestQueue(context);
         StringRequest myStringRequest = new StringRequest(Request.Method.POST, url_login, new Response.Listener<String>() {
             @Override
@@ -80,7 +80,7 @@ public  class SignOnSentRequestToServer {
 
     public static boolean sendRegistRequest(final Context context, final String email, final String password) {
         isRequestSuccess = false;
-        final LogonDatabase db = new LogonDatabase(context);
+        final ThaisMoodDB db = new ThaisMoodDB(context);
         RequestQueue MyRequestQueue = Volley.newRequestQueue(context);
         StringRequest myStringRequest = new StringRequest(Request.Method.POST, url_login, new Response.Listener<String>() {
             @Override

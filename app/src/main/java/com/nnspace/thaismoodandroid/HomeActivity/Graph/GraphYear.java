@@ -1,14 +1,15 @@
 package com.nnspace.thaismoodandroid.HomeActivity.Graph;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
@@ -19,10 +20,11 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
-import com.nnspace.thaismoodandroid.Database.EmotionDB;
+import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
 import com.nnspace.thaismoodandroid.MoodObject;
 import com.nnspace.thaismoodandroid.MoodType;
 import com.nnspace.thaismoodandroid.R;
+import com.whiteelephant.monthpicker.MonthPickerDialog;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -32,7 +34,6 @@ public class GraphYear extends Fragment {
 
     private Calendar currentCalender, calendar;
     private ArrayList<String> xLabel;
-    private int today_dayOfWeek;
     private TextView dateDes;
     private ImageView leftbtn, rightbtn;
     private LineChart chart;
@@ -60,21 +61,25 @@ public class GraphYear extends Fragment {
         chart = getView().findViewById(R.id.graph_year_chart1);
         chart2 = getView().findViewById(R.id.graph_year_chart2);
 
-        EmotionDB db = new EmotionDB(getActivity());
-        String[] dr = getDateRange();
-        moodlist = db.getMoodWeek(dr[0], dr[1]);
-
-        dateDes.setText(getMonthString());
+        dateDes.setText(getThaiYearString());
         setOnClickListener();
         setChart1();
         setChart2();
 
-//        refreshGraph();
     }
 
     private void setChart1() {
 
+        ThaisMoodDB db = new ThaisMoodDB(getActivity());
+        String[] dr = getDateRange();
+        moodlist = db.getMoodRange(dr[0], dr[1]);
+
+        List<Entry> dSet = new ArrayList<Entry>();
+
         if(moodlist.size() == 0){
+            dSet.clear();
+            chart.invalidate();
+            chart.clear();
             return;
         }
 
@@ -99,7 +104,6 @@ public class GraphYear extends Fragment {
         chart.getAxisRight().setEnabled(false);
         chart.getLegend().setEnabled(false);
 
-        List<Entry> dSet = new ArrayList<Entry>();
         for(int i=0; i<moodlist.size(); i++){
             if(moodlist.get(i).getMoodType() == MoodType.RED || moodlist.get(i).getMoodType() == MoodType.YELLOW){
                 dSet.add(new Entry(i+1, moodlist.get(i).getLevel()));
@@ -130,10 +134,23 @@ public class GraphYear extends Fragment {
     }
 
     private void setOnClickListener() {
+
         dateDes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(getActivity(), new MonthPickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(int selectedMonth, int selectedYear) {
+                        dateDes.setText(getThaiYearString());
+                        calendar.set(Calendar.YEAR, selectedYear);
+                        setChart1();
+                    }
+                }, calendar.get(Calendar.YEAR), 0);
 
+                builder.showYearOnly()
+                        .setYearRange(2015, currentCalender.get(Calendar.YEAR))
+                        .build()
+                        .show();
             }
         });
 
@@ -156,14 +173,12 @@ public class GraphYear extends Fragment {
         String[] r = new String[2];
 
         r[0] = calendar.get(Calendar.YEAR) +  "/1/1";
-
-        calendar.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
         r[1] = calendar.get(Calendar.YEAR) +  "/12/31";
 
         return r;
     }
 
-    private String getMonthString(){
+    private String getThaiYearString(){
 
         return (calendar.get(Calendar.YEAR) + 543) + "" ;
 

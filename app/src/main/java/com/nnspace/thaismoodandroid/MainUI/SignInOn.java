@@ -6,8 +6,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
@@ -20,7 +18,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.nnspace.thaismoodandroid.Database.LogonDatabase;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
+import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
 import com.nnspace.thaismoodandroid.HomeActivity.Home2;
 import com.nnspace.thaismoodandroid.R;
 import com.nnspace.thaismoodandroid.SentRequestToServer.SignOnSentRequestToServer;
@@ -32,7 +33,7 @@ public class SignInOn extends AppCompatActivity {
     private Button loginBtn, registBtn;
     private ConstraintLayout login_form, regist_form;
     private Dialog registDialog, loginDialog;
-    private final LogonDatabase db = new LogonDatabase(this);
+    private final ThaisMoodDB db = new ThaisMoodDB(this);
     private TextView emailWarning, usernameWarning;
     private EditText emailtx, usernametx;
     private Boolean isReadToGo = false;

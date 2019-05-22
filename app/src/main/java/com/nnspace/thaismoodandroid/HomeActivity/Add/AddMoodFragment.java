@@ -2,6 +2,7 @@ package com.nnspace.thaismoodandroid.HomeActivity.Add;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.transition.TransitionManager;
 
-import com.nnspace.thaismoodandroid.Database.EmotionDB;
+import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
 import com.nnspace.thaismoodandroid.MyThaiCalender;
 import com.nnspace.thaismoodandroid.R;
 
@@ -27,7 +28,6 @@ public class AddMoodFragment extends Fragment {
 
     private final Calendar calendar = Calendar.getInstance();
     private final Calendar currentCalendar = Calendar.getInstance();
-    private DatePickerDialog datePickerDialog = null;
     private final MyThaiCalender myThaiCalender = new MyThaiCalender();
     private SeekBar moodLevel;
     private EditText dateText;
@@ -37,7 +37,7 @@ public class AddMoodFragment extends Fragment {
             redLayout, moodLevelSection;
 
     private  Button nextBtn;
-    private int selectedMood = 0, moodLevelValue =1;
+    private int selectedMood = 0, moodLevelValue = 1;
 
 
     @Override
@@ -77,17 +77,15 @@ public class AddMoodFragment extends Fragment {
         dateText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(datePickerDialog == null){
-                    datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
-                        @Override
-                        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                            calendar.set(year, month, dayOfMonth);
-                            dateText.setText(dayOfMonth + " " + MyThaiCalender.getMonthOfYear(month) + " " + (year + 543));
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        calendar.set(year, month, dayOfMonth);
+                        dateText.setText(dayOfMonth + " " + MyThaiCalender.getMonthOfYear(month) + " " + (year + 543));
 
-                        }
-                    }, calendar.get(Calendar.YEAR),
-                            calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-                }
+                    }
+                }, calendar.get(Calendar.YEAR),
+                        calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
                 datePickerDialog.show();
             }
         });
@@ -128,6 +126,7 @@ public class AddMoodFragment extends Fragment {
                 clearButton();
                 violetEmo.setImageDrawable(getResources().getDrawable(R.drawable.emo_violet_fill));
                 selectedMood = 1;
+                moodLevelValue = 1;
                 moodLevelSection.setBackground(getResources().getDrawable(R.drawable.mood_box_violet));
                 moodLevel.setProgressDrawable(getResources().getDrawable(R.drawable.seek_bg_violet));
                 moodLevelSection.setVisibility(View.VISIBLE);
@@ -142,6 +141,7 @@ public class AddMoodFragment extends Fragment {
                 moodLevelSection.setVisibility(View.GONE);
                 greyEmo.setImageDrawable(getResources().getDrawable(R.drawable.emo_grey_fill));
                 selectedMood = 2;
+                moodLevelValue = 1;
                 moodLevelSection.setBackground(getResources().getDrawable(R.drawable.mood_box_grey));
                 moodLevel.setProgressDrawable(getResources().getDrawable(R.drawable.seek_bg_grey));
                 moodLevelSection.setVisibility(View.VISIBLE);
@@ -169,6 +169,7 @@ public class AddMoodFragment extends Fragment {
                 moodLevelSection.setVisibility(View.GONE);
                 yellowEmo.setImageDrawable(getResources().getDrawable(R.drawable.emo_yellow_fill));
                 selectedMood = 4;
+                moodLevelValue = 1;
                 moodLevelSection.setBackground(getResources().getDrawable(R.drawable.mood_box_yellow));
                 moodLevel.setProgressDrawable(getResources().getDrawable(R.drawable.seek_bg_yellow));
                 moodLevelSection.setVisibility(View.VISIBLE);
@@ -183,6 +184,7 @@ public class AddMoodFragment extends Fragment {
                 moodLevelSection.setVisibility(View.GONE);
                 redEmo.setImageDrawable(getResources().getDrawable(R.drawable.emo_red_fill));
                 selectedMood = 5;
+                moodLevelValue = 1;
                 moodLevelSection.setBackground(getResources().getDrawable(R.drawable.mood_box_red));
                 moodLevel.setProgressDrawable(getResources().getDrawable(R.drawable.seek_bg_red));
                 moodLevelSection.setVisibility(View.VISIBLE);
@@ -195,7 +197,7 @@ public class AddMoodFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                EmotionDB db = new EmotionDB(getActivity());
+                ThaisMoodDB db = new ThaisMoodDB(getActivity());
                 if(db.insertMood(selectedMood, moodLevelValue, getDateString())){
                     getActivity().finish();
                 }else{
@@ -229,6 +231,8 @@ public class AddMoodFragment extends Fragment {
     }
 
     private String getDateString(){
+        Log.d("date", String.format("%d/%d/%d",
+                calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH)));
         return String.format("%d/%d/%d",
                 calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH));
     }

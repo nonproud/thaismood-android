@@ -9,10 +9,10 @@ public class MoodObject {
     private MoodType moodType;
     private int level;
     private Date dateCreated;
-    private String note;
     private String dateFromDb;
 
-    public MoodObject(int id, int moodType, int level, String note, String date){
+    public MoodObject(int id, int moodType, int level, String date){
+        this.id = id;
         dateCreated = new Date();
         dateFromDb = date;
         switch (moodType){
@@ -39,7 +39,6 @@ public class MoodObject {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        this.note = note;
     }
 
     public MoodType getMoodType() {
@@ -64,14 +63,6 @@ public class MoodObject {
 
     public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
-    }
-
-    public String getNote() {
-        return note;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
     }
 
     public String getDateString(){

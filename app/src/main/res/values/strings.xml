@@ -196,7 +196,7 @@
     <string name="header_oneitem">รายการที่บันทึก</string>
     <string name="header_graph">กราฟอารมณ์</string>
     <string name="header_add">เพิ่ม</string>
-    <string name="header_profile">ข้อมูล</string>
+    <string name="header_help">ช่วยเหลือ</string>
     <string name="header_diary">ไดอารี</string>
     <!-- END OF HEADER-->
 
@@ -307,5 +307,21 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_activity_home2">Home2</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="action_mood">อารมณ์</string>
+    <string name="action_activity">กิจกรรม</string>
+    <string name="action_exercise">การออกกำลังกาย</string>
+    <string name="action_summary">ข้อมูลสรุป</string>
+
+    <!--Phone number-->
+    <string name="dmh_number">1323</string>
+    <string name="smrt_number">027136793</string>
 
 </resources>

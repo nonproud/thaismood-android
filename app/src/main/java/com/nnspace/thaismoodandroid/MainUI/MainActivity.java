@@ -9,13 +9,13 @@ import android.util.DisplayMetrics;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.nnspace.thaismoodandroid.Database.LogonDatabase;
+import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
 import com.nnspace.thaismoodandroid.MainmenuTest;
 import com.nnspace.thaismoodandroid.R;
 
 public class MainActivity extends Activity {
 
-    final LogonDatabase db = new LogonDatabase(this);
+    final ThaisMoodDB db = new ThaisMoodDB(this);
     Handler handler;
     Runnable runnable;
     long delay_time;

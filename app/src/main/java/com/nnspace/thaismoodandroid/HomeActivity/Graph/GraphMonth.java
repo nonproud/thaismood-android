@@ -1,14 +1,15 @@
 package com.nnspace.thaismoodandroid.HomeActivity.Graph;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
@@ -19,11 +20,12 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
-import com.nnspace.thaismoodandroid.Database.EmotionDB;
+import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
 import com.nnspace.thaismoodandroid.MoodObject;
 import com.nnspace.thaismoodandroid.MoodType;
 import com.nnspace.thaismoodandroid.MyThaiCalender;
 import com.nnspace.thaismoodandroid.R;
+import com.whiteelephant.monthpicker.MonthPickerDialog;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -39,6 +41,7 @@ public class GraphMonth extends Fragment {
     private LineChart chart;
     private PieChart chart2;
     private ArrayList<MoodObject> moodlist;
+    private Calendar today = Calendar.getInstance(), currentDay = Calendar.getInstance();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,11 +64,7 @@ public class GraphMonth extends Fragment {
         chart = getView().findViewById(R.id.graph_month_chart1);
         chart2 = getView().findViewById(R.id.graph_month_chart2);
 
-        EmotionDB db = new EmotionDB(getActivity());
-        String[] dr = getDateRange();
-        moodlist = db.getMoodWeek(dr[0], dr[1]);
-
-        dateDes.setText(getMonthString());
+        dateDes.setText(getThaiMonthString());
         setOnClickListener();
         setChart1();
         setChart2();
@@ -75,7 +74,16 @@ public class GraphMonth extends Fragment {
 
     private void setChart1() {
 
+        ThaisMoodDB db = new ThaisMoodDB(getActivity());
+        String[] dr = getDateRange();
+        moodlist = db.getMoodRange(dr[0], dr[1]);
+
+        List<Entry> dSet = new ArrayList<Entry>();
+
         if(moodlist.size() == 0){
+            dSet.clear();
+            chart.invalidate();
+            chart.clear();
             return;
         }
 
@@ -100,7 +108,7 @@ public class GraphMonth extends Fragment {
         chart.getAxisRight().setEnabled(false);
         chart.getLegend().setEnabled(false);
 
-        List<Entry> dSet = new ArrayList<Entry>();
+
         for(int i=0; i<moodlist.size(); i++){
             if(moodlist.get(i).getMoodType() == MoodType.RED || moodlist.get(i).getMoodType() == MoodType.YELLOW){
                 dSet.add(new Entry(i+1, moodlist.get(i).getLevel()));
@@ -131,10 +139,32 @@ public class GraphMonth extends Fragment {
     }
 
     private void setOnClickListener() {
+
+        final MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(getActivity(),
+                new MonthPickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(int selectedMonth, int selectedYear) { // on date set
+                        calendar.set(Calendar.MONTH, selectedMonth);
+                        calendar.set(Calendar.YEAR, selectedYear);
+                        dateDes.setText(getThaiMonthString());
+                        setChart1();
+                        setChart2();
+                    }
+                    }, today.get(Calendar.YEAR), today.get(Calendar.MONTH));
+
         dateDes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                builder.setActivatedMonth(Calendar.JULY)
+                        .setMinYear(2015)
+                        .setActivatedYear(calendar.get(Calendar.YEAR))
+                        .setActivatedMonth(calendar.get(Calendar.MONTH))
+                        .setMonthAndYearRange(Calendar.JANUARY, currentCalender.get(Calendar.MONTH), 2015, currentCalender.get(Calendar.YEAR))
+                        .setMaxYear(calendar.get(Calendar.YEAR))
+                        .setTitle("เลือกเดือน")
+                        .setMonthRange(Calendar.JANUARY, Calendar.DECEMBER)
+                        .build()
+                        .show();
             }
         });
 
@@ -166,7 +196,7 @@ public class GraphMonth extends Fragment {
         return r;
     }
 
-    private String getMonthString(){
+    private String getThaiMonthString(){
 
         return MyThaiCalender.getMonthOfYear(calendar.get(Calendar.MONTH)) + " " + (calendar.get(Calendar.YEAR) + 543);
 

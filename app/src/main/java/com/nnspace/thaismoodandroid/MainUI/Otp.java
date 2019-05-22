@@ -3,11 +3,12 @@ package com.nnspace.thaismoodandroid.MainUI;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -16,11 +17,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.nnspace.thaismoodandroid.Database.LogonDatabase;
+import com.ligl.android.widget.iosdialog.IOSDialog;
+import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
 import com.nnspace.thaismoodandroid.R;
 import com.nnspace.thaismoodandroid.RegisterActivity.Register;
 import com.nnspace.thaismoodandroid.ShowDialog;
-import com.ligl.android.widget.iosdialog.IOSDialog;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,7 +31,7 @@ public class Otp extends AppCompatActivity {
     private String urlOTPVerify;
     private EditText otpInput;
     private String email;
-    private final LogonDatabase db = new LogonDatabase(Otp.this);
+    private final ThaisMoodDB db = new ThaisMoodDB(Otp.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

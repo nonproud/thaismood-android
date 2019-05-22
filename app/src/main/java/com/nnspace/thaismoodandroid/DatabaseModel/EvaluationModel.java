@@ -4,15 +4,19 @@ public class EvaluationModel {
 
     public static final String DATABASE_NAME = "ThaisMoodDB";
     public static final int DATABASE_VERSION = 1;
+
     public static final String TABLE_NAME = "evaluation";
+    public static final String _2q = "q2q";
+    public static final String _9q = "q9q";
+    public static final String _8q = "q8q";
+    public static final String mdq = "qmdq";
+    public static final String date = "date";
 
-    public class column{
-        public static final String TABLE_NAME = "evaluation";
-        public static final String _2q = "2q";
-        public static final String _9q = "9q";
-        public static final String _8q = "8q";
-        public static final String mdq = "mdq";
-        public static final String date = "date";
-
-    }
+    public static final String CREATE_TABLE_STRING = String.format("CREATE TABLE %s (" +
+            "%s int," +
+            "%s int," +
+            "%s int," +
+            "%s int," +
+            "%s date NOT NULL" +
+            ");", TABLE_NAME, _2q, _9q, _8q, mdq, date);
 }

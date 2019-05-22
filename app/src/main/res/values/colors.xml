@@ -31,4 +31,9 @@
     <color name="q_mdq_theme_dark">#1b1b1b</color>
     <color name="q_mdq_theme_light">#6d6d6d</color>
 
+    <!--Botton nav menu color-->
+    <color name="color_list">#FFA3B0</color>
+    <color name="color_graph">#7471F7</color>
+    <color name="color_help">#64B5F6</color>
+    <color name="color_diary">#FFD75D</color>
 </resources>

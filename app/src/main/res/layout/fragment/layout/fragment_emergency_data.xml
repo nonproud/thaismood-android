@@ -109,7 +109,9 @@
                                 android:background="#00b248"
                                 android:layout_marginRight="1dp"
                                 android:layout_weight="1">
+
                                 <Button
+                                    android:id="@+id/dmh_call_btn"
                                     android:layout_width="fill_parent"
                                     android:layout_height="fill_parent"
                                     android:background="#00b248"
@@ -124,6 +126,7 @@
                                 android:layout_marginLeft="1dp"
                                 android:background="#00b248">
                                 <Button
+                                    android:id="@+id/dmh_fb_btn"
                                     android:layout_width="fill_parent"
                                     android:layout_height="fill_parent"
                                     android:background="#00b248"
@@ -194,7 +197,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/thsarabunnew_bold"
                                 android:textSize="40dp"
-                                android:text=" 02-713-6793" />
+                                android:text="02-713-6793" />
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -234,7 +237,9 @@
                                 android:background="#00b248"
                                 android:layout_marginRight="1dp"
                                 android:layout_weight="1">
+
                                 <Button
+                                    android:id="@+id/smrt_call_btn"
                                     android:layout_width="fill_parent"
                                     android:layout_height="fill_parent"
                                     android:background="#00b248"
@@ -248,12 +253,15 @@
                                 android:layout_weight="1"
                                 android:layout_marginLeft="1dp"
                                 android:background="#00b248">
+
                                 <Button
+                                    android:id="@+id/smrt_web_btn"
                                     android:layout_width="fill_parent"
                                     android:layout_height="fill_parent"
                                     android:background="#00b248"
                                     android:textColor="@color/white"
-                                    android:text="Facebook"/>
+                                    android:text="web site"/>
+
                             </LinearLayout>
 
                             <LinearLayout
@@ -263,6 +271,7 @@
                                 android:layout_marginLeft="1dp"
                                 android:background="#00b248">
                                 <Button
+                                    android:id="@+id/smrt_fb_btn"
                                     android:layout_width="fill_parent"
                                     android:layout_height="fill_parent"
                                     android:background="#00b248"

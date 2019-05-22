@@ -26,6 +26,9 @@
             android:id="@+id/graph_month_date_des"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:fontFamily="@font/thsarabunnew_bold"
@@ -78,7 +81,7 @@
                     android:layout_marginTop="20dp"
                     android:textSize="20dp"
                     android:fontFamily="@font/thsarabunnew_bold"
-                    android:text="สัดส่วนอารมณ์ในอาทิตย์นี้"/>
+                    android:text="สัดส่วนอารมณ์ในเดือนนี้"/>
 
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/graph_month_chart2"
@@ -91,6 +94,7 @@
                     />
 
             </androidx.cardview.widget.CardView>
+
         </LinearLayout>
 
     </ScrollView>
