@@ -12,9 +12,8 @@ public class NoteModel {
     public static final String DATE = "date";
 
     public static final String CREATE_TABLE_STRING = String.format("CREATE TABLE %s (" +
-                    "%s int PRIMARY KEY, " +
+                    "%s INTEGER PRIMARY KEY, " +
                     "%s varchar(100) NOT NULL, " +
                     "%s varchar(2000) NOT NULL, " +
-                    "%s DATE NOT NULL " +
-                    ");", TABLE_NAME, ID, TITLE, NOTE, DATE);
+                    "%s DATE NOT NULL);", TABLE_NAME, ID, TITLE, NOTE, DATE);
 }
