@@ -6,7 +6,7 @@
     xmlns:williamchart="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="top"
-    android:background="#eeeeee"
+    android:background="@color/fragment_background"
     tools:context=".HomeActivity.Graph.GraphWeek">
 
     <LinearLayout

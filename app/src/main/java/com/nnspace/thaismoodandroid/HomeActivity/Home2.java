@@ -35,6 +35,7 @@ public class Home2 extends AppCompatActivity
     private Toolbar toolbar;
     private AHBottomNavigation navigation;
     private FloatingActionButton add;
+    private int currentCount = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +78,9 @@ public class Home2 extends AppCompatActivity
         addMoodSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Home2.this, AddNewRecord.class));
+                Intent intent = new Intent(Home2.this, AddNewRecord.class);
+                intent.putExtra("type", 3);
+                startActivity(intent);
             }
         });
 
@@ -87,6 +90,15 @@ public class Home2 extends AppCompatActivity
                 Intent intent = new Intent(Home2.this, WriteNoteActivity.class);
                 intent.putExtra("isCustom", false);
                 intent.putExtra("isHasStory", false);
+                startActivity(intent);
+            }
+        });
+
+        addSleepSub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Home2.this, AddNewRecord.class);
+                intent.putExtra("type", 2);
                 startActivity(intent);
             }
         });
@@ -103,15 +115,13 @@ public class Home2 extends AppCompatActivity
                 .setStartAngle(0)
                 .setEndAngle(-180)
                 .setAnimationHandler(new SlideInAnimationHandler())
-                .addSubActionView(addActivitySub)
-                .addSubActionView(addSleepSub)
-                .addSubActionView(addMoodSub)
-                .addSubActionView(addNoteSub)
-                .addSubActionView(addExerciseSub)
+                .addSubActionView(addActivitySub) // Case 1
+                .addSubActionView(addSleepSub) // Case 2
+                .addSubActionView(addMoodSub) // Case 3
+                .addSubActionView(addNoteSub) // Case 4
+                .addSubActionView(addExerciseSub) // Case 5
                 .attachTo(add)
                 .build();
-
-
     }
 
     private void setUpBottomNav() {
@@ -152,11 +162,13 @@ public class Home2 extends AppCompatActivity
                 Fragment fragment = null;
                 switch (position){
                     case 0:
+                        currentCount = 0;
                         toolbar.setTitle(R.string.header_fragment_list);
                         toolbar.setBackgroundColor(getResources().getColor(R.color.color_list));
                         fragment = new FragmentList();
                         break;
                     case 1:
+                        currentCount = 1;
                         toolbar.setTitle(R.string.header_graph);
                         toolbar.setBackgroundColor(getResources().getColor(R.color.color_graph));
                         fragment = new FragmentGraph();
@@ -164,11 +176,13 @@ public class Home2 extends AppCompatActivity
                     case 2:
                         return false;
                     case 3:
+                        currentCount = 3;
                         toolbar.setTitle(R.string.header_help);
                         toolbar.setBackgroundColor(getResources().getColor(R.color.color_help));
                         fragment = new FragmentEmergencyData();
                         break;
                     case 4:
+                        currentCount = 4;
                         toolbar.setTitle(R.string.header_diary);
                         toolbar.setBackgroundColor(getResources().getColor(R.color.color_diary));
                         fragment = new FragmentDiary();
@@ -248,16 +262,41 @@ public class Home2 extends AppCompatActivity
         return true;
     }
 
-    private boolean loadFragment(Fragment fragment){
-        if(fragment != null){
+    @Override
+    protected void onPause() {
+        super.onPause();
 
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.home2_fragment_container, fragment)
-                    .commit();
-            return true;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Fragment fragment = null;
+        switch (currentCount){
+            case 0:
+                toolbar.setTitle(R.string.header_fragment_list);
+                toolbar.setBackgroundColor(getResources().getColor(R.color.color_list));
+                fragment = new FragmentList();
+                break;
+            case 1:
+                toolbar.setTitle(R.string.header_graph);
+                toolbar.setBackgroundColor(getResources().getColor(R.color.color_graph));
+                fragment = new FragmentGraph();
+                break;
+            case 3:
+                toolbar.setTitle(R.string.header_help);
+                toolbar.setBackgroundColor(getResources().getColor(R.color.color_help));
+                fragment = new FragmentEmergencyData();
+                break;
+            case 4:
+                toolbar.setTitle(R.string.header_diary);
+                toolbar.setBackgroundColor(getResources().getColor(R.color.color_diary));
+                fragment = new FragmentDiary();
+                break;
         }
-
-        return false;
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.home2_fragment_container, fragment)
+                .commit();
     }
 }

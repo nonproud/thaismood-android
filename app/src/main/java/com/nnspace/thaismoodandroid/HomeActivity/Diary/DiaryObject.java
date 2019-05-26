@@ -1,5 +1,7 @@
 package com.nnspace.thaismoodandroid.HomeActivity.Diary;
 
+import android.util.Log;
+
 public class DiaryObject {
 
     int id;
@@ -10,7 +12,8 @@ public class DiaryObject {
         this.title = title;
         this.story = story;
         this.date = date;
-        this.abStory =  story.substring(0, Math.min(story.length(), 50)) + " ...";
+        this.abStory =  story.substring(0, Math.min(story.length(), 125)) + " ...";
+        Log.d("afftercut", abStory);
     }
 
     public String getTitle() {

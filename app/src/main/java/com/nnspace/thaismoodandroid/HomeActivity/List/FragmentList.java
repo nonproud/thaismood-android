@@ -1,31 +1,28 @@
 package com.nnspace.thaismoodandroid.HomeActivity.List;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
 import com.nnspace.thaismoodandroid.MoodObject;
 import com.nnspace.thaismoodandroid.R;
-import com.nnspace.thaismoodandroid.SwipeDetector;
 
 import java.util.ArrayList;
 
 public class FragmentList extends Fragment {
 
-    private SwipeDetector swipeDetector;
+    private RecyclerView recyclerView;
 
     @Nullable
     @Override
@@ -37,32 +34,15 @@ public class FragmentList extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ListView listView = getView().findViewById(R.id.list_listview);
-
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                AlertDialog.Builder adb=new AlertDialog.Builder(getActivity());
-                adb.setTitle("Delete?");
-                adb.setMessage("Are you sure you want to delete " + position);
-                final int positionToRemove = position;
-                adb.setNegativeButton("Cancel", null);
-                adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-//                        MyDataObject.remove(positionToRemove);
-//                        adapter.notifyDataSetChanged();
-                    }});
-                adb.show();
-                System.out.println("clicked!");
-            }
-        });
+        recyclerView = getView().findViewById(R.id.record_list_view);
+        LinearLayoutManager linearLayoutManager =  new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(linearLayoutManager);
 
         TextView type = getView().findViewById(R.id.list_type);
         ThaisMoodDB db = new ThaisMoodDB(getActivity());
         ArrayList<MoodObject> moodList = db.getAllMood();
         RecordListAdapter adapter = new RecordListAdapter(getActivity(), moodList);
-        listView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
         type.setText("จำนวน: " + moodList.size());
 
     }

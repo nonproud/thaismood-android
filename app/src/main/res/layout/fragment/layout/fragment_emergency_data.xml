@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/fragment_background"
     tools:context=".HomeActivity.FragmentEmergencyData">
 
     <LinearLayout
@@ -28,8 +29,7 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="10dp"
-                    android:backgroundTint="#eeeeee">
+                    app:cardCornerRadius="10dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -148,8 +148,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="10dp"
-                    android:backgroundTint="#eeeeee">
+                    app:cardCornerRadius="10dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"

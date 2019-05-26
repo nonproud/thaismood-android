@@ -223,9 +223,9 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
 
     public boolean insertNote(String title, String story, String date){
 
-        String query_insert = "INSERT INTO " + NoteModel.TABLE_NAME + " (" + NoteModel.NOTE +
-                ", " + NoteModel.TITLE + ", " + NoteModel.DATE + ") " +
-                "values('" + title + "', '" + story + "', '" + date + "');";
+        String query_insert = String.format("INSERT INTO %s (%s, %s, %s) VALUES('%s', '%s', '%s');",
+                NoteModel.TABLE_NAME, NoteModel.TITLE, NoteModel.NOTE, NoteModel.DATE,
+                title, story, date);
 
         SQLiteDatabase db = this.getWritableDatabase();
         try{
@@ -233,9 +233,11 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
         }catch (Exception err){
             err.printStackTrace();
             Log.d("sql", query_insert + " :FAILED" );
+            System.out.println(query_insert + " :FAILED");
             return false;
         }
         Log.d("sql", query_insert + " :SUCCESSFULLY" );
+        System.out.println(query_insert + " :SUCCESSFULLY");
         return true;
     }
 
@@ -254,12 +256,13 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
                 String title = result.getString(1);
                 String story = result.getString(2);
                 String date = result.getString(3);
-                DiaryObject diaryObject = new DiaryObject(id, title, story, date);
+                DiaryObject diaryObject = new DiaryObject(1, title, story, date);
                 obj.add(diaryObject);
             }while (result.moveToNext());
         }
         result.close();
         db.close();
+        Log.d("diary", "All note size: " + obj.size());
         return obj;
     }
 }

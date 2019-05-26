@@ -1,12 +1,14 @@
 package com.nnspace.thaismoodandroid.HomeActivity.Add;
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -31,13 +33,13 @@ public class AddMoodFragment extends Fragment {
     private final MyThaiCalender myThaiCalender = new MyThaiCalender();
     private SeekBar moodLevel;
     private EditText dateText;
-    private TextView moodLevelBand;
+    private TextView moodLevelBand, closeBtn;
     private ImageView violetEmo, greyEmo, greenEmo, yellowEmo, redEmo;
     private LinearLayout violetLayout, greyLayout, greenLayout, yellowLayout,
-            redLayout, moodLevelSection;
+            redLayout, moodLevelSection, nextBtn;
 
-    private  Button nextBtn;
-    private int selectedMood = 0, moodLevelValue = 1;
+    private int selectedMood = -1, moodLevelValue = 1;
+    private Dialog helpDialog;
 
 
     @Override
@@ -48,6 +50,7 @@ public class AddMoodFragment extends Fragment {
     }
 
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        closeBtn = getView().findViewById(R.id.add_mood_help_btn);
         violetEmo = getView().findViewById(R.id.add_mood_emo_violet_icon);
         greyEmo = getView().findViewById(R.id.add_mood_emo_grey_icon);
         greenEmo = getView().findViewById(R.id.add_mood_emo_green_icon);
@@ -119,9 +122,27 @@ public class AddMoodFragment extends Fragment {
 
         final ViewGroup transition = getView().findViewById(R.id.add_mood_transition);
 
+        closeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                helpDialog = new Dialog(getActivity());
+                helpDialog.setContentView(R.layout.dialog_mood_details);
+                LinearLayout close = helpDialog.findViewById(R.id.dialog_moood_des_close_btn);
+                close.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        helpDialog.dismiss();
+                    }
+                });
+                helpDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                helpDialog.show();
+            }
+        });
+
         violetLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nextBtn.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
                 TransitionManager.beginDelayedTransition(transition);
                 clearButton();
                 violetEmo.setImageDrawable(getResources().getDrawable(R.drawable.emo_violet_fill));
@@ -136,6 +157,7 @@ public class AddMoodFragment extends Fragment {
         greyLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nextBtn.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
                 TransitionManager.beginDelayedTransition(transition);
                 clearButton();
                 moodLevelSection.setVisibility(View.GONE);
@@ -152,6 +174,7 @@ public class AddMoodFragment extends Fragment {
         greenLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nextBtn.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
                 TransitionManager.beginDelayedTransition(transition);
                 clearButton();
                 moodLevelSection.setVisibility(View.GONE);
@@ -164,6 +187,7 @@ public class AddMoodFragment extends Fragment {
         yellowLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nextBtn.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
                 TransitionManager.beginDelayedTransition(transition);
                 clearButton();
                 moodLevelSection.setVisibility(View.GONE);
@@ -179,6 +203,7 @@ public class AddMoodFragment extends Fragment {
         redLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nextBtn.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
                 TransitionManager.beginDelayedTransition(transition);
                 clearButton();
                 moodLevelSection.setVisibility(View.GONE);
@@ -197,14 +222,16 @@ public class AddMoodFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                ThaisMoodDB db = new ThaisMoodDB(getActivity());
-                if(db.insertMood(selectedMood, moodLevelValue, getDateString())){
-                    getActivity().finish();
-                }else{
-                    try {
-                        throw new Exception("ERROR");
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                if(!(selectedMood == -1)){
+                    ThaisMoodDB db = new ThaisMoodDB(getActivity());
+                    if(db.insertMood(selectedMood, moodLevelValue, getDateString())){
+                        getActivity().finish();
+                    }else{
+                        try {
+                            throw new Exception("ERROR");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
 

@@ -1,18 +1,21 @@
 package com.nnspace.thaismoodandroid.HomeActivity.Diary;
 
 import android.content.Context;
-import android.database.DataSetObserver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.nnspace.thaismoodandroid.R;
 
 import java.util.ArrayList;
 
-public class DiaryListAdapter implements ListAdapter {
+public class DiaryListAdapter extends RecyclerView.Adapter<DiaryListAdapter.DiaryViewHolder> {
+
     private Context mContext;
     private ArrayList<DiaryObject> diayObjectList;
 
@@ -21,93 +24,44 @@ public class DiaryListAdapter implements ListAdapter {
         this.diayObjectList = diayObjectList;
     }
 
-    @Override
-    public boolean areAllItemsEnabled() {
-        return false;
-    }
 
+    @NonNull
     @Override
-    public boolean isEnabled(int position) {
-        try{
-            diayObjectList.get(position);
-        }catch (NullPointerException e){
-            return false;
-        }
-        return true;
-    }
+    public DiaryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-    @Override
-    public void registerDataSetObserver(DataSetObserver observer) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_diary, parent, false);
+        DiaryViewHolder dh = new DiaryViewHolder(v);
+        return dh;
 
     }
 
     @Override
-    public void unregisterDataSetObserver(DataSetObserver observer) {
-
+    public void onBindViewHolder(@NonNull DiaryViewHolder holder, final int position) {
+        holder.title.setText(diayObjectList.get(position).getTitle());
+        holder.abStory.setText(diayObjectList.get(position).getAbStory());
+        holder.date.setText(diayObjectList.get(position).getDate());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, diayObjectList.get(position).getStory(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
-    public int getCount() {
+    public int getItemCount() {
         return diayObjectList.size();
     }
 
-    @Override
-    public Object getItem(int position) {
-        return diayObjectList.get(position);
-    }
+    public class DiaryViewHolder extends RecyclerView.ViewHolder{
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
+        TextView title, abStory, date;
 
-    @Override
-    public boolean hasStableIds() {
-        return false;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        DiaryObject diaryObject = (DiaryObject) getItem(position);
-
-        if(convertView == null){
-            LayoutInflater layoutInflater = LayoutInflater.from(mContext);
-            convertView = layoutInflater.inflate(R.layout.list_diary, null);
-            convertView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
+        public DiaryViewHolder(@NonNull View itemView) {
+            super(itemView);
+            title = itemView.findViewById(R.id.diary_item_title);
+            abStory = itemView.findViewById(R.id.diary_ab_item_story);
+            date = itemView.findViewById(R.id.diary_item_date);
         }
-
-        TextView title = convertView.findViewById(R.id.diary_title);
-        TextView abStory = convertView.findViewById(R.id.diary_ab_item_story);
-        TextView dateText = convertView.findViewById(R.id.diary_item_date);
-
-        title.setText(diaryObject.getTitle());
-        abStory.setText(diaryObject.getAbStory());
-        dateText.setText(diaryObject.getStory());
-
-        return convertView;
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        return 0;
-    }
-
-    @Override
-    public int getViewTypeCount() {
-
-        return 1;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        if(diayObjectList.size() == 0){
-            return true;
-        }
-        return false;
     }
 }

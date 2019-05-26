@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:gravity="center_vertical"
+        android:gravity="top|center_horizontal"
         android:orientation="vertical">
 
         <TextView
@@ -40,17 +40,18 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/register_lastname_text_input"
+                    android:id="@+id/register_username_text_input"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/register_lastname_text"
+                        android:id="@+id/register_username_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/edittext_margin_top"
                         android:paddingLeft="@dimen/edittext_padding_left"
+                        android:inputType="none"
                         android:singleLine="true"
                         android:ems="20"
                         android:hint="ชื่อผู้ใช้" />
@@ -73,41 +74,119 @@
                         android:singleLine="true"
                         android:editable="false"
                         android:ems="20"
-                        android:inputType="date"
-                        android:hint="วัน/เดือน/ปี (พ.ศ.) เกิด" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/register_period_input"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/register_period"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/edittext_margin_top"
-                        android:paddingLeft="@dimen/edittext_padding_left"
-                        android:singleLine="true"
-                        android:ems="10"
-                        android:inputType="date"
-                        android:hint="วันที่เริ่มเป็นประจำเดือน" />
+                        android:inputType="none"
+                        android:hint="วัน/เดือน/ปี เกิด" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
                 <LinearLayout
-                    android:id="@+id/register_disease_sectio"
+                    android:id="@+id/register_disease_section"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                        android:visibility="gone"
                     android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/female_section"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/lighter_grey"/>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/register_period_input"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:visibility="visible">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/register_period"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/edittext_margin_top"
+                                android:paddingLeft="@dimen/edittext_padding_left"
+                                android:singleLine="true"
+                                android:ems="10"
+                                android:inputType="number"
+                                android:hint="วันที่เริ่มเป็นประจำเดือน" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="@android:color/darker_gray"/>
+                        android:layout_marginTop="10dp"
+                        android:background="@color/lighter_grey"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/register_wieght_input"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="1"
+                            android:visibility="visible">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/register_weight"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/edittext_margin_top"
+                                android:paddingLeft="@dimen/edittext_padding_left"
+                                android:singleLine="true"
+                                android:inputType="date"
+                                android:hint="น้ำหนัก(กิโลกรัม)" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/register_height_input"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:visibility="visible">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/register_height"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/edittext_margin_top"
+                                android:paddingLeft="@dimen/edittext_padding_left"
+                                android:singleLine="true"
+                                android:inputType="date"
+                                android:hint="ส่วนสูง(เซนติเมตร)" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/bmi_texy"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="right"
+                        android:fontFamily="@font/thsarabunnew_bold"
+                        android:textSize="25dp"
+                        android:text="BMI: 24"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/lighter_grey"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -358,14 +437,14 @@
 
 
                     </RelativeLayout>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:background="@android:color/darker_gray"/>
 
                 </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/lighter_grey"/>
 
                 <RelativeLayout
                     android:layout_width="fill_parent"
@@ -444,19 +523,18 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/register_submit_btn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/confirm_color">
+        android:layout_height="65dp"
+        android:gravity="center"
+        android:background="@color/colorPrimaryDark">
 
-        <Button
-            android:id="@+id/register_submit_btn"
-            android:layout_width="fill_parent"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            android:fontFamily="@font/thsarabunnew_bold"
-            android:text="บันทึกข้อมูล"
-            android:textColor="@color/white"
-            android:textSize="25dp" />
+            android:layout_weight="1"
+            android:text="บันทึก"/>
+
     </LinearLayout>
 
 </LinearLayout>
