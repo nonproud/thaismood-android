@@ -21,7 +21,7 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
-import com.nnspace.thaismoodandroid.MoodObject;
+import com.nnspace.thaismoodandroid.HomeActivity.List.MoodObject;
 import com.nnspace.thaismoodandroid.MoodType;
 import com.nnspace.thaismoodandroid.R;
 import com.whiteelephant.monthpicker.MonthPickerDialog;
@@ -71,8 +71,7 @@ public class GraphYear extends Fragment {
     private void setChart1() {
 
         ThaisMoodDB db = new ThaisMoodDB(getActivity());
-        String[] dr = getDateRange();
-        moodlist = db.getMoodRange(dr[0], dr[1]);
+        moodlist = db.getMoodYear(getStringDate());
 
         List<Entry> dSet = new ArrayList<Entry>();
 
@@ -169,18 +168,13 @@ public class GraphYear extends Fragment {
         });
     }
 
-    private String[] getDateRange(){
-        String[] r = new String[2];
-
-        r[0] = calendar.get(Calendar.YEAR) +  "/1/1";
-        r[1] = calendar.get(Calendar.YEAR) +  "/12/31";
-
-        return r;
+    private String getStringDate(){
+        return calendar.get(Calendar.YEAR) + "";
     }
 
     private String getThaiYearString(){
 
-        return (calendar.get(Calendar.YEAR) + 543) + "" ;
+        return calendar.get(Calendar.YEAR) + "" ;
 
     }
 

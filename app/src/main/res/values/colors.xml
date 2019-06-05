@@ -15,7 +15,7 @@
     <color name="fragment_background">#eeeeee</color>
 
     <color name="mood_red">#ffb3ba</color>
-    <color name="mood_yellow">#ffffba</color>
+    <color name="mood_yellow">#FFEB3B</color>
     <color name="mood_green">#baffc9</color>
     <color name="mood_grey">#c0d8e3</color>
     <color name="mood_violet">#e4baf7</color>

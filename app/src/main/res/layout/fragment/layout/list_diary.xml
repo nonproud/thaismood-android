@@ -61,15 +61,13 @@
                     <ImageView
                         android:id="@+id/diary_item_mood_emo"
                         android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:src="@drawable/emo_green_fill"/>
+                        android:layout_height="15dp" />
 
                     <ImageView
                         android:id="@+id/diary_item_level_emo"
                         android:layout_width="15dp"
                         android:layout_height="15dp"
-                        android:layout_marginLeft="5dp"
-                        android:src="@drawable/black_levels0"/>
+                        android:layout_marginLeft="5dp" />
 
                 </LinearLayout>
 

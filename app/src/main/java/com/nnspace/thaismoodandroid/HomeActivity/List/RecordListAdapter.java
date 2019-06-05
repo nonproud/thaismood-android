@@ -1,6 +1,10 @@
 package com.nnspace.thaismoodandroid.HomeActivity.List;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,20 +15,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.nnspace.thaismoodandroid.MoodObject;
+import com.nnspace.thaismoodandroid.HomeActivity.Add.AddMoodActivity;
 import com.nnspace.thaismoodandroid.R;
 
 import java.util.ArrayList;
 
 public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.RecordViewHolder> {
 
-    private ArrayList<MoodObject> moodObjectList;
+    private ArrayList<RecordObject> list;
     private final String levelBand = "ระดับ: ";
     private Context mContext;
 
-    public RecordListAdapter(Context context, ArrayList<MoodObject> list){
-        moodObjectList = new ArrayList<>();
-        moodObjectList = list;
+    public RecordListAdapter(Context context, ArrayList<RecordObject> list){
+        this.list = new ArrayList<>();
+        this.list = list;
         mContext = context;
     }
 
@@ -40,18 +44,77 @@ public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.Re
 
     @Override
     public void onBindViewHolder(@NonNull RecordViewHolder holder, int position) {
-        MoodObject mood = moodObjectList.get(position);
-        holder.moodTitle.setText(mood.getMoodType().getMoodName());
-        holder.moodEmo.setImageDrawable(mContext.getResources().getDrawable(mood.getMoodType().getIcon()));
-        holder.levelIcon.setImageDrawable(mContext.getResources().getDrawable(mood.getMoodType().getMoodLevelIcon(mood.getLevel())));
-        holder.moodLevelTx.setText(levelBand + mood.getLevel());
-        holder.date.setText(mood.getDateString());
-        holder.colorTag.setBackgroundColor(mContext.getResources().getColor(mood.getMoodType().getColor()));
+        final RecordObject record = list.get(position);
+
+        holder.moodTitle.setText(record.getMood().getMoodType().getMoodName());
+        holder.moodEmo.setImageDrawable(mContext.getResources().getDrawable(record.getMood().getMoodType().getIcon()));
+        holder.levelIcon.setImageDrawable(mContext.getResources().getDrawable(record.getMood().getMoodType().getMoodLevelIcon(record.getMood().getLevel())));
+        holder.moodLevelTx.setText(levelBand + record.getMood().getLevel());
+        holder.date.setText(record.getMood().getDateString());
+        holder.colorTag.setBackgroundColor(mContext.getResources().getColor(record.getMood().getMoodType().getColor()));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog dialog = new Dialog(mContext);
+                dialog.setContentView(R.layout.dialog_view_record);
+
+                LinearLayout rootBox = dialog.findViewById(R.id.root_box);
+                rootBox.setBackground(mContext.getResources().getDrawable(record.getMood().getMoodType().getBox()));
+                LinearLayout moodBox = dialog.findViewById(R.id.mood_box_section);
+                moodBox.setBackground(mContext.getResources().getDrawable(record.getMood().getMoodType().getBox()));
+                LinearLayout sleepBox = dialog.findViewById(R.id.sleep_time_section);
+                sleepBox.setBackground(mContext.getResources().getDrawable(record.getMood().getMoodType().getBox()));
+                LinearLayout activitySection = dialog.findViewById(R.id.activity_section);
+                activitySection.setBackground(mContext.getResources().getDrawable(record.getMood().getMoodType().getBox()));
+
+                ImageView moodIcon = dialog.findViewById(R.id.mood_emo);
+                moodIcon.setImageDrawable(mContext.getResources().getDrawable(record.getMood().getMoodType().getIcon()));
+                TextView moodText = dialog.findViewById(R.id.mood_text);
+                moodText.setText("อารมณ์: " + record.getMood().getMoodType().getMoodName());
+
+                ImageView levelIcon = dialog.findViewById(R.id.level_icon);
+                levelIcon.setImageDrawable(mContext.getResources().getDrawable(record.getMood().getMoodType().getMoodLevelIcon(record.getMood().getLevel())));
+                TextView levelText = dialog.findViewById(R.id.level_text);
+                levelText.setText("ระดับ: " + record.getMood().getLevel());
+
+                final TextView date = dialog.findViewById(R.id.record_date_text);
+                date.setText(record.getMood().getDateString());
+
+//                TextView startTime = dialog.findViewById(R.id.start_text);
+//                TextView endTime = dialog.findViewById(R.id.end_text);
+//                TextView sleepTime = dialog.findViewById(R.id.sleep_time_text);
+//                startTime.setText("เวลานอน: " + );
+
+                ImageView editMood = dialog.findViewById(R.id.edit_mood);
+                editMood.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(mContext, AddMoodActivity.class);
+                        intent.putExtra("isEdit", true);
+                        intent.putExtra("date", record.getMood().getDateString());
+                        intent.putExtra("selectedMood", record.getMood().getMoodType().getNumber());
+                        intent.putExtra("level", record.getMood().getLevel());
+                        intent.putExtra("id", record.getMood().getId());
+                        mContext.startActivity(intent);
+                    }
+                });
+
+
+                dialog.findViewById(R.id.close_btn).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return moodObjectList.size();
+        return list.size();
     }
 
     public class RecordViewHolder extends RecyclerView.ViewHolder{

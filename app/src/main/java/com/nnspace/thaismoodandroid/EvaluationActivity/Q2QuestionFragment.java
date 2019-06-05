@@ -1,16 +1,17 @@
 package com.nnspace.thaismoodandroid.EvaluationActivity;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.nnspace.thaismoodandroid.R;
 
@@ -139,8 +140,8 @@ public class Q2QuestionFragment extends Fragment implements IEvaluation {
     public void next(){
         Bundle bundle = new Bundle();
         bundle.putString("from", "2q");
+        bundle.putInt("score", totalPoint);
         String[] msgResult = getResources().getStringArray(R.array.q_2q_result);
-
         if(totalPoint == 0){
             bundle.putString("result", msgResult[0]);
             bundle.putString("todo", msgResult[1]);

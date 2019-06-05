@@ -2,14 +2,13 @@ package com.nnspace.thaismoodandroid;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.nnspace.thaismoodandroid.EvaluationActivity.Evaluation;
 import com.nnspace.thaismoodandroid.HomeActivity.Home2;
-import com.nnspace.thaismoodandroid.MainUI.Otp;
-import com.nnspace.thaismoodandroid.MainUI.SignInOn;
 import com.nnspace.thaismoodandroid.RegisterActivity.Register;
 
 public class MainmenuTest extends AppCompatActivity {

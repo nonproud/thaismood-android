@@ -52,6 +52,7 @@
                         android:layout_marginTop="@dimen/edittext_margin_top"
                         android:paddingLeft="@dimen/edittext_padding_left"
                         android:inputType="none"
+                        android:enabled="false"
                         android:singleLine="true"
                         android:ems="20"
                         android:hint="ชื่อผู้ใช้" />
@@ -72,26 +73,27 @@
                         android:paddingLeft="@dimen/edittext_padding_left"
                         android:drawableRight="@drawable/calendar"
                         android:singleLine="true"
-                        android:editable="false"
                         android:ems="20"
                         android:inputType="none"
+                        android:editable="false"
                         android:hint="วัน/เดือน/ปี เกิด" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
                 <LinearLayout
-                    android:id="@+id/register_disease_section"
+                    android:id="@+id/register_patient_section"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                         android:visibility="gone"
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:id="@+id/female_section"
+                        android:id="@+id/register_female_section"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:visibility="visible">
 
                         <View
                             android:layout_width="match_parent"
@@ -145,9 +147,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/edittext_margin_top"
-                                android:paddingLeft="@dimen/edittext_padding_left"
                                 android:singleLine="true"
-                                android:inputType="date"
+                                android:inputType="number"
                                 android:hint="น้ำหนัก(กิโลกรัม)" />
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -156,7 +157,7 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
+
                             android:layout_weight="1"
                             android:visibility="visible">
 
@@ -165,23 +166,57 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/edittext_margin_top"
-                                android:paddingLeft="@dimen/edittext_padding_left"
-                                android:singleLine="true"
-                                android:inputType="date"
-                                android:hint="ส่วนสูง(เซนติเมตร)" />
+                                android:hint="ส่วนสูง(เซนติเมตร)"
+                                android:inputType="number"
+                                android:nextFocusRight="@+id/register_bmi_input"
+                                android:singleLine="true" />
                         </com.google.android.material.textfield.TextInputLayout>
 
 
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/bmi_texy"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="right"
-                        android:fontFamily="@font/thsarabunnew_bold"
-                        android:textSize="25dp"
-                        android:text="BMI: 24"/>
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/register_bmi"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:visibility="visible">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/register_bmi_input"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/edittext_margin_top"
+                                    android:paddingLeft="@dimen/edittext_padding_left"
+                                    android:singleLine="true"
+                                    android:inputType="none"
+                                    android:editable="false"
+                                    android:hint="BMI" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+
+
+
+                    </LinearLayout>
+
 
                     <View
                         android:layout_width="match_parent"
@@ -401,8 +436,8 @@
                                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                 android:layout_width="wrap_content"
                                 android:layout_marginTop="5dp"
-                                android:layout_height="wrap_content"
-                                android:visibility="gone">
+                                android:visibility="gone"
+                                android:layout_height="wrap_content">
 
                                 <com.google.android.material.textfield.TextInputEditText
                                     android:id="@+id/register_disease_others_text"
@@ -525,14 +560,20 @@
     <LinearLayout
         android:id="@+id/register_submit_btn"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_height="56dp"
         android:gravity="center"
         android:background="@color/colorPrimaryDark">
 
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_save"/>
+
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/white"
             android:text="บันทึก"/>
 
     </LinearLayout>

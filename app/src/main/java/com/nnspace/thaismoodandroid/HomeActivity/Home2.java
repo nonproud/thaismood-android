@@ -1,12 +1,14 @@
 package com.nnspace.thaismoodandroid.HomeActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,12 +21,22 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.nnspace.thaismoodandroid.HomeActivity.Add.AddNewRecord;
+import com.nnspace.thaismoodandroid.AboutActivity;
+import com.nnspace.thaismoodandroid.CheckBipolar;
+import com.nnspace.thaismoodandroid.CheckDepress;
+import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
+import com.nnspace.thaismoodandroid.EvaluationActivity.Evaluation;
+import com.nnspace.thaismoodandroid.EvaluationHistory.EvaluationHistoryActivity;
+import com.nnspace.thaismoodandroid.HomeActivity.Add.AddMoodActivity;
+import com.nnspace.thaismoodandroid.HomeActivity.Add.AddSleepActivity;
 import com.nnspace.thaismoodandroid.HomeActivity.Diary.FragmentDiary;
 import com.nnspace.thaismoodandroid.HomeActivity.Diary.WriteNoteActivity;
 import com.nnspace.thaismoodandroid.HomeActivity.Graph.FragmentGraph;
 import com.nnspace.thaismoodandroid.HomeActivity.List.FragmentList;
+import com.nnspace.thaismoodandroid.ProfileActivity;
 import com.nnspace.thaismoodandroid.R;
+import com.nnspace.thaismoodandroid.SettingActivity;
+import com.nnspace.thaismoodandroid.SignInOn;
 import com.nnspace.thaismoodandroid.SlideInAnimationHandler;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
@@ -36,6 +48,7 @@ public class Home2 extends AppCompatActivity
     private AHBottomNavigation navigation;
     private FloatingActionButton add;
     private int currentCount = 1;
+    private boolean isDepressed = false, isBipolar = false, isDoEvaluation = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +56,7 @@ public class Home2 extends AppCompatActivity
         setContentView(R.layout.activity_home2);
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.header_graph);
+        toolbar.getMenu().clear();
         toolbar.setBackgroundColor(getResources().getColor(R.color.color_graph));
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -58,6 +72,83 @@ public class Home2 extends AppCompatActivity
         navigation = findViewById(R.id.navigation_bar);
         setUpBottomNav();
         setUpAddBtn();
+        ThaisMoodDB db = new ThaisMoodDB(getApplicationContext());
+
+        View headView = navigationView.getHeaderView(0);
+
+        TextView usernameInHeader = headView.findViewById(R.id.add_header_username);
+        usernameInHeader.setText(db.getUsername());
+        TextView emailInHeader = headView.findViewById(R.id.app_header_email);
+        emailInHeader.setText(db.getEmail());
+
+        Intent intent = getIntent();
+
+
+        try{
+            isDepressed = intent.getExtras().getBoolean("depressed");
+            isBipolar = intent.getExtras().getBoolean("isBipolar");
+            isDoEvaluation = intent.getExtras().getBoolean("evaluation");
+        }catch (NullPointerException e){
+
+        }
+
+        CheckDepress checkDepress = new CheckDepress(getApplicationContext());
+        CheckBipolar checkBipolar = new CheckBipolar(getApplicationContext());
+
+        if(checkDepress.getIsDepress()){
+            final Dialog dialog = new Dialog(Home2.this);
+            dialog.setContentView(R.layout.dialog_depress_warning);
+            LinearLayout okAction = dialog.findViewById(R.id.ok_action);
+            TextView doEvaluation = dialog.findViewById(R.id.do_evaluation);
+            LinearLayout normalWarning = dialog.findViewById(R.id.normal_warning);
+            LinearLayout evaluationWarn = dialog.findViewById(R.id.evaluation_warning);
+            if(checkDepress.isDoEvaluation()){
+                doEvaluation.setVisibility(View.VISIBLE);
+                evaluationWarn.setVisibility(View.VISIBLE);
+                normalWarning.setVisibility(View.GONE);
+            }
+            okAction.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+            doEvaluation.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getApplicationContext(), Evaluation.class));
+                }
+            });
+            dialog.show();
+        }
+
+        if(checkBipolar.getIsBipolar()){
+            final Dialog dialog = new Dialog(Home2.this);
+            dialog.setContentView(R.layout.dialog_bipolar_warning);
+            LinearLayout okAction = dialog.findViewById(R.id.ok_action);
+            LinearLayout doEvaluation = dialog.findViewById(R.id.do_evaluation);
+            LinearLayout normalWarning = dialog.findViewById(R.id.normal_warning);
+            LinearLayout evaluationWarn = dialog.findViewById(R.id.evaluation_warning);
+            if(checkBipolar.isDoEvaluation()){
+                doEvaluation.setVisibility(View.VISIBLE);
+                evaluationWarn.setVisibility(View.VISIBLE);
+                normalWarning.setVisibility(View.GONE);
+            }
+            okAction.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+            doEvaluation.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getApplicationContext(), Evaluation.class));
+                }
+            });
+            dialog.show();
+        }
+
     }
 
     private void setUpAddBtn() {
@@ -65,21 +156,24 @@ public class Home2 extends AppCompatActivity
         ImageView rlIcon2 = new ImageView(this);
         ImageView rlIcon3 = new ImageView(this );
         ImageView rlIcon4 = new ImageView(this);
-        ImageView rlIcon5 = new ImageView(this);
+
+        rlIcon2.setImageDrawable(getResources().getDrawable(R.drawable.ic_add_sleep));
+        rlIcon3.setImageDrawable(getResources().getDrawable(R.drawable.ic_add_activity));
+        rlIcon1.setImageDrawable(getResources().getDrawable(R.drawable.ic_add_mood));
+        rlIcon4.setImageDrawable(getResources().getDrawable(R.drawable.ic_pencil));
 
         SubActionButton.Builder rLSubBuilder = new SubActionButton.Builder(this);
 
         SubActionButton addMoodSub = rLSubBuilder.setContentView(rlIcon1).build();
         SubActionButton addSleepSub = rLSubBuilder.setContentView(rlIcon2).build();
         SubActionButton addActivitySub = rLSubBuilder.setContentView(rlIcon3).build();
-        SubActionButton addExerciseSub = rLSubBuilder.setContentView(rlIcon4).build();
-        SubActionButton addNoteSub = rLSubBuilder.setContentView(rlIcon5).build();
+        SubActionButton addNoteSub = rLSubBuilder.setContentView(rlIcon4).build();
 
         addMoodSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Home2.this, AddNewRecord.class);
-                intent.putExtra("type", 3);
+                Intent intent = new Intent(Home2.this, AddMoodActivity.class);
+                intent.putExtra("isEdit", false);
                 startActivity(intent);
             }
         });
@@ -97,31 +191,29 @@ public class Home2 extends AppCompatActivity
         addSleepSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Home2.this, AddNewRecord.class);
-                intent.putExtra("type", 2);
+                Intent intent = new Intent(Home2.this, AddSleepActivity.class);
                 startActivity(intent);
             }
         });
 
-        rlIcon2.setImageDrawable(getResources().getDrawable(R.drawable.ic_add_sleep));
-        rlIcon3.setImageDrawable(getResources().getDrawable(R.drawable.ic_add_activity));
-        rlIcon1.setImageDrawable(getResources().getDrawable(R.drawable.ic_add_mood));
-        rlIcon4.setImageDrawable(getResources().getDrawable(R.drawable.ic_add_excercise));
-        rlIcon5.setImageDrawable(getResources().getDrawable(R.drawable.ic_pencil));
+
+        try{
+            final FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(this)
+                    .setStartAngle(0)
+                    .setEndAngle(-180)
+                    .setAnimationHandler(new SlideInAnimationHandler())
+                    .addSubActionView(addActivitySub) // Case 1
+                    .addSubActionView(addSleepSub) // Case 2
+                    .addSubActionView(addMoodSub) // Case 3
+                    .addSubActionView(addNoteSub) // Case 4
+                    .enableAnimations()
+                    .attachTo(add)
+                    .build();
+        }catch (Exception e){
+
+        }
 
 
-
-        FloatingActionMenu centerBottomMenu = new FloatingActionMenu.Builder(this)
-                .setStartAngle(0)
-                .setEndAngle(-180)
-                .setAnimationHandler(new SlideInAnimationHandler())
-                .addSubActionView(addActivitySub) // Case 1
-                .addSubActionView(addSleepSub) // Case 2
-                .addSubActionView(addMoodSub) // Case 3
-                .addSubActionView(addNoteSub) // Case 4
-                .addSubActionView(addExerciseSub) // Case 5
-                .attachTo(add)
-                .build();
     }
 
     private void setUpBottomNav() {
@@ -144,9 +236,7 @@ public class Home2 extends AppCompatActivity
         navigation.setInactiveColor(Color.parseColor("#747474"));
         navigation.setForceTint(true);
         navigation.setTranslucentNavigationEnabled(true);
-        navigation.setTitleState(AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE);
         navigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
-        navigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_HIDE);
         navigation.setColored(true);
         navigation.setCurrentItem(1);
 
@@ -207,53 +297,32 @@ public class Home2 extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home2, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        switch (id){
-            case R.id.action_mood:
-                return true;
-            case R.id.action_activity:
-                return true;
-            case R.id.action_exercise:
-                return true;
-            case R.id.action_summary:
-                return true;
-
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_profile) {
 
-        } else if (id == R.id.nav_slideshow) {
+            startActivity(new Intent(Home2.this, ProfileActivity.class));
 
-        } else if (id == R.id.nav_tools) {
+        } else if (id == R.id.nav_evaluation_history) {
 
-        } else if (id == R.id.nav_share) {
+            startActivity(new Intent(Home2.this, EvaluationHistoryActivity.class));
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_settings) {
+
+            startActivity(new Intent(Home2.this, SettingActivity.class));
+
+        }else if(id == R.id.nav_start){
+            startActivity(new Intent(Home2.this, SignInOn.class));
+
+        } else if (id == R.id.nav_about) {
+
+            startActivity(new Intent(Home2.this, AboutActivity.class));
+
+        } else if (id == R.id.nav_logout) {
 
         }
 
@@ -270,6 +339,9 @@ public class Home2 extends AppCompatActivity
 
     @Override
     protected void onResume() {
+        CheckDepress checkDepress = new CheckDepress(getApplicationContext());
+        CheckBipolar checkBipolar = new CheckBipolar(getApplicationContext());
+
         super.onResume();
         Fragment fragment = null;
         switch (currentCount){
@@ -298,5 +370,59 @@ public class Home2 extends AppCompatActivity
                 .beginTransaction()
                 .replace(R.id.home2_fragment_container, fragment)
                 .commit();
+
+        if(checkDepress.getIsDepress()){
+            final Dialog dialog = new Dialog(Home2.this);
+            dialog.setContentView(R.layout.dialog_depress_warning);
+            LinearLayout okAction = dialog.findViewById(R.id.ok_action);
+            TextView doEvaluation = dialog.findViewById(R.id.do_evaluation);
+            LinearLayout normalWarning = dialog.findViewById(R.id.normal_warning);
+            LinearLayout evaluationWarn = dialog.findViewById(R.id.evaluation_warning);
+            if(checkDepress.isDoEvaluation()){
+                doEvaluation.setVisibility(View.VISIBLE);
+                evaluationWarn.setVisibility(View.VISIBLE);
+                normalWarning.setVisibility(View.GONE);
+            }
+            okAction.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+            doEvaluation.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getApplicationContext(), Evaluation.class));
+                }
+            });
+            dialog.show();
+        }
+
+        if(checkBipolar.getIsBipolar()){
+            final Dialog dialog = new Dialog(Home2.this);
+            dialog.setContentView(R.layout.dialog_bipolar_warning);
+            LinearLayout okAction = dialog.findViewById(R.id.ok_action);
+            LinearLayout doEvaluation = dialog.findViewById(R.id.do_evaluation);
+            LinearLayout normalWarning = dialog.findViewById(R.id.normal_warning);
+            LinearLayout evaluationWarn = dialog.findViewById(R.id.evaluation_warning);
+            if(checkBipolar.isDoEvaluation()){
+                doEvaluation.setVisibility(View.VISIBLE);
+                evaluationWarn.setVisibility(View.VISIBLE);
+                normalWarning.setVisibility(View.GONE);
+            }
+            okAction.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+            doEvaluation.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getApplicationContext(), Evaluation.class));
+                }
+            });
+            dialog.show();
+        }
     }
 }

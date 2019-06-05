@@ -2,16 +2,17 @@ package com.nnspace.thaismoodandroid.EvaluationActivity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.ligl.android.widget.iosdialog.IOSDialog;
 import com.nnspace.thaismoodandroid.R;
@@ -188,6 +189,7 @@ public class Q8QustionFragment extends Fragment implements IEvaluation {
     public void next() {
         Bundle bundle = new Bundle();
         bundle.putString("from", "8q");
+        bundle.putInt("score", totalPoint);
         String[] msgResult = getResources().getStringArray(R.array.q_8q_result);
 
         if(totalPoint == 0){

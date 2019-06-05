@@ -1,31 +1,40 @@
 package com.nnspace.thaismoodandroid.EvaluationActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
+import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
+import com.nnspace.thaismoodandroid.DatabaseModel.EvaluationModel;
+import com.nnspace.thaismoodandroid.EmergencyContactActivity;
 import com.nnspace.thaismoodandroid.HomeActivity.Home2;
 import com.nnspace.thaismoodandroid.R;
+
+import java.util.Calendar;
 
 public class EvaluationResultFragment extends Fragment {
 
     private String from, result, todo, next;
     private TextView band_tx, result_tx, whatTodo_tx;
     private Button nextBtn;
+    private int score;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         Bundle bundle = getArguments();
+        score = bundle.getInt("score");
         from = bundle.getString("from");
         result = bundle.getString("result");
         todo = bundle.getString("todo");
@@ -57,6 +66,7 @@ public class EvaluationResultFragment extends Fragment {
                     default:
                         startActivity(new Intent(getActivity(), Home2.class));
                         getActivity().finish();
+                        return;
                 }
 
                 FragmentManager fm = getActivity().getSupportFragmentManager();
@@ -69,26 +79,34 @@ public class EvaluationResultFragment extends Fragment {
     }
 
     private void setBand(){
+        ThaisMoodDB db = new ThaisMoodDB(getContext());
         switch (from){
             case "2q":
+                db.insertEvaluationScore(score, EvaluationModel._2q, getDateString());
                 band_tx.setText(getResources().getString(R.string.result_2q_band));
                 band_tx.setBackground(getResources().getDrawable(R.drawable.circle_2q_band));
                 result_tx.setBackground(getResources().getDrawable(R.drawable.q_2q_result_box));
                 nextBtn.setBackgroundColor(getResources().getColor(R.color.q_2q_theme));
                 break;
             case "9q":
+                db.insertEvaluationScore(score, EvaluationModel._9q, getDateString());
                 band_tx.setText(getResources().getString(R.string.result_9q_band));
                 band_tx.setBackground(getResources().getDrawable(R.drawable.circle_9q_band));
                 result_tx.setBackground(getResources().getDrawable(R.drawable.q_9q_result_box));
                 nextBtn.setBackgroundColor(getResources().getColor(R.color.q_9q_theme));
                 break;
             case "8q":
+                db.insertEvaluationScore(score, EvaluationModel._8q, getDateString());
                 band_tx.setText(getResources().getString(R.string.result_8q_band));
                 band_tx.setBackground(getResources().getDrawable(R.drawable.circle_8q_band));
                 result_tx.setBackground(getResources().getDrawable(R.drawable.q_8q_result_box));
                 nextBtn.setBackgroundColor(getResources().getColor(R.color.q_8q_theme));
+                if(score > 0){
+                    q8qWaring();
+                }
                 break;
             case "mdq":
+                db.insertEvaluationScore(score, EvaluationModel.mdq, getDateString());
                 band_tx.setText(getResources().getString(R.string.result_mdq_band));
                 band_tx.setBackground(getResources().getDrawable(R.drawable.circle_mdq_band));
                 result_tx.setBackground(getResources().getDrawable(R.drawable.q_mdq_result_box));
@@ -98,6 +116,38 @@ public class EvaluationResultFragment extends Fragment {
 
         result_tx.setText(result);
         whatTodo_tx.setText(todo);
+    }
+
+    private String getDateString(){
+
+        Calendar calendar = Calendar.getInstance();
+        return calendar.get(Calendar.YEAR) + "/" + (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.get(Calendar.YEAR);
+
+    }
+
+    private void q8qWaring() {
+        final Dialog warning = new Dialog(getContext());
+        warning.setContentView(R.layout.dialog_8q_warning);
+        TextView level = warning.findViewById(R.id.level_text);
+        level.setText("ท่าน" + result);
+        LinearLayout closeBtn = warning.findViewById(R.id.close_btn);
+        LinearLayout consultBtn = warning.findViewById(R.id.consult_btn);
+        closeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                warning.dismiss();
+            }
+        });
+
+        consultBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), EmergencyContactActivity.class));
+                warning.dismiss();
+            }
+        });
+
+        warning.show();
     }
 
 

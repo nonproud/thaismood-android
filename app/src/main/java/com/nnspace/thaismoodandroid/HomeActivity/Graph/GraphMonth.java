@@ -21,7 +21,7 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
-import com.nnspace.thaismoodandroid.MoodObject;
+import com.nnspace.thaismoodandroid.HomeActivity.List.MoodObject;
 import com.nnspace.thaismoodandroid.MoodType;
 import com.nnspace.thaismoodandroid.MyThaiCalender;
 import com.nnspace.thaismoodandroid.R;
@@ -160,7 +160,7 @@ public class GraphMonth extends Fragment {
                         .setActivatedYear(calendar.get(Calendar.YEAR))
                         .setActivatedMonth(calendar.get(Calendar.MONTH))
                         .setMonthAndYearRange(Calendar.JANUARY, currentCalender.get(Calendar.MONTH), 2015, currentCalender.get(Calendar.YEAR))
-                        .setMaxYear(calendar.get(Calendar.YEAR))
+                        .setMaxYear(currentCalender.get(Calendar.YEAR))
                         .setTitle("เลือกเดือน")
                         .setMonthRange(Calendar.JANUARY, Calendar.DECEMBER)
                         .build()
@@ -198,7 +198,7 @@ public class GraphMonth extends Fragment {
 
     private String getThaiMonthString(){
 
-        return MyThaiCalender.getMonthOfYear(calendar.get(Calendar.MONTH)) + " " + (calendar.get(Calendar.YEAR) + 543);
+        return MyThaiCalender.getMonthOfYear(calendar.get(Calendar.MONTH)) + " " + calendar.get(Calendar.YEAR);
 
     }
 

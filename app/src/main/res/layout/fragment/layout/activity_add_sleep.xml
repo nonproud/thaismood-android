@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    tools:context=".HomeActivity.Add.AddSleepActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_sleep_header"
+            android:fontFamily="@font/thsarabunnew_bold"
+            android:textSize="40dp" />
+
+        <LinearLayout
+            android:id="@+id/add_sleep_date_select"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/thsarabunnew_bold"
+                android:textSize="30dp"
+                android:text="วันที่บันทึก: "/>
+
+            <EditText
+                android:id="@+id/add_sleep_date_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/calendar"
+                android:drawablePadding="10dp"
+                android:editable="false"
+                android:textSize="20dp"
+                android:text="Date"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="50dp"
+            android:gravity="center">
+
+            <LinearLayout
+                android:id="@+id/add_sleep_start_time_select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/thsarabunnew_bold"
+                    android:textSize="30dp"
+                    android:text="เวลานอน"/>
+
+                <TextView
+                    android:id="@+id/start_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textSize="50dp"
+                    android:text="00:00"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/add_sleep_end_time_select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/thsarabunnew_bold"
+                    android:textSize="30dp"
+                    android:text="เวลาตื่น"/>
+=
+
+                <TextView
+                    android:id="@+id/end_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textSize="50dp"
+                    android:text="00:00"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/total_time"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:fontFamily="@font/thsarabunnew_bold"
+            android:textSize="30dp"
+            android:text="รวมเวลานอน: xx ชั่วโมง"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/add_sleep_save_btn"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:clickable="false"
+        android:background="@color/non_select_color"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_save"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:text="บันทึก"/>
+
+    </LinearLayout>
+
+</LinearLayout>

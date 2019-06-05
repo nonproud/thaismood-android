@@ -1,20 +1,32 @@
 package com.nnspace.thaismoodandroid.HomeActivity.Diary;
 
-import android.util.Log;
+import com.nnspace.thaismoodandroid.HomeActivity.List.MoodObject;
 
 public class DiaryObject {
 
-    int id;
+    private int id;
     private String title = "หัวข้อ", abStory = "เรื่องย่อ", story, date = "2019/5/22";
 
-    public DiaryObject(int id, String title, String story, String date){
+
+    private MoodObject mood;
+
+    public DiaryObject(int id, String title, String story, String date, MoodObject mood){
         this.id = id;
         this.title = title;
         this.story = story;
         this.date = date;
         this.abStory =  story.substring(0, Math.min(story.length(), 125)) + " ...";
-        Log.d("afftercut", abStory);
+        this.mood = mood;
     }
+
+    public int getId(){
+        return id;
+    }
+
+    public MoodObject getMood() {
+        return mood;
+    }
+
 
     public String getTitle() {
         return title;

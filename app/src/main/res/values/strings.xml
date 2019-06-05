@@ -7,9 +7,7 @@
     <string name="member_check_email_duplicate">https://thaismood.nn-space.me/member/email</string>
     <string name="member_profile_url">https://thaismood.nn-space.me/member/profile</string>
 
-    <string name="evaluation_url">https://thaismood.nn-space.me/evaluation</string>
-    <string name="emotion_url">https://thaismood.nn-space.me/emotion</string>
-    <string name="activity_url">https://thaismood.nn-space.me/activity</string>
+    <string name="url_create_mood">https://thaismood.nn-space.me/record/mood</string>
     <!--End of url section-->
 
     <!--Sign in on Activity-->
@@ -40,6 +38,9 @@
         <item>ท่านรู้สึก หดหู่ เศร้า หรือ ท้อแท้สิ้นหวัง หรือไม่?</item>
         <item>ท่านรู้สึก เบื่อ ทำอะไรก็ไม่เพลิดเพลิน หรือไม่?</item>
     </array>
+
+    <string name="q2q_result1">ท่านไม่มีความเสี่ยงเป็นโรคซึมเศร้า</string>
+    <string name="q2q_result2">ท่านมีความเสี่ยงเป็นโรคซึมเศร้า</string>
     <array name="q_2q_result">
         <item>ท่านไม่มีความเสี่ยงเป็นโรคซึมเศร้า</item>
         <item>โปรดทำแบบประเมินความผิดปกติทางอารมณ์</item>
@@ -76,6 +77,10 @@
         <item>คิดทำร้ายตนเอง หรือคิดว่าถ้าตายไปคงจะดี</item>
     </array>
 
+    <string name="q9q_result1">ไม่มีอาการของโรคซึมเศร้าหรือมีอาการของโรคซึมเศร้าระดับน้อยมาก</string>
+    <string name="q9q_result2">มีอาการของโรคซึมเศร้า ระดับน้อย</string>
+    <string name="q9q_result3">มีอาการของโรคซึมเศร้า ระดับปานกลาง</string>
+    <string name="q9q_result4">มีอาการของโรคซึมเศร้า ระดับรุนแรง</string>
     <array name="q_9q_result">
         <item>ไม่มีอาการของโรคซึมเศร้าหรือมีอาการของโรคซึมเศร้าระดับน้อยมาก</item>
         <item>โปรดทำแบบประเมินความผิดปกติทางอารมณ์</item>
@@ -113,6 +118,11 @@
         <item>ท่านเคยพยายามฆ่าตัวตาย</item>
         <item>ท่านสามารถควบคุมความอยากฆ่าตัวตายที่ท่านคิดอยู่นั้นได้หรือไม่ หรือ บอกได้ไหมว่าคงจะไม่ทำตามความคิดนั้นในขณะนี้</item>
     </array>
+
+    <string name="q8q_result1">ไม่มีแนวโน้มฆ่าตัวตายในปัจจุบัน</string>
+    <string name="q8q_result2">มีแนวโน้มที่จะฆ่าตัวตายในปัจจุบัน ระดับน้อย</string>
+    <string name="q8q_result3">มีแนวโน้มที่จะฆ่าตัวตายในปัจจุบัน ระดับปานกลาง</string>
+    <string name="q8q_result4">มีแนวโน้มที่จะฆ่าตัวตายในปัจจุบัน ระดับรุนแรง</string>
 
     <array name="q_8q_result">
         <item>ไม่มีแนวโน้มฆ่าตัวตายในปัจจุบัน</item>
@@ -167,6 +177,8 @@
         <item>เหตุการณ์ต่างๆ เหล่านี้ส่วนใหญ่เกิดขึ้นในช่วงระยะเวลาใกล้เคียงกันใช่หรือไม่ กรุณาเลือกวงเพียงหนึ่งคำตอบเท่านั้น</item>
         <item>เหตุการณ์ต่างๆ เหล่านี้ส่งผลกระทบต่อคุณในขณะนั้นมากเพียงใด เช่น มีผลให้คุณทำงานไม่ได้, มีปัญหาในครอบครัว, ด้านการเงิน, หรือ ด้านกฎหมาย ทำให้คุณเข้าไปมีส่วนในการโต้เถียง หรือ ทะเลาะวิวาท? กรุณาเลือกวงเพียงหนึ่งคำตอบเท่านั้น</item>
     </array>
+    <string name="mdq_result1">มีความเสี่ยงเป็นโรคอารมณ์แปรปรวนสองขั้ว</string>
+    <string name="mdq_result2">ไม่มีความเสี่ยงเป็นโรคอารมณ์แปรปรวนสองขั้ว</string>
     <array name="q_mdq_result">
         <item>มีความเสี่ยงเป็นโรคอารมณ์แปรปรวนสองขั้ว (Bipolar)</item>
         <item>ไม่มีความเสี่ยงเป็นโรคอารมณ์แปรปรวนสองขั้ว (Bipolar)</item>
@@ -270,8 +282,8 @@
     <string name="add_mood_grey_description">เครียด กังวล</string>
     <string name="add_mood_violet_description">เศร้า เบื่อ เซ็ง หดหู่ โดดเดี่ยว เหงา รู้สึกผิด</string>
         <!-- End of Add Mood Fragment-->
-        <!--Add Mood Level Fragment-->
-    <string name="add_mood_level_mood_label">วันนี้คุณรู้สึก ..</string>
+        <!--Add Sleep Fragment-->
+    <string name="add_sleep_header">เมื่อคืนคุณนอนกี่ชั่วโมง</string>
     <string name="add_mood_level_seek_scale_instruction">เลือกระดับความรูสึก</string>
     <string name="add_mood_level_note_hint">2000 ตัวอักษร</string>
         <!--Add Mood Level Fragment-->
@@ -304,8 +316,8 @@
     <string name="menu_profiles">ดูโปรไฟล์</string>
     <string name="menu_evaluation">ประวัติการทำแบบประเมิน</string>
     <string name="menu_tools">ตั้งค่า</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
+    <string name="menu_about">เกี่ยวกับ</string>
+    <string name="menu_logout">ออกจากระบบ</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="title_activity_home2">Home2</string>

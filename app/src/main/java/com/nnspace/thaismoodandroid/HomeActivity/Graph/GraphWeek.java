@@ -24,7 +24,7 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
-import com.nnspace.thaismoodandroid.MoodObject;
+import com.nnspace.thaismoodandroid.HomeActivity.List.MoodObject;
 import com.nnspace.thaismoodandroid.MoodType;
 import com.nnspace.thaismoodandroid.MyThaiCalender;
 import com.nnspace.thaismoodandroid.R;
@@ -214,7 +214,7 @@ public class GraphWeek extends Fragment {
         String s2 = tempCalendar.get(Calendar.DAY_OF_MONTH) + " " +
                 MyThaiCalender.getMonthOfYear(tempCalendar.get(Calendar.MONTH));
 
-        return s1 + " - " + s2 + " " + (tempCalendar.get(Calendar.YEAR) + 543) ;
+        return s1 + " - " + s2 + " " + tempCalendar.get(Calendar.YEAR) ;
 
     }
 }

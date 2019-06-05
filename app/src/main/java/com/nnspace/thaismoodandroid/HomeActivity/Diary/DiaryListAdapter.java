@@ -1,11 +1,12 @@
 package com.nnspace.thaismoodandroid.HomeActivity.Diary;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,13 +38,28 @@ public class DiaryListAdapter extends RecyclerView.Adapter<DiaryListAdapter.Diar
 
     @Override
     public void onBindViewHolder(@NonNull DiaryViewHolder holder, final int position) {
-        holder.title.setText(diayObjectList.get(position).getTitle());
-        holder.abStory.setText(diayObjectList.get(position).getAbStory());
-        holder.date.setText(diayObjectList.get(position).getDate());
+        final DiaryObject diaryObject = diayObjectList.get(position);
+        holder.title.setText(diaryObject.getTitle());
+        holder.abStory.setText(diaryObject.getAbStory());
+        holder.date.setText(diaryObject.getDate());
+
+        try{
+            holder.moodIcon.setImageDrawable(mContext.getResources().getDrawable(diaryObject.getMood().getMoodType().getIcon()));
+            holder.levelIcon.setImageDrawable(mContext.getResources().getDrawable(diaryObject.getMood().getMoodType().getMoodLevelIcon(diaryObject.getMood().getLevel())));
+        }catch (NullPointerException e){
+
+        }
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, diayObjectList.get(position).getStory(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, WriteNoteActivity.class);
+                intent.putExtra("isEditNote", true);
+                intent.putExtra("title", diaryObject.getTitle());
+                intent.putExtra("story", diaryObject.getStory());
+                intent.putExtra("id", diaryObject.getId());
+                intent.putExtra("date", diaryObject.getDate());
+                mContext.startActivity(intent);
             }
         });
     }
@@ -56,12 +72,15 @@ public class DiaryListAdapter extends RecyclerView.Adapter<DiaryListAdapter.Diar
     public class DiaryViewHolder extends RecyclerView.ViewHolder{
 
         TextView title, abStory, date;
+        ImageView moodIcon, levelIcon;
 
         public DiaryViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.diary_item_title);
             abStory = itemView.findViewById(R.id.diary_ab_item_story);
             date = itemView.findViewById(R.id.diary_item_date);
+            moodIcon = itemView.findViewById(R.id.diary_item_mood_emo);
+            levelIcon = itemView.findViewById(R.id.diary_item_level_emo);
         }
     }
 }

@@ -2,12 +2,6 @@ package com.nnspace.thaismoodandroid.EvaluationActivity;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +10,12 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.nnspace.thaismoodandroid.R;
 
@@ -245,6 +245,7 @@ public class QMDQFragment extends Fragment implements IEvaluation {
     public void next() {
         Bundle bundle = new Bundle();
         bundle.putString("from", "mdq");
+        bundle.putInt("score", part1Point + part2Point + part3Point);
         String[] msgResult = getResources().getStringArray(R.array.q_mdq_result);
         String point = "1: " + part1Point + " 2: " + part2Point + " 3: " + part3Point;
         if(part1Point >= 7 && part2Point > 0 && part3Point >= 2){

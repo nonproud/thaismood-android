@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EmergencyContactActivity"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/colorPrimary"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:tint="@color/white"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/ic_left"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="35dp"
+            android:layout_marginLeft="-30dp"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:textColor="@color/white"
+            android:fontFamily="@font/thsarabunnew_bold"
+            android:text="ขอคำปรึกษา"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:nestedScrollingEnabled="false"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="60dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/im_dmh_logo"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/dmhlogo"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp" />
+
+                    <LinearLayout
+                        android:id="@+id/dmh_details"
+                        android:layout_toRightOf="@+id/im_dmh_logo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="5dp"
+                        android:orientation="vertical"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:gravity="right"
+                        android:layout_alignParentRight="true">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="30dp"
+                            android:text="สายด่วนสุขภาพจิต" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="40dp"
+                            android:text="1323" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:paddingStart="10dp"
+                            android:gravity="right"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="20dp"
+                            android:text="โทรได้ตลอด 24 ชั่วโมง" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="-10dp"
+                            android:gravity="right"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="20dp"
+                            android:text="Facebook 14:30 - 22.30 น." />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_below="@+id/dmh_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/white"
+                        android:gravity="center">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#00b248"
+                            android:layout_marginRight="1dp"
+                            android:layout_weight="1">
+
+                            <Button
+                                android:id="@+id/dmh_call_btn"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:background="#00b248"
+                                android:textColor="@color/white"
+                                android:text="โทร" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="1dp"
+                            android:background="#00b248">
+
+                            <Button
+                                android:id="@+id/dmh_fb_btn"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:background="#00b248"
+                                android:textColor="@color/white"
+                                android:text="Facebook" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/im_samaritan_logo"
+                        android:layout_width="120dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/samaritan"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/im_samaritan_logo"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="34dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="9dp"
+                        android:text="ศูนย์กรุงเทพ" />
+
+                    <LinearLayout
+                        android:id="@+id/samarintan_details"
+                        android:layout_toRightOf="@+id/im_samaritan_logo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="5dp"
+                        android:orientation="vertical"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:gravity="right"
+                        android:layout_alignParentRight="true">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="30dp"
+                            android:text="สมาคมสะมาริตันส์" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="30dp"
+                            android:layout_marginTop="-18dp"
+                            android:text="แห่งประเทศไทย" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="40dp"
+                            android:text="02-713-6793" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:paddingStart="10dp"
+                            android:gravity="right"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="20dp"
+                            android:text="โทรเวลา: 12.00-22.00" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="-10dp"
+                            android:gravity="right"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="20dp"
+                            android:text="Facebook: ตอบกลับภายใน 24 ชม." />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_below="@+id/samarintan_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/white"
+                        android:gravity="center">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#00b248"
+                            android:layout_weight="1">
+
+                            <Button
+                                android:id="@+id/smrt_call_btn"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:background="#00b248"
+                                android:textColor="@color/white"
+                                android:text="โทร" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="1dp"
+                            android:background="#00b248">
+
+                            <Button
+                                android:id="@+id/smrt_web_btn"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:background="#00b248"
+                                android:textColor="@color/white"
+                                android:text="web site" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="1dp"
+                            android:background="#00b248">
+
+                            <Button
+                                android:id="@+id/smrt_fb_btn"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:background="#00b248"
+                                android:textColor="@color/white"
+                                android:text="Facebook" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/im_samaritan_logo_cm"
+                        android:layout_width="120dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/samaritan"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/im_samaritan_logo_cm"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="34dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="11dp"
+                        android:text="ศูนย์เชียงใหม่" />
+
+                    <LinearLayout
+                        android:id="@+id/samarintan_details_2"
+                        android:layout_toRightOf="@+id/im_samaritan_logo_cm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="5dp"
+                        android:orientation="vertical"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:gravity="right"
+                        android:layout_alignParentRight="true">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="30dp"
+                            android:text="สมาคมสะมาริตันส์" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="30dp"
+                            android:layout_marginTop="-18dp"
+                            android:text="แห่งประเทศไทย" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="40dp"
+                            android:text="053-225-977" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:paddingStart="10dp"
+                            android:gravity="right"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="20dp"
+                            android:text="โทรเวลา: 19.00-22.00" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="-10dp"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:gravity="right"
+                            android:text="Facebook: ตอบกลับภายใน 24 ชม."
+                            android:textSize="20dp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_below="@+id/samarintan_details_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/white"
+                        android:gravity="center">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#00b248"
+                            android:layout_weight="1">
+
+                            <Button
+                                android:id="@+id/smrt_call_btn_2"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:background="#00b248"
+                                android:textColor="@color/white"
+                                android:text="โทร" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="1dp"
+                            android:background="#00b248">
+
+                            <Button
+                                android:id="@+id/smrt_web_btn2"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:background="#00b248"
+                                android:textColor="@color/white"
+                                android:text="web site" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="1dp"
+                            android:background="#00b248">
+
+                            <Button
+                                android:id="@+id/smrt_fb_btn2"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:background="#00b248"
+                                android:textColor="@color/white"
+                                android:text="Facebook" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <LinearLayout
+                        android:id="@+id/jet_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="5dp"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="30dp"
+                            android:text="คลินิกสุขภาพจิตนายแพทย์เจษฎา" />
+
+
+
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_below="@+id/jet_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/white"
+                        android:gravity="center">
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="1dp"
+                            android:background="#00b248">
+
+                            <Button
+                                android:id="@+id/dr_jet_fb_btn"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:background="#00b248"
+                                android:textColor="@color/white"
+                                android:text="Facebook" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <LinearLayout
+                        android:id="@+id/jit_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="5dp"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/thsarabunnew_bold"
+                            android:textSize="30dp"
+                            android:text="เพจห้องตรวจ จิตเวช" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_below="@+id/jit_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/white"
+                        android:gravity="center">
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="1dp"
+                            android:background="#00b248">
+
+                            <Button
+                                android:id="@+id/jit_fb_btn"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:background="#00b248"
+                                android:textColor="@color/white"
+                                android:text="Facebook" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -14,9 +14,9 @@ public class SleepModel {
 
     public static final String CREATE_TABLE_STRING = String.format("CREATE TABLE %s (" +
                     "%s INTEGER PRIMARY KEY, " +
-                    "%s date NOT NULL, " +
-                    "%s date NOT NULL, " +
-                    "%s date NOT NULL, " +
+                    "%s float NOT NULL, " +
+                    "%s time NOT NULL, " +
+                    "%s time NOT NULL, " +
                     "%s date NOT NULL" +
                     ");", TABLE_NAME, ID, TOTAL, START, END, DATE);
 
