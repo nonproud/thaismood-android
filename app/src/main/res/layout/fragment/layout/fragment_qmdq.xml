@@ -51,28 +51,32 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+                android:fontFamily="@font/thsarabunnew"
                 android:text="This is Question"
-                android:textSize="20dp" />
+                android:textSize="23dp" />
 
             <TextView
                 android:id="@+id/q_mdq_question_tx"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="7dp"
-                android:layout_marginRight="7dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginRight="7dp"
                 android:layout_marginBottom="5dp"
+                android:fontFamily="@font/thsarabunnew_bold"
+                android:textAlignment="center"
                 android:text="This is Question"
-                android:textSize="18dp" />
+                android:textSize="28dp" />
             <TextView
                 android:id="@+id/q_mdq_question_15_tx"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="7dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="0dp"
                 android:visibility="gone"
                 android:layout_marginBottom="5dp"
+                android:textAlignment="center"
                 android:text="This is Question"
                 android:textSize="18dp" />
 
@@ -162,10 +166,11 @@
             android:id="@+id/q_mdq_prev_btn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/button_border_unselected"
-            android:layout_weight="1"
-            android:enabled="false"
             android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_border_unselected"
+            android:drawableLeft="@drawable/ic_left"
+            android:enabled="false"
             android:fontFamily="@font/thsarabunnew_bold"
             android:text="ย้อนกลับ"
             android:textColor="@color/white"
@@ -177,6 +182,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/button_border_unselected"
+            android:drawableRight="@drawable/ic_right"
             android:enabled="false"
             android:fontFamily="@font/thsarabunnew_bold"
             android:text="ถัดไป"

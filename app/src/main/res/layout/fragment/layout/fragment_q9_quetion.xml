@@ -48,13 +48,13 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:gravity="center_horizontal"
                 android:fontFamily="@font/thsarabunnew"
                 android:text="@string/q_9q_intro"
-                android:textSize="28dp" />
+                android:textSize="23dp" />
 
             <TextView
                 android:id="@+id/q_9q_question_tx"
@@ -64,9 +64,9 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:gravity="center_horizontal"
-                android:fontFamily="@font/thsarabunnew"
-                android:text="This is a qustion"
-                android:textSize="25dp" />
+                android:fontFamily="@font/thsarabunnew_bold"
+                android:text="This is a question"
+                android:textSize="28dp" />
 
             <Button
                 android:id="@+id/q_9q_choice_1"
@@ -118,10 +118,11 @@
             android:id="@+id/q_9q_prev_btn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:background="@drawable/button_border_unselected"
+            android:drawableLeft="@drawable/ic_left"
             android:enabled="false"
-            android:layout_marginRight="5dp"
             android:fontFamily="@font/thsarabunnew_bold"
             android:text="ย้อนกลับ"
             android:textColor="@color/white"
@@ -133,6 +134,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/button_border_unselected"
+            android:drawableRight="@drawable/ic_right"
             android:enabled="false"
             android:fontFamily="@font/thsarabunnew_bold"
             android:text="ถัดไป"

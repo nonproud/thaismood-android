@@ -35,7 +35,7 @@
             android:ems="14"
             android:gravity="center"
             android:fontFamily="@font/thsarabunnew_bold"
-            android:textSize="25dp"
+            android:textSize="23dp"
             android:text="@string/result_2q_header"/>
 
         <LinearLayout
@@ -55,10 +55,10 @@
                 android:gravity="center"
                 android:fontFamily="@font/thsarabunnew_bold"
                 android:backgroundTintMode="screen"
-                android:textSize="30dp"
+                android:textSize="40dp"
                 android:background="@drawable/q_2q_result_box"
                 android:ems="15"
-                android:text="ผลลัพธ์"/>
+                android:text="ผลลัพธ์" />
 
         </LinearLayout>
 
@@ -72,7 +72,7 @@
             android:ems="14"
             android:gravity="center"
             android:fontFamily="@font/thsarabunnew"
-            android:textSize="30dp"
+            android:textSize="23dp"
             android:text="this is what to do text view"/>
     </LinearLayout>
 
@@ -91,6 +91,8 @@
             android:text="ถัดไป"
             android:textColor="#FFFFFF"
             android:textSize="25dp" />
+            <!--android:drawableRight="@drawable/ic_right"-->
+
 
     </LinearLayout>
 
