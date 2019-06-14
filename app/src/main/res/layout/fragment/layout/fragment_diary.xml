@@ -17,7 +17,7 @@
             android:id="@+id/diary_list_view"
             tools:listitem="@layout/list_diary"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
 
         <TextView
@@ -43,7 +43,7 @@
         android:layout_marginTop="16dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:backgroundTint="@color/color_diary"
+        app:backgroundTint="@color/colorPrimaryDark"
         app:srcCompat="@drawable/ic_pencil"/>
 
     

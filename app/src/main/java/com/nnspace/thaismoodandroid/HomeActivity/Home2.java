@@ -21,18 +21,21 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.ligl.android.widget.iosdialog.IOSDialog;
 import com.nnspace.thaismoodandroid.AboutActivity;
 import com.nnspace.thaismoodandroid.CheckBipolar;
 import com.nnspace.thaismoodandroid.CheckDepress;
 import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
 import com.nnspace.thaismoodandroid.EvaluationActivity.Evaluation;
 import com.nnspace.thaismoodandroid.EvaluationHistory.EvaluationHistoryActivity;
+import com.nnspace.thaismoodandroid.GetTemporaryCredential;
 import com.nnspace.thaismoodandroid.HomeActivity.Add.AddMoodActivity;
 import com.nnspace.thaismoodandroid.HomeActivity.Add.AddSleepActivity;
 import com.nnspace.thaismoodandroid.HomeActivity.Diary.FragmentDiary;
 import com.nnspace.thaismoodandroid.HomeActivity.Diary.WriteNoteActivity;
 import com.nnspace.thaismoodandroid.HomeActivity.Graph.FragmentGraph;
 import com.nnspace.thaismoodandroid.HomeActivity.List.FragmentList;
+import com.nnspace.thaismoodandroid.MyCalender;
 import com.nnspace.thaismoodandroid.ProfileActivity;
 import com.nnspace.thaismoodandroid.R;
 import com.nnspace.thaismoodandroid.SettingActivity;
@@ -56,8 +59,8 @@ public class Home2 extends AppCompatActivity
         setContentView(R.layout.activity_home2);
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.header_graph);
+        toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         toolbar.getMenu().clear();
-        toolbar.setBackgroundColor(getResources().getColor(R.color.color_graph));
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -149,16 +152,31 @@ public class Home2 extends AppCompatActivity
             dialog.show();
         }
 
+        try{
+            String lastDateOfMood = db.getLastDateofMood();
+            if(lastDateOfMood != null){
+                String[] checkDateArray = MyCalender.findDiffDay(lastDateOfMood);
+                int a;
+                if((a = Integer.parseInt(checkDateArray[2])) > 0){
+                    new IOSDialog.Builder(Home2.this)
+                            .setMessage("คุณไม่ได้บันทึกอารมณ์มาแล้ว " + a + " วัน เพื่อความต่อเนื่องของกราฟอารมณ์ โปรดบันทึกย้อนหลังเท่าที่จำได้ให้มากที่สุด")
+                            .setPositiveButton("เข้าใจแล้ว", null)
+                            .show();
+                }
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     private void setUpAddBtn() {
         ImageView rlIcon1 = new ImageView(this);
         ImageView rlIcon2 = new ImageView(this);
-        ImageView rlIcon3 = new ImageView(this );
         ImageView rlIcon4 = new ImageView(this);
 
         rlIcon2.setImageDrawable(getResources().getDrawable(R.drawable.ic_add_sleep));
-        rlIcon3.setImageDrawable(getResources().getDrawable(R.drawable.ic_add_activity));
         rlIcon1.setImageDrawable(getResources().getDrawable(R.drawable.ic_add_mood));
         rlIcon4.setImageDrawable(getResources().getDrawable(R.drawable.ic_pencil));
 
@@ -166,7 +184,6 @@ public class Home2 extends AppCompatActivity
 
         SubActionButton addMoodSub = rLSubBuilder.setContentView(rlIcon1).build();
         SubActionButton addSleepSub = rLSubBuilder.setContentView(rlIcon2).build();
-        SubActionButton addActivitySub = rLSubBuilder.setContentView(rlIcon3).build();
         SubActionButton addNoteSub = rLSubBuilder.setContentView(rlIcon4).build();
 
         addMoodSub.setOnClickListener(new View.OnClickListener() {
@@ -202,7 +219,6 @@ public class Home2 extends AppCompatActivity
                     .setStartAngle(0)
                     .setEndAngle(-180)
                     .setAnimationHandler(new SlideInAnimationHandler())
-                    .addSubActionView(addActivitySub) // Case 1
                     .addSubActionView(addSleepSub) // Case 2
                     .addSubActionView(addMoodSub) // Case 3
                     .addSubActionView(addNoteSub) // Case 4
@@ -218,11 +234,11 @@ public class Home2 extends AppCompatActivity
 
     private void setUpBottomNav() {
 
-        AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.title_oneitem, R.drawable.list, R.color.color_list);
-        AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.title_graph, R.drawable.graph, R.color.color_graph);
-        AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.title_blank, R.drawable.ic_home, R.color.mood_green);
-        AHBottomNavigationItem item4 = new AHBottomNavigationItem(R.string.title_help, R.drawable.ic_help, R.color.color_help);
-        AHBottomNavigationItem item5 = new AHBottomNavigationItem(R.string.title_diary, R.drawable.ic_diary, R.color.color_diary);
+        AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.title_oneitem, R.drawable.list, R.color.colorPrimary);
+        AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.title_graph, R.drawable.graph, R.color.colorPrimary);
+        AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.title_blank, R.drawable.ic_home, R.color.colorPrimary);
+        AHBottomNavigationItem item4 = new AHBottomNavigationItem(R.string.title_diary, R.drawable.ic_diary, R.color.colorPrimary);
+        AHBottomNavigationItem item5 = new AHBottomNavigationItem(R.string.title_help, R.drawable.ic_help, R.color.colorPrimary);
 
         navigation.addItem(item1);
         navigation.addItem(item2);
@@ -254,28 +270,24 @@ public class Home2 extends AppCompatActivity
                     case 0:
                         currentCount = 0;
                         toolbar.setTitle(R.string.header_fragment_list);
-                        toolbar.setBackgroundColor(getResources().getColor(R.color.color_list));
                         fragment = new FragmentList();
                         break;
                     case 1:
                         currentCount = 1;
                         toolbar.setTitle(R.string.header_graph);
-                        toolbar.setBackgroundColor(getResources().getColor(R.color.color_graph));
                         fragment = new FragmentGraph();
                         break;
                     case 2:
                         return false;
                     case 3:
                         currentCount = 3;
-                        toolbar.setTitle(R.string.header_help);
-                        toolbar.setBackgroundColor(getResources().getColor(R.color.color_help));
-                        fragment = new FragmentEmergencyData();
+                        toolbar.setTitle(R.string.header_diary);
+                        fragment = new FragmentDiary();
                         break;
                     case 4:
                         currentCount = 4;
-                        toolbar.setTitle(R.string.header_diary);
-                        toolbar.setBackgroundColor(getResources().getColor(R.color.color_diary));
-                        fragment = new FragmentDiary();
+                        toolbar.setTitle(R.string.header_help);
+                        fragment = new FragmentEmergencyData();
                         break;
                 }
                 getSupportFragmentManager()
@@ -311,7 +323,15 @@ public class Home2 extends AppCompatActivity
 
             startActivity(new Intent(Home2.this, EvaluationHistoryActivity.class));
 
-        } else if (id == R.id.nav_settings) {
+        }else if (id == R.id.nav_temp_password) {
+
+            startActivity(new Intent(Home2.this, GetTemporaryCredential.class));
+
+        }else if (id == R.id.nav_evaluation) {
+
+            startActivity(new Intent(Home2.this, Evaluation.class));
+
+        }else if (id == R.id.nav_settings) {
 
             startActivity(new Intent(Home2.this, SettingActivity.class));
 
@@ -347,24 +367,21 @@ public class Home2 extends AppCompatActivity
         switch (currentCount){
             case 0:
                 toolbar.setTitle(R.string.header_fragment_list);
-                toolbar.setBackgroundColor(getResources().getColor(R.color.color_list));
                 fragment = new FragmentList();
                 break;
             case 1:
                 toolbar.setTitle(R.string.header_graph);
-                toolbar.setBackgroundColor(getResources().getColor(R.color.color_graph));
                 fragment = new FragmentGraph();
                 break;
             case 3:
-                toolbar.setTitle(R.string.header_help);
-                toolbar.setBackgroundColor(getResources().getColor(R.color.color_help));
-                fragment = new FragmentEmergencyData();
-                break;
-            case 4:
                 toolbar.setTitle(R.string.header_diary);
-                toolbar.setBackgroundColor(getResources().getColor(R.color.color_diary));
                 fragment = new FragmentDiary();
                 break;
+            case 4:
+                toolbar.setTitle(R.string.header_help);
+                fragment = new FragmentEmergencyData();
+                break;
+
         }
         getSupportFragmentManager()
                 .beginTransaction()

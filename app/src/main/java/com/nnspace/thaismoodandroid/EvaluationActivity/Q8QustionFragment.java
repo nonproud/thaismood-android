@@ -15,7 +15,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.ligl.android.widget.iosdialog.IOSDialog;
+import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
+import com.nnspace.thaismoodandroid.DatabaseModel.EvaluationModel;
 import com.nnspace.thaismoodandroid.R;
+
+import java.util.Calendar;
 
 public class Q8QustionFragment extends Fragment implements IEvaluation {
 
@@ -187,30 +191,32 @@ public class Q8QustionFragment extends Fragment implements IEvaluation {
 
     @Override
     public void next() {
+        ThaisMoodDB db = new ThaisMoodDB(getActivity());
+        db.insertEvaluationScore(totalPoint, EvaluationModel._8q, getDateString());
         Bundle bundle = new Bundle();
-        bundle.putString("from", "8q");
+        bundle.putInt("from", 3);
         bundle.putInt("score", totalPoint);
         String[] msgResult = getResources().getStringArray(R.array.q_8q_result);
 
         if(totalPoint == 0){
             bundle.putString("result", msgResult[0]);
             bundle.putString("todo", msgResult[1]);
-            bundle.putString("next", "mdq");
+            bundle.putInt("next", 4);
             bundle.putString("emegency", "false");
         }else if(totalPoint >= 1 && totalPoint <= 8){
             bundle.putString("result", msgResult[1]);
             bundle.putString("todo", msgResult[4]);
-            bundle.putString("next", "mdq");
+            bundle.putInt("next", 4);
             bundle.putString("emegency", "false");
         }else if(totalPoint >=9 && totalPoint <= 16){
             bundle.putString("result", msgResult[2]);
             bundle.putString("todo", msgResult[4]);
-            bundle.putString("next", "mdq");
+            bundle.putInt("next", 4);
             bundle.putString("emegency", "false");
         }else if(totalPoint >= 17){
             bundle.putString("result", msgResult[3]);
             bundle.putString("todo", msgResult[4]);
-            bundle.putString("next", "mdq");
+            bundle.putInt("next", 4);
             bundle.putString("emegency", "true");
         }
 
@@ -228,5 +234,12 @@ public class Q8QustionFragment extends Fragment implements IEvaluation {
         c1.setTextColor(getResources().getColor(R.color.black));
         c2.setBackground(getResources().getDrawable(R.drawable.q_8q_choice_unselected));
         c2.setTextColor(getResources().getColor(R.color.black));
+    }
+
+    private String getDateString(){
+
+        Calendar calendar = Calendar.getInstance();
+        return calendar.get(Calendar.YEAR) + "/" + (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.get(Calendar.DAY_OF_MONTH);
+
     }
 }

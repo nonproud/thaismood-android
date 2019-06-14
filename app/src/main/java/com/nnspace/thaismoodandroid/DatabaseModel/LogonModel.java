@@ -16,7 +16,7 @@ public class LogonModel {
                     "%s varchar(100) DEFAULT '', " +
                     "%s varchar(50) DEFAULT '', " +
                     "%s varchar(1000) DEFAULT ''," +
-                    "%s char(1)" +
+                    "%s int" +
                     ");", TABLE_NAME, STATUS, USERNAME, EMAIL, TOKEN, TYPE);
 
 }

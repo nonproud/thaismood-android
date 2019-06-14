@@ -21,6 +21,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.transition.TransitionManager;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -29,9 +30,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
-import com.nnspace.thaismoodandroid.MyThaiCalender;
+import com.nnspace.thaismoodandroid.MyCalender;
 import com.nnspace.thaismoodandroid.R;
-import com.nnspace.thaismoodandroid.ShowDialog;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -43,7 +43,7 @@ public class AddMoodActivity extends AppCompatActivity {
     private final Calendar calendar = Calendar.getInstance();
     private String URL_REQUEST;
     private ThaisMoodDB db = new ThaisMoodDB(AddMoodActivity.this);
-    private final MyThaiCalender myThaiCalender = new MyThaiCalender();
+    private final MyCalender myCalender = new MyCalender();
     private SeekBar moodLevel;
     private EditText dateText;
     private TextView moodLevelBand, closeBtn;
@@ -102,7 +102,7 @@ public class AddMoodActivity extends AppCompatActivity {
             calendar.set(Calendar.YEAR, year);
             calendar.set(Calendar.MONTH, monthOfYear - 1);
             calendar.set(Calendar.DAY_OF_MONTH, dayofmonth);
-            dateText.setText(dayofmonth + " " + MyThaiCalender.getMonthOfYear(monthOfYear) + " " + year);
+            dateText.setText(dayofmonth + " " + MyCalender.getMonthOfYear(monthOfYear) + " " + year);
             setMoodActive();
         }
         setDatePicker();
@@ -111,7 +111,7 @@ public class AddMoodActivity extends AppCompatActivity {
 
     private void setDatePicker() {
         String  todayText =  calendar.get(Calendar.DAY_OF_MONTH) + " " +
-                MyThaiCalender.getMonthOfYear(calendar.get(Calendar.MONTH)) + " " +
+                MyCalender.getMonthOfYear(calendar.get(Calendar.MONTH)) + " " +
                 (calendar.get(Calendar.YEAR) + 543);
         dateText.setText(todayText);
         dateText.setOnClickListener(new View.OnClickListener() {
@@ -121,15 +121,19 @@ public class AddMoodActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         calendar.set(year, month, dayOfMonth);
-                        dateText.setText(dayOfMonth + " " + MyThaiCalender.getMonthOfYear(month) + " " + (year + 543));
+                        dateText.setText(dayOfMonth + " " + MyCalender.getMonthOfYear(month) + " " + (year + 543));
 
                     }
                 }, calendar.get(Calendar.YEAR),
                         calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-                Date date = new Date(editDate);
+                if(isEdit){
+                    Date date = new Date(editDate);
+                    datePickerDialog.getDatePicker().setMaxDate(date.getTime());
+                    datePickerDialog.getDatePicker().setMinDate(date.getTime());
+                }else {
+                    datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
+                }
 
-                datePickerDialog.getDatePicker().setMaxDate(date.getTime());
-                datePickerDialog.getDatePicker().setMinDate(date.getTime());
                 datePickerDialog.show();
             }
         });
@@ -367,7 +371,7 @@ public class AddMoodActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                ShowDialog.showDialog(AddMoodActivity.this, "มีบางอย่างผิดพลาด กรุณาลองใหม่อีกครั้ง");
+                Toast.makeText(AddMoodActivity.this, error.toString(), Toast.LENGTH_LONG);
             }
         }) {
             protected Map<String, String> getParams() {
@@ -377,6 +381,13 @@ public class AddMoodActivity extends AppCompatActivity {
                 MyData.put("level", level + "");
                 MyData.put("date", date);
                 return MyData;
+            }
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("Content-Type","application/x-www-form-urlencoded");
+                params.put("authorization", db.getToken());
+                return params;
             }
         };
         MyRequestQueue.add(myStringRequest);

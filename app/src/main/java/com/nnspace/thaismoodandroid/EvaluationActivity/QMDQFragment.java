@@ -17,7 +17,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
+import com.nnspace.thaismoodandroid.DatabaseModel.EvaluationModel;
 import com.nnspace.thaismoodandroid.R;
+
+import java.util.Calendar;
 
 import static android.content.Context.WINDOW_SERVICE;
 
@@ -243,6 +247,8 @@ public class QMDQFragment extends Fragment implements IEvaluation {
 
     @Override
     public void next() {
+        ThaisMoodDB db = new ThaisMoodDB(getActivity());
+        db.insertEvaluationScore(part1Point + part2Point + part3Point, EvaluationModel.mdq, getDateString());
         Bundle bundle = new Bundle();
         bundle.putString("from", "mdq");
         bundle.putInt("score", part1Point + part2Point + part3Point);
@@ -281,5 +287,12 @@ public class QMDQFragment extends Fragment implements IEvaluation {
         wm.getDefaultDisplay().getMetrics(metrics);
         metrics.scaledDensity = configuration.fontScale * metrics.density;
         getActivity().getBaseContext().getResources().updateConfiguration(configuration, metrics);
+    }
+
+    private String getDateString(){
+
+        Calendar calendar = Calendar.getInstance();
+        return calendar.get(Calendar.YEAR) + "/" + (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.get(Calendar.DAY_OF_MONTH);
+
     }
 }

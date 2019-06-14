@@ -82,13 +82,17 @@ public class EvaluationObject {
     private void setQ2qResult(){
         if(getScore2q() == 0){
             q2qRestult = context.getResources().getString(R.string.q2q_result1);
-        }else {
+        }else if(getScore2q() > 0){
             q2qRestult = context.getResources().getString(R.string.q2q_result2);
+        }else if(getScore2q() < 0){
+            q2qRestult = "-";
         }
     }
 
     private void setQ9qRestult(){
-        if(getScore9Q() <= 6){
+        if(getScore9Q() < 0){
+            q9qResult = "-";
+        }else if(getScore9Q() <= 6){
             q9qResult = context.getResources().getString(R.string.q9q_result1);
         }else if(getScore9Q() >= 7 && getScore9Q() <= 12){
             q9qResult = context.getResources().getString(R.string.q9q_result2);
@@ -100,7 +104,9 @@ public class EvaluationObject {
     }
 
     private void setQ8qRestult(){
-        if(getScore8Q() == 0){
+        if(getScore8Q() < 0){
+            q8qResult = "-";
+        }else if(getScore8Q() == 0){
             q8qResult = context.getResources().getString(R.string.q8q_result1);
         }else if(getScore8Q() >= 1 && getScore8Q() <= 8){
             q8qResult = context.getResources().getString(R.string.q8q_result2);

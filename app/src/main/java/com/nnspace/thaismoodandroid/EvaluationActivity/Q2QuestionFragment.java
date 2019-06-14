@@ -13,7 +13,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
+import com.nnspace.thaismoodandroid.DatabaseModel.EvaluationModel;
 import com.nnspace.thaismoodandroid.R;
+
+import java.util.Calendar;
 
 public class Q2QuestionFragment extends Fragment implements IEvaluation {
 
@@ -138,18 +142,20 @@ public class Q2QuestionFragment extends Fragment implements IEvaluation {
     }
 
     public void next(){
+        ThaisMoodDB db = new ThaisMoodDB(getActivity());
+        db.insertEvaluationScore(totalPoint, EvaluationModel._2q, getDateString());
         Bundle bundle = new Bundle();
-        bundle.putString("from", "2q");
+        bundle.putInt("from", 1);
         bundle.putInt("score", totalPoint);
         String[] msgResult = getResources().getStringArray(R.array.q_2q_result);
         if(totalPoint == 0){
             bundle.putString("result", msgResult[0]);
             bundle.putString("todo", msgResult[1]);
-            bundle.putString("next", "mdq");
+            bundle.putInt("next", 4);
         }else if(totalPoint > 0){
             bundle.putString("result", msgResult[2]);
             bundle.putString("todo", msgResult[3]);
-            bundle.putString("next", "9q");
+            bundle.putInt("next", 2);
         }
 
         FragmentManager fm = getActivity().getSupportFragmentManager();
@@ -166,6 +172,13 @@ public class Q2QuestionFragment extends Fragment implements IEvaluation {
         c1.setTextColor(getResources().getColor(R.color.black));
         c2.setBackground(getResources().getDrawable(R.drawable.q_2q_choice_unselected));
         c2.setTextColor(getResources().getColor(R.color.black));
+    }
+
+    private String getDateString(){
+
+        Calendar calendar = Calendar.getInstance();
+        return calendar.get(Calendar.YEAR) + "/" + (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.get(Calendar.DAY_OF_MONTH);
+
     }
 
 }

@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
-import com.nnspace.thaismoodandroid.MyThaiCalender;
+import com.nnspace.thaismoodandroid.MyCalender;
 import com.nnspace.thaismoodandroid.R;
 
 import java.util.Calendar;
@@ -105,8 +105,8 @@ public class WriteNoteActivity extends AppCompatActivity {
     }
 
     private String getThaidateString(){
-        return String.format("วัน%sที่ %d %s พ.ศ. %d", MyThaiCalender.getDayOfWeek(calendar.get(Calendar.DAY_OF_WEEK)),
-                calendar.get(Calendar.DAY_OF_MONTH), MyThaiCalender.getMonthOfYear(calendar.get(Calendar.MONTH)),
+        return String.format("วัน%sที่ %d %s พ.ศ. %d", MyCalender.getDayOfWeek(calendar.get(Calendar.DAY_OF_WEEK)),
+                calendar.get(Calendar.DAY_OF_MONTH), MyCalender.getMonthOfYear(calendar.get(Calendar.MONTH)),
                 calendar.get(Calendar.YEAR)  + 543);
     }
 

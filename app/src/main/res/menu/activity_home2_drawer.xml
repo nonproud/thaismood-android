@@ -13,6 +13,10 @@
             android:icon="@drawable/ic_evaluation"
             android:title="@string/menu_evaluation" />
         <item
+            android:id="@+id/nav_temp_password"
+            android:icon="@drawable/ic_otp"
+            android:title="@string/menu_temp_password" />
+        <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings"
             android:title="@string/menu_tools" />
@@ -24,6 +28,11 @@
                 android:id="@+id/nav_start"
                 android:icon="@drawable/ic_about"
                 android:title="เริ่มตั้งแต่ต้น" />
+
+            <item
+                android:id="@+id/nav_evaluation"
+                android:icon="@drawable/ic_about"
+                android:title="แบบประเมิน" />
 
             <item
                 android:id="@+id/nav_about"

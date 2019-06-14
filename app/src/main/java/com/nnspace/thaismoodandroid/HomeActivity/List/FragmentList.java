@@ -23,7 +23,7 @@ public class FragmentList extends Fragment {
 
     private RecyclerView recyclerView;
     private TextView fliter, eye;
-    private TextView amount;
+    private TextView amount, empty;
 
     @Nullable
     @Override
@@ -35,6 +35,7 @@ public class FragmentList extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        empty = getView().findViewById(R.id.empty_list_text);
         recyclerView = getView().findViewById(R.id.record_list_view);
         LinearLayoutManager linearLayoutManager =  new LinearLayoutManager(getActivity());
 
@@ -58,11 +59,10 @@ public class FragmentList extends Fragment {
         eye.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                IOSSheetDialog.SheetItem[] items = new IOSSheetDialog.SheetItem[4];
+                IOSSheetDialog.SheetItem[] items = new IOSSheetDialog.SheetItem[3];
                 items[0] = new IOSSheetDialog.SheetItem("รายการสรุป", IOSSheetDialog.SheetItem.BLUE);
                 items[1] = new IOSSheetDialog.SheetItem("อารมณ์", IOSSheetDialog.SheetItem.BLUE);
                 items[2] = new IOSSheetDialog.SheetItem("การนอน", IOSSheetDialog.SheetItem.BLUE);
-                items[3] = new IOSSheetDialog.SheetItem("กิจกรรม", IOSSheetDialog.SheetItem.BLUE);
                 IOSSheetDialog dialog2 = new IOSSheetDialog.Builder(getActivity())
                         .setTitle("เลือกมุมมอง")
                         .setData(items, new DialogInterface.OnClickListener() {
@@ -78,9 +78,6 @@ public class FragmentList extends Fragment {
                                     case 2:
                                         setSleepView();
                                         break;
-                                    case 3:
-                                        setActivityView();
-                                        break;
                                 }
                             }
                         })
@@ -88,6 +85,12 @@ public class FragmentList extends Fragment {
                         .show();
             }
         });
+
+        if(recordList.size() == 0){
+            showEmptyListText();
+        }else{
+            recyclerView.setVisibility(View.VISIBLE);
+        }
     }
 
     private void setSummaryView(){
@@ -96,6 +99,11 @@ public class FragmentList extends Fragment {
         RecordListAdapter adapter = new RecordListAdapter(getActivity(), recordList);
         recyclerView.setAdapter(adapter);
         amount.setText("จำนวน: " + recordList.size());
+        if(recordList.size() == 0){
+            showEmptyListText();
+        }else{
+            recyclerView.setVisibility(View.VISIBLE);
+        }
     }
 
     private void setSleepView(){
@@ -104,13 +112,28 @@ public class FragmentList extends Fragment {
         SleepListAdapter adapter = new SleepListAdapter(getActivity(), sleepList);
         recyclerView.setAdapter(adapter);
         amount.setText("จำนวน: " + sleepList.size());
-    }
-
-    private void setActivityView(){
-
+        if(sleepList.size() == 0){
+            showEmptyListText();
+        }else{
+            recyclerView.setVisibility(View.VISIBLE);
+        }
     }
 
     private void setMoodView(){
+        ThaisMoodDB db = new ThaisMoodDB(getActivity());
+        ArrayList<MoodObject> moodList = db.getAllMood();
+        MoodListAdaptor adaptor = new MoodListAdaptor(getActivity(), moodList);
+        recyclerView.setAdapter(adaptor);
+        amount.setText("จำนวน: " + moodList.size());
+        if(moodList.size() == 0){
+            showEmptyListText();
+        }else{
+            recyclerView.setVisibility(View.VISIBLE);
+        }
+    }
 
+    private void showEmptyListText(){
+        empty.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.GONE);
     }
 }

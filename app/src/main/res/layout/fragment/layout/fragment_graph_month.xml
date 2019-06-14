@@ -15,13 +15,6 @@
         android:layout_height="30dp"
         android:gravity="center">
 
-        <ImageView
-            android:id="@+id/graph_month_left_btn"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:tint="@color/colorPrimaryDark"
-            android:src="@drawable/ic_left"/>
-
         <TextView
             android:id="@+id/graph_month_date_des"
             android:layout_width="wrap_content"
@@ -34,13 +27,6 @@
             android:fontFamily="@font/thsarabunnew_bold"
             android:textSize="25dp"
             android:text="พฤษภาคม 2562"/>
-
-        <ImageView
-            android:id="@+id/graph_month_right_btn"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:tint="@color/colorPrimaryDark"
-            android:src="@drawable/ic_right"/>
 
     </LinearLayout>
 
@@ -68,6 +54,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"

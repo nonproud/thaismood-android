@@ -1,6 +1,5 @@
 package com.nnspace.thaismoodandroid;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,7 +15,7 @@ import java.util.Map;
 public class ProfileActivity extends AppCompatActivity {
 
     private ThaisMoodDB db;
-    private char type;
+    private int type;
     private Map<String, String> data;
 
     @Override
@@ -24,19 +23,23 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         db = new ThaisMoodDB(ProfileActivity.this);
-        Intent intent = getIntent();
 
-        type = db.getType();
-        if(type == 'p'){
-            data = db.getProfilePateintDetails();
-            LinearLayout patientSection = findViewById(R.id.patient_section);
-            patientSection.setVisibility(View.VISIBLE);
-            setPatientProfile();
-        }else{
-            data = db.getProfileGeneralDetails();
-            LinearLayout patientSection = findViewById(R.id.patient_section);
-            patientSection.setVisibility(View.GONE);
+        try{
+            type = db.getType();
+            if(type == 1){
+                data = db.getProfilePatientDetails();
+                LinearLayout patientSection = findViewById(R.id.patient_section);
+                patientSection.setVisibility(View.VISIBLE);
+                setPatientProfile();
+            }else{
+                data = db.getProfileGeneralDetails();
+                LinearLayout patientSection = findViewById(R.id.patient_section);
+                patientSection.setVisibility(View.GONE);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
 
         ImageView backBtn = findViewById(R.id.back_btn);
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -63,13 +66,20 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void setProfile() {
+        TextView nickname = findViewById(R.id.nickname);
+        TextView emergencyContact = findViewById(R.id.emergency_contact);
         TextView email = findViewById(R.id.email);
         TextView dob = findViewById(R.id.dob);
         TextView caffeine = findViewById(R.id.cafeine);
         TextView drug = findViewById(R.id.addict);
 
+//        nickname.setText(data.get("nickname"));
+        nickname.setText(db.getToken());
+        emergencyContact.setText(data.get("emergency"));
         email.setText(db.getEmail());
-        dob.setText(data.get("dob"));
+        String[] dobTemp = data.get("dob").split("/");
+        String newDob = String.format("%s/%s/%s", dobTemp[2], dobTemp[1], dobTemp[0]);
+        dob.setText(newDob);
         if (data.get("isCaffeine") == "1") {
             caffeine.setText("ใช้");
         }else{

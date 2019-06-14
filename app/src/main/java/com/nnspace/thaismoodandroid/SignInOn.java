@@ -218,7 +218,7 @@ public class SignInOn extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 db.insertLogonResgist(username, email);
-                Intent intent = new Intent(SignInOn.this, Otp.class);
+                Intent intent = new Intent(SignInOn.this, VerifyEmailActivity.class);
                 intent.putExtra("email", email);
                 intent.putExtra("username", username);
                 startActivity(intent);

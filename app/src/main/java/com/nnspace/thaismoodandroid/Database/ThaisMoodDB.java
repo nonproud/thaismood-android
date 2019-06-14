@@ -112,24 +112,51 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
         return null;
     }
 
-    public char getType() {
+    public int getType() {
         String query_logon_tabel = String.format("SELECT %s FROM %s WHERE 1", LogonModel.TYPE, LogonModel.TABLE_NAME);
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor result = db.rawQuery(query_logon_tabel, null);
+        int type = 0;
         if(result.moveToFirst()){
-            char type = result.getString(0).charAt(0);
-            return type;
+            type = result.getInt(0);
         }
-        return 'g';
+        return type;
+    }
+
+    public String getToken() {
+        String sql = String.format("SELECT %s FROM %s WHERE 1", LogonModel.TOKEN, LogonModel.TABLE_NAME);
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String token = "";
+        Cursor result = db.rawQuery(sql, null);
+        if(result.moveToFirst()){
+            token = result.getString(0);
+        }
+        System.out.println("Token: " + token);
+        return token;
     }
 
     public boolean updateToken(String token){
-        String query_change_verify_status = String.format("UPDATE login SET %s = '%d' WHERE 1'", LogonModel.TOKEN, token);
+        String query_change_verify_status = String.format("UPDATE %s SET %s = ? WHERE 1;", LogonModel.TABLE_NAME,
+                LogonModel.TOKEN);
         SQLiteDatabase db = this.getWritableDatabase();
         try{
-            db.execSQL(query_change_verify_status);
+            db.execSQL(query_change_verify_status, new String[] {token});
+        }catch (Exception err){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean updateType(int type){
+        String sql = String.format("UPDATE login SET %s = '%d' WHERE 1'", LogonModel.TYPE, type);
+        SQLiteDatabase db = this.getWritableDatabase();
+        System.out.println(sql);
+        try{
+            db.execSQL(sql);
         }catch (Exception err){
             return false;
         }
@@ -193,11 +220,15 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor result = db.rawQuery(sql, null);
         if(result.moveToFirst()){
-            String dob = result.getString(1);
-            String isCaffeine = result.getString(2);
-            String isDrug = result.getString(3);
-            String created = result.getString(4);
-            String modified = result.getString(5);
+            String nickname = result.getString(0);
+            String emergency = result.getString(1);
+            String dob = result.getString(2);
+            String isCaffeine = result.getString(3);
+            String isDrug = result.getString(4);
+            String created = result.getString(5);
+            String modified = result.getString(6);
+            data.put("nickname", nickname);
+            data.put("emergency", emergency);
             data.put("dob", dob);
             data.put("isCaffeine", isCaffeine);
             data.put("isDrug", isDrug);
@@ -205,28 +236,37 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
             data.put("modified", modified);
             return data;
         }
-
+        System.out.println("Nothing");
         return null;
     }
 
-    public Map<String, String> getProfilePateintDetails(){
+    public Map<String, String> getProfilePatientDetails(){
         Map<String, String> data = new HashMap<>();
         String sql = String.format("SELECT * FROM %s WHERE 1;", ProfilePatientModel.TABLE_NAME);
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor result = db.rawQuery(sql, null);
         if(result.moveToFirst()){
-            String dob = result.getString(1);
-            String isCaffeine = result.getString(2);
-            String isDrug = result.getString(3);
-            String sex = result.getString(4);
-            String isPregnant = result.getString(5);
-            Float weight = result.getFloat(6);
-            Float height = result.getFloat(7);
-            Float bmi = result.getFloat(8);
-            String disease = result.getString(9);
-            String created = result.getString(10);
-            String modified = result.getString(11);
+            String nickname = result.getString(0);
+            String emergency = result.getString(1);
+            String dob = result.getString(2);
+            String isCaffeine = result.getString(3);
+            String isDrug = result.getString(4);
+            String sex = result.getString(5);
+            String isPregnant = result.getString(6);
+            Float weight = result.getFloat(7);
+            Float height = result.getFloat(8);
+            Float bmi = result.getFloat(9);
+            String d1 = result.getString(10);
+            String d2 = result.getString(11);
+            String d3 = result.getString(12);
+            String d4 = result.getString(13);
+            String d5 = result.getString(14);
+            String d6 = result.getString(15);
+            String created = result.getString(16);
+            String modified = result.getString(17);
+            data.put("nickname", nickname);
+            data.put("emergency", emergency);
             data.put("dob", dob);
             data.put("isCaffeine", isCaffeine);
             data.put("isDrug", isDrug);
@@ -235,13 +275,54 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
             data.put("weight", weight + "");
             data.put("height", height + "");
             data.put("bmi", bmi + "");
-            data.put("disease", disease);
+            data.put("d1", d1);
+            data.put("d2", d2);
+            data.put("d3", d3);
+            data.put("d4", d4);
+            data.put("d5", d5);
+            data.put("d6", d6);
             data.put("created", created);
             data.put("modified", modified);
             return data;
         }
 
         return null;
+    }
+
+    public boolean createProfileGeneral(String nickname, String emergencyContact, String dob, int isCaffeine, int isDrug){
+        String sql = String.format("INSERT INTO %s(%s, %s, %s, %s, %s, %s, %s) VALUES ('%s', '%s', '%s', %d, %d, date('now'), date('now'));",
+                ProfileGeneralModel.TABLE_NAME, ProfileGeneralModel.NICKNAME, ProfileGeneralModel.EMERGENCY_CONTACT, ProfileGeneralModel.DOB, ProfileGeneralModel.IS_CAFFEINE, ProfileGeneralModel.IS_DRUG, ProfileGeneralModel.CREATED_DATE, ProfileGeneralModel.MODIFIED_DATE,
+                nickname, emergencyContact, dob, isCaffeine, isDrug);
+        System.out.println(sql);
+        SQLiteDatabase db = this.getWritableDatabase();
+        try{
+            db.execSQL(sql);
+        }catch (Exception err){
+            err.printStackTrace();
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean createProfilePatient(String nickname, String emergencyContact, String dob, int isCaffeine, int isDrug, String sex, int isPregnant, float weight, float height, float bmi, String d1, String d2, String d3, String d4, String d5, String d6){
+        String sql = String.format("INSERT INTO %s(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) VALUES ('%s', '%s', '%s', %d, %d, '%s', %d, %f, %f, %f, %d, %d, %d, %d, %d, '%s', date('now'), date('now'));",
+               ProfilePatientModel.TABLE_NAME, ProfilePatientModel.NICKNAME, ProfilePatientModel.EMERGENCY_CONTACT, ProfilePatientModel.DOB, ProfilePatientModel.IS_CAFFEINE, ProfilePatientModel.IS_DRUG, ProfilePatientModel.SEX,
+                ProfilePatientModel.IS_PREGNANT, ProfilePatientModel.WEIGHT, ProfilePatientModel.HEIGHT, ProfilePatientModel.BMI,
+                ProfilePatientModel.d1, ProfilePatientModel.d2, ProfilePatientModel.d3, ProfilePatientModel.d4, ProfilePatientModel.d5, ProfilePatientModel.d6,
+                ProfilePatientModel.CREATED_DATE, ProfilePatientModel.MODIFIED_DATE,
+                nickname, emergencyContact, dob, isCaffeine, isDrug, sex, isPregnant, weight, height, bmi, Integer.parseInt(d1), Integer.parseInt(d2), Integer.parseInt(d3),
+                Integer.parseInt(d4), Integer.parseInt(d5), d6);
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        try{
+            db.execSQL(sql);
+        }catch (Exception err){
+            err.printStackTrace();
+            return false;
+        }
+
+        return true;
     }
 
     /************************* PROFILE ****************************/
@@ -360,40 +441,12 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
         return obj;
     }
 
-    public ArrayList<MoodObject> getMoodRange(String fromDate, String toDate){
-
-        String queryString = String.format("select * from %s where date >= '%s' and date <= '%s' ORDER BY %s ASC;",
-                EmotionModel.TABLE_NAME, fromDate, toDate, EmotionModel.DATE);
-
+    public ArrayList<MoodObject> getMoodRange(String dStrat, String dEnd){
+        String query_get_mood = String.format("SELECT * FROM %s WHERE %s >= '%s' AND %s <= '%s' ORDER BY %s DESC;",
+                EmotionModel.TABLE_NAME, EmotionModel.DATE, dStrat, EmotionModel.DATE, dEnd, EmotionModel.DATE);
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor result = db.rawQuery(queryString, null);
-        ArrayList<MoodObject> obj = new ArrayList<>();
 
-        if(result.moveToFirst()){
-            do{
-                int id = result.getInt(0);
-                int mood = result.getInt(1);
-                int level = result.getInt(2);
-                String date = result.getString(3);
-                MoodObject moodObj = new MoodObject(id, mood, level, date);
-                obj.add(moodObj);
-            }while (result.moveToNext());
-        }
-        result.close();
-        db.close();
-        return obj;
-    }
-
-    public ArrayList<MoodObject> getMoodYear(String year){
-
-//        String queryString = "select * from " +  EmotionModel.TABLE_NAME + " AS s WHERE strftime('%Y', s.date) = '" +
-//        year + "' ORDER BY " + EmotionModel.DATE + " ASC;";
-        String queryString = "select * from " + EmotionModel.TABLE_NAME + " where 1;";
-
-        Log.d("SQL", queryString);
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor result = db.rawQuery(queryString, null);
+        Cursor result = db.rawQuery(query_get_mood, null);
         ArrayList<MoodObject> obj = new ArrayList<>();
 
         if(result.moveToFirst()){
@@ -467,6 +520,14 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
         return result.getInt(0);
 
     }
+
+    public String getLastDateofMood(){
+        String sql = String.format("SELECT %s FROM %s ORDER BY %s DESC LIMIT 1;", EmotionModel.DATE, EmotionModel.TABLE_NAME, EmotionModel.DATE);
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor result = db.rawQuery(sql, null);
+        result.moveToFirst();
+        return result.getString(0);
+    }
     /*************************** MOOD ****************************/
 
     /*************************** DIARY ****************************/
@@ -504,6 +565,7 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
             return false;
         }
         Log.d("sql", sql + " :SUCCESSFULLY" );
+        db.close();
         return true;
     }
 
@@ -551,11 +613,11 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
     /*************************** EVALUATION ****************************/
     public boolean insertEvaluationScore(int score, String type, String date){
 
-        String sql = String.format("UPDATE %s SET %s = %s WHERE %s = %s;",
+        String sql = String.format("UPDATE %s SET %s = %d WHERE %s = '%s';",
                 EvaluationModel.TABLE_NAME, type, score, EvaluationModel.date, date);
 
         if(type.equals(EvaluationModel._2q)){
-            sql = String.format("INSERT INTO %s(%s, %s) VALUES('%s', '%s');",
+            sql = String.format("INSERT INTO %s(%s, %s) VALUES(%d, '%s');",
                     EvaluationModel.TABLE_NAME, EvaluationModel._2q, EvaluationModel.date,
                     score, date);
         }
@@ -651,6 +713,7 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
         result.moveToFirst();
         return result.getInt(0);
     }
+
 
 
 

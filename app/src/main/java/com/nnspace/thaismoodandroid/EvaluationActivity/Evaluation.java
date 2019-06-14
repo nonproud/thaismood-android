@@ -5,11 +5,12 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.appcompat.app.AppCompatActivity;
 
+import com.ligl.android.widget.iosdialog.IOSDialog;
 import com.nnspace.thaismoodandroid.R;
 
 public class Evaluation extends AppCompatActivity {
@@ -36,5 +37,14 @@ public class Evaluation extends AppCompatActivity {
         wm.getDefaultDisplay().getMetrics(metrics);
         metrics.scaledDensity = configuration.fontScale * metrics.density;
         getBaseContext().getResources().updateConfiguration(configuration, metrics);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        new IOSDialog.Builder(Evaluation.this)
+                .setMessage("ท่านจำเป็นต้องทำแบบประเมินให้จบ")
+                .setPositiveButton("ตกลง", null)
+                .show();
     }
 }

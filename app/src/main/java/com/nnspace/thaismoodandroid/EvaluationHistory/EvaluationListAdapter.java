@@ -44,7 +44,7 @@ public class EvaluationListAdapter extends RecyclerView.Adapter<EvaluationListAd
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list.size();
     }
 
     public class EvaluationViewHolder extends RecyclerView.ViewHolder{

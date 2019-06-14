@@ -3,10 +3,11 @@
     <!--url section-->
     <string name="member_url">https://thaismood.nn-space.me/member</string>
     <string name="member_login_url">https://thaismood.nn-space.me/member/login</string>
-    <string name="member_otp_verify_url">https://thaismood.nn-space.me/member/otp</string>
+    <string name="member_otp_verify_url">https://thaismood.nn-space.me/member/verifyEmail</string>
     <string name="member_check_email_duplicate">https://thaismood.nn-space.me/member/email</string>
     <string name="member_profile_url">https://thaismood.nn-space.me/member/profile</string>
-
+    <string name="member_temp_password">https://thaismood.nn-space.me/member/tempPassword</string>
+    <string name="evaluation_url">https://thaismood.nn-space.me/evaluation</string>
     <string name="url_create_mood">https://thaismood.nn-space.me/record/mood</string>
     <!--End of url section-->
 
@@ -20,6 +21,8 @@
     <string name="regist_username_waring_string">ชื่อผู้ใช้งานนี้ถูกใช้แล้ว</string>
     <string name="regist_confirm_password_warnging_string">รหัสผ่านไม่ตรงกัน</string>
     <string name="dialog_login_header">ลงทะเบียน</string>
+    <string name="patient_alert">เนื่องจากข้อคำถามต่อไปนี้มีความสัมพันธ์ต่อการวินิจฉัยโรค การรักษา และการพยากรณ์โรค ข้อมูลของท่านจะถูกเก็บเป็นความลับ อย่างไรก็ตามท่านสามารถนำไปให้จิตแพทย์ดูเพื่อการรักษาได้</string>
+    <string name="emergency_contact_instruction">** ใช้เพื่อแจ้งเตือนในกรณีที่ท่านมีความเสี่ยงค่าตัวตาย</string>
     <!--End of Sign in on Activity-->
 
 
@@ -199,6 +202,7 @@
 
     <string name="menu_home">หน้าแรก</string>
     <string name="menu_add">เพิ่ม</string>
+    <string name="menu_temp_password">รหัสชั่วคราว</string>
     <string name="menu_profile">ข้อมูลลส่วนตัว</string>
     <string name="menu_summary">ข้อมูลสรุป</string>
 
@@ -213,7 +217,7 @@
     <!-- END OF HEADER-->
 
     <!--BOTTOM NAV MENU-->
-    <string name="title_oneitem">รายการ</string>
+    <string name="title_oneitem">สรุป</string>
     <string name="title_graph">กราฟอารมณ์</string>
     <string name="title_home">โฮม</string>
     <string name="title_blank"></string>
@@ -271,7 +275,7 @@
     <string name="add_mood_header">วันนี้คุณรู้สึกอย่างไร</string>
     <string name="add_mood_instruction">อารมณ์</string>
     <string name="add_mood_text_red">โกรธ</string>
-    <string name="add_mood_text_yellow">สนุกสนาน</string>
+    <string name="add_mood_text_yellow">คึกคัก</string>
     <string name="add_mood_text_green">ปกติ</string>
     <string name="add_mood_text_grey">เครียด</string>
     <string name="add_mood_text_violet">เศร้า</string>
@@ -335,5 +339,15 @@
     <!--Phone number-->
     <string name="dmh_number">1323</string>
     <string name="smrt_number">027136793</string>
+
+    <!--Profile Activity-->
+    <string name="d1_lable">เบาหวาน ความดัน ไขมัน</string>
+    <string name="d2_lable">ไทรอยด์(ความผิดปกติของต่อมไทรอยด์)</string>
+    <string name="d3_lable">โรคหลอดเลือดสมอง</string>
+    <string name="d4_lable">โรคหลอดเลือดหัวใจ</string>
+    <string name="d5_lable">โรคลมชัก</string>
+    <string name="d6_lable">โรคอื่นๆ</string>
+    <string name="mee">มี</string>
+    <string name="maimee">ไม่มี</string>
 
 </resources>

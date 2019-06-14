@@ -16,6 +16,7 @@
         android:largeHeap="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:replace="android:icon">
+        <activity android:name=".GetTemporaryCredential"></activity>
         <activity android:name=".HomeActivity.Add.AddSleepActivity" />
         <activity android:name=".HomeActivity.Add.AddMoodActivity" />
         <activity android:name=".EmergencyContactActivity" />
@@ -36,7 +37,7 @@
         <activity android:name=".EvaluationActivity.Evaluation" />
         <activity android:name=".RegisterActivity.Register" />
         <activity android:name=".MainmenuTest" />
-        <activity android:name=".Otp" />
+        <activity android:name=".VerifyEmailActivity" />
         <activity android:name=".SignInOn" />
         <activity android:name=".MainActivity">
             <intent-filter>

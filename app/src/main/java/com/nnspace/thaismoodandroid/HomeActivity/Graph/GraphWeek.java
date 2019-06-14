@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,7 +25,7 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
 import com.nnspace.thaismoodandroid.HomeActivity.List.MoodObject;
 import com.nnspace.thaismoodandroid.MoodType;
-import com.nnspace.thaismoodandroid.MyThaiCalender;
+import com.nnspace.thaismoodandroid.MyCalender;
 import com.nnspace.thaismoodandroid.R;
 
 import java.util.ArrayList;
@@ -40,7 +39,6 @@ public class GraphWeek extends Fragment {
     private ArrayList<String> xLabel;
     private int today_dayOfWeek;
     private TextView dateDes;
-    private ImageView leftbtn, rightbtn;
     private LineChart chart;
     private PieChart chart2;
     private ArrayList<MoodObject> moodlist;
@@ -66,8 +64,6 @@ public class GraphWeek extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         dateDes = getView().findViewById(R.id.graph_week_date_des);
-        leftbtn = getView().findViewById(R.id.graph_week_left_btn);
-        rightbtn = getView().findViewById(R.id.graph_week_right_btn);
         chart = getView().findViewById(R.id.graph_week_chart1);
         chart2 = getView().findViewById(R.id.graph_week_chart2);
 
@@ -172,20 +168,6 @@ public class GraphWeek extends Fragment {
                 datePickerDialog.show();
             }
         });
-
-        leftbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        rightbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
     }
 
     private String[] getDateRange(){
@@ -208,11 +190,11 @@ public class GraphWeek extends Fragment {
     private String getThaiDate(){
         tempCalendar.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
         String s1 = tempCalendar.get(Calendar.DAY_OF_MONTH) + " " +
-                MyThaiCalender.getMonthOfYear(tempCalendar.get(Calendar.MONTH));
+                MyCalender.getMonthOfYear(tempCalendar.get(Calendar.MONTH));
 
         tempCalendar.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
         String s2 = tempCalendar.get(Calendar.DAY_OF_MONTH) + " " +
-                MyThaiCalender.getMonthOfYear(tempCalendar.get(Calendar.MONTH));
+                MyCalender.getMonthOfYear(tempCalendar.get(Calendar.MONTH));
 
         return s1 + " - " + s2 + " " + tempCalendar.get(Calendar.YEAR) ;
 

@@ -17,19 +17,24 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ligl.android.widget.iosdialog.IOSDialog;
 import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
 import com.nnspace.thaismoodandroid.RegisterActivity.Register;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Otp extends AppCompatActivity {
+public class VerifyEmailActivity extends AppCompatActivity {
 
     private String urlOTPVerify;
     private EditText otpInput;
-    private String email, username;
-    private final ThaisMoodDB db = new ThaisMoodDB(Otp.this);
+    private String email;
+    private final ThaisMoodDB db = new ThaisMoodDB(VerifyEmailActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +43,7 @@ public class Otp extends AppCompatActivity {
 
         urlOTPVerify  = getString(R.string.member_otp_verify_url);
 
-        Intent intent = getIntent();
-        email = intent.getStringExtra("email");
-        username = intent.getExtras().getString("username");
+        email = db.getEmail();
         TextView emailTextview = findViewById(R.id.otp_email_txv);
         emailTextview.setText("ที่ " + email);
 
@@ -57,38 +60,60 @@ public class Otp extends AppCompatActivity {
     }
 
     private void validateOTP(final String email, final String otp){
-        RequestQueue MyRequestQueue = Volley.newRequestQueue(Otp.this);
+        RequestQueue MyRequestQueue = Volley.newRequestQueue(VerifyEmailActivity.this);
         StringRequest myStringRequest = new StringRequest(Request.Method.POST, urlOTPVerify, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
                 if(!response.toString().equals("0")){
                     db.updateVerifyStatus();
-                    new IOSDialog.Builder(Otp.this)
+                    Map<String, String> map = new HashMap<String, String>();
+                    try {
+
+                        ObjectMapper mapper = new ObjectMapper();
+                        String json = response;
+                        map = mapper.readValue(json, new TypeReference<Map<String, String>>(){});
+                        System.out.println(map);
+                        db.updateToken(map.get("token"));
+
+                    } catch (JsonGenerationException e) {
+                        e.printStackTrace();
+                    } catch (JsonMappingException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    db.updateToken(map.get("token"));
+                    new IOSDialog.Builder(VerifyEmailActivity.this)
                             .setMessage("สำเร็จ! อีเมลของคุณถูกยืนยันแล้ว")
                             .setPositiveButton("ตกลง", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    Intent intent = new Intent(Otp.this, Register.class);
+                                    Intent intent = new Intent(VerifyEmailActivity.this, Register.class);
                                     startActivity(intent);
                                     finish();
                                 }
                             })
                             .show();
+
                 }else if(response.toString().equals("0")){
-                    ShowDialog.showDialog(Otp.this, "ผิดพลาด! รหัสยืนยันไม่ถูกต้อง");
+                    new IOSDialog.Builder(VerifyEmailActivity.this)
+                            .setMessage("ผิดพลาด! รหัสยืนยันไม่ถูกต้อง")
+                            .setPositiveButton("ตกลง", null)
+                            .show();
+                    ;
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                ShowDialog.showDialog(Otp.this, "มีบางอย่างผิดพลาด กรุณาลองใหม่อีกครั้ง");
+                ShowDialog.showDialog(VerifyEmailActivity.this, "มีบางอย่างผิดพลาด กรุณาลองใหม่อีกครั้ง");
             }
         }) {
             protected Map<String, String> getParams() {
                 Map<String, String> MyData = new HashMap<String, String>();
                 MyData.put("email", email);
-                MyData.put("otp", otp);
+                MyData.put("verifyPassword", otp);
                 return MyData;
             }
         };

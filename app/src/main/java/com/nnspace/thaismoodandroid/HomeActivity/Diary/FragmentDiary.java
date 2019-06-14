@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -53,6 +54,12 @@ public class FragmentDiary extends Fragment {
                 startActivity(intent);
             }
         });
+
+        if(diaryList.size() == 0){
+            TextView emptyText = getView().findViewById(R.id.empty_note_text);
+            emptyText.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.GONE);
+        }
 
 
     }

@@ -23,7 +23,7 @@ public class EmergencyContactActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_emergency_contact);
+        setContentView(R.layout.activity_emergency_help);
 
         Button dmhCallBtn = findViewById(R.id.dmh_call_btn);
         Button dmhFBBtn = findViewById(R.id.dmh_fb_btn);

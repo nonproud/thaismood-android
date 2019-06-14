@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.transition.TransitionManager;
 
+import com.nnspace.thaismoodandroid.FragmentUtil;
 import com.nnspace.thaismoodandroid.R;
 
 public class Register_ask_sex extends Fragment {
@@ -86,10 +87,19 @@ public class Register_ask_sex extends Fragment {
                 }
 
                 FragmentManager fm = getActivity().getSupportFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
                 Fragment form = new Register_form();
                 form.setArguments(bundle);
-                ft.replace(R.id.register_fragment_container, form);
+
+                FragmentTransaction ft = fm.beginTransaction();
+                FragmentUtil.printActivityFragmentList(fm);
+
+                Fragment askSex = FragmentUtil.getFragmentByTagName(fm, "ask sex");
+                if(askSex == null){
+                    ft.hide(askSex);
+                }
+
+                ft.add(R.id.register_fragment_container, form);
+                ft.addToBackStack(null);
                 ft.commit();
             }
         });

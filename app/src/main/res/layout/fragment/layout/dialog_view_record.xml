@@ -146,7 +146,7 @@
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/thsarabunnew_bold"
                     android:textSize="20dp"
-                    android:text="เวลานอน: 22.30"/>
+                    android:text="เวลานอน: - "/>
 
             </LinearLayout>
             <LinearLayout
@@ -168,7 +168,7 @@
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/thsarabunnew_bold"
                     android:textSize="20dp"
-                    android:text="เวลาตื่น: 06.30"/>
+                    android:text="เวลาตื่น: -"/>
 
             </LinearLayout>
             <LinearLayout
@@ -191,7 +191,7 @@
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/thsarabunnew_bold"
                     android:textSize="20dp"
-                    android:text="รวมเวลานอน: 8 ชั่วโมง"/>
+                    android:text="รวมเวลานอน: -"/>
 
             </LinearLayout>
         </LinearLayout>

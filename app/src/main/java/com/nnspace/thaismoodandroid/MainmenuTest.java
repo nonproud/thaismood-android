@@ -43,7 +43,7 @@ public class MainmenuTest extends AppCompatActivity {
         otp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainmenuTest.this, Otp.class);
+                Intent intent = new Intent(MainmenuTest.this, VerifyEmailActivity.class);
                 startActivity(intent);
             }
         });

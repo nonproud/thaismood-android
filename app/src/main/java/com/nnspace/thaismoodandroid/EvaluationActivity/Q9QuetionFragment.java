@@ -13,7 +13,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
+import com.nnspace.thaismoodandroid.DatabaseModel.EvaluationModel;
 import com.nnspace.thaismoodandroid.R;
+
+import java.util.Calendar;
 
 public class Q9QuetionFragment extends Fragment implements IEvaluation {
 
@@ -175,6 +179,9 @@ public class Q9QuetionFragment extends Fragment implements IEvaluation {
     }
 
     public void next(){
+        ThaisMoodDB db = new ThaisMoodDB(getActivity());
+        db.insertEvaluationScore(totalPoint, EvaluationModel._9q, getDateString());
+
         Bundle bundle = new Bundle();
         bundle.putString("from", "9q");
         bundle.putInt("score", totalPoint);
@@ -183,19 +190,19 @@ public class Q9QuetionFragment extends Fragment implements IEvaluation {
         if(totalPoint < 7){
             bundle.putString("result", msgResult[0]);
             bundle.putString("todo", msgResult[1]);
-            bundle.putString("next", "mdq");
+            bundle.putInt("next", 4);
         }else if(totalPoint >=7 && totalPoint < 13){
             bundle.putString("result", msgResult[2]);
             bundle.putString("todo", msgResult[5]);
-            bundle.putString("next", "8q");
+            bundle.putInt("next", 3);
         }else if(totalPoint >=7 && totalPoint <= 13){
             bundle.putString("result", msgResult[3]);
             bundle.putString("todo", msgResult[5]);
-            bundle.putString("next", "8q");
+            bundle.putInt("next", 3);
         }else if(totalPoint >= 19){
             bundle.putString("result", msgResult[4]);
             bundle.putString("todo", msgResult[5]);
-            bundle.putString("next", "8q");
+            bundle.putInt("next", 3);
         }
 
         FragmentManager fm = getActivity().getSupportFragmentManager();
@@ -218,4 +225,10 @@ public class Q9QuetionFragment extends Fragment implements IEvaluation {
         c4.setTextColor(getResources().getColor(R.color.black));
     }
 
+    private String getDateString(){
+
+        Calendar calendar = Calendar.getInstance();
+        return calendar.get(Calendar.YEAR) + "/" + (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.get(Calendar.DAY_OF_MONTH);
+
+    }
 }

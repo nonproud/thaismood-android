@@ -13,7 +13,7 @@ import android.widget.TimePicker;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
-import com.nnspace.thaismoodandroid.MyThaiCalender;
+import com.nnspace.thaismoodandroid.MyCalender;
 import com.nnspace.thaismoodandroid.R;
 
 import java.text.SimpleDateFormat;
@@ -40,7 +40,7 @@ public class AddSleepActivity extends AppCompatActivity {
         dateSelect = findViewById(R.id.add_sleep_date_select);
         startTimeSelect = findViewById(R.id.add_sleep_start_time_select);
         endTimeSelect = findViewById(R.id.add_sleep_end_time_select);
-        todayDate.setText(calendar.get(Calendar.DAY_OF_MONTH) + " " + MyThaiCalender.getMonthOfYear(calendar.get(Calendar.MONTH)) +
+        todayDate.setText(calendar.get(Calendar.DAY_OF_MONTH) + " " + MyCalender.getMonthOfYear(calendar.get(Calendar.MONTH)) +
                 " " + calendar.get(Calendar.YEAR));
 
         saveBtn = findViewById(R.id.add_sleep_save_btn);
@@ -135,7 +135,7 @@ public class AddSleepActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         calendar.set(year, month, dayOfMonth);
-                        todayDate.setText(dayOfMonth + " " + MyThaiCalender.getMonthOfYear(month) + " " + year);
+                        todayDate.setText(dayOfMonth + " " + MyCalender.getMonthOfYear(month) + " " + year);
                     }
                 }, calendar.get(Calendar.YEAR),
                         calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
@@ -151,7 +151,7 @@ public class AddSleepActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         calendar.set(year, month, dayOfMonth);
-                        todayDate.setText(dayOfMonth + " " + MyThaiCalender.getMonthOfYear(month) + " " + year);
+                        todayDate.setText(dayOfMonth + " " + MyCalender.getMonthOfYear(month) + " " + year);
 
                     }
                 }, calendar.get(Calendar.YEAR),

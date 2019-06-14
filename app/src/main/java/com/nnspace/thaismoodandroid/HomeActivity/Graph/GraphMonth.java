@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,7 +22,7 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
 import com.nnspace.thaismoodandroid.HomeActivity.List.MoodObject;
 import com.nnspace.thaismoodandroid.MoodType;
-import com.nnspace.thaismoodandroid.MyThaiCalender;
+import com.nnspace.thaismoodandroid.MyCalender;
 import com.nnspace.thaismoodandroid.R;
 import com.whiteelephant.monthpicker.MonthPickerDialog;
 
@@ -37,7 +36,6 @@ public class GraphMonth extends Fragment {
     private ArrayList<String> xLabel;
     private int today_dayOfWeek;
     private TextView dateDes;
-    private ImageView leftbtn, rightbtn;
     private LineChart chart;
     private PieChart chart2;
     private ArrayList<MoodObject> moodlist;
@@ -59,8 +57,6 @@ public class GraphMonth extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         dateDes = getView().findViewById(R.id.graph_month_date_des);
-        leftbtn = getView().findViewById(R.id.graph_month_left_btn);
-        rightbtn = getView().findViewById(R.id.graph_month_right_btn);
         chart = getView().findViewById(R.id.graph_month_chart1);
         chart2 = getView().findViewById(R.id.graph_month_chart2);
 
@@ -69,7 +65,6 @@ public class GraphMonth extends Fragment {
         setChart1();
         setChart2();
 
-//        refreshGraph();
     }
 
     private void setChart1() {
@@ -168,37 +163,23 @@ public class GraphMonth extends Fragment {
             }
         });
 
-        leftbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        rightbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
     }
 
     private String[] getDateRange(){
         String[] r = new String[2];
 
         r[0] = calendar.get(Calendar.YEAR) + "/" +
-                (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.getActualMinimum(Calendar.DATE);
+                (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.getActualMinimum(Calendar.DAY_OF_MONTH);
 
-        calendar.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
         r[1] = calendar.get(Calendar.YEAR) + "/" +
-                (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.getActualMaximum(Calendar.DATE);
+                (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
 
         return r;
     }
 
     private String getThaiMonthString(){
 
-        return MyThaiCalender.getMonthOfYear(calendar.get(Calendar.MONTH)) + " " + calendar.get(Calendar.YEAR);
+        return MyCalender.getMonthOfYear(calendar.get(Calendar.MONTH)) + " " + calendar.get(Calendar.YEAR);
 
     }
 

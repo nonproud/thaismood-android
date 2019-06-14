@@ -12,8 +12,6 @@ import android.view.WindowManager;
 import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
 import com.nnspace.thaismoodandroid.HomeActivity.Home2;
 
-import java.util.Map;
-
 public class MainActivity extends Activity {
 
     final ThaisMoodDB db = new ThaisMoodDB(this);
@@ -37,9 +35,12 @@ public class MainActivity extends Activity {
 
         runnable = new Runnable() {
             public void run() {
-                Intent intent = new Intent(getApplicationContext(), Home2.class);
-                Map<String, String> data = db.isLogon();
-
+                Intent intent;
+                if(db.isLogon() != null){
+                    intent = new Intent(getApplicationContext(), Home2.class);
+                }else{
+                    intent = new Intent(getApplicationContext(), SignInOn.class);
+                }
                 startActivity(intent);
                 finish();
 

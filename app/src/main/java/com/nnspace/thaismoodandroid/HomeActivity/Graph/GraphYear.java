@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,7 +22,6 @@ import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
 import com.nnspace.thaismoodandroid.HomeActivity.List.MoodObject;
 import com.nnspace.thaismoodandroid.MoodType;
 import com.nnspace.thaismoodandroid.R;
-import com.whiteelephant.monthpicker.MonthPickerDialog;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -34,8 +31,6 @@ public class GraphYear extends Fragment {
 
     private Calendar currentCalender, calendar;
     private ArrayList<String> xLabel;
-    private TextView dateDes;
-    private ImageView leftbtn, rightbtn;
     private LineChart chart;
     private PieChart chart2;
     private ArrayList<MoodObject> moodlist;
@@ -54,14 +49,9 @@ public class GraphYear extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         super.onViewCreated(view, savedInstanceState);
-
-        dateDes = getView().findViewById(R.id.graph_year_date_des);
-        leftbtn = getView().findViewById(R.id.graph_year_left_btn);
-        rightbtn = getView().findViewById(R.id.graph_year_right_btn);
         chart = getView().findViewById(R.id.graph_year_chart1);
         chart2 = getView().findViewById(R.id.graph_year_chart2);
 
-        dateDes.setText(getThaiYearString());
         setOnClickListener();
         setChart1();
         setChart2();
@@ -71,7 +61,7 @@ public class GraphYear extends Fragment {
     private void setChart1() {
 
         ThaisMoodDB db = new ThaisMoodDB(getActivity());
-        moodlist = db.getMoodYear(getStringDate());
+        moodlist = db.getAllMood();
 
         List<Entry> dSet = new ArrayList<Entry>();
 
@@ -134,48 +124,5 @@ public class GraphYear extends Fragment {
 
     private void setOnClickListener() {
 
-        dateDes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(getActivity(), new MonthPickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(int selectedMonth, int selectedYear) {
-                        dateDes.setText(getThaiYearString());
-                        calendar.set(Calendar.YEAR, selectedYear);
-                        setChart1();
-                    }
-                }, calendar.get(Calendar.YEAR), 0);
-
-                builder.showYearOnly()
-                        .setYearRange(2015, currentCalender.get(Calendar.YEAR))
-                        .build()
-                        .show();
-            }
-        });
-
-        leftbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        rightbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
     }
-
-    private String getStringDate(){
-        return calendar.get(Calendar.YEAR) + "";
-    }
-
-    private String getThaiYearString(){
-
-        return calendar.get(Calendar.YEAR) + "" ;
-
-    }
-
 }

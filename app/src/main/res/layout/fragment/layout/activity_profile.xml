@@ -42,6 +42,7 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="405dp">
                 <LinearLayout
@@ -56,7 +57,7 @@
                         android:layout_height="150dp"
                         android:src="@drawable/ic_profile"/>
                     <TextView
-                        android:id="@+id/username"
+                        android:id="@+id/username1"
                         android:layout_marginTop="10dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
@@ -68,6 +69,7 @@
                 </LinearLayout>
 
                 <androidx.cardview.widget.CardView
+                    android:visibility="gone"
                     android:layout_width="400dp"
                     android:layout_height="120dp"
                     android:layout_marginLeft="30dp"
@@ -156,11 +158,31 @@
             </RelativeLayout>
 
             <LinearLayout
-                android:layout_width="360dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/username"/>
+                    <TextView
+                        android:id="@+id/username"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="20dp"
+                        android:text="username"/>
+                </LinearLayout>
+
                 <LinearLayout
                     android:orientation="horizontal"
                     android:paddingLeft="25dp"
@@ -179,6 +201,48 @@
                         android:paddingLeft="20dp"
                         android:text="example@example.com"/>
                 </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:gravity="center_vertical">
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:text="ชื่อเล่น"/>
+                    <TextView
+                        android:id="@+id/nickname"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="20dp"
+                        android:text="ชื่อเล่น"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/emergency_contact"/>
+                    <TextView
+                        android:id="@+id/emergency_contact"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="20dp"
+                        android:text="xxxxxxxxxx"/>
+                </LinearLayout>
+
                 <LinearLayout
                     android:layout_marginTop="5dp"
                     android:orientation="horizontal"
@@ -198,6 +262,8 @@
                         android:paddingLeft="20dp"
                         android:text="xx/xx/xxxx"/>
                 </LinearLayout>
+
+
 
                 <LinearLayout
                     android:id="@+id/patient_section"
@@ -358,7 +424,149 @@
                             android:text="24.0"/>
                     </LinearLayout>
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="25dp"
+                        android:text="โรคประจำตัว"/>
 
+                    <LinearLayout
+                        android:id="@+id/disease_section"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/d1_section"
+                            android:layout_marginTop="5dp"
+                            android:orientation="horizontal"
+                            android:paddingLeft="25dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:tint="@color/colorPrimaryDark"
+                                android:src="@drawable/ic_checked"/>
+                            <TextView
+                                android:textStyle="bold"
+                                android:layout_gravity="center_vertical"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="20dp"
+                                android:text="@string/d1_lable"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/d2_section"
+                            android:layout_marginTop="5dp"
+                            android:orientation="horizontal"
+                            android:paddingLeft="25dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:tint="@color/colorPrimaryDark"
+                                android:src="@drawable/ic_checked"/>
+                            <TextView
+                                android:textStyle="bold"
+                                android:layout_gravity="center_vertical"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="20dp"
+                                android:text="@string/d2_lable"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/d3_section"
+                            android:layout_marginTop="5dp"
+                            android:orientation="horizontal"
+                            android:paddingLeft="25dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:tint="@color/colorPrimaryDark"
+                                android:src="@drawable/ic_checked"/>
+                            <TextView
+                                android:textStyle="bold"
+                                android:layout_gravity="center_vertical"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="20dp"
+                                android:text="@string/d3_lable"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/d4_section"
+                            android:layout_marginTop="5dp"
+                            android:orientation="horizontal"
+                            android:paddingLeft="25dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:tint="@color/colorPrimaryDark"
+                                android:src="@drawable/ic_checked"/>
+                            <TextView
+                                android:textStyle="bold"
+                                android:layout_gravity="center_vertical"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="20dp"
+                                android:text="@string/d4_lable"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/d5_section"
+                            android:layout_marginTop="5dp"
+                            android:orientation="horizontal"
+                            android:paddingLeft="25dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:tint="@color/colorPrimaryDark"
+                                android:src="@drawable/ic_checked"/>
+                            <TextView
+                                android:textStyle="bold"
+                                android:layout_gravity="center_vertical"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="20dp"
+                                android:text="@string/d5_lable"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/d6_section"
+                            android:layout_marginTop="5dp"
+                            android:orientation="horizontal"
+                            android:paddingLeft="25dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:tint="@color/colorPrimaryDark"
+                                android:src="@drawable/ic_checked"/>
+                            <TextView
+                                android:id="@+id/d6_text"
+                                android:textStyle="bold"
+                                android:layout_gravity="center_vertical"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="20dp"
+                                android:text="@string/d6_lable"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 

@@ -1,18 +1,19 @@
 package com.nnspace.thaismoodandroid.HomeActivity.Graph;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import com.google.android.material.tabs.TabLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
+import com.google.android.material.tabs.TabLayout;
 import com.nnspace.thaismoodandroid.R;
 
 import java.util.ArrayList;
@@ -29,11 +30,6 @@ public class FragmentGraph extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-//        View view = inflater.inflate(R.layout.fragment_graph,container, false);
-        // Setting ViewPager for each Tabs
-
-
-//        return view;
         return inflater.inflate(R.layout.fragment_graph, null);
 
     }
@@ -47,11 +43,6 @@ public class FragmentGraph extends Fragment {
         TabLayout tabs = (TabLayout) view.findViewById(R.id.graph_tabs);
         tabs.setupWithViewPager(viewPager);
 
-//    fm = getActivity().getSupportFragmentManager();
-//        ft = fm.beginTransaction();
-//        Fragment nextFragment = new GraphWeek();
-//        ft.replace(R.id.graph_fragment_container, nextFragment);
-//        ft.commit();
     }
 
     @Override
@@ -67,7 +58,7 @@ public class FragmentGraph extends Fragment {
         Adapter adapter = new Adapter(getChildFragmentManager());
         adapter.addFragment(new GraphWeek(), "สัปดาห์");
         adapter.addFragment(new GraphMonth(), "เดือน");
-        adapter.addFragment(new GraphYear(), "ปี");
+        adapter.addFragment(new GraphYear(), "ทั้งหมด");
         viewPager.setAdapter(adapter);
 
     }
