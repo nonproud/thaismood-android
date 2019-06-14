@@ -22,17 +22,21 @@
     <color name="q_2q_theme_dark">#005b7c</color>
     <color name="q_2q_theme_light">#01bcc6</color>
 
-    <color name="q_9q_theme">#124f67</color>
-    <color name="q_9q_theme_dark">#011c37</color>
-    <color name="q_9q_theme_light">#5b8991</color>
+    <!--<color name="q_2q_theme">#008eab</color>
+    <color name="q_2q_theme_dark">#005b7c</color>
+    <color name="q_2q_theme_light">#01bcc6</color>-->
+
+    <color name="q_9q_theme">#008eab</color>
+    <color name="q_9q_theme_dark">#005b7c</color>
+    <color name="q_9q_theme_light">#01bcc6</color>
     
-    <color name="q_8q_theme">#586776</color>
-    <color name="q_8q_theme_dark">#063a52</color>
-    <color name="q_8q_theme_light">#b8c6c3</color>
+    <color name="q_8q_theme">#008eab</color>
+    <color name="q_8q_theme_dark">#005b7c</color>
+    <color name="q_8q_theme_light">#01bcc6</color>
     
-    <color name="q_mdq_theme">#476663</color>
-    <color name="q_mdq_theme_dark">#1c3c40</color>
-    <color name="q_mdq_theme_light">#eacb86</color>
+    <color name="q_mdq_theme">#008eab</color>
+    <color name="q_mdq_theme_dark">#005b7c</color>
+    <color name="q_mdq_theme_light">#01bcc6</color>
 
     <!--Botton nav menu color-->
     <color name="color_list">#30043d</color>

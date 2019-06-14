@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,17 +12,17 @@
         android:layout_width="match_parent"
         android:layout_height="582dp"
         android:layout_weight="1"
+        android:background="@color/q_2q_theme"
         android:gravity="top|center_horizontal"
-        android:orientation="vertical"
-        android:background="@color/q_2q_theme">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
-            android:textColor="@color/white"
             android:fontFamily="@font/thsarabunnew_bold"
             android:text="@string/q_2q_header"
+            android:textColor="@color/white"
             android:textSize="30dp" />
 
         <TextView
@@ -30,30 +31,29 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/thsarabunnew_bold"
-            android:textColor="@color/white"
             android:text="ข้อที่ 1 จาก 2 ข้อ"
+            android:textColor="@color/white"
             android:textSize="25dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="30dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
-            android:gravity="center"
             android:background="@drawable/box_border_2q"
-            android:orientation="vertical"
-            >
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="@font/thsarabunnew"
-                android:text="@string/q_2q_intro"
                 android:gravity="center_horizontal"
-                android:textSize="28dp" />
+                android:text="@string/q_2q_intro"
+                android:textSize="23dp" />
 
             <TextView
                 android:id="@+id/q_2q_question_tx"
@@ -62,54 +62,105 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="20dp"
-                android:gravity="center_horizontal"
-                android:fontFamily="@font/thsarabunnew_bold"
-                android:text="This is Question"
                 android:ems="15"
-                android:textSize="25dp" />
+                android:fontFamily="@font/thsarabunnew_bold"
+                android:gravity="center_horizontal"
+                android:text="This is Question"
+                android:textSize="28dp" />
 
             <Button
                 android:id="@+id/q_2q_choice_1"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/q_2q_choice_unselected"
                 android:layout_marginTop="50dp"
-                android:text="@string/q_2q_ans_1"
-                android:tag="1"/>
+                android:background="@drawable/q_2q_choice_unselected"
+                android:tag="1"
+                android:text="@string/q_2q_ans_1" />
 
             <Button
                 android:id="@+id/q_2q_choice_2"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/q_2q_choice_unselected"
                 android:layout_marginTop="20dp"
-                android:text="@string/q_2q_ans_2"
-                android:tag="0"/>
+                android:background="@drawable/q_2q_choice_unselected"
+                android:tag="0"
+                android:text="@string/q_2q_ans_2" />
 
         </LinearLayout>
     </LinearLayout>
 
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:background="@color/white"-->
+        <!--android:gravity="bottom"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<LinearLayout-->
+            <!--android:id="@+id/q_2q_prev_btn"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@color/non_select_color"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:gravity="center" >-->
+
+            <!--<ImageView-->
+                <!--android:layout_width="20dp"-->
+                <!--android:layout_height="20dp"-->
+                <!--android:layout_marginRight="10dp"-->
+                <!--android:src="@drawable/ic_left"-->
+                <!--android:tint="@color/white"/>-->
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="ย้อนกลับ"-->
+                <!--/>-->
+
+        <!--</LinearLayout>-->
+
+        <!--<LinearLayout-->
+            <!--android:id="@+id/q_2q_next_btn"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@color/non_select_color"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:gravity="center"-->
+            <!--&gt;-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="ถัดไป"-->
+                <!--android:layout_marginRight="10dp"-->
+                <!--/>-->
+            <!--<ImageView-->
+            <!--android:layout_width="20dp"-->
+            <!--android:layout_height="20dp"-->
+            <!--android:src="@drawable/ic_right"-->
+                <!--android:tint="@color/white"/>-->
+
+        <!--</LinearLayout>-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:background="@color/white"
         android:orientation="horizontal">
-
         <Button
             android:id="@+id/q_2q_prev_btn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/button_border_unselected"
-            android:layout_weight="1"
-            android:enabled="false"
             android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_border_unselected"
+            android:enabled="false"
             android:fontFamily="@font/thsarabunnew_bold"
+            android:drawableLeft="@drawable/ic_left"
             android:text="ย้อนกลับ"
             android:textColor="@color/white"
-            android:textSize="25dp"/>
-            <!--android:drawableLeft="@drawable/previous"-->
-
+            android:textSize="25dp" />
 
         <Button
             android:id="@+id/q_2q_next_btn"
@@ -118,11 +169,13 @@
             android:layout_weight="1"
 
             android:background="@drawable/button_border_unselected"
+            android:drawableRight="@drawable/ic_right"
             android:enabled="false"
             android:fontFamily="@font/thsarabunnew_bold"
             android:text="ถัดไป"
             android:textColor="@color/white"
             android:textSize="25dp" />
+
 
     </LinearLayout>
 </LinearLayout>

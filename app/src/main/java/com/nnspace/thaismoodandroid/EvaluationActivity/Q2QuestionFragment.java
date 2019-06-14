@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.nnspace.thaismoodandroid.R;
@@ -17,10 +19,11 @@ import com.nnspace.thaismoodandroid.R;
 public class Q2QuestionFragment extends Fragment implements IEvaluation {
 
     private String[] question;
-    private Button nextBtn, prevBtn, c1, c2;
+    private Button prev_btn, next_btn, c1, c2;
     private TextView questiontx, indicator;
     private static int countNo, totalPoint;
     private Integer[] currentPoint;
+//    private LinearLayout prev_btn, next_btn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,8 +38,8 @@ public class Q2QuestionFragment extends Fragment implements IEvaluation {
         totalPoint = 0;
         currentPoint = new Integer[2];
         question = getResources().getStringArray(R.array.q_2q_question);
-        nextBtn = getView().findViewById(R.id.q_2q_next_btn);
-        prevBtn = getView().findViewById(R.id.q_2q_prev_btn);
+        next_btn = getView().findViewById(R.id.q_2q_next_btn);
+        prev_btn = getView().findViewById(R.id.q_2q_prev_btn);
         questiontx = getView().findViewById(R.id.q_2q_question_tx);
         c1 = getView().findViewById(R.id.q_2q_choice_1);
         c2 = getView().findViewById(R.id.q_2q_choice_2);
@@ -51,8 +54,8 @@ public class Q2QuestionFragment extends Fragment implements IEvaluation {
                 c2.setBackground(getResources().getDrawable(R.drawable.q_2q_choice_unselected));
                 c2.setTextColor(getResources().getColor(R.color.black));
                 currentPoint[countNo] = Integer.parseInt(c1.getTag().toString());
-                nextBtn.setEnabled(true);
-                nextBtn.setBackgroundColor(getResources().getColor(R.color.q_2q_theme_dark));
+                next_btn.setEnabled(true);
+                next_btn.setBackgroundColor(getResources().getColor(R.color.q_2q_theme_dark));
             }
         });
 
@@ -64,12 +67,12 @@ public class Q2QuestionFragment extends Fragment implements IEvaluation {
                 c1.setBackground(getResources().getDrawable(R.drawable.q_2q_choice_unselected));
                 c1.setTextColor(getResources().getColor(R.color.black));
                 currentPoint[countNo] = Integer.parseInt(c2.getTag().toString());
-                nextBtn.setEnabled(true);
-                nextBtn.setBackgroundColor(getResources().getColor(R.color.q_2q_theme_dark));
+                next_btn.setEnabled(true);
+                next_btn.setBackgroundColor(getResources().getColor(R.color.q_2q_theme_dark));
             }
         });
 
-        nextBtn.setOnClickListener(new View.OnClickListener() {
+        next_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(countNo == 1){
@@ -78,10 +81,10 @@ public class Q2QuestionFragment extends Fragment implements IEvaluation {
                     countNo++;
                     nextQuestion();
                     if(currentPoint[countNo] != null){
-                        nextBtn.setEnabled(true);
-                        nextBtn.setBackgroundColor(getResources().getColor(R.color.q_2q_theme_dark));
-                        prevBtn.setEnabled(true);
-                        prevBtn.setBackgroundColor(getResources().getColor(R.color.q_2q_theme_dark));
+                        next_btn.setEnabled(true);
+                        next_btn.setBackgroundColor(getResources().getColor(R.color.q_2q_theme_dark));
+                        prev_btn.setEnabled(true);
+                        prev_btn.setBackgroundColor(getResources().getColor(R.color.q_2q_theme_dark));
                         if(currentPoint[countNo] == 0){
                             c1.setBackground(getResources().getDrawable(R.drawable.q_2q_choice_selected));
                             c1.setTextColor(getResources().getColor(R.color.white));
@@ -90,8 +93,8 @@ public class Q2QuestionFragment extends Fragment implements IEvaluation {
                             c2.setTextColor(getResources().getColor(R.color.white));
                         }
                     }else{
-                        nextBtn.setEnabled(false);
-                        nextBtn.setBackground(getResources().getDrawable(R.drawable.button_border_unselected));
+                        next_btn.setEnabled(false);
+                        next_btn.setBackground(getResources().getDrawable(R.drawable.button_border_unselected));
                         clearButton();
                     }
 
@@ -99,12 +102,12 @@ public class Q2QuestionFragment extends Fragment implements IEvaluation {
             }
         });
 
-        prevBtn.setOnClickListener(new View.OnClickListener() {
+        prev_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(countNo == 0){
-                    prevBtn.setEnabled(false);
-                    prevBtn.setBackground(getResources().getDrawable(R.drawable.button_border_unselected));
+                    prev_btn.setEnabled(false);
+                    prev_btn.setBackground(getResources().getDrawable(R.drawable.button_border_unselected));
                 }else {
                     countNo--;
                     prevQuestion();
