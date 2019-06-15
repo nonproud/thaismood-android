@@ -1,28 +1,31 @@
 <resources>
 
-    <!--&lt;!&ndash;url section&ndash;&gt;-->
-    <!--<string name="member_url">https://thaismood.nn-space.me/member</string>-->
-    <!--<string name="member_login_url">https://thaismood.nn-space.me/member/login</string>-->
-    <!--<string name="member_otp_verify_url">https://thaismood.nn-space.me/member/verifyEmail</string>-->
-    <!--<string name="member_check_email_duplicate">https://thaismood.nn-space.me/member/email</string>-->
-    <!--<string name="member_profile_url">https://thaismood.nn-space.me/member/profile</string>-->
-    <!--<string name="member_temp_password">https://thaismood.nn-space.me/member/tempPassword</string>-->
-    <!--<string name="evaluation_url">https://thaismood.nn-space.me/evaluation</string>-->
-    <!--<string name="url_create_mood">https://thaismood.nn-space.me/record/mood</string>-->
-    <!--&lt;!&ndash;End of url section&ndash;&gt;-->
+    <!--url section-->
+    <string name="member_url">https://thaismood.nn-space.me/member</string>
+    <string name="member_login_url">https://thaismood.nn-space.me/member/login</string>
+    <string name="member_otp_verify_url">https://thaismood.nn-space.me/member/verifyEmail</string>
+    <string name="member_check_email_duplicate">https://thaismood.nn-space.me/member/email</string>
+    <string name="member_check_username_duplicate">http://192.168.2.35:4553/member/username</string>
+    <string name="member_profile_url">https://thaismood.nn-space.me/member/profile</string>
+    <string name="member_temp_password">https://thaismood.nn-space.me/member/tempPassword</string>
+    <string name="evaluation_url">https://thaismood.nn-space.me/evaluation</string>
+    <string name="url_create_mood">https://thaismood.nn-space.me/record/mood</string>
+    <string name="url_sleep">https://thaismood.nn-space.me/record/sleep</string>
+    <string name="url_diary">https://thaismood.nn-space.me/record/diary</string>
+    <!--End of url section-->
 
     <!--url section-->
-    <string name="member_url">http://192.168.2.35:4553/member</string>
-    <string name="member_login_url">http://192.168.2.35:4553/member/login</string>
-    <string name="member_otp_verify_url">http://192.168.2.35:4553/member/verifyEmail</string>
-    <string name="member_check_email_duplicate">http://192.168.2.35:4553/member/email</string>
-    <string name="member_check_username_duplicate">http://192.168.2.35:4553/member/username</string>
-    <string name="member_profile_url">http://192.168.2.35:4553/member/profile</string>
-    <string name="member_temp_password">http://192.168.2.35:4553/member/tempPassword</string>
-    <string name="evaluation_url">http://192.168.2.35:6553/evaluation</string>
-    <string name="url_create_mood">http://192.168.2.35:5553/record/mood</string>
-    <string name="url_sleep">http://192.168.2.35:5553/record/sleep</string>
-    <string name="url_diary">http://192.168.2.35:5553/record/diary</string>
+    <!--<string name="member_url">http://192.168.2.35:4553/member</string>-->
+    <!--<string name="member_login_url">http://192.168.2.35:4553/member/login</string>-->
+    <!--<string name="member_otp_verify_url">http://192.168.2.35:4553/member/verifyEmail</string>-->
+    <!--<string name="member_check_email_duplicate">http://192.168.2.35:4553/member/email</string>-->
+    <!--<string name="member_check_username_duplicate">http://192.168.2.35:4553/member/username</string>-->
+    <!--<string name="member_profile_url">http://192.168.2.35:4553/member/profile</string>-->
+    <!--<string name="member_temp_password">http://192.168.2.35:4553/member/tempPassword</string>-->
+    <!--<string name="evaluation_url">http://192.168.2.35:6553/evaluation</string>-->
+    <!--<string name="url_create_mood">http://192.168.2.35:5553/record/mood</string>-->
+    <!--<string name="url_sleep">http://192.168.2.35:5553/record/sleep</string>-->
+    <!--<string name="url_diary">http://192.168.2.35:5553/record/diary</string>-->
     <!--End of url section-->
 
     <!--Sign in on Activity-->
