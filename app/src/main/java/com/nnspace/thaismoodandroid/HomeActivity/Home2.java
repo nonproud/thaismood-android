@@ -331,8 +331,9 @@ public class Home2 extends AppCompatActivity
             startActivity(new Intent(Home2.this, GetTemporaryCredential.class));
 
         }else if (id == R.id.nav_evaluation) {
-
-            startActivity(new Intent(Home2.this, Evaluation.class));
+            Intent intent = new Intent(Home2.this, Evaluation.class);
+            intent.putExtra("todo", 1);
+            startActivity(intent);
 
         }else if (id == R.id.nav_settings) {
 
