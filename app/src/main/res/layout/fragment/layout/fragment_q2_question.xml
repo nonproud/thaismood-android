@@ -19,7 +19,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="30dp"
             android:fontFamily="@font/thsarabunnew_bold"
             android:text="@string/q_2q_header"
             android:textColor="@color/white"
@@ -154,6 +154,8 @@
             android:layout_height="match_parent"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
+            android:drawableTint="@color/ios_grey"
+            android:paddingLeft="10dp"
             android:background="@drawable/button_border_unselected"
             android:enabled="false"
             android:fontFamily="@font/thsarabunnew_bold"
@@ -167,7 +169,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-
+            android:drawableTint="@color/ios_grey"
+            android:paddingRight="10dp"
             android:background="@drawable/button_border_unselected"
             android:drawableRight="@drawable/ic_right"
             android:enabled="false"

@@ -21,7 +21,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="50dp"
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:text="@string/register_ask_sex_header"/>
@@ -36,7 +36,7 @@
                     android:id="@+id/register_ask_sex_male_layout"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="15dp"
                     android:background="@drawable/button_border_unselected"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -60,7 +60,7 @@
                     android:id="@+id/register_ask_genter_female_layout"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="15dp"
                     android:background="@drawable/button_border_unselected"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -105,6 +105,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:tag="0"
+                        android:checked="true"
                         android:text="@string/register_ask_sex_no_pregnant"/>
 
                     <RadioButton
@@ -122,7 +123,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:background="@color/confirm_color">
 
             <Button

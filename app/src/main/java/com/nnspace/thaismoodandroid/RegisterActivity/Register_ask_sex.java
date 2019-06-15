@@ -1,11 +1,7 @@
 package com.nnspace.thaismoodandroid.RegisterActivity;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.transition.TransitionManager;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +10,13 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.transition.TransitionManager;
+
+import com.nnspace.thaismoodandroid.FragmentUtil;
 import com.nnspace.thaismoodandroid.R;
 
 public class Register_ask_sex extends Fragment {
@@ -72,14 +75,31 @@ public class Register_ask_sex extends Fragment {
                 if (sex.equals("female")) {
                     RadioGroup isPregnant = getView().findViewById(R.id.register_ask_sex_is_pregnant_radiogroup);
                     RadioButton rd = getView().findViewById(isPregnant.getCheckedRadioButtonId());
-                    bundle.putString("isPregnant", rd.getTag().toString());
+
+                    if(rd.getTag().equals("1")){
+                        bundle.putBoolean("isPregnant", true);
+                        Log.d("isPregnent1: ", "true");
+                    }else{
+                        bundle.putBoolean("isPregnant", false);
+                        Log.d("isPregnent1: ", "false");
+                    }
+
                 }
 
                 FragmentManager fm = getActivity().getSupportFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
                 Fragment form = new Register_form();
                 form.setArguments(bundle);
-                ft.replace(R.id.register_fragment_container, form);
+
+                FragmentTransaction ft = fm.beginTransaction();
+                FragmentUtil.printActivityFragmentList(fm);
+
+                Fragment askSex = FragmentUtil.getFragmentByTagName(fm, "ask sex");
+                if(askSex == null){
+                    ft.hide(askSex);
+                }
+
+                ft.add(R.id.register_fragment_container, form);
+                ft.addToBackStack(null);
                 ft.commit();
             }
         });
