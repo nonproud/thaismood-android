@@ -15,7 +15,7 @@ import java.util.Map;
 public class ProfileActivity extends AppCompatActivity {
 
     private ThaisMoodDB db;
-    private int type;
+    private String type;
     private Map<String, String> data;
 
     @Override
@@ -26,7 +26,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         try{
             type = db.getType();
-            if(type == 1){
+            if(type.equals("p")){
                 data = db.getProfilePatientDetails();
                 LinearLayout patientSection = findViewById(R.id.patient_section);
                 patientSection.setVisibility(View.VISIBLE);
@@ -73,8 +73,7 @@ public class ProfileActivity extends AppCompatActivity {
         TextView caffeine = findViewById(R.id.cafeine);
         TextView drug = findViewById(R.id.addict);
 
-//        nickname.setText(data.get("nickname"));
-        nickname.setText(db.getToken());
+        nickname.setText(data.get("nickname"));
         emergencyContact.setText(data.get("emergency"));
         email.setText(db.getEmail());
         String[] dobTemp = data.get("dob").split("/");
@@ -116,8 +115,6 @@ public class ProfileActivity extends AppCompatActivity {
         height.setText(data.get("height"));
         TextView bmi = findViewById(R.id.bmi_text);
         bmi.setText(data.get("bmi"));
-
-
 
     }
 

@@ -56,7 +56,7 @@ public class GraphMonth extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         super.onViewCreated(view, savedInstanceState);
 
-        dateDes = getView().findViewById(R.id.graph_month_date_des);
+        dateDes = getView().findViewById(R.id.graph_year_date_des);
         chart = getView().findViewById(R.id.graph_month_chart1);
         chart2 = getView().findViewById(R.id.graph_month_chart2);
 
@@ -170,9 +170,11 @@ public class GraphMonth extends Fragment {
 
         r[0] = calendar.get(Calendar.YEAR) + "/" +
                 (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.getActualMinimum(Calendar.DAY_OF_MONTH);
+        System.out.println("month s-date: " + r[0]);
 
         r[1] = calendar.get(Calendar.YEAR) + "/" +
                 (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+        System.out.println("month e-date: " + r[1]);
 
         return r;
     }

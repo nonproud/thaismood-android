@@ -1,6 +1,7 @@
 package com.nnspace.thaismoodandroid.HomeActivity;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ import com.nnspace.thaismoodandroid.CheckDepress;
 import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
 import com.nnspace.thaismoodandroid.EvaluationActivity.Evaluation;
 import com.nnspace.thaismoodandroid.EvaluationHistory.EvaluationHistoryActivity;
+import com.nnspace.thaismoodandroid.FIndHospitalActivity;
 import com.nnspace.thaismoodandroid.GetTemporaryCredential;
 import com.nnspace.thaismoodandroid.HomeActivity.Add.AddMoodActivity;
 import com.nnspace.thaismoodandroid.HomeActivity.Add.AddSleepActivity;
@@ -35,11 +37,11 @@ import com.nnspace.thaismoodandroid.HomeActivity.Diary.FragmentDiary;
 import com.nnspace.thaismoodandroid.HomeActivity.Diary.WriteNoteActivity;
 import com.nnspace.thaismoodandroid.HomeActivity.Graph.FragmentGraph;
 import com.nnspace.thaismoodandroid.HomeActivity.List.FragmentList;
+import com.nnspace.thaismoodandroid.MainActivity;
 import com.nnspace.thaismoodandroid.MyCalender;
 import com.nnspace.thaismoodandroid.ProfileActivity;
 import com.nnspace.thaismoodandroid.R;
 import com.nnspace.thaismoodandroid.SettingActivity;
-import com.nnspace.thaismoodandroid.SignInOn;
 import com.nnspace.thaismoodandroid.SlideInAnimationHandler;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
@@ -209,6 +211,7 @@ public class Home2 extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Home2.this, AddSleepActivity.class);
+                intent.putExtra("isEdit", false);
                 startActivity(intent);
             }
         });
@@ -335,15 +338,26 @@ public class Home2 extends AppCompatActivity
 
             startActivity(new Intent(Home2.this, SettingActivity.class));
 
-        }else if(id == R.id.nav_start){
-            startActivity(new Intent(Home2.this, SignInOn.class));
+        }else if(id == R.id.nav_find_hospital){
+            startActivity(new Intent(Home2.this, FIndHospitalActivity.class));
 
         } else if (id == R.id.nav_about) {
 
             startActivity(new Intent(Home2.this, AboutActivity.class));
 
         } else if (id == R.id.nav_logout) {
-
+            new IOSDialog.Builder(Home2.this)
+                    .setMessage("ท่านต้องการลงชื่อออกจากระบบหรือไม่")
+                    .setPositiveButton("ยกเลิก", null)
+                    .setNegativeButton("ออกจากระบบ", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ThaisMoodDB db = new ThaisMoodDB(Home2.this);
+                            db.signOut();
+                            startActivity(new Intent(Home2.this, MainActivity.class));
+                        }
+                    })
+                    .show();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

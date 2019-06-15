@@ -291,9 +291,11 @@ public class Register_form extends Fragment {
             @Override
             public void onResponse(String response) {
                 if(response.equals("1")){
-                    db.updateType(1);
+                    Toast.makeText(getContext(), "บันทึกข้อมูลแล้ว", Toast.LENGTH_LONG).show();
+                    db.updateType("p");
                     db.createProfilePatient(nicknameString, emergencyContactString, dobString, isCaffeine, isDrug, sex, isPregnant ? 1:0, weight, height, bmi, d1, d2, d3, d4, d5, d6);
                     Intent intent = new Intent(getContext(), Evaluation.class);
+                    intent.putExtra("todo", 1);
                     startActivity(intent);
                 }else{
                     Toast.makeText(getContext(), "ผิดพลาด", Toast.LENGTH_LONG).show();
@@ -344,7 +346,8 @@ public class Register_form extends Fragment {
             @Override
             public void onResponse(String response) {
                 if(response.equals("1")){
-                    db.updateType(0);
+                    Toast.makeText(getContext(), "บันทึกข้อมูลแล้ว", Toast.LENGTH_LONG).show();
+                    db.updateType("g");
                     db.createProfileGeneral(nicknameString, emergencyContactString, dobString, isCaffeine, isDrug);
                     Intent intent = new Intent(getContext(), Evaluation.class);
                     startActivity(intent);

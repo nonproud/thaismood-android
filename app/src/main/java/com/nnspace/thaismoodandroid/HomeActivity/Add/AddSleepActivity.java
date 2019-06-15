@@ -2,6 +2,7 @@ package com.nnspace.thaismoodandroid.HomeActivity.Add;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,9 +10,18 @@ import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
 import com.nnspace.thaismoodandroid.MyCalender;
 import com.nnspace.thaismoodandroid.R;
@@ -19,19 +29,31 @@ import com.nnspace.thaismoodandroid.R;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AddSleepActivity extends AppCompatActivity {
 
+    private String URL_REQUEST;
+    private ThaisMoodDB db;
     private TextView startTime, endTime, todayDate, totalTime;
     private LinearLayout dateSelect, startTimeSelect, endTimeSelect, saveBtn;
     private final Calendar calendar = Calendar.getInstance(), calendarEnd = Calendar.getInstance();
     private boolean isStartSet = false, isEndSet = false;
     private float totalSleep;
     String startTimeString, endTimeString;
+    private boolean isEdit = false;
+    private int editId;
+    private String startEdit, editDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        URL_REQUEST = getResources().getString(R.string.url_sleep);
+        db = new ThaisMoodDB(AddSleepActivity.this);
+        Intent intent = getIntent();
+        isEdit = intent.getExtras().getBoolean("isEdit");
+
         setContentView(R.layout.activity_add_sleep);
         startTime = findViewById(R.id.start_time);
         totalTime = findViewById(R.id.total_time);
@@ -40,6 +62,14 @@ public class AddSleepActivity extends AppCompatActivity {
         dateSelect = findViewById(R.id.add_sleep_date_select);
         startTimeSelect = findViewById(R.id.add_sleep_start_time_select);
         endTimeSelect = findViewById(R.id.add_sleep_end_time_select);
+        if(isEdit){
+            editId = intent.getExtras().getInt("id");
+            editDate = intent.getExtras().getString("date");
+            String[] tempDate = editDate.split("/");
+            calendar.set(Calendar.YEAR, Integer.parseInt(tempDate[0]));
+            calendar.set(Calendar.MONTH, Integer.parseInt(tempDate[1]) - 1);
+            calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(tempDate[2]));
+        }
         todayDate.setText(calendar.get(Calendar.DAY_OF_MONTH) + " " + MyCalender.getMonthOfYear(calendar.get(Calendar.MONTH)) +
                 " " + calendar.get(Calendar.YEAR));
 
@@ -51,12 +81,24 @@ public class AddSleepActivity extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ThaisMoodDB db = new ThaisMoodDB(AddSleepActivity.this);
-                if(db.insertSleep(totalSleep, startTimeString, endTimeString, getDateString())){
-                    finish();
-                }else {
 
+                if(isEdit){
+                    sendEditSleepRequestToServer(totalSleep, startTimeString, endTimeString, editDate);
+                    if(db.updateSleep(editId, totalSleep, startTimeString, endTimeString)){
+                        finish();
+                    }else {
+
+                    }
+                }else{
+                    sendCreateSleepRequestToServer(totalSleep, startTimeString, endTimeString, getDateString());
+                    if(db.insertSleep(totalSleep, startTimeString, endTimeString, getDateString())){
+                        finish();
+                    }else {
+
+                    }
                 }
+
+
             }
         });
         
@@ -64,9 +106,9 @@ public class AddSleepActivity extends AppCompatActivity {
 
     private void setTimePicker() {
         calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.MONTH, 0);
+        calendar.set(Calendar.MINUTE, 0);
         calendarEnd.set(Calendar.HOUR_OF_DAY, 0);
-        calendarEnd.set(Calendar.MONTH, 0);
+        calendarEnd.set(Calendar.MINUTE, 0);
 
         startTimeSelect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,7 +181,13 @@ public class AddSleepActivity extends AppCompatActivity {
                     }
                 }, calendar.get(Calendar.YEAR),
                         calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-                datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
+                if(isEdit){
+                    Date date = new Date(editDate);
+                    datePickerDialog.getDatePicker().setMaxDate(date.getTime());
+                    datePickerDialog.getDatePicker().setMinDate(date.getTime());
+                }else {
+                    datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
+                }
                 datePickerDialog.show();
             }
         });
@@ -156,7 +204,15 @@ public class AddSleepActivity extends AppCompatActivity {
                     }
                 }, calendar.get(Calendar.YEAR),
                         calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-                datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
+
+                if(isEdit){
+                    Date date = new Date(editDate);
+                    datePickerDialog.getDatePicker().setMaxDate(date.getTime());
+                    datePickerDialog.getDatePicker().setMinDate(date.getTime());
+                }else {
+                    datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
+                }
+
                 datePickerDialog.show();
             }
         });
@@ -199,5 +255,89 @@ public class AddSleepActivity extends AppCompatActivity {
             return "err" ;
         }
 
+    }
+
+    private void sendCreateSleepRequestToServer(final float total, final String start, final String end, final String date){
+        RequestQueue MyRequestQueue = Volley.newRequestQueue(AddSleepActivity.this);
+        StringRequest myStringRequest = new StringRequest(Request.Method.POST, URL_REQUEST, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                if(!response.toString().equals("0")){
+                    Toast.makeText(AddSleepActivity.this, "บันทึกสำเร็จ", Toast.LENGTH_LONG);
+                }else if(response.toString().equals("0")){
+                    Toast.makeText(AddSleepActivity.this, "ไม่สามารถบันทึกข้อมูลไปที่ Sever ได้", Toast.LENGTH_LONG);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(AddSleepActivity.this, error.toString(), Toast.LENGTH_LONG);
+            }
+        }) {
+            protected Map<String, String> getParams() {
+                Map<String, String> MyData = new HashMap<String, String>();
+                MyData.put("username", db.getUsername());
+                MyData.put("total", total + "");
+                MyData.put("start", start + "");
+                MyData.put("end", end + "");
+                MyData.put("date", date);
+                return MyData;
+            }
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("Content-Type","application/x-www-form-urlencoded");
+                params.put("authorization", db.getToken());
+                return params;
+            }
+        };
+        MyRequestQueue.add(myStringRequest);
+        myStringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                10000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+    }
+
+    private void sendEditSleepRequestToServer(final float total, final String start, final String end, final String date){
+        RequestQueue MyRequestQueue = Volley.newRequestQueue(AddSleepActivity.this);
+        StringRequest myStringRequest = new StringRequest(Request.Method.PUT, URL_REQUEST, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                if(!response.toString().equals("0")){
+                    Toast.makeText(AddSleepActivity.this, "บันทึกสำเร็จ", Toast.LENGTH_LONG);
+                }else if(response.toString().equals("0")){
+                    Toast.makeText(AddSleepActivity.this, "ไม่สามารถบันทึกข้อมูลไปที่ Sever ได้", Toast.LENGTH_LONG);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(AddSleepActivity.this, error.toString(), Toast.LENGTH_LONG);
+            }
+        }) {
+            protected Map<String, String> getParams() {
+                Map<String, String> MyData = new HashMap<String, String>();
+                MyData.put("username", db.getUsername());
+                MyData.put("total", total + "");
+                MyData.put("start", start + "");
+                MyData.put("end", end + "");
+                MyData.put("date", date);
+                return MyData;
+            }
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("Content-Type","application/x-www-form-urlencoded");
+                params.put("authorization", db.getToken());
+                return params;
+            }
+        };
+        MyRequestQueue.add(myStringRequest);
+        myStringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                10000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 }

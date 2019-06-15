@@ -96,6 +96,7 @@ public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.Re
                         intent.putExtra("level", record.getMood().getLevel());
                         intent.putExtra("id", record.getMood().getId());
                         mContext.startActivity(intent);
+                        dialog.dismiss();
                     }
                 });
 

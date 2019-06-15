@@ -250,7 +250,7 @@ public class QMDQFragment extends Fragment implements IEvaluation {
         ThaisMoodDB db = new ThaisMoodDB(getActivity());
         db.insertEvaluationScore(part1Point + part2Point + part3Point, EvaluationModel.mdq, getDateString());
         Bundle bundle = new Bundle();
-        bundle.putString("from", "mdq");
+        bundle.putInt("from", 4);
         bundle.putInt("score", part1Point + part2Point + part3Point);
         String[] msgResult = getResources().getStringArray(R.array.q_mdq_result);
         String point = "1: " + part1Point + " 2: " + part2Point + " 3: " + part3Point;

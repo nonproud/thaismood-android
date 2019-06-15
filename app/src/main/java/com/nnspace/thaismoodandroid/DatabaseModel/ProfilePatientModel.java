@@ -46,4 +46,6 @@ public class ProfilePatientModel {
                     "%s date);", TABLE_NAME, NICKNAME, EMERGENCY_CONTACT, DOB, IS_CAFFEINE, IS_DRUG, SEX, IS_PREGNANT,
             WEIGHT, HEIGHT, BMI, d1, d2, d3, d4, d5, d6, CREATED_DATE, MODIFIED_DATE);
 
+    public static final String SIGN_OUT = String.format("DELETE FROM %s WHERE 1", TABLE_NAME);
+
 }

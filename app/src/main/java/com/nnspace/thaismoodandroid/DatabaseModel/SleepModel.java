@@ -20,4 +20,6 @@ public class SleepModel {
                     "%s date NOT NULL" +
                     ");", TABLE_NAME, ID, TOTAL, START, END, DATE);
 
+    public static final String SIGN_OUT = String.format("DELETE FROM %s WHERE 1", TABLE_NAME);
+
 }

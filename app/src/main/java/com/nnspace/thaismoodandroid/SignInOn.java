@@ -29,18 +29,22 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class SignInOn extends AppCompatActivity {
 
-    private final String url_register = "https://thaismood.nn-space.me/member";
-    private final String url_login = "https://thaismood.nn-space.me/member/login";
-    private final String url_confirm_email = "https://thaismood.nn-space.me/member/email";
-    private final String getUrl_confirm_username = "https://thaismood.nn-space.me/member/username";
-    private final String creater_profile_url = "https://thaismood.nn-space.me/member/profile";
+    private String url_register;
+    private String url_login;
+    private String url_confirm_email;
+    private String url_confirm_username;
 
     private Button loginBtn, registBtn;
     private ConstraintLayout login_form, regist_form;
@@ -52,6 +56,11 @@ public class SignInOn extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        url_register = getResources().getString(R.string.member_url);
+        url_login = getResources().getString(R.string.member_login_url);
+        url_confirm_email = getResources().getString(R.string.member_check_email_duplicate);
+        url_confirm_username = getResources().getString(R.string.member_check_username_duplicate);
+
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -262,11 +271,25 @@ public class SignInOn extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 if(!response.equals("0")){
-                    String myData[] = response.split(",");
-//                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT);
-                    db.insertLogonLogin(myData[1], myData[2], myData[3], myData[0]);
+                    Map<String, String> map = new HashMap<String, String>();
+                    try {
+
+                        ObjectMapper mapper = new ObjectMapper();
+                        String json = response;
+                        map = mapper.readValue(json, new TypeReference<Map<String, String>>(){});
+                        System.out.println(map);
+                        db.insertLogonLogin(map.get("username"), map.get("email"), map.get("is_verified"), map.get("token"), map.get("type"));
+
+                    } catch (JsonGenerationException e) {
+                        e.printStackTrace();
+                    } catch (JsonMappingException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    startActivity(new Intent(SignInOn.this, MainActivity.class));
                 }else{
-                    Toast.makeText(getApplicationContext(), "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignInOn.this, "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง", Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
@@ -324,7 +347,7 @@ public class SignInOn extends AppCompatActivity {
 
     public void isUsernameDuplicate(final String username) {
         RequestQueue MyRequestQueue = Volley.newRequestQueue(getApplicationContext());
-        StringRequest myStringRequest = new StringRequest(Request.Method.POST, getUrl_confirm_username, new Response.Listener<String>() {
+        StringRequest myStringRequest = new StringRequest(Request.Method.POST, url_confirm_username, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if(response.toString().equals("1")){

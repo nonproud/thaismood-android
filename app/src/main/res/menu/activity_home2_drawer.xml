@@ -25,9 +25,9 @@
     <item android:title="เพิ่มเติม">
         <menu>
             <item
-                android:id="@+id/nav_start"
-                android:icon="@drawable/ic_about"
-                android:title="เริ่มตั้งแต่ต้น" />
+                android:id="@+id/nav_find_hospital"
+                android:icon="@drawable/ic_hospital"
+                android:title="ค้นหาคลินิกจิตเวช" />
 
             <item
                 android:id="@+id/nav_evaluation"

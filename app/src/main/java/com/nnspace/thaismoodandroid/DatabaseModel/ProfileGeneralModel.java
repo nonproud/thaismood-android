@@ -22,4 +22,6 @@ public class ProfileGeneralModel {
                     "%s bit NOT NULL," +
                     "%s date," +
                     "%s date);", TABLE_NAME, NICKNAME, EMERGENCY_CONTACT, DOB, IS_CAFFEINE, IS_DRUG, CREATED_DATE, MODIFIED_DATE);
+
+    public static final String SIGN_OUT = String.format("DELETE FROM %s WHERE 1", TABLE_NAME);
 }

@@ -16,7 +16,8 @@
         android:largeHeap="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:replace="android:icon">
-        <activity android:name=".GetTemporaryCredential"></activity>
+        <activity android:name=".FIndHospitalActivity"></activity>
+        <activity android:name=".GetTemporaryCredential" />
         <activity android:name=".HomeActivity.Add.AddSleepActivity" />
         <activity android:name=".HomeActivity.Add.AddMoodActivity" />
         <activity android:name=".EmergencyContactActivity" />

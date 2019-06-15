@@ -183,7 +183,7 @@ public class Q9QuetionFragment extends Fragment implements IEvaluation {
         db.insertEvaluationScore(totalPoint, EvaluationModel._9q, getDateString());
 
         Bundle bundle = new Bundle();
-        bundle.putString("from", "9q");
+        bundle.putInt("from", 2);
         bundle.putInt("score", totalPoint);
         String[] msgResult = getResources().getStringArray(R.array.q_9q_result);
 

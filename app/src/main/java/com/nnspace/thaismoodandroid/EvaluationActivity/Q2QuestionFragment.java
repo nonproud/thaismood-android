@@ -5,8 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -28,7 +26,6 @@ public class Q2QuestionFragment extends Fragment implements IEvaluation {
     private TextView questiontx, indicator;
     private static int countNo, totalPoint;
     private Integer[] currentPoint;
-//    private LinearLayout prev_btn, next_btn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -183,5 +180,7 @@ public class Q2QuestionFragment extends Fragment implements IEvaluation {
         return calendar.get(Calendar.YEAR) + "/" + (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.get(Calendar.DAY_OF_MONTH);
 
     }
+
+
 
 }

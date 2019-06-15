@@ -8,7 +8,35 @@
     android:background="@color/fragment_background"
     tools:context=".HomeActivity.Graph.GraphYear">
 
+    <LinearLayout
+        android:id="@+id/view_btn"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="wrap_content"
+        android:paddingRight="10dp"
+        android:layout_height="30dp"
+        android:background="@drawable/box_border"
+        android:gravity="center">
 
+        <TextView
+            android:id="@+id/graph_year_date_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:fontFamily="@font/thsarabunnew_bold"
+            android:textSize="25dp"
+            android:text="3 เดือนที่ผ่านมา"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:tint="@color/ios_grey"
+            android:src="@drawable/ic_down"/>
+
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"

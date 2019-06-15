@@ -38,7 +38,7 @@ public class EvaluationResultFragment extends Fragment {
 
     private String evaluation_url;
     private String result, todo;
-    private TextView band_tx, result_tx, whatTodo_tx;
+    private TextView band_tx, band_des_tx, result_tx, whatTodo_tx;
     private Button nextBtn;
     private int score;
     private ThaisMoodDB db;
@@ -61,6 +61,7 @@ public class EvaluationResultFragment extends Fragment {
         db = new ThaisMoodDB(getActivity());
         evaluation_url = getActivity().getResources().getString(R.string.evaluation_url);
         band_tx = getView().findViewById(R.id.evaluation_band_text_view);
+        band_des_tx = getView().findViewById(R.id.evaluation_header_text_view);
         result_tx = getView().findViewById(R.id.evaluation_result_text_view);
         whatTodo_tx = getView().findViewById(R.id.evaluation_todo_text_view);
         nextBtn = getView().findViewById(R.id.evaluation_result_next_btn);
@@ -98,6 +99,7 @@ public class EvaluationResultFragment extends Fragment {
         switch (from){
             case 1:
                 band_tx.setText(getResources().getString(R.string.result_2q_band));
+                band_des_tx.setText(getView().getResources().getString(R.string.q_2q_header));
                 band_tx.setBackground(getResources().getDrawable(R.drawable.circle_2q_band));
                 result_tx.setBackground(getResources().getDrawable(R.drawable.q_2q_result_box));
                 nextBtn.setBackgroundColor(getResources().getColor(R.color.q_2q_theme));
@@ -105,6 +107,7 @@ public class EvaluationResultFragment extends Fragment {
                 break;
             case 2:
                 band_tx.setText(getResources().getString(R.string.result_9q_band));
+                band_des_tx.setText(getView().getResources().getString(R.string.q_9q_header));
                 band_tx.setBackground(getResources().getDrawable(R.drawable.circle_9q_band));
                 result_tx.setBackground(getResources().getDrawable(R.drawable.q_9q_result_box));
                 nextBtn.setBackgroundColor(getResources().getColor(R.color.q_9q_theme));
@@ -114,6 +117,7 @@ public class EvaluationResultFragment extends Fragment {
             case 3:
                 db.insertEvaluationScore(score, EvaluationModel._8q, getDateString());
                 band_tx.setText(getResources().getString(R.string.result_8q_band));
+                band_des_tx.setText(getView().getResources().getString(R.string.q_8q_header));
                 band_tx.setBackground(getResources().getDrawable(R.drawable.circle_8q_band));
                 result_tx.setBackground(getResources().getDrawable(R.drawable.q_8q_result_box));
                 nextBtn.setBackgroundColor(getResources().getColor(R.color.q_8q_theme));
@@ -125,6 +129,7 @@ public class EvaluationResultFragment extends Fragment {
             case 4:
                 db.insertEvaluationScore(score, EvaluationModel.mdq, getDateString());
                 band_tx.setText(getResources().getString(R.string.result_mdq_band));
+                band_des_tx.setText(getView().getResources().getString(R.string.q_mdq_header));
                 band_tx.setBackground(getResources().getDrawable(R.drawable.circle_mdq_band));
                 result_tx.setBackground(getResources().getDrawable(R.drawable.q_mdq_result_box));
                 nextBtn.setBackgroundColor(getResources().getColor(R.color.q_mdq_theme));

@@ -16,7 +16,8 @@ public class LogonModel {
                     "%s varchar(100) DEFAULT '', " +
                     "%s varchar(50) DEFAULT '', " +
                     "%s varchar(1000) DEFAULT ''," +
-                    "%s int" +
+                    "%s varchar(5)" +
                     ");", TABLE_NAME, STATUS, USERNAME, EMAIL, TOKEN, TYPE);
 
+    public static final String SIGN_OUT = String.format("DELETE FROM %s WHERE 1", TABLE_NAME);
 }

@@ -19,4 +19,6 @@ public class EvaluationModel {
             "%s int DEFAULT -1, " +
             "%s date NOT NULL" +
             ");", TABLE_NAME, _2q, _9q, _8q, mdq, date);
+
+    public static final String SIGN_OUT = String.format("DELETE FROM %s WHERE 1", TABLE_NAME);
 }

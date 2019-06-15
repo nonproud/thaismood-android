@@ -43,7 +43,6 @@ public class AddMoodActivity extends AppCompatActivity {
     private final Calendar calendar = Calendar.getInstance();
     private String URL_REQUEST;
     private ThaisMoodDB db = new ThaisMoodDB(AddMoodActivity.this);
-    private final MyCalender myCalender = new MyCalender();
     private SeekBar moodLevel;
     private EditText dateText;
     private TextView moodLevelBand, closeBtn;
@@ -98,9 +97,11 @@ public class AddMoodActivity extends AppCompatActivity {
             editDate = intent.getExtras().getString("date");
             TransitionManager.beginDelayedTransition(transition);
             String[] dateToSet = editDate.split("/");
-            int dayofmonth = Integer.parseInt(dateToSet[2]), monthOfYear = Integer.parseInt(dateToSet[1]), year = Integer.parseInt(dateToSet[0]);
+            int dayofmonth = Integer.parseInt(dateToSet[2]);
+            int monthOfYear = Integer.parseInt(dateToSet[1]) -1;
+            int year = Integer.parseInt(dateToSet[0]);
             calendar.set(Calendar.YEAR, year);
-            calendar.set(Calendar.MONTH, monthOfYear - 1);
+            calendar.set(Calendar.MONTH, monthOfYear);
             calendar.set(Calendar.DAY_OF_MONTH, dayofmonth);
             dateText.setText(dayofmonth + " " + MyCalender.getMonthOfYear(monthOfYear) + " " + year);
             setMoodActive();
@@ -266,6 +267,7 @@ public class AddMoodActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(isEdit){
                     if(db.updateMood(editID, selectedMood, moodLevelValue)){
+                        sendEditMoodRequestToServer(selectedMood, moodLevelValue, editDate);
                         finish();
                     }else{
                         try {
@@ -363,7 +365,47 @@ public class AddMoodActivity extends AppCompatActivity {
 
                 if(!response.toString().equals("0")){
                     Toast.makeText(AddMoodActivity.this, "บันทึกสำเร็จ", Toast.LENGTH_LONG);
-                    AddMoodActivity.this.finish();
+                }else if(response.toString().equals("0")){
+                    Toast.makeText(AddMoodActivity.this, "ไม่สามารถบันทึกข้อมูลไปที่ Sever ได้", Toast.LENGTH_LONG);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(AddMoodActivity.this, error.toString(), Toast.LENGTH_LONG);
+            }
+        }) {
+            protected Map<String, String> getParams() {
+                Map<String, String> MyData = new HashMap<String, String>();
+                MyData.put("username", db.getUsername());
+                MyData.put("mood", mood + "");
+                MyData.put("level", level + "");
+                MyData.put("date", date);
+                return MyData;
+            }
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("Content-Type","application/x-www-form-urlencoded");
+                params.put("authorization", db.getToken());
+                return params;
+            }
+        };
+        MyRequestQueue.add(myStringRequest);
+        myStringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                10000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+    }
+
+    private void sendEditMoodRequestToServer(final int mood, final int level, final String date){
+        RequestQueue MyRequestQueue = Volley.newRequestQueue(AddMoodActivity.this);
+        StringRequest myStringRequest = new StringRequest(Request.Method.PUT, URL_REQUEST, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                if(!response.toString().equals("0")){
+                    Toast.makeText(AddMoodActivity.this, "บันทึกสำเร็จ", Toast.LENGTH_LONG);
                 }else if(response.toString().equals("0")){
                     Toast.makeText(AddMoodActivity.this, "ไม่สามารถบันทึกข้อมูลไปที่ Sever ได้", Toast.LENGTH_LONG);
                 }

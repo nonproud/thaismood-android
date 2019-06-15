@@ -69,59 +69,69 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
     /*************************** CONSTRUCTOR ****************************/
 
     /*************************** LOGON ****************************/
-    public Map<String, String> isLogon(){
+    public boolean isLogon(){
         String query_logon_tabel = String.format("SELECT * FROM %s", LogonModel.TABLE_NAME);
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor result = db.rawQuery(query_logon_tabel, null);
-        Map<String, String> data = null;
+        
         if(result.moveToFirst()){
-            data = new HashMap<String, String>();
-            data.put("status", result.getString(0));
-            data.put("user_id", result.getString(1));
-            data.put("email", result.getString(2));
-            data.put("token", result.getString(3));
+            db.close();
+            result.close();
+            return true;
         }
-        return data;
+        result.close();
+        db.close();
+        return false;
     }
 
     public String getUsername(){
-        String query_logon_tabel = String.format("SELECT username FROM %s WHERE 1", LogonModel.TABLE_NAME);
+        String query_logon_tabel = String.format("SELECT %s FROM %s WHERE 1", LogonModel.USERNAME, LogonModel.TABLE_NAME);
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor result = db.rawQuery(query_logon_tabel, null);
         if(result.moveToFirst()){
             String username = result.getString(0);
+            result.close();
+            db.close();
             return username;
         }
+        result.close();
+        db.close();
         return null;
     }
 
     public String getEmail(){
-        String query_logon_tabel = String.format("SELECT email FROM %s WHERE 1", LogonModel.TABLE_NAME);
+        String query_logon_tabel = String.format("SELECT %s FROM %s WHERE 1", LogonModel.EMAIL, LogonModel.TABLE_NAME);
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor result = db.rawQuery(query_logon_tabel, null);
         if(result.moveToFirst()){
             String email = result.getString(0);
+            result.close();
+            db.close();
             return email;
         }
+        result.close();
+        db.close();
         return null;
     }
 
-    public int getType() {
+    public String getType() {
         String query_logon_tabel = String.format("SELECT %s FROM %s WHERE 1", LogonModel.TYPE, LogonModel.TABLE_NAME);
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor result = db.rawQuery(query_logon_tabel, null);
-        int type = 0;
+        String type = "";
         if(result.moveToFirst()){
-            type = result.getInt(0);
+            type = result.getString(0);
         }
+        result.close();
+        db.close();
         return type;
     }
 
@@ -135,8 +145,33 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
         if(result.moveToFirst()){
             token = result.getString(0);
         }
-        System.out.println("Token: " + token);
         return token;
+    }
+    
+    public boolean getIsVerified(){
+        String sql = String.format("SELECT %s FROM %s WHERE 1", LogonModel.STATUS, LogonModel.TABLE_NAME);
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        
+        Cursor result = db.rawQuery(sql, null);
+        boolean isVerified = false;
+        if(result.moveToFirst()){
+            int status = result.getInt(0);
+            try{
+                if(status == 1){
+                    isVerified = true;
+                }else{
+                    isVerified = false;
+                }
+            }catch (NullPointerException e){
+                result.close();
+                db.close();
+                return false;
+            }
+        }
+        result.close();
+        db.close();
+        return isVerified;
     }
 
     public boolean updateToken(String token){
@@ -146,20 +181,24 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
         try{
             db.execSQL(query_change_verify_status, new String[] {token});
         }catch (Exception err){
+            db.close();
             return false;
         }
+        db.close();
         return true;
     }
 
-    public boolean updateType(int type){
-        String sql = String.format("UPDATE login SET %s = '%d' WHERE 1'", LogonModel.TYPE, type);
+    public boolean updateType(String type){
+        String sql = String.format("UPDATE %s SET %s=? WHERE 1", LogonModel.TABLE_NAME, LogonModel.TYPE);
         SQLiteDatabase db = this.getWritableDatabase();
         System.out.println(sql);
         try{
-            db.execSQL(sql);
+            db.execSQL(sql, new String[] {type});
         }catch (Exception err){
+            db.close();
             return false;
         }
+        db.close();
         return true;
     }
 
@@ -170,48 +209,84 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
         try{
             db.execSQL(query_user_id);
         }catch (Exception err){
+            db.close();
             return false;
         }
+        db.close();
         return true;
     }
 
-    public boolean updateVerifyStatus(){
-        String query_change_verify_status = String.format("UPDATE login SET %s = 1 WHERE 1'", LogonModel.STATUS);
+    public boolean updateVerifyStatus(int status){
+        String query_change_verify_status = String.format("UPDATE %s SET %s = %d WHERE 1", LogonModel.TABLE_NAME, LogonModel.STATUS, status);
         SQLiteDatabase db = this.getWritableDatabase();
         try{
             db.execSQL(query_change_verify_status);
         }catch (Exception err){
+            db.close();
             return false;
         }
+        db.close();
         return true;
     }
 
     public boolean updateEmail(String email){
-        String query_change_email = String.format("UPDATE login SET %s = '%d' WHERE 1'", LogonModel.EMAIL, email);
+        String query_change_email = String.format("UPDATE login SET %s = '%d' WHERE 1", LogonModel.EMAIL, email);
         SQLiteDatabase db = this.getWritableDatabase();
         try{
             db.execSQL(query_change_email);
         }catch (Exception err){
+            db.close();
             return false;
         }
+        db.close();
         return true;
     }
 
-    public boolean insertLogonLogin(String username, String email, String status, String token){
-        String query_user_id = String.format("INSERT INTO %s(%s, %s, %s, %s) values(%s, '%s', '%s', '%s')", LogonModel.TABLE_NAME,
-                LogonModel.STATUS, LogonModel.USERNAME, LogonModel.EMAIL, LogonModel.TOKEN, status, username, email, token);
+    public boolean insertLogonLogin(String username, String email, String status, String token, String type){
+        String query_user_id = String.format("INSERT INTO %s(%s, %s, %s, %s, %s) values(%s, '%s', '%s', '%s', '%s')", LogonModel.TABLE_NAME,
+                LogonModel.STATUS, LogonModel.USERNAME, LogonModel.EMAIL, LogonModel.TOKEN, LogonModel.TYPE, status, username, email, token, type);
         SQLiteDatabase db = this.getWritableDatabase();
         try{
             db.execSQL(query_user_id);
         }catch (Exception err){
+            db.close();
             return false;
         }
+        db.close();
         return true;
+    }
+
+    public void signOut(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL(EmotionModel.SIGN_OUT);
+        db.execSQL(EvaluationModel.SIGN_OUT);
+        db.execSQL(LogonModel.SIGN_OUT);
+        db.execSQL(NoteModel.SIGN_OUT);
+        db.execSQL(ProfileGeneralModel.SIGN_OUT);
+        db.execSQL(ProfilePatientModel.SIGN_OUT);
+        db.execSQL(SleepModel.SIGN_OUT);
+        db.close();
     }
     /*************************** LOGON ****************************/
 
 
     /************************* PROFILE ****************************/
+    public boolean isProfileEmtpy(String type){
+        String sql;
+        if(type.equals("p")){
+            sql = String.format("SELECT * FROM %s WHERE 1", ProfilePatientModel.TABLE_NAME);
+        }else{
+            sql = String.format("SELECT * FROM %s WHERE 1", ProfileGeneralModel.TABLE_NAME);
+        }
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        boolean isEmpty = true;
+        Cursor result = db.rawQuery(sql, null);
+        if(result.moveToFirst()){
+            isEmpty = false;
+        }
+        return isEmpty;
+    }
 
     public Map<String, String> getProfileGeneralDetails(){
         Map<String, String> data = new HashMap<>();
@@ -234,9 +309,13 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
             data.put("isDrug", isDrug);
             data.put("created", created);
             data.put("modified", modified);
+            result.close();
+            db.close();
             return data;
         }
+        result.close();
         System.out.println("Nothing");
+        db.close();
         return null;
     }
 
@@ -265,6 +344,8 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
             String d6 = result.getString(15);
             String created = result.getString(16);
             String modified = result.getString(17);
+            System.out.println(String.format("%s %s %s %s %s %s %s %f %f %f %s %s %s %s %s %s %s %s" ,nickname, emergency, dob, isCaffeine, isDrug, sex,  isPregnant,
+                    weight, height, bmi, d1, d2, d3, d4, d5, d6, created, modified));
             data.put("nickname", nickname);
             data.put("emergency", emergency);
             data.put("dob", dob);
@@ -283,10 +364,10 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
             data.put("d6", d6);
             data.put("created", created);
             data.put("modified", modified);
-            return data;
         }
-
-        return null;
+        result.close();
+        db.close();
+        return data;
     }
 
     public boolean createProfileGeneral(String nickname, String emergencyContact, String dob, int isCaffeine, int isDrug){
@@ -299,9 +380,10 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
             db.execSQL(sql);
         }catch (Exception err){
             err.printStackTrace();
+            db.close();
             return false;
         }
-
+        db.close();
         return true;
     }
 
@@ -319,10 +401,21 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
             db.execSQL(sql);
         }catch (Exception err){
             err.printStackTrace();
+            db.close();
             return false;
         }
-
+        db.close();
         return true;
+    }
+
+    public void insertGeneralProfileLogin(Map<String, String> data){
+        createProfileGeneral(data.get("nickname"), data.get("emergency_contact"), data.get("dob"), Integer.parseInt(data.get("is_caffeine")), Integer.parseInt(data.get("is_drug_addict")));
+    }
+
+    public void insertPatientProfileLogin(Map<String, String> data){
+        createProfilePatient(data.get("nickname"), data.get("emergency_contact"), data.get("dob"), Integer.parseInt(data.get("is_caffeine")), Integer.parseInt(data.get("is_drug_addict")),
+                data.get("sex"), Integer.parseInt(data.get("is_pregnant")), Float.parseFloat(data.get("weight")), Float.parseFloat(data.get("height")), Float.parseFloat(data.get("bmi")),
+                data.get("d1"), data.get("d2"), data.get("d3"), data.get("d4"), data.get("d5"), data.get("d6"));
     }
 
     /************************* PROFILE ****************************/
@@ -370,6 +463,7 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
         }
         result.close();
         db.close();
+        db.close();
         return obj;
     }
     /*************************** RECORD ****************************/
@@ -386,8 +480,10 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
             db.execSQL(query_insert_mood);
         }catch (Exception err){
             err.printStackTrace();
+            db.close();
             return false;
         }
+
         return true;
     }
 
@@ -400,8 +496,10 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
             db.execSQL(query_insert_mood);
         }catch (Exception err){
             err.printStackTrace();
+            db.close();
             return false;
         }
+
         return true;
     }
 
@@ -413,13 +511,15 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
         try{
             db.execSQL(query_delete_mood);
         }catch (Exception err){
+            db.close();
             return false;
         }
+        db.close();
         return true;
     }
 
     public ArrayList<MoodObject> getAllMood(){
-        String query_get_mood = String.format("SELECT * FROM %s WHERE 1 ORDER BY %s DESC;",
+        String query_get_mood = String.format("SELECT * FROM %s WHERE 1 ORDER BY %s ASC;",
                 EmotionModel.TABLE_NAME, EmotionModel.DATE);
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -441,9 +541,59 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
         return obj;
     }
 
+    public ArrayList<MoodObject> getFliterMood(int option){
+        String sql = "";
+        switch (option){
+            case 0:
+                sql = String.format("SELECT * FROM %s WHERE 1 ORDER BY %s ASC LIMIT 90;",
+                        EmotionModel.TABLE_NAME, EmotionModel.DATE);
+                break;
+            case 1:
+                sql = String.format("SELECT * FROM %s WHERE 1 ORDER BY %s ASC LIMIT 180;",
+                        EmotionModel.TABLE_NAME, EmotionModel.DATE);
+                break;
+            case 2:
+                sql = String.format("SELECT * FROM %s WHERE 1 ORDER BY %s ASC LIMIT 270 ;",
+                        EmotionModel.TABLE_NAME, EmotionModel.DATE);
+                break;
+            case 3:
+                sql = String.format("SELECT * FROM %s WHERE 1 ORDER BY %s ASC LIMIT 365 ;",
+                        EmotionModel.TABLE_NAME, EmotionModel.DATE);
+                break;
+            case 4:
+                sql = String.format("SELECT * FROM %s WHERE 1 ORDER BY %s ASC LIMIT 730 ;",
+                        EmotionModel.TABLE_NAME, EmotionModel.DATE);
+                break;
+            case 5:
+                sql = String.format("SELECT * FROM %s WHERE 1 ORDER BY %s ASC;",
+                        EmotionModel.TABLE_NAME, EmotionModel.DATE);
+                break;
+
+        }
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor result = db.rawQuery(sql, null);
+        ArrayList<MoodObject> obj = new ArrayList<>();
+
+        if(result.moveToFirst()){
+            do{
+                int id = result.getInt(0);
+                int mood = result.getInt(1);
+                int level = result.getInt(2);
+                String date = result.getString(3);
+                MoodObject moodObj = new MoodObject(id, mood, level, date);
+                obj.add(moodObj);
+            }while (result.moveToNext());
+        }
+        result.close();
+        db.close();
+        return obj;
+    }
+
     public ArrayList<MoodObject> getMoodRange(String dStrat, String dEnd){
-        String query_get_mood = String.format("SELECT * FROM %s WHERE %s >= '%s' AND %s <= '%s' ORDER BY %s DESC;",
+        String query_get_mood = String.format("SELECT * FROM %s WHERE %s >= '%s' AND %s <= '%s' ORDER BY %s ASC;",
                 EmotionModel.TABLE_NAME, EmotionModel.DATE, dStrat, EmotionModel.DATE, dEnd, EmotionModel.DATE);
+        System.out.println("DR SQL: " + query_get_mood);
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor result = db.rawQuery(query_get_mood, null);
@@ -517,7 +667,10 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor result = db.rawQuery(sql, null);
         result.moveToFirst();
-        return result.getInt(0);
+        int count = result.getInt(0);
+        result.close();
+        db.close();
+        return count;
 
     }
 
@@ -526,6 +679,8 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor result = db.rawQuery(sql, null);
         result.moveToFirst();
+        result.close();
+        db.close();
         return result.getString(0);
     }
     /*************************** MOOD ****************************/
@@ -543,6 +698,7 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
             err.printStackTrace();
             Log.d("sql", query_insert + " :FAILED" );
             System.out.println(query_insert + " :FAILED");
+            db.close();
             return false;
         }
         Log.d("sql", query_insert + " :SUCCESSFULLY" );
@@ -562,10 +718,10 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
             err.printStackTrace();
             Log.d("sql", sql + " :FAILED" );
             System.out.println(sql + " :FAILED");
+            db.close();
             return false;
         }
         Log.d("sql", sql + " :SUCCESSFULLY" );
-        db.close();
         return true;
     }
 
@@ -606,7 +762,10 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor result = db.rawQuery(sql, null);
         result.moveToFirst();
-        return result.getInt(0);
+        int count = result.getInt(0);
+        result.close();
+        db.close();
+        return count;
     }
     /*************************** DIARY ****************************/
 
@@ -627,9 +786,11 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
             db.execSQL(sql);
         }catch (Exception err){
             err.printStackTrace();
+            db.close();
             return false;
         }
         System.out.println(sql);
+        db.close();
         return true;
     }
 
@@ -659,6 +820,10 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
         Log.d("diary", "All note size: " + obj.size());
         return obj;
     }
+
+//    public int isEvaluationEmpty(){
+//
+//    }
     /*************************** EVALUATION ****************************/
 
     /*************************** SLEEP ****************************/
@@ -675,10 +840,27 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
             err.printStackTrace();
             Log.d("sql", query_insert + " :FAILED" );
             System.out.println(query_insert + " :FAILED");
+            db.close();
             return false;
         }
         Log.d("sql", query_insert + " :SUCCESSFULLY" );
         System.out.println(query_insert + " :SUCCESSFULLY");
+        return true;
+    }
+
+    public boolean updateSleep(int id, float total, String start, String end){
+
+        String sql = String.format("UPDATE %s set %s = %s, %s = '%s', %s = '%s' WHERE %s = %d;",
+                SleepModel.TABLE_NAME, SleepModel.TOTAL, total, SleepModel.START, start,
+                SleepModel.END, end, SleepModel.ID, id); ;
+        SQLiteDatabase db = this.getWritableDatabase();
+        try{
+            db.execSQL(sql);
+        }catch (Exception err){
+            err.printStackTrace();
+            db.close();
+            return false;
+        }
         return true;
     }
 
@@ -711,10 +893,11 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor result = db.rawQuery(sql, null);
         result.moveToFirst();
-        return result.getInt(0);
+        int count = result.getInt(0);
+        result.close();
+        db.close();
+        return count;
     }
-
-
 
 
     /*************************** SLEEP ****************************/

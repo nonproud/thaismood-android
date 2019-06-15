@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".FragmentEditProfie$Otp">
+    tools:context=".VerifyEmailActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -66,9 +66,29 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:background="@color/confirm_color"
+            android:background="@color/colorPrimaryDark"
             android:textColor="#FFFFFF"
             android:text="ยืนยัน"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/white"
+                android:text="ส่งรหัสผ่านอีกครั้ง"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/white"
+                android:text="เปลี่ยนอีเมล"/>
+        </LinearLayout>
 
     </LinearLayout>
 

@@ -66,7 +66,7 @@ public class VerifyEmailActivity extends AppCompatActivity {
             public void onResponse(String response) {
 
                 if(!response.toString().equals("0")){
-                    db.updateVerifyStatus();
+                    db.updateVerifyStatus(1);
                     Map<String, String> map = new HashMap<String, String>();
                     try {
 

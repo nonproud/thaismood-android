@@ -55,8 +55,7 @@ public class GetTemporaryCredential extends AppCompatActivity {
 
     private void sendGetTempPasswordToServer(){
         RequestQueue queue = Volley.newRequestQueue(GetTemporaryCredential.this);
-        String urlRequest = url + "?username=" + db.getUsername();
-        StringRequest sr = new StringRequest(Request.Method.GET, urlRequest, new Response.Listener<String>() {
+        StringRequest sr = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 tempPassword.setText(response);
@@ -68,6 +67,13 @@ public class GetTemporaryCredential extends AppCompatActivity {
                 Toast.makeText(GetTemporaryCredential.this, error.toString(), Toast.LENGTH_LONG);
             }
         }){
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("username", db.getUsername());
+                return params;
+            }
 
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {

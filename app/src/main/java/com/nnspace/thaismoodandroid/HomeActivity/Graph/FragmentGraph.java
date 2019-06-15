@@ -58,7 +58,7 @@ public class FragmentGraph extends Fragment {
         Adapter adapter = new Adapter(getChildFragmentManager());
         adapter.addFragment(new GraphWeek(), "สัปดาห์");
         adapter.addFragment(new GraphMonth(), "เดือน");
-        adapter.addFragment(new GraphYear(), "ทั้งหมด");
+        adapter.addFragment(new GraphYear(), "กรอง");
         viewPager.setAdapter(adapter);
 
     }
