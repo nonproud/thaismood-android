@@ -111,6 +111,8 @@ public class Q2QuestionFragment extends Fragment implements IEvaluation {
                     prev_btn.setEnabled(false);
                     prev_btn.setBackground(getResources().getDrawable(R.drawable.button_border_unselected));
                 }else {
+                    prev_btn.setEnabled(true);
+                    prev_btn.setBackgroundColor(getResources().getColor(R.color.q_2q_theme_dark));
                     countNo--;
                     prevQuestion();
                 }

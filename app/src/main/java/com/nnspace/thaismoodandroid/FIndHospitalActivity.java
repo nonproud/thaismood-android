@@ -23,6 +23,6 @@ public class FIndHospitalActivity extends AppCompatActivity {
 
         WebView webView = findViewById(R.id.web_view);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl("http://192.168.2.39/nont/info.html");
+        webView.loadUrl(getResources().getString(R.string.url_find_hospital));
     }
 }

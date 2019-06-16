@@ -466,9 +466,134 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
         db.close();
         return obj;
     }
+
+    public ArrayList<RecordObject> getAllRecordObject(int option){
+        String sql = "";
+        switch (option){
+            case 0:
+                sql = String.format("SELECT %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s " +
+                                "FROM %s " +
+                                "LEFT JOIN %s ON %s.%s = %s.%s " +
+                                "LEFT JOIN %s ON %s.%s = %s.%s " +
+                                "ORDER BY %s.%s DESC LIMIT 90;",
+                        EmotionModel.TABLE_NAME, EmotionModel.ID, EmotionModel.TABLE_NAME, EmotionModel.EMOTION, EmotionModel.TABLE_NAME, EmotionModel.LEVEL,
+                        SleepModel.TABLE_NAME, SleepModel.ID, SleepModel.TABLE_NAME, SleepModel.TOTAL, SleepModel.TABLE_NAME, SleepModel.START, SleepModel.TABLE_NAME, SleepModel.END,
+                        ActivityModel.TABLE_NAME, ActivityModel.ID, ActivityModel.TABLE_NAME, ActivityModel.ACTIVITY, EmotionModel.TABLE_NAME, EmotionModel.DATE,
+                        EmotionModel.TABLE_NAME,
+                        SleepModel.TABLE_NAME, EmotionModel.TABLE_NAME, EmotionModel.DATE, SleepModel.TABLE_NAME, SleepModel.DATE,
+                        ActivityModel.TABLE_NAME, EmotionModel.TABLE_NAME, EmotionModel.DATE, ActivityModel.TABLE_NAME, ActivityModel.ACTIVITY,
+                        EmotionModel.TABLE_NAME, EmotionModel.DATE);
+                break;
+            case 1:
+                sql = String.format("SELECT %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s " +
+                                "FROM %s " +
+                                "LEFT JOIN %s ON %s.%s = %s.%s " +
+                                "LEFT JOIN %s ON %s.%s = %s.%s " +
+                                "ORDER BY %s.%s DESC LIMIT 180;",
+                        EmotionModel.TABLE_NAME, EmotionModel.ID, EmotionModel.TABLE_NAME, EmotionModel.EMOTION, EmotionModel.TABLE_NAME, EmotionModel.LEVEL,
+                        SleepModel.TABLE_NAME, SleepModel.ID, SleepModel.TABLE_NAME, SleepModel.TOTAL, SleepModel.TABLE_NAME, SleepModel.START, SleepModel.TABLE_NAME, SleepModel.END,
+                        ActivityModel.TABLE_NAME, ActivityModel.ID, ActivityModel.TABLE_NAME, ActivityModel.ACTIVITY, EmotionModel.TABLE_NAME, EmotionModel.DATE,
+                        EmotionModel.TABLE_NAME,
+                        SleepModel.TABLE_NAME, EmotionModel.TABLE_NAME, EmotionModel.DATE, SleepModel.TABLE_NAME, SleepModel.DATE,
+                        ActivityModel.TABLE_NAME, EmotionModel.TABLE_NAME, EmotionModel.DATE, ActivityModel.TABLE_NAME, ActivityModel.ACTIVITY,
+                        EmotionModel.TABLE_NAME, EmotionModel.DATE);
+                break;
+            case 2:
+                sql = String.format("SELECT %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s " +
+                                "FROM %s " +
+                                "LEFT JOIN %s ON %s.%s = %s.%s " +
+                                "LEFT JOIN %s ON %s.%s = %s.%s " +
+                                "ORDER BY %s.%s DESC LIMIT 270;",
+                        EmotionModel.TABLE_NAME, EmotionModel.ID, EmotionModel.TABLE_NAME, EmotionModel.EMOTION, EmotionModel.TABLE_NAME, EmotionModel.LEVEL,
+                        SleepModel.TABLE_NAME, SleepModel.ID, SleepModel.TABLE_NAME, SleepModel.TOTAL, SleepModel.TABLE_NAME, SleepModel.START, SleepModel.TABLE_NAME, SleepModel.END,
+                        ActivityModel.TABLE_NAME, ActivityModel.ID, ActivityModel.TABLE_NAME, ActivityModel.ACTIVITY, EmotionModel.TABLE_NAME, EmotionModel.DATE,
+                        EmotionModel.TABLE_NAME,
+                        SleepModel.TABLE_NAME, EmotionModel.TABLE_NAME, EmotionModel.DATE, SleepModel.TABLE_NAME, SleepModel.DATE,
+                        ActivityModel.TABLE_NAME, EmotionModel.TABLE_NAME, EmotionModel.DATE, ActivityModel.TABLE_NAME, ActivityModel.ACTIVITY,
+                        EmotionModel.TABLE_NAME, EmotionModel.DATE);
+                break;
+            case 3:
+                sql = String.format("SELECT %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s " +
+                                "FROM %s " +
+                                "LEFT JOIN %s ON %s.%s = %s.%s " +
+                                "LEFT JOIN %s ON %s.%s = %s.%s " +
+                                "ORDER BY %s.%s DESC LIMIT 365;",
+                        EmotionModel.TABLE_NAME, EmotionModel.ID, EmotionModel.TABLE_NAME, EmotionModel.EMOTION, EmotionModel.TABLE_NAME, EmotionModel.LEVEL,
+                        SleepModel.TABLE_NAME, SleepModel.ID, SleepModel.TABLE_NAME, SleepModel.TOTAL, SleepModel.TABLE_NAME, SleepModel.START, SleepModel.TABLE_NAME, SleepModel.END,
+                        ActivityModel.TABLE_NAME, ActivityModel.ID, ActivityModel.TABLE_NAME, ActivityModel.ACTIVITY, EmotionModel.TABLE_NAME, EmotionModel.DATE,
+                        EmotionModel.TABLE_NAME,
+                        SleepModel.TABLE_NAME, EmotionModel.TABLE_NAME, EmotionModel.DATE, SleepModel.TABLE_NAME, SleepModel.DATE,
+                        ActivityModel.TABLE_NAME, EmotionModel.TABLE_NAME, EmotionModel.DATE, ActivityModel.TABLE_NAME, ActivityModel.ACTIVITY,
+                        EmotionModel.TABLE_NAME, EmotionModel.DATE);
+                break;
+            case 4:
+                sql = String.format("SELECT %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s " +
+                                "FROM %s " +
+                                "LEFT JOIN %s ON %s.%s = %s.%s " +
+                                "LEFT JOIN %s ON %s.%s = %s.%s " +
+                                "ORDER BY %s.%s DESC LIMIT 730;",
+                        EmotionModel.TABLE_NAME, EmotionModel.ID, EmotionModel.TABLE_NAME, EmotionModel.EMOTION, EmotionModel.TABLE_NAME, EmotionModel.LEVEL,
+                        SleepModel.TABLE_NAME, SleepModel.ID, SleepModel.TABLE_NAME, SleepModel.TOTAL, SleepModel.TABLE_NAME, SleepModel.START, SleepModel.TABLE_NAME, SleepModel.END,
+                        ActivityModel.TABLE_NAME, ActivityModel.ID, ActivityModel.TABLE_NAME, ActivityModel.ACTIVITY, EmotionModel.TABLE_NAME, EmotionModel.DATE,
+                        EmotionModel.TABLE_NAME,
+                        SleepModel.TABLE_NAME, EmotionModel.TABLE_NAME, EmotionModel.DATE, SleepModel.TABLE_NAME, SleepModel.DATE,
+                        ActivityModel.TABLE_NAME, EmotionModel.TABLE_NAME, EmotionModel.DATE, ActivityModel.TABLE_NAME, ActivityModel.ACTIVITY,
+                        EmotionModel.TABLE_NAME, EmotionModel.DATE);
+                break;
+            case 5:
+                sql = String.format("SELECT %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s, %s.%s " +
+                                "FROM %s " +
+                                "LEFT JOIN %s ON %s.%s = %s.%s " +
+                                "LEFT JOIN %s ON %s.%s = %s.%s " +
+                                "ORDER BY %s.%s DESC;",
+                        EmotionModel.TABLE_NAME, EmotionModel.ID, EmotionModel.TABLE_NAME, EmotionModel.EMOTION, EmotionModel.TABLE_NAME, EmotionModel.LEVEL,
+                        SleepModel.TABLE_NAME, SleepModel.ID, SleepModel.TABLE_NAME, SleepModel.TOTAL, SleepModel.TABLE_NAME, SleepModel.START, SleepModel.TABLE_NAME, SleepModel.END,
+                        ActivityModel.TABLE_NAME, ActivityModel.ID, ActivityModel.TABLE_NAME, ActivityModel.ACTIVITY, EmotionModel.TABLE_NAME, EmotionModel.DATE,
+                        EmotionModel.TABLE_NAME,
+                        SleepModel.TABLE_NAME, EmotionModel.TABLE_NAME, EmotionModel.DATE, SleepModel.TABLE_NAME, SleepModel.DATE,
+                        ActivityModel.TABLE_NAME, EmotionModel.TABLE_NAME, EmotionModel.DATE, ActivityModel.TABLE_NAME, ActivityModel.ACTIVITY,
+                        EmotionModel.TABLE_NAME, EmotionModel.DATE);
+                break;
+        }
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor result = db.rawQuery(sql, null);
+        ArrayList<RecordObject> obj = new ArrayList<>();
+
+        if(result.moveToFirst()){
+            do{
+                int moodId = result.getInt(0);
+                int moodType = result.getInt(1);
+                int moodLevel = result.getInt(2);
+                int sleepId = result.getInt(3);
+                float totalSleep = result.getFloat(4);
+                String startTime = result.getString(5);
+                String endTime = result.getString(6);
+                int activityId = result.getInt(7);
+                String activity = result.getString(8);
+                String date = result.getString(9);
+
+                MoodObject  moodObject = new MoodObject(moodId, moodType, moodLevel, date);
+                SleepObject sleepObject = new SleepObject(sleepId, totalSleep, startTime, endTime, date);
+                ActivityObject activityObject = new ActivityObject(activityId, activity, date);
+                RecordObject recordObject = new RecordObject(moodObject, sleepObject, activityObject);
+                obj.add(recordObject);
+            }while (result.moveToNext());
+        }
+        result.close();
+        db.close();
+        db.close();
+        return obj;
+    }
     /*************************** RECORD ****************************/
 
     /*************************** MOOD ****************************/
+//    public boolean insertMood(Map<String, String> data){
+//        String sql = "";
+//
+//    }
+
     public boolean insertMood(int mood, int level, String date){
 
         String query_insert_mood = "INSERT INTO " + EmotionModel.TABLE_NAME + " (" + EmotionModel.EMOTION +
@@ -870,6 +995,55 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor result = db.rawQuery(query_get_mood, null);
+        ArrayList<SleepObject> obj = new ArrayList<>();
+
+        if(result.moveToFirst()){
+            do{
+                int id = result.getInt(0);
+                float total = result.getFloat(1);
+                String start = result.getString(2);
+                String end = result.getString(3);
+                String date = result.getString(4);
+                SleepObject moodObj = new SleepObject(id, total, start, end, date);
+                obj.add(moodObj);
+            }while (result.moveToNext());
+        }
+        result.close();
+        db.close();
+        return obj;
+    }
+
+    public ArrayList<SleepObject> getSleep(int option){
+        String sql = "";
+        switch (option){
+            case 0:
+                sql = String.format("SELECT * FROM %s WHERE 1 ORDER BY %s DESC LIMIT 90;",
+                        SleepModel.TABLE_NAME, SleepModel.DATE);
+                break;
+            case 1:
+                sql = String.format("SELECT * FROM %s WHERE 1 ORDER BY %s DESC LIMIT 180;",
+                        SleepModel.TABLE_NAME, SleepModel.DATE);
+                break;
+            case 2:
+                sql = String.format("SELECT * FROM %s WHERE 1 ORDER BY %s DESC LIMIT 270;",
+                        SleepModel.TABLE_NAME, SleepModel.DATE);
+                break;
+            case 3:
+                sql = String.format("SELECT * FROM %s WHERE 1 ORDER BY %s DESC LIMIT 365;",
+                        SleepModel.TABLE_NAME, SleepModel.DATE);
+                break;
+            case 4:
+                sql = String.format("SELECT * FROM %s WHERE 1 ORDER BY %s DESC LIMIT 730;",
+                        SleepModel.TABLE_NAME, SleepModel.DATE);
+                break;
+            case 5:
+                sql = String.format("SELECT * FROM %s WHERE 1 ORDER BY %s DESC;",
+                        SleepModel.TABLE_NAME, SleepModel.DATE);
+                break;
+        }
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor result = db.rawQuery(sql, null);
         ArrayList<SleepObject> obj = new ArrayList<>();
 
         if(result.moveToFirst()){

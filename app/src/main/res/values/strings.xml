@@ -5,13 +5,19 @@
     <string name="member_login_url">https://thaismood.nn-space.me/member/login</string>
     <string name="member_otp_verify_url">https://thaismood.nn-space.me/member/verifyEmail</string>
     <string name="member_check_email_duplicate">https://thaismood.nn-space.me/member/email</string>
-    <string name="member_check_username_duplicate">http://192.168.2.35:4553/member/username</string>
+    <string name="member_check_username_duplicate">https://thaismood.nn-space.me/member/username</string>
     <string name="member_profile_url">https://thaismood.nn-space.me/member/profile</string>
     <string name="member_temp_password">https://thaismood.nn-space.me/member/tempPassword</string>
     <string name="evaluation_url">https://thaismood.nn-space.me/evaluation</string>
     <string name="url_create_mood">https://thaismood.nn-space.me/record/mood</string>
     <string name="url_sleep">https://thaismood.nn-space.me/record/sleep</string>
     <string name="url_diary">https://thaismood.nn-space.me/record/diary</string>
+    <string name="url_find_hospital">https://thaismood.nn-space.me/web/find-hospital.html</string>
+    <string name="url_get_profile">https://thaismood.nn-space.me/member/profile</string>
+    <string name="url_get_mood">https://thaismood.nn-space.me/record/mood</string>
+    <string name="url_get_sleep">https://thaismood.nn-space.me/record/sleep</string>
+    <string name="url_get_diary">https://thaismood.nn-space.me/record/diary</string>
+    <string name="url_get_evaluation">https://thaismood.nn-space.me/evaluation</string>
     <!--End of url section-->
 
     <!--url section-->

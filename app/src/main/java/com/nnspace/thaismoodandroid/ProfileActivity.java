@@ -76,8 +76,23 @@ public class ProfileActivity extends AppCompatActivity {
         nickname.setText(data.get("nickname"));
         emergencyContact.setText(data.get("emergency"));
         email.setText(db.getEmail());
-        String[] dobTemp = data.get("dob").split("/");
-        String newDob = String.format("%s/%s/%s", dobTemp[2], dobTemp[1], dobTemp[0]);
+        String[] dobTemp;
+        String newDob = "";
+        try{
+            dobTemp = data.get("dob").split("/");
+            newDob = String.format("%s/%s/%s", dobTemp[2], dobTemp[1], dobTemp[0]);
+        }catch (Exception e){
+
+            try{
+                dobTemp = data.get("dob").split("-");
+                newDob = String.format("%s/%s/%s", dobTemp[2], dobTemp[1], dobTemp[0]);
+
+            }catch (Exception ex){
+                newDob = data.get("dob");
+            }
+        }
+
+
         dob.setText(newDob);
         if (data.get("isCaffeine") == "1") {
             caffeine.setText("ใช้");

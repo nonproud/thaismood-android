@@ -153,6 +153,23 @@ public class Q9QuetionFragment extends Fragment implements IEvaluation {
                 }
             }
         });
+
+        prevBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(countNo == 0){
+                    prevBtn.setEnabled(false);
+                    prevBtn.setBackground(getResources().getDrawable(R.drawable.button_border_unselected));
+                }else {
+                    prevBtn.setEnabled(true);
+                    prevBtn.setBackgroundColor(getResources().getColor(R.color.q_2q_theme_dark));
+                    countNo--;
+                    prevQuestion();
+                }
+            }
+        });
+
+
     }
 
     public void nextQuestion(){
@@ -195,7 +212,7 @@ public class Q9QuetionFragment extends Fragment implements IEvaluation {
             bundle.putString("result", msgResult[2]);
             bundle.putString("todo", msgResult[5]);
             bundle.putInt("next", 3);
-        }else if(totalPoint >=7 && totalPoint <= 13){
+        }else if(totalPoint >=13 && totalPoint <= 18){
             bundle.putString("result", msgResult[3]);
             bundle.putString("todo", msgResult[5]);
             bundle.putInt("next", 3);

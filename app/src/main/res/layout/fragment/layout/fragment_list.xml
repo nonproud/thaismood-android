@@ -15,13 +15,26 @@
         android:layout_margin="10dp"
         android:gravity="right">
 
-        <TextView
-            android:id="@+id/list_type"
-            android:gravity="left"
+
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="จำนวน"/>
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/filter_text"
+                android:gravity="left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ทั้งหมด"/>
+
+            <TextView
+                android:id="@+id/list_type"
+                android:gravity="left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="จำนวน"/>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

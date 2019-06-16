@@ -61,11 +61,11 @@ public class GraphYear extends Fragment {
             @Override
             public void onClick(View v) {
                 IOSSheetDialog.SheetItem[] items = new IOSSheetDialog.SheetItem[6];
-                items[0] = new IOSSheetDialog.SheetItem("3 เดือน", IOSSheetDialog.SheetItem.BLUE);
-                items[1] = new IOSSheetDialog.SheetItem("6 เดือน", IOSSheetDialog.SheetItem.BLUE);
-                items[2] = new IOSSheetDialog.SheetItem("9 เดือน", IOSSheetDialog.SheetItem.BLUE);
-                items[3] = new IOSSheetDialog.SheetItem("1 ปี", IOSSheetDialog.SheetItem.BLUE);
-                items[4] = new IOSSheetDialog.SheetItem("2 ปี", IOSSheetDialog.SheetItem.BLUE);
+                items[0] = new IOSSheetDialog.SheetItem("3 เดือนที่ผ่านมา", IOSSheetDialog.SheetItem.BLUE);
+                items[1] = new IOSSheetDialog.SheetItem("6 เดือนที่ผ่านมา", IOSSheetDialog.SheetItem.BLUE);
+                items[2] = new IOSSheetDialog.SheetItem("9 เดือนที่ผ่านมา", IOSSheetDialog.SheetItem.BLUE);
+                items[3] = new IOSSheetDialog.SheetItem("1 ปีที่ผ่านมา", IOSSheetDialog.SheetItem.BLUE);
+                items[4] = new IOSSheetDialog.SheetItem("2 ปีที่ผ่านมา", IOSSheetDialog.SheetItem.BLUE);
                 items[5] = new IOSSheetDialog.SheetItem("ทั้งหมด", IOSSheetDialog.SheetItem.BLUE);
                 IOSSheetDialog dialog2 = new IOSSheetDialog.Builder(getActivity())
                         .setTitle("เลือกมุมมอง")
@@ -74,23 +74,23 @@ public class GraphYear extends Fragment {
                             public void onClick(DialogInterface dialog, int which) {
                                 switch (which){
                                     case 0:
-                                        dateDes.setText("3 เดือน");
+                                        dateDes.setText("3 เดือนที่ผ่านมา");
                                         setChart1(0);
                                         break;
                                     case 1:
-                                        dateDes.setText("6 เดือน");
+                                        dateDes.setText("6 เดือนที่ผ่านมา");
                                         setChart1(1);
                                         break;
                                     case 2:
-                                        dateDes.setText("9 เดือน");
+                                        dateDes.setText("9 เดือนที่ผ่านมา");
                                         setChart1(2);
                                         break;
                                     case 3:
-                                        dateDes.setText("1 ปี");
+                                        dateDes.setText("1 ปีที่ผ่านมา");
                                         setChart1(3);
                                         break;
                                     case 4:
-                                        dateDes.setText("2 ปี");
+                                        dateDes.setText("2 ปีที่ผ่านมา");
                                         setChart1(4);
                                         break;
                                     case 5:

@@ -24,7 +24,6 @@ import java.util.Map;
 public class GetTemporaryCredential extends AppCompatActivity {
 
     private TextView tempPassword;
-    private String password;
     private String url;
     private ThaisMoodDB db;
 

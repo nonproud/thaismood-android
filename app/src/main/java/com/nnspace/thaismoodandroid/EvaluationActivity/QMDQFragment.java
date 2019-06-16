@@ -210,6 +210,27 @@ public class QMDQFragment extends Fragment implements IEvaluation {
                     prevBtn.setEnabled(false);
                     prevBtn.setBackground(getResources().getDrawable(R.drawable.button_border_unselected));
                 }else {
+                    if(countNo < 13){
+                        part12.setVisibility(View.VISIBLE);
+                    }
+
+                    if(countNo <12){
+                        questionIntrotx.setVisibility(View.VISIBLE);
+                    }
+
+                    if(countNo == 12){
+                        questionIntrotx.setVisibility(View.GONE);
+                        clearButton();
+                        nextQuestion();
+                    }else if(countNo == 13) {
+                        part12.setVisibility(View.GONE);
+                        part3.setVisibility(View.VISIBLE);
+                        question15tx.setVisibility(View.VISIBLE);
+                        question15tx.setText(question[14]);
+                        questiontx.setVisibility(View.GONE);
+                    }
+                    prevBtn.setEnabled(true);
+                    prevBtn.setBackgroundColor(getResources().getColor(R.color.q_mdq_theme_dark));
                     countNo--;
                     prevQuestion();
                 }

@@ -64,8 +64,6 @@ public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.Re
                 moodBox.setBackground(mContext.getResources().getDrawable(record.getMood().getMoodType().getBox()));
                 LinearLayout sleepBox = dialog.findViewById(R.id.sleep_time_section);
                 sleepBox.setBackground(mContext.getResources().getDrawable(record.getMood().getMoodType().getBox()));
-                LinearLayout activitySection = dialog.findViewById(R.id.activity_section);
-                activitySection.setBackground(mContext.getResources().getDrawable(record.getMood().getMoodType().getBox()));
 
                 ImageView moodIcon = dialog.findViewById(R.id.mood_emo);
                 moodIcon.setImageDrawable(mContext.getResources().getDrawable(record.getMood().getMoodType().getIcon()));

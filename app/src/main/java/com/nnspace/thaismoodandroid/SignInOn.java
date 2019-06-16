@@ -191,7 +191,6 @@ public class SignInOn extends AppCompatActivity {
 
     private void loginFormInit(){
         loginBtn = (Button) findViewById(R.id.loginBtn);
-
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -287,7 +286,7 @@ public class SignInOn extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    startActivity(new Intent(SignInOn.this, MainActivity.class));
+                    startActivity(new Intent(SignInOn.this, SynActivity.class));
                 }else{
                     Toast.makeText(SignInOn.this, "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง", Toast.LENGTH_SHORT).show();
                 }

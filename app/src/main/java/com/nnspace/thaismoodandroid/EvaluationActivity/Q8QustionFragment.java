@@ -40,6 +40,7 @@ public class Q8QustionFragment extends Fragment implements IEvaluation {
         countNo = 0;
         totalPoint = 0;
         checkNo = new Boolean[9];
+        checkNo[8] = true;
         question = getResources().getStringArray(R.array.q_8q_question);
         nextBtn = getView().findViewById(R.id.q_8q_next_btn);
         prevBtn = getView().findViewById(R.id.q_8q_prev_btn);
@@ -118,6 +119,21 @@ public class Q8QustionFragment extends Fragment implements IEvaluation {
                         clearButton();
                     }
 
+                }
+            }
+        });
+
+        prevBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(countNo == 0){
+                    prevBtn.setEnabled(false);
+                    prevBtn.setBackground(getResources().getDrawable(R.drawable.button_border_unselected));
+                }else {
+                    prevBtn.setEnabled(true);
+                    prevBtn.setBackgroundColor(getResources().getColor(R.color.q_2q_theme_dark));
+                    countNo--;
+                    prevQuestion();
                 }
             }
         });
