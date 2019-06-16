@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#eeeeee"
+    android:background="@color/fragment_background"
     tools:context=".HomeActivity.Graph.GraphMonth">
 
     <LinearLayout
@@ -15,32 +15,18 @@
         android:layout_height="30dp"
         android:gravity="center">
 
-        <ImageView
-            android:id="@+id/graph_month_left_btn"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:tint="@color/colorPrimaryDark"
-            android:src="@drawable/ic_left"/>
-
         <TextView
-            android:id="@+id/graph_month_date_des"
+            android:id="@+id/graph_year_date_des"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
+            android:background="@drawable/box_border"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:fontFamily="@font/thsarabunnew_bold"
             android:textSize="25dp"
             android:text="พฤษภาคม 2562"/>
-
-        <ImageView
-            android:id="@+id/graph_month_right_btn"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:tint="@color/colorPrimaryDark"
-            android:src="@drawable/ic_right"/>
 
     </LinearLayout>
 
@@ -68,6 +54,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"

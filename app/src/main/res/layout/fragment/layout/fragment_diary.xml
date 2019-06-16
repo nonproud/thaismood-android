@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/fragment_background"
     android:orientation="vertical">
 
     <LinearLayout
@@ -12,18 +13,12 @@
         android:orientation="vertical"
         android:gravity="center">
 
-        <!--<androidx.recyclerview.widget.RecyclerView-->
-            <!--tools:listitem="@layout/list_diary"-->
-            <!--android:id="@+id/recyclerView"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"/>-->
-
-        <ListView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/diary_list_view"
+            tools:listitem="@layout/list_diary"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" />
 
-        </ListView>
 
         <TextView
             android:id="@+id/empty_note_text"
@@ -42,10 +37,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:backgroundTint="@color/colorPrimary"
+        android:layout_marginBottom="72dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        app:backgroundTint="@color/colorPrimaryDark"
         app:srcCompat="@drawable/ic_pencil"/>
 
     
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>

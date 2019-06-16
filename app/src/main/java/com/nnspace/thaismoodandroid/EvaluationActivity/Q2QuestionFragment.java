@@ -1,20 +1,23 @@
 package com.nnspace.thaismoodandroid.EvaluationActivity;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
+import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
+import com.nnspace.thaismoodandroid.DatabaseModel.EvaluationModel;
 import com.nnspace.thaismoodandroid.R;
+
+import java.util.Calendar;
 
 public class Q2QuestionFragment extends Fragment implements IEvaluation {
 
@@ -23,7 +26,6 @@ public class Q2QuestionFragment extends Fragment implements IEvaluation {
     private TextView questiontx, indicator;
     private static int countNo, totalPoint;
     private Integer[] currentPoint;
-//    private LinearLayout prev_btn, next_btn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -85,7 +87,7 @@ public class Q2QuestionFragment extends Fragment implements IEvaluation {
                         next_btn.setBackgroundColor(getResources().getColor(R.color.q_2q_theme_dark));
                         prev_btn.setEnabled(true);
                         prev_btn.setBackgroundColor(getResources().getColor(R.color.q_2q_theme_dark));
-                        if(currentPoint[countNo] == 0){
+                        if(currentPoint[countNo] == 1){
                             c1.setBackground(getResources().getDrawable(R.drawable.q_2q_choice_selected));
                             c1.setTextColor(getResources().getColor(R.color.white));
                         }else{
@@ -105,16 +107,40 @@ public class Q2QuestionFragment extends Fragment implements IEvaluation {
         prev_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(countNo == 0){
-                    prev_btn.setEnabled(false);
-                    prev_btn.setBackground(getResources().getDrawable(R.drawable.button_border_unselected));
-                }else {
+                if(countNo != 0){
+                    clearButton();
                     countNo--;
                     prevQuestion();
+                    setPrevbtn();
+                    if(currentPoint[countNo] == 1){
+                        if(currentPoint[countNo] == 1){
+                            c1.setBackground(getResources().getDrawable(R.drawable.q_2q_choice_selected));
+                            c1.setTextColor(getResources().getColor(R.color.white));
+                        }else{
+                            c2.setBackground(getResources().getDrawable(R.drawable.q_2q_choice_selected));
+                            c2.setTextColor(getResources().getColor(R.color.white));
+                        }
+                        next_btn.setEnabled(true);
+                        next_btn.setBackgroundColor(getResources().getColor(R.color.q_2q_theme_dark));
+                    }else {
+                        next_btn.setEnabled(false);
+                        next_btn.setBackground(getResources().getDrawable(R.drawable.button_border_unselected));
+                    }
+
                 }
             }
         });
 
+    }
+
+    private void setPrevbtn(){
+        if(countNo > 0){
+            prev_btn.setEnabled(true);
+            prev_btn.setBackgroundColor(getResources().getColor(R.color.q_2q_theme_dark));
+        }else {
+            prev_btn.setEnabled(false);
+            prev_btn.setBackground(getResources().getDrawable(R.drawable.button_border_unselected));
+        }
     }
 
     public String getStringIndicator(int no){
@@ -130,6 +156,7 @@ public class Q2QuestionFragment extends Fragment implements IEvaluation {
     }
 
     public void nextQuestion(){
+        setPrevbtn();
         questiontx.setText(question[countNo]);
         indicator.setText(getStringIndicator(countNo));
     }
@@ -140,18 +167,20 @@ public class Q2QuestionFragment extends Fragment implements IEvaluation {
     }
 
     public void next(){
+        ThaisMoodDB db = new ThaisMoodDB(getActivity());
+        db.insertEvaluationScore(totalPoint, EvaluationModel._2q, getDateString());
         Bundle bundle = new Bundle();
-        bundle.putString("from", "2q");
+        bundle.putInt("from", 1);
+        bundle.putInt("score", totalPoint);
         String[] msgResult = getResources().getStringArray(R.array.q_2q_result);
-
         if(totalPoint == 0){
             bundle.putString("result", msgResult[0]);
             bundle.putString("todo", msgResult[1]);
-            bundle.putString("next", "mdq");
+            bundle.putInt("next", 4);
         }else if(totalPoint > 0){
             bundle.putString("result", msgResult[2]);
             bundle.putString("todo", msgResult[3]);
-            bundle.putString("next", "9q");
+            bundle.putInt("next", 2);
         }
 
         FragmentManager fm = getActivity().getSupportFragmentManager();
@@ -169,5 +198,14 @@ public class Q2QuestionFragment extends Fragment implements IEvaluation {
         c2.setBackground(getResources().getDrawable(R.drawable.q_2q_choice_unselected));
         c2.setTextColor(getResources().getColor(R.color.black));
     }
+
+    private String getDateString(){
+
+        Calendar calendar = Calendar.getInstance();
+        return calendar.get(Calendar.YEAR) + "/" + (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.get(Calendar.DAY_OF_MONTH);
+
+    }
+
+
 
 }

@@ -2,12 +2,6 @@ package com.nnspace.thaismoodandroid.EvaluationActivity;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +11,17 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
+import com.nnspace.thaismoodandroid.DatabaseModel.EvaluationModel;
 import com.nnspace.thaismoodandroid.R;
+
+import java.util.Calendar;
 
 import static android.content.Context.WINDOW_SERVICE;
 
@@ -206,6 +210,27 @@ public class QMDQFragment extends Fragment implements IEvaluation {
                     prevBtn.setEnabled(false);
                     prevBtn.setBackground(getResources().getDrawable(R.drawable.button_border_unselected));
                 }else {
+                    if(countNo < 13){
+                        part12.setVisibility(View.VISIBLE);
+                    }
+
+                    if(countNo <12){
+                        questionIntrotx.setVisibility(View.VISIBLE);
+                    }
+
+                    if(countNo == 12){
+                        questionIntrotx.setVisibility(View.GONE);
+                        clearButton();
+                        nextQuestion();
+                    }else if(countNo == 13) {
+                        part12.setVisibility(View.GONE);
+                        part3.setVisibility(View.VISIBLE);
+                        question15tx.setVisibility(View.VISIBLE);
+                        question15tx.setText(question[14]);
+                        questiontx.setVisibility(View.GONE);
+                    }
+                    prevBtn.setEnabled(true);
+                    prevBtn.setBackgroundColor(getResources().getColor(R.color.q_mdq_theme_dark));
                     countNo--;
                     prevQuestion();
                 }
@@ -243,8 +268,11 @@ public class QMDQFragment extends Fragment implements IEvaluation {
 
     @Override
     public void next() {
+        ThaisMoodDB db = new ThaisMoodDB(getActivity());
+        db.insertEvaluationScore(part1Point + part2Point + part3Point, EvaluationModel.mdq, getDateString());
         Bundle bundle = new Bundle();
-        bundle.putString("from", "mdq");
+        bundle.putInt("from", 4);
+        bundle.putInt("score", part1Point + part2Point + part3Point);
         String[] msgResult = getResources().getStringArray(R.array.q_mdq_result);
         String point = "1: " + part1Point + " 2: " + part2Point + " 3: " + part3Point;
         if(part1Point >= 7 && part2Point > 0 && part3Point >= 2){
@@ -280,5 +308,12 @@ public class QMDQFragment extends Fragment implements IEvaluation {
         wm.getDefaultDisplay().getMetrics(metrics);
         metrics.scaledDensity = configuration.fontScale * metrics.density;
         getActivity().getBaseContext().getResources().updateConfiguration(configuration, metrics);
+    }
+
+    private String getDateString(){
+
+        Calendar calendar = Calendar.getInstance();
+        return calendar.get(Calendar.YEAR) + "/" + (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.get(Calendar.DAY_OF_MONTH);
+
     }
 }

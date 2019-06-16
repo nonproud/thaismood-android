@@ -6,7 +6,7 @@
     xmlns:williamchart="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="top"
-    android:background="#eeeeee"
+    android:background="@color/fragment_background"
     tools:context=".HomeActivity.Graph.GraphWeek">
 
     <LinearLayout
@@ -16,32 +16,18 @@
         android:layout_height="30dp"
         android:gravity="center">
 
-        <ImageView
-            android:id="@+id/graph_week_left_btn"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:tint="@color/colorPrimaryDark"
-            android:src="@drawable/ic_left"/>
-
         <TextView
             android:id="@+id/graph_week_date_des"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
+            android:background="@drawable/box_border"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:fontFamily="@font/thsarabunnew_bold"
             android:textSize="25dp"
             android:text="1 พ.ค. - 7 พ.ค."/>
-
-        <ImageView
-            android:id="@+id/graph_week_right_btn"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:tint="@color/colorPrimaryDark"
-            android:src="@drawable/ic_right"/>
 
     </LinearLayout>
 
@@ -63,13 +49,14 @@
                 <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/graph_week_chart1"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="200dp"
                     android:layout_margin="20dp"
                     />
 
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"

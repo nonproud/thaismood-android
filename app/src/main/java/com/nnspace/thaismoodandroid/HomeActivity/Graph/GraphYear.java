@@ -1,10 +1,11 @@
 package com.nnspace.thaismoodandroid.HomeActivity.Graph;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,11 +21,11 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.ligl.android.widget.iosdialog.IOSSheetDialog;
 import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
-import com.nnspace.thaismoodandroid.MoodObject;
+import com.nnspace.thaismoodandroid.HomeActivity.List.MoodObject;
 import com.nnspace.thaismoodandroid.MoodType;
 import com.nnspace.thaismoodandroid.R;
-import com.whiteelephant.monthpicker.MonthPickerDialog;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -34,11 +35,11 @@ public class GraphYear extends Fragment {
 
     private Calendar currentCalender, calendar;
     private ArrayList<String> xLabel;
-    private TextView dateDes;
-    private ImageView leftbtn, rightbtn;
     private LineChart chart;
     private PieChart chart2;
     private ArrayList<MoodObject> moodlist;
+    private LinearLayout viewBtn;
+    private TextView dateDes;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,26 +54,70 @@ public class GraphYear extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        super.onViewCreated(view, savedInstanceState);
 
         dateDes = getView().findViewById(R.id.graph_year_date_des);
-        leftbtn = getView().findViewById(R.id.graph_year_left_btn);
-        rightbtn = getView().findViewById(R.id.graph_year_right_btn);
+        viewBtn = getView().findViewById(R.id.view_btn);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IOSSheetDialog.SheetItem[] items = new IOSSheetDialog.SheetItem[6];
+                items[0] = new IOSSheetDialog.SheetItem("3 เดือนที่ผ่านมา", IOSSheetDialog.SheetItem.BLUE);
+                items[1] = new IOSSheetDialog.SheetItem("6 เดือนที่ผ่านมา", IOSSheetDialog.SheetItem.BLUE);
+                items[2] = new IOSSheetDialog.SheetItem("9 เดือนที่ผ่านมา", IOSSheetDialog.SheetItem.BLUE);
+                items[3] = new IOSSheetDialog.SheetItem("1 ปีที่ผ่านมา", IOSSheetDialog.SheetItem.BLUE);
+                items[4] = new IOSSheetDialog.SheetItem("2 ปีที่ผ่านมา", IOSSheetDialog.SheetItem.BLUE);
+                items[5] = new IOSSheetDialog.SheetItem("ทั้งหมด", IOSSheetDialog.SheetItem.BLUE);
+                IOSSheetDialog dialog2 = new IOSSheetDialog.Builder(getActivity())
+                        .setTitle("เลือกมุมมอง")
+                        .setData(items, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                switch (which){
+                                    case 0:
+                                        dateDes.setText("3 เดือนที่ผ่านมา");
+                                        setChart1(0);
+                                        break;
+                                    case 1:
+                                        dateDes.setText("6 เดือนที่ผ่านมา");
+                                        setChart1(1);
+                                        break;
+                                    case 2:
+                                        dateDes.setText("9 เดือนที่ผ่านมา");
+                                        setChart1(2);
+                                        break;
+                                    case 3:
+                                        dateDes.setText("1 ปีที่ผ่านมา");
+                                        setChart1(3);
+                                        break;
+                                    case 4:
+                                        dateDes.setText("2 ปีที่ผ่านมา");
+                                        setChart1(4);
+                                        break;
+                                    case 5:
+                                        dateDes.setText("ทั้งหมด");
+                                        setChart1(5);
+                                        break;
+                                }
+                            }
+                        })
+                        .setCancelText("ยกเลิก")
+                        .show();
+            }
+        });
+
         chart = getView().findViewById(R.id.graph_year_chart1);
         chart2 = getView().findViewById(R.id.graph_year_chart2);
 
-        dateDes.setText(getThaiYearString());
         setOnClickListener();
-        setChart1();
+        setChart1(0);
         setChart2();
 
     }
 
-    private void setChart1() {
+    private void setChart1(int option) {
 
         ThaisMoodDB db = new ThaisMoodDB(getActivity());
-        String[] dr = getDateRange();
-        moodlist = db.getMoodRange(dr[0], dr[1]);
+        moodlist = db.getFliterMood(option);
 
         List<Entry> dSet = new ArrayList<Entry>();
 
@@ -135,53 +180,5 @@ public class GraphYear extends Fragment {
 
     private void setOnClickListener() {
 
-        dateDes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(getActivity(), new MonthPickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(int selectedMonth, int selectedYear) {
-                        dateDes.setText(getThaiYearString());
-                        calendar.set(Calendar.YEAR, selectedYear);
-                        setChart1();
-                    }
-                }, calendar.get(Calendar.YEAR), 0);
-
-                builder.showYearOnly()
-                        .setYearRange(2015, currentCalender.get(Calendar.YEAR))
-                        .build()
-                        .show();
-            }
-        });
-
-        leftbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        rightbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
     }
-
-    private String[] getDateRange(){
-        String[] r = new String[2];
-
-        r[0] = calendar.get(Calendar.YEAR) +  "/1/1";
-        r[1] = calendar.get(Calendar.YEAR) +  "/12/31";
-
-        return r;
-    }
-
-    private String getThaiYearString(){
-
-        return (calendar.get(Calendar.YEAR) + 543) + "" ;
-
-    }
-
 }

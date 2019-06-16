@@ -2,13 +2,14 @@ package com.nnspace.thaismoodandroid.RegisterActivity;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.FrameLayout;
+
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.appcompat.app.AppCompatActivity;
-import android.widget.Button;
-import android.widget.FrameLayout;
 
 import com.nnspace.thaismoodandroid.R;
 
@@ -29,14 +30,12 @@ public class Register extends AppCompatActivity {
 
         fragmentContainer = (FrameLayout) findViewById(R.id.register_fragment_container);
 
-//        nextbtn = (Button) findViewById(R.id.register_activity_next_btn);
-//        prevbtn = (Button) findViewById(R.id.register_activity_prev_btn);
-
         nextFragment = new Register_ask_type();
 
         fm = getSupportFragmentManager();
         ft = fm.beginTransaction();
-        ft.replace(R.id.register_fragment_container, nextFragment);
+
+        ft.add(R.id.register_fragment_container, nextFragment, "ask type");
         ft.commit();
 
     }
