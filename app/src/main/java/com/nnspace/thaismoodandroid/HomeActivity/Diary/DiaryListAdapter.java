@@ -1,18 +1,22 @@
 package com.nnspace.thaismoodandroid.HomeActivity.Diary;
 
 import android.content.Context;
-import android.database.DataSetObserver;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.nnspace.thaismoodandroid.R;
 
 import java.util.ArrayList;
 
-public class DiaryListAdapter implements ListAdapter {
+public class DiaryListAdapter extends RecyclerView.Adapter<DiaryListAdapter.DiaryViewHolder> {
+
     private Context mContext;
     private ArrayList<DiaryObject> diayObjectList;
 
@@ -21,93 +25,62 @@ public class DiaryListAdapter implements ListAdapter {
         this.diayObjectList = diayObjectList;
     }
 
+
+    @NonNull
     @Override
-    public boolean areAllItemsEnabled() {
-        return false;
+    public DiaryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_diary, parent, false);
+        DiaryViewHolder dh = new DiaryViewHolder(v);
+        return dh;
+
     }
 
     @Override
-    public boolean isEnabled(int position) {
+    public void onBindViewHolder(@NonNull DiaryViewHolder holder, final int position) {
+        final DiaryObject diaryObject = diayObjectList.get(position);
+        holder.title.setText(diaryObject.getTitle());
+        holder.abStory.setText(diaryObject.getAbStory());
+        holder.date.setText(diaryObject.getDate());
+
         try{
-            diayObjectList.get(position);
+            holder.moodIcon.setImageDrawable(mContext.getResources().getDrawable(diaryObject.getMood().getMoodType().getIcon()));
+            holder.levelIcon.setImageDrawable(mContext.getResources().getDrawable(diaryObject.getMood().getMoodType().getMoodLevelIcon(diaryObject.getMood().getLevel())));
         }catch (NullPointerException e){
-            return false;
+
         }
-        return true;
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, WriteNoteActivity.class);
+                intent.putExtra("isEditNote", true);
+                intent.putExtra("title", diaryObject.getTitle());
+                intent.putExtra("story", diaryObject.getStory());
+                intent.putExtra("id", diaryObject.getId());
+                intent.putExtra("date", diaryObject.getDate());
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
-    public void registerDataSetObserver(DataSetObserver observer) {
-
-    }
-
-    @Override
-    public void unregisterDataSetObserver(DataSetObserver observer) {
-
-    }
-
-    @Override
-    public int getCount() {
+    public int getItemCount() {
         return diayObjectList.size();
     }
 
-    @Override
-    public Object getItem(int position) {
-        return diayObjectList.get(position);
-    }
+    public class DiaryViewHolder extends RecyclerView.ViewHolder{
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
+        TextView title, abStory, date;
+        ImageView moodIcon, levelIcon;
 
-    @Override
-    public boolean hasStableIds() {
-        return false;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        DiaryObject diaryObject = (DiaryObject) getItem(position);
-
-        if(convertView == null){
-            LayoutInflater layoutInflater = LayoutInflater.from(mContext);
-            convertView = layoutInflater.inflate(R.layout.list_diary, null);
-            convertView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
+        public DiaryViewHolder(@NonNull View itemView) {
+            super(itemView);
+            title = itemView.findViewById(R.id.diary_item_title);
+            abStory = itemView.findViewById(R.id.diary_ab_item_story);
+            date = itemView.findViewById(R.id.diary_item_date);
+            moodIcon = itemView.findViewById(R.id.diary_item_mood_emo);
+            levelIcon = itemView.findViewById(R.id.diary_item_level_emo);
         }
-
-        TextView title = convertView.findViewById(R.id.diary_title);
-        TextView abStory = convertView.findViewById(R.id.diary_ab_item_story);
-        TextView dateText = convertView.findViewById(R.id.diary_item_date);
-
-        title.setText(diaryObject.getTitle());
-        abStory.setText(diaryObject.getAbStory());
-        dateText.setText(diaryObject.getStory());
-
-        return convertView;
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        return 0;
-    }
-
-    @Override
-    public int getViewTypeCount() {
-
-        return 1;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        if(diayObjectList.size() == 0){
-            return true;
-        }
-        return false;
     }
 }

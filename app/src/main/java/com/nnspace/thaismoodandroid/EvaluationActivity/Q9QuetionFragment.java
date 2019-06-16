@@ -1,18 +1,23 @@
 package com.nnspace.thaismoodandroid.EvaluationActivity;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
+import com.nnspace.thaismoodandroid.DatabaseModel.EvaluationModel;
 import com.nnspace.thaismoodandroid.R;
+
+import java.util.Calendar;
 
 public class Q9QuetionFragment extends Fragment implements IEvaluation {
 
@@ -148,6 +153,23 @@ public class Q9QuetionFragment extends Fragment implements IEvaluation {
                 }
             }
         });
+
+        prevBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(countNo == 0){
+                    prevBtn.setEnabled(false);
+                    prevBtn.setBackground(getResources().getDrawable(R.drawable.button_border_unselected));
+                }else {
+                    prevBtn.setEnabled(true);
+                    prevBtn.setBackgroundColor(getResources().getColor(R.color.q_2q_theme_dark));
+                    countNo--;
+                    prevQuestion();
+                }
+            }
+        });
+
+
     }
 
     public void nextQuestion(){
@@ -174,26 +196,30 @@ public class Q9QuetionFragment extends Fragment implements IEvaluation {
     }
 
     public void next(){
+        ThaisMoodDB db = new ThaisMoodDB(getActivity());
+        db.insertEvaluationScore(totalPoint, EvaluationModel._9q, getDateString());
+
         Bundle bundle = new Bundle();
-        bundle.putString("from", "9q");
+        bundle.putInt("from", 2);
+        bundle.putInt("score", totalPoint);
         String[] msgResult = getResources().getStringArray(R.array.q_9q_result);
 
         if(totalPoint < 7){
             bundle.putString("result", msgResult[0]);
             bundle.putString("todo", msgResult[1]);
-            bundle.putString("next", "mdq");
+            bundle.putInt("next", 4);
         }else if(totalPoint >=7 && totalPoint < 13){
             bundle.putString("result", msgResult[2]);
             bundle.putString("todo", msgResult[5]);
-            bundle.putString("next", "8q");
-        }else if(totalPoint >=7 && totalPoint <= 13){
+            bundle.putInt("next", 3);
+        }else if(totalPoint >=13 && totalPoint <= 18){
             bundle.putString("result", msgResult[3]);
             bundle.putString("todo", msgResult[5]);
-            bundle.putString("next", "8q");
+            bundle.putInt("next", 3);
         }else if(totalPoint >= 19){
             bundle.putString("result", msgResult[4]);
             bundle.putString("todo", msgResult[5]);
-            bundle.putString("next", "8q");
+            bundle.putInt("next", 3);
         }
 
         FragmentManager fm = getActivity().getSupportFragmentManager();
@@ -216,4 +242,10 @@ public class Q9QuetionFragment extends Fragment implements IEvaluation {
         c4.setTextColor(getResources().getColor(R.color.black));
     }
 
+    private String getDateString(){
+
+        Calendar calendar = Calendar.getInstance();
+        return calendar.get(Calendar.YEAR) + "/" + (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.get(Calendar.DAY_OF_MONTH);
+
+    }
 }

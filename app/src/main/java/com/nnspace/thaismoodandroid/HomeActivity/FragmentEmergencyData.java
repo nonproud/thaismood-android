@@ -39,6 +39,7 @@ public class FragmentEmergencyData extends Fragment {
         Button smrtWebBtn = getView().findViewById(R.id.smrt_web_btn);
         Button smrtFBBtn = getView().findViewById(R.id.smrt_fb_btn);
 
+
         dmhCallBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

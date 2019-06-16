@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SettingActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/colorPrimaryDark">
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:tint="@color/white"
+            android:src="@drawable/ic_left"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:text="การตั้งค่า"
+            />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textSize="20dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="การแจ้งเตือน"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lighter_grey"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:gravity="left"
+                android:text="แจ้งเตือนบันทึกอารมณ์"
+                android:textSize="20dp" />
+
+            <com.rm.rmswitch.RMSwitch
+                android:id="@+id/switch_mood_noti"
+                android:layout_width="56dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:gravity="right"
+                app:checked="false"
+                app:enabled="true"
+                app:switchDesign="android"
+                app:forceAspectRatio="true"
+                app:switchBkgCheckedColor="@color/mood_green"
+                app:switchBkgNotCheckedColor="@color/mood_red"
+                app:switchToggleCheckedColor="#32bea6"
+                app:switchToggleNotCheckedColor="#e04f5f" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lighter_grey"/>
+
+        <RelativeLayout
+            android:id="@+id/noti_mood_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:visibility="gone"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:gravity="left"
+                android:text="เวลา"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/noti_mood_time_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:gravity="left"
+                android:text="--:--"
+                android:drawableRight="@drawable/ic_right"
+                android:drawableTint="@color/ios_grey"
+                android:textSize="20dp" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lighter_grey"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/lighter_grey"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:gravity="left"
+                android:text="แจ้งเตือนบันทึกการนอน"
+                android:textSize="20dp" />
+
+
+            <com.rm.rmswitch.RMSwitch
+                android:id="@+id/switch_sleep_noti"
+                android:layout_width="56dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:gravity="right"
+                app:checked="false"
+                app:enabled="true"
+                app:switchDesign="android"
+                app:forceAspectRatio="true"
+                app:switchBkgCheckedColor="@color/mood_green"
+                app:switchBkgNotCheckedColor="@color/mood_red"
+                app:switchToggleCheckedColor="#32bea6"
+                app:switchToggleNotCheckedColor="#e04f5f" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lighter_grey"/>
+
+        <RelativeLayout
+            android:id="@+id/noti_sleep_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:gravity="left"
+                android:text="เวลา"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/noti_sleep_time_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:gravity="left"
+                android:text="--:--"
+                android:drawableRight="@drawable/ic_right"
+                android:drawableTint="@color/ios_grey"
+                android:textSize="20dp" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lighter_grey"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

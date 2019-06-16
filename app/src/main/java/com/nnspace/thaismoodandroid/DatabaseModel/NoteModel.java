@@ -16,4 +16,6 @@ public class NoteModel {
                     "%s varchar(100) NOT NULL, " +
                     "%s varchar(2000) NOT NULL, " +
                     "%s DATE NOT NULL);", TABLE_NAME, ID, TITLE, NOTE, DATE);
+
+    public static final String SIGN_OUT = String.format("DELETE FROM %s WHERE 1", TABLE_NAME);
 }

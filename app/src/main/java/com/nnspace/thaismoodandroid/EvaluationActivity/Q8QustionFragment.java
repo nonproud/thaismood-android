@@ -2,19 +2,24 @@ package com.nnspace.thaismoodandroid.EvaluationActivity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.ligl.android.widget.iosdialog.IOSDialog;
+import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
+import com.nnspace.thaismoodandroid.DatabaseModel.EvaluationModel;
 import com.nnspace.thaismoodandroid.R;
+
+import java.util.Calendar;
 
 public class Q8QustionFragment extends Fragment implements IEvaluation {
 
@@ -35,6 +40,7 @@ public class Q8QustionFragment extends Fragment implements IEvaluation {
         countNo = 0;
         totalPoint = 0;
         checkNo = new Boolean[9];
+        checkNo[8] = true;
         question = getResources().getStringArray(R.array.q_8q_question);
         nextBtn = getView().findViewById(R.id.q_8q_next_btn);
         prevBtn = getView().findViewById(R.id.q_8q_prev_btn);
@@ -117,6 +123,21 @@ public class Q8QustionFragment extends Fragment implements IEvaluation {
             }
         });
 
+        prevBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(countNo == 0){
+                    prevBtn.setEnabled(false);
+                    prevBtn.setBackground(getResources().getDrawable(R.drawable.button_border_unselected));
+                }else {
+                    prevBtn.setEnabled(true);
+                    prevBtn.setBackgroundColor(getResources().getColor(R.color.q_2q_theme_dark));
+                    countNo--;
+                    prevQuestion();
+                }
+            }
+        });
+
     }
 
     @Override
@@ -186,29 +207,32 @@ public class Q8QustionFragment extends Fragment implements IEvaluation {
 
     @Override
     public void next() {
+        ThaisMoodDB db = new ThaisMoodDB(getActivity());
+        db.insertEvaluationScore(totalPoint, EvaluationModel._8q, getDateString());
         Bundle bundle = new Bundle();
-        bundle.putString("from", "8q");
+        bundle.putInt("from", 3);
+        bundle.putInt("score", totalPoint);
         String[] msgResult = getResources().getStringArray(R.array.q_8q_result);
 
         if(totalPoint == 0){
             bundle.putString("result", msgResult[0]);
             bundle.putString("todo", msgResult[1]);
-            bundle.putString("next", "mdq");
+            bundle.putInt("next", 4);
             bundle.putString("emegency", "false");
         }else if(totalPoint >= 1 && totalPoint <= 8){
             bundle.putString("result", msgResult[1]);
             bundle.putString("todo", msgResult[4]);
-            bundle.putString("next", "mdq");
+            bundle.putInt("next", 4);
             bundle.putString("emegency", "false");
         }else if(totalPoint >=9 && totalPoint <= 16){
             bundle.putString("result", msgResult[2]);
             bundle.putString("todo", msgResult[4]);
-            bundle.putString("next", "mdq");
+            bundle.putInt("next", 4);
             bundle.putString("emegency", "false");
         }else if(totalPoint >= 17){
             bundle.putString("result", msgResult[3]);
             bundle.putString("todo", msgResult[4]);
-            bundle.putString("next", "mdq");
+            bundle.putInt("next", 4);
             bundle.putString("emegency", "true");
         }
 
@@ -226,5 +250,12 @@ public class Q8QustionFragment extends Fragment implements IEvaluation {
         c1.setTextColor(getResources().getColor(R.color.black));
         c2.setBackground(getResources().getDrawable(R.drawable.q_8q_choice_unselected));
         c2.setTextColor(getResources().getColor(R.color.black));
+    }
+
+    private String getDateString(){
+
+        Calendar calendar = Calendar.getInstance();
+        return calendar.get(Calendar.YEAR) + "/" + (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.get(Calendar.DAY_OF_MONTH);
+
     }
 }

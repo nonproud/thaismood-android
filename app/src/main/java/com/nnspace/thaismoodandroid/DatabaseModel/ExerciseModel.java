@@ -16,4 +16,6 @@ public class ExerciseModel {
             "%s date NOT NULL" +
             ");", TABLE_NAME, ID, STEP, DATE);
 
+    public static final String SIGN_OUT = String.format("DELETE FROM %s WHERE 1", TABLE_NAME);
+
 }

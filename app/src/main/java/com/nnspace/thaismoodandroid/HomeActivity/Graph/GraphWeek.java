@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,13 +23,14 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
-import com.nnspace.thaismoodandroid.MoodObject;
+import com.nnspace.thaismoodandroid.HomeActivity.List.MoodObject;
 import com.nnspace.thaismoodandroid.MoodType;
-import com.nnspace.thaismoodandroid.MyThaiCalender;
+import com.nnspace.thaismoodandroid.MyCalender;
 import com.nnspace.thaismoodandroid.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class GraphWeek extends Fragment {
@@ -40,7 +40,6 @@ public class GraphWeek extends Fragment {
     private ArrayList<String> xLabel;
     private int today_dayOfWeek;
     private TextView dateDes;
-    private ImageView leftbtn, rightbtn;
     private LineChart chart;
     private PieChart chart2;
     private ArrayList<MoodObject> moodlist;
@@ -57,7 +56,6 @@ public class GraphWeek extends Fragment {
         xLabel.add("ศุกร์");
         xLabel.add("เสาร์");
         today_dayOfWeek = currentCalender.get(Calendar.DAY_OF_WEEK);
-        moodlist = new ArrayList<>();
         return inflater.inflate(R.layout.fragment_graph_week, container, false);
     }
 
@@ -66,8 +64,6 @@ public class GraphWeek extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         dateDes = getView().findViewById(R.id.graph_week_date_des);
-        leftbtn = getView().findViewById(R.id.graph_week_left_btn);
-        rightbtn = getView().findViewById(R.id.graph_week_right_btn);
         chart = getView().findViewById(R.id.graph_week_chart1);
         chart2 = getView().findViewById(R.id.graph_week_chart2);
 
@@ -75,7 +71,6 @@ public class GraphWeek extends Fragment {
         setChart1();
         setChart2();
 
-//        refreshGraph();
 
     }
 
@@ -120,6 +115,7 @@ public class GraphWeek extends Fragment {
 
         chart.getAxisRight().setEnabled(false);
         chart.getLegend().setEnabled(false);
+
 
         for(int i=0; i<moodlist.size(); i++){
             if(moodlist.get(i).getMoodType() == MoodType.RED || moodlist.get(i).getMoodType() == MoodType.YELLOW){
@@ -169,21 +165,8 @@ public class GraphWeek extends Fragment {
                     }
                 }, calendar.get(Calendar.YEAR),
                         calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
                 datePickerDialog.show();
-            }
-        });
-
-        leftbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        rightbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
             }
         });
     }
@@ -208,13 +191,13 @@ public class GraphWeek extends Fragment {
     private String getThaiDate(){
         tempCalendar.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
         String s1 = tempCalendar.get(Calendar.DAY_OF_MONTH) + " " +
-                MyThaiCalender.getMonthOfYear(tempCalendar.get(Calendar.MONTH));
+                MyCalender.getMonthOfYear(tempCalendar.get(Calendar.MONTH));
 
         tempCalendar.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
         String s2 = tempCalendar.get(Calendar.DAY_OF_MONTH) + " " +
-                MyThaiCalender.getMonthOfYear(tempCalendar.get(Calendar.MONTH));
+                MyCalender.getMonthOfYear(tempCalendar.get(Calendar.MONTH));
 
-        return s1 + " - " + s2 + " " + (tempCalendar.get(Calendar.YEAR) + 543) ;
+        return s1 + " - " + s2 + " " + tempCalendar.get(Calendar.YEAR) ;
 
     }
 }
