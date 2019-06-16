@@ -87,7 +87,7 @@ public class Q2QuestionFragment extends Fragment implements IEvaluation {
                         next_btn.setBackgroundColor(getResources().getColor(R.color.q_2q_theme_dark));
                         prev_btn.setEnabled(true);
                         prev_btn.setBackgroundColor(getResources().getColor(R.color.q_2q_theme_dark));
-                        if(currentPoint[countNo] == 0){
+                        if(currentPoint[countNo] == 1){
                             c1.setBackground(getResources().getDrawable(R.drawable.q_2q_choice_selected));
                             c1.setTextColor(getResources().getColor(R.color.white));
                         }else{
@@ -107,18 +107,40 @@ public class Q2QuestionFragment extends Fragment implements IEvaluation {
         prev_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(countNo == 0){
-                    prev_btn.setEnabled(false);
-                    prev_btn.setBackground(getResources().getDrawable(R.drawable.button_border_unselected));
-                }else {
-                    prev_btn.setEnabled(true);
-                    prev_btn.setBackgroundColor(getResources().getColor(R.color.q_2q_theme_dark));
+                if(countNo != 0){
+                    clearButton();
                     countNo--;
                     prevQuestion();
+                    setPrevbtn();
+                    if(currentPoint[countNo] == 1){
+                        if(currentPoint[countNo] == 1){
+                            c1.setBackground(getResources().getDrawable(R.drawable.q_2q_choice_selected));
+                            c1.setTextColor(getResources().getColor(R.color.white));
+                        }else{
+                            c2.setBackground(getResources().getDrawable(R.drawable.q_2q_choice_selected));
+                            c2.setTextColor(getResources().getColor(R.color.white));
+                        }
+                        next_btn.setEnabled(true);
+                        next_btn.setBackgroundColor(getResources().getColor(R.color.q_2q_theme_dark));
+                    }else {
+                        next_btn.setEnabled(false);
+                        next_btn.setBackground(getResources().getDrawable(R.drawable.button_border_unselected));
+                    }
+
                 }
             }
         });
 
+    }
+
+    private void setPrevbtn(){
+        if(countNo > 0){
+            prev_btn.setEnabled(true);
+            prev_btn.setBackgroundColor(getResources().getColor(R.color.q_2q_theme_dark));
+        }else {
+            prev_btn.setEnabled(false);
+            prev_btn.setBackground(getResources().getDrawable(R.drawable.button_border_unselected));
+        }
     }
 
     public String getStringIndicator(int no){
@@ -134,6 +156,7 @@ public class Q2QuestionFragment extends Fragment implements IEvaluation {
     }
 
     public void nextQuestion(){
+        setPrevbtn();
         questiontx.setText(question[countNo]);
         indicator.setText(getStringIndicator(countNo));
     }

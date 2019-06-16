@@ -179,15 +179,29 @@ public class EvaluationResultFragment extends Fragment {
             @Override
             public void onResponse(String response) {
                 if(response.toString().equals("1")){
-                    Toast.makeText(getActivity(), "บันทึกผล " + type + " แล้ว", Toast.LENGTH_LONG).show();
+                    try{
+                        Toast.makeText(getActivity(), "บันทึกผล " + type + " แล้ว", Toast.LENGTH_LONG).show();
+                    }catch (Exception e){
+
+                    }
+
                 }else {
-                    Toast.makeText(getActivity(), "ยังไม่ได้บันทึกผล " + type, Toast.LENGTH_LONG).show();
+                    try {
+                        Toast.makeText(getActivity(), "ยังไม่ได้บันทึกผล " + type, Toast.LENGTH_LONG).show();
+                    }catch (Exception e){
+
+                    }
+
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
+                try{
+                    Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_SHORT).show();
+                }catch (Exception e){
+
+                }
             }
         }) {
             protected Map<String, String> getParams() {
