@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.fasterxml.jackson.core.JsonParser;
 import com.nnspace.thaismoodandroid.DatabaseModel.ActivityModel;
 import com.nnspace.thaismoodandroid.DatabaseModel.EmotionModel;
 import com.nnspace.thaismoodandroid.DatabaseModel.EvaluationModel;
@@ -22,8 +23,14 @@ import com.nnspace.thaismoodandroid.HomeActivity.List.MoodObject;
 import com.nnspace.thaismoodandroid.HomeActivity.List.RecordObject;
 import com.nnspace.thaismoodandroid.HomeActivity.List.SleepObject;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ThaisMoodDB extends SQLiteOpenHelper {
@@ -591,10 +598,6 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
     /*************************** RECORD ****************************/
 
     /*************************** MOOD ****************************/
-//    public boolean insertMood(Map<String, String> data){
-//        String sql = "";
-//
-//    }
 
     public boolean insertMood(int mood, int level, String date){
 
@@ -1077,4 +1080,94 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
 
 
     /*************************** SLEEP ****************************/
+
+    public boolean insertSyncMood(String jsonString){
+        try{
+            JSONObject jsonResponse = new JSONObject(jsonString);
+            List<String> allMood = new ArrayList<String>();
+
+            JSONArray moods = jsonResponse.getJSONArray("result");
+            for(int i = 0; i < moods.length(); i++){
+                JSONObject mood = moods.getJSONObject(i);
+                DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+                try{
+                    java.util.Date date = df.parse(mood.getString("date"));
+                    insertMood(mood.getInt("mood"), mood.getInt("level"), parseISODateFormatTODateFormar(mood.getString("date")));
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            }
+
+        }catch (Exception e){
+            return false;
+        }
+        return true;
+
+    }
+
+    public boolean insertSyncSleep(String jsonString){
+        try{
+            JSONObject jsonResponse = new JSONObject(jsonString);
+            List<String> allSleep = new ArrayList<String>();
+
+            JSONArray sleeps = jsonResponse.getJSONArray("result");
+            for(int i = 0; i < sleeps.length(); i++){
+                JSONObject sleep = sleeps.getJSONObject(i);
+                insertSleep((float)sleep.getDouble("total_time"), sleep.getString("start_time"), sleep.getString("end_time"), parseISODateFormatTODateFormar(sleep.getString("date")));
+            }
+
+        }catch (Exception e){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean insertSyncDiary(String jsonString){
+        try{
+            JSONObject jsonResponse = new JSONObject(jsonString);
+            List<String> allDiary = new ArrayList<String>();
+
+            JSONArray diaries = jsonResponse.getJSONArray("result");
+            for(int i = 0; i < diaries.length(); i++){
+                JSONObject diary = diaries.getJSONObject(i);
+                insertNote(diary.getString("title"), diary.getString("story"), parseISODateFormatTODateFormar(diary.getString("date")));
+            }
+
+        }catch (Exception e){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean insertSyncEvaluation(String jsonString){
+        try{
+            JSONObject jsonResponse = new JSONObject(jsonString);
+            List<String> allEvaluation = new ArrayList<String>();
+
+            JSONArray evaluations = jsonResponse.getJSONArray("result");
+            for(int i = 0; i < evaluations.length(); i++){
+                JSONObject evaluation = evaluations.getJSONObject(i);
+                insertEvaluationScore(evaluation.getInt("2q"), "q2q", parseISODateFormatTODateFormar(evaluation.getString("date")));
+                insertEvaluationScore(evaluation.getInt("9q"), "q9q", parseISODateFormatTODateFormar(evaluation.getString("date")));
+                insertEvaluationScore(evaluation.getInt("8q"), "q8q", parseISODateFormatTODateFormar(evaluation.getString("date")));
+                insertEvaluationScore(evaluation.getInt("mdq"), "qmdq", parseISODateFormatTODateFormar(evaluation.getString("date")));
+            }
+
+        }catch (Exception e){
+            return false;
+        }
+        return true;
+    }
+
+    private String parseISODateFormatTODateFormar(String isoDateFormat){
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        try{
+            java.util.Date date = df.parse(isoDateFormat);
+            return date.getYear()+1900+"/"+(date.getMonth()+1)+"/"+date.getDate();
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
