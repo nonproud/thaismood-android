@@ -41,6 +41,7 @@ public class SynActivity extends AppCompatActivity {
         StringRequest myStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                System.out.println("Sysn Response --> : " + response);
                 if(!response.equals("0")){
                     Map<String, String> map = new HashMap<String, String>();
                     try {
@@ -50,9 +51,11 @@ public class SynActivity extends AppCompatActivity {
                         map = mapper.readValue(json, new TypeReference<Map<String, String>>(){});
                         System.out.println(map);
                         if(db.getType().equals("p")){
+                            db.insertPatientProfileLogin(map);
+                        }else if(db.getType().equals("g")) {
                             db.insertGeneralProfileLogin(map);
-                        }else {
-                            db.insertGeneralProfileLogin(map);
+                        }else{
+                            throw new Exception("Profile type Error");
                         }
                         startActivity(new Intent(SynActivity.this, Home2.class));
 
@@ -61,6 +64,8 @@ public class SynActivity extends AppCompatActivity {
                     } catch (JsonMappingException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
+                        e.printStackTrace();
+                    }catch (Exception e){
                         e.printStackTrace();
                     }
                 }

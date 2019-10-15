@@ -53,12 +53,12 @@ public class MainActivity extends Activity {
 
         runnable = new Runnable() {
             public void run() {
-
+            try{
                 if(db.isLogon()){
                     if(!db.getIsVerified()){
                         startActivity(new Intent(MainActivity.this, VerifyEmailActivity.class));
                     }else {
-                        if(db.getType().equals("-")){
+                        if(db.getType().equals("0")){
                             startActivity(new Intent(MainActivity.this, Register.class));
                         }else{
                             String type = db.getType();
@@ -75,6 +75,12 @@ public class MainActivity extends Activity {
                     startActivity(new Intent(MainActivity.this, SignInOn.class));
                 }
                 finish();
+            }catch (Exception e){
+                e.printStackTrace();
+            }finally {
+
+            }
+
 
             }
         };

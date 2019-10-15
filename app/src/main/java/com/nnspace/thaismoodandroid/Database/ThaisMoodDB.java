@@ -189,11 +189,11 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
     }
 
     public boolean updateType(String type){
-        String sql = String.format("UPDATE %s SET %s=? WHERE 1", LogonModel.TABLE_NAME, LogonModel.TYPE);
+        String sql = String.format("UPDATE %s SET %s = \"%s\" WHERE 1", LogonModel.TABLE_NAME, LogonModel.TYPE, type);
         SQLiteDatabase db = this.getWritableDatabase();
         System.out.println(sql);
         try{
-            db.execSQL(sql, new String[] {type});
+            db.execSQL(sql);
         }catch (Exception err){
             db.close();
             return false;
@@ -204,7 +204,7 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
 
     public boolean insertLogonResgist(String username, String email){
         String query_user_id = String.format("INSERT INTO %s (%s, %s, %s) values('%s', '%s', '%s')",LogonModel.TABLE_NAME,
-                LogonModel.USERNAME, LogonModel.EMAIL, LogonModel.STATUS, username, email, 0);
+                LogonModel.USERNAME, LogonModel.EMAIL, LogonModel.STATUS, username, email, "0");
         SQLiteDatabase db = this.getWritableDatabase();
         try{
             db.execSQL(query_user_id);
@@ -275,8 +275,10 @@ public class ThaisMoodDB extends SQLiteOpenHelper {
         String sql;
         if(type.equals("p")){
             sql = String.format("SELECT * FROM %s WHERE 1", ProfilePatientModel.TABLE_NAME);
-        }else{
+        }else if(type.equals("g")){
             sql = String.format("SELECT * FROM %s WHERE 1", ProfileGeneralModel.TABLE_NAME);
+        }else{
+            return true;
         }
 
         SQLiteDatabase db = this.getWritableDatabase();

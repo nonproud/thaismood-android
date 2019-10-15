@@ -1,11 +1,14 @@
 package com.nnspace.thaismoodandroid;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.nnspace.thaismoodandroid.Database.ThaisMoodDB;
@@ -31,29 +34,46 @@ public class ProfileActivity extends AppCompatActivity {
                 LinearLayout patientSection = findViewById(R.id.patient_section);
                 patientSection.setVisibility(View.VISIBLE);
                 setPatientProfile();
-            }else{
+            }else if(type.equals("g")){
                 data = db.getProfileGeneralDetails();
                 LinearLayout patientSection = findViewById(R.id.patient_section);
                 patientSection.setVisibility(View.GONE);
+            }else{
+                throw new Exception("Type not valid");
             }
+            ImageView backBtn = findViewById(R.id.back_btn);
+            backBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
+
+            TextView username = findViewById(R.id.username);
+            username.setText(db.getUsername());
+
+            setCountBand();
+            setProfile();
+
         }catch (Exception e){
+            new AlertDialog.Builder(this)
+                    .setTitle("มีบางอย่างผิดพลาด")
+                    .setMessage("")
+
+                    // Specifying a listener allows you to take an action before dismissing the dialog.
+                    // The dialog is automatically dismissed when a dialog button is clicked.
+                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    })
+                    // A null listener allows the button to dismiss the dialog and take no further action.
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+
+            System.out.println("Profile Activity crash --> : " + e.getMessage());
             e.printStackTrace();
         }
-
-
-        ImageView backBtn = findViewById(R.id.back_btn);
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
-        TextView username = findViewById(R.id.username);
-        username.setText(db.getUsername());
-
-        setCountBand();
-        setProfile();
     }
 
     private void setCountBand() {

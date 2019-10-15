@@ -135,7 +135,7 @@ public class WriteNoteActivity extends AppCompatActivity {
         StringRequest myStringRequest = new StringRequest(Request.Method.POST, URL_REQUEST, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
+                System.out.println("Create note respones -->: " + response);
                 if(!response.toString().equals("0")){
                     Toast.makeText(WriteNoteActivity.this, "บันทึกสำเร็จ", Toast.LENGTH_LONG);
                 }else if(response.toString().equals("0")){
@@ -158,6 +158,7 @@ public class WriteNoteActivity extends AppCompatActivity {
             }
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
+                System.out.println("token: " + db.getToken());
                 Map<String,String> params = new HashMap<String, String>();
                 params.put("Content-Type","application/x-www-form-urlencoded");
                 params.put("authorization", db.getToken());
@@ -176,7 +177,7 @@ public class WriteNoteActivity extends AppCompatActivity {
         StringRequest myStringRequest = new StringRequest(Request.Method.PUT, URL_REQUEST, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
+                System.out.println("Create note respones -->: " + response);
                 if(!response.toString().equals("0")){
                     Toast.makeText(WriteNoteActivity.this, "บันทึกสำเร็จ", Toast.LENGTH_LONG);
                 }else if(response.toString().equals("0")){
@@ -199,6 +200,7 @@ public class WriteNoteActivity extends AppCompatActivity {
             }
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
+                System.out.println("token: " + db.getToken());
                 Map<String,String> params = new HashMap<String, String>();
                 params.put("Content-Type","application/x-www-form-urlencoded");
                 params.put("authorization", db.getToken());

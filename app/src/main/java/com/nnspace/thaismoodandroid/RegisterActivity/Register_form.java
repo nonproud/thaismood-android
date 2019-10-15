@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Debug;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -290,6 +291,7 @@ public class Register_form extends Fragment {
         StringRequest myStringRequest = new StringRequest(Request.Method.POST, create_profile_url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                System.out.println("Create Profile response --> " +response);
                 if(response.equals("1")){
                     Toast.makeText(getContext(), "บันทึกข้อมูลแล้ว", Toast.LENGTH_LONG).show();
                     db.updateType("p");
@@ -345,11 +347,13 @@ public class Register_form extends Fragment {
         StringRequest myStringRequest = new StringRequest(Request.Method.POST, create_profile_url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                System.out.println("Create Profile response --> " +response);
                 if(response.equals("1")){
                     Toast.makeText(getContext(), "บันทึกข้อมูลแล้ว", Toast.LENGTH_LONG).show();
                     db.updateType("g");
                     db.createProfileGeneral(nicknameString, emergencyContactString, dobString, isCaffeine, isDrug);
                     Intent intent = new Intent(getContext(), Evaluation.class);
+                    intent.putExtra("todo", 1);
                     startActivity(intent);
                     getActivity().finish();
                 }else{

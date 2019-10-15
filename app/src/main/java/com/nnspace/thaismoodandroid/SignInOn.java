@@ -269,10 +269,11 @@ public class SignInOn extends AppCompatActivity {
         StringRequest myStringRequest = new StringRequest(Request.Method.POST, url_login, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                System.out.println("Login request response --> : " + response );
                 if(!response.equals("0")){
-                    Map<String, String> map = new HashMap<String, String>();
-                    try {
 
+                    try {
+                        Map<String, String> map = new HashMap<String, String>();
                         ObjectMapper mapper = new ObjectMapper();
                         String json = response;
                         map = mapper.readValue(json, new TypeReference<Map<String, String>>(){});
