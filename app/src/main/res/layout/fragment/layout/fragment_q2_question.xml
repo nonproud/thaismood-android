@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EvaluationActivity.Q2QuestionFragment"
+    tools:context=".Fragments.Q2QuestionFragment"
     android:gravity="bottom"
     android:orientation="vertical">
 

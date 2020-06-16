@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="bottom"
     android:orientation="vertical"
-    tools:context=".RegisterActivity.Register">
+    tools:context="com.nnspace.thaismoodandroid.Activities.Register">
     <FrameLayout
         android:id="@+id/register_fragment_container"
         android:layout_width="match_parent"

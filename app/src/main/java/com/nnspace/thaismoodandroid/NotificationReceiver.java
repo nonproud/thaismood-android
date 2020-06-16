@@ -8,7 +8,9 @@ import android.content.Intent;
 
 import androidx.core.app.NotificationCompat;
 
-import com.nnspace.thaismoodandroid.HomeActivity.Add.AddMoodActivity;
+import com.nnspace.thaismoodandroid.Activities.AddMoodActivity;
+
+import com.nnspace.thaismoodandroid.Activities.SettingActivity;
 
 import static com.nnspace.thaismoodandroid.R.drawable.*;
 

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="top"
     android:background="@color/fragment_background"
-    tools:context=".HomeActivity.Graph.GraphWeek">
+    tools:context=".Fragments.GraphWeek">
 
     <LinearLayout
         android:layout_marginTop="10dp"

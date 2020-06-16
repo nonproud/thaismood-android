@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="bottom"
     android:orientation="vertical"
-    tools:context=".EvaluationActivity.EvaluationResultFragment">
+    tools:context=".Fragments.EvaluationResultFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

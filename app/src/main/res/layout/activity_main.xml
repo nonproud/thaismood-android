@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentEditProfie$MainActivity"
+    tools:context=".Fragments.FragmentEditProfie$MainActivity"
     android:background="@color/white">
 
     <LinearLayout

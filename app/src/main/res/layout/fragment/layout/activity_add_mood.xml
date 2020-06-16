@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="bottom"
-    tools:context=".HomeActivity.Add.AddMoodActivity"
+    tools:context="com.nnspace.thaismoodandroid.Activities.AddMoodActivity"
     android:id="@+id/add_mood_transition">
 
     <LinearLayout

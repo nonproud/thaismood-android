@@ -18,19 +18,19 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:replace="android:icon"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SynActivity"></activity>
-        <activity android:name=".FIndHospitalActivity" />
-        <activity android:name=".GetTemporaryCredential" />
-        <activity android:name=".HomeActivity.Add.AddSleepActivity" />
-        <activity android:name=".HomeActivity.Add.AddMoodActivity" />
-        <activity android:name=".EmergencyContactActivity" />
-        <activity android:name=".AboutActivity" />
-        <activity android:name=".EvaluationHistory.EvaluationHistoryActivity" />
-        <activity android:name=".SettingActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".HomeActivity.Diary.WriteNoteActivity" />
+        <activity android:name="com.nnspace.thaismoodandroid.Activities.SynActivity"></activity>
+        <activity android:name="com.nnspace.thaismoodandroid.Activities.FIndHospitalActivity" />
+        <activity android:name=".Activities.GetTemporaryCredential" />
+        <activity android:name="com.nnspace.thaismoodandroid.Activities.AddSleepActivity" />
+        <activity android:name="com.nnspace.thaismoodandroid.Activities.AddMoodActivity" />
+        <activity android:name="com.nnspace.thaismoodandroid.Activities.EmergencyContactActivity" />
+        <activity android:name="com.nnspace.thaismoodandroid.Activities.AboutActivity" />
+        <activity android:name="com.nnspace.thaismoodandroid.Activities.EvaluationHistoryActivity" />
+        <activity android:name="com.nnspace.thaismoodandroid.Activities.SettingActivity" />
+        <activity android:name="com.nnspace.thaismoodandroid.Activities.ProfileActivity" />
+        <activity android:name="com.nnspace.thaismoodandroid.Activities.WriteNoteActivity" />
         <activity
-            android:name=".HomeActivity.Home2"
+            android:name="com.nnspace.thaismoodandroid.Activities.Home2"
             android:label="@string/title_activity_home2"
             android:theme="@style/NoActionBar" />
 
@@ -38,12 +38,12 @@
             android:name="com.google.android.actions"
             android:resource="@xml/more_option" />
 
-        <activity android:name=".EvaluationActivity.Evaluation" />
-        <activity android:name=".RegisterActivity.Register" />
-        <activity android:name=".MainmenuTest" />
-        <activity android:name=".VerifyEmailActivity" />
-        <activity android:name=".SignInOn" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activities.Evaluation" />
+        <activity android:name="com.nnspace.thaismoodandroid.Activities.Register" />
+        <activity android:name=".Activities.MainmenuTest" />
+        <activity android:name="com.nnspace.thaismoodandroid.Activities.VerifyEmailActivity" />
+        <activity android:name="com.nnspace.thaismoodandroid.Activities.SignInOn" />
+        <activity android:name="com.nnspace.thaismoodandroid.Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

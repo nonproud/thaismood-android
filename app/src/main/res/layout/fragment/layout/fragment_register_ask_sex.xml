@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity.Register_ask_sex"
+    tools:context=".Fragments.Register_ask_sex"
     android:background="@color/colorPrimary">
 
     <LinearLayout
